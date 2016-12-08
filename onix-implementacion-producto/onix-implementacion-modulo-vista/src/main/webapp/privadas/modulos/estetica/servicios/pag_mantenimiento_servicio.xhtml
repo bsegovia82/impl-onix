@@ -1,0 +1,175 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template_mantenedor.xhtml">
+
+	<ui:define name="head">
+		<title>#{beanMantenedorServicio.tituloPagina}</title>
+	</ui:define>
+	<ui:define name="subheader">
+       #{beanMantenedorServicio.descripcionPagina}
+    </ui:define>
+
+	<ui:define name="titulo_tab">
+		#{beanMantenedorServicio.tab}
+	</ui:define>
+	<ui:define name="cab_formulario">		
+		#{beanMantenedorServicio.ayudaPagina}
+	</ui:define>
+	<ui:define name="grid_formulario">
+		<p:panelGrid columns="2" layout="grid"
+			style="border:0px !important; background:none;" id="panel">
+			<p:inputText styleClass="Wid70" placeholder="Nombres"
+				value="#{beanMantenedorServicio.entidadRegistrar.nombreServicio}"
+				onblur="ChangeCase(this);" required="true" id="Nombres" />
+			<p:inputText styleClass="Wid70" placeholder="Descripción"
+				value="#{beanMantenedorServicio.entidadRegistrar.observacion}"
+				onblur="ChangeCase(this);" required="true" id="Descripción" />
+
+			<p:selectOneMenu id="TipoServicio"
+				value="#{beanMantenedorServicio.entidadRegistrar.tipo.id}"
+				style="width:180px;" required="true">
+				<f:selectItem itemLabel="Seleccione" itemValue=""
+					noSelectionOption="true" />
+
+				<f:selectItems value="#{beanMantenedorServicio.listaTipoServicio}"
+					var="tipo" itemLabel="#{tipo.nombreTipo}" itemValue="#{tipo.id}" />
+
+			</p:selectOneMenu>
+
+			<p:inputText styleClass="Wid70" placeholder="Precio Referencial"
+				value="#{beanMantenedorServicio.entidadRegistrar.precioReferencial}"
+				 required="true" id="Precio">
+				 <f:convertNumber currencySymbol="$" type="currency" maxFractionDigits="2" minFractionDigits="0" />
+			</p:inputText>
+
+		</p:panelGrid>
+		<p:commandButton value="Cancelar" styleClass="RedButton"
+			update="panel" process="@this">
+			<p:resetInput target="panel" />
+		</p:commandButton>
+		<p:commandButton value="Registrar" styleClass="CyanButton"
+			actionListener="#{beanMantenedorServicio.guardarOActualizar}"
+			process="contenedor"
+			update=":#{p:component('contenedor')}, :#{p:component('mensajeGlobal')}, :#{p:component('tablaDatos')}, :#{p:component('dialogoMantenimiento')}" />
+	</ui:define>
+
+	<ui:define name="cab_tabla_datos">
+		#{beanMantenedorServicio.cabeceraTabla}
+	</ui:define>
+
+	<ui:define name="tabla_datos">
+		<p:dataTable value="#{beanMantenedorServicio.listaEntidades}"
+			var="servicio"
+			emptyMessage="#{beanMantenedorServicio.mensajeTablaVacia}" rows="8"
+			reflow="true" paginator="true" paginatorPosition="bottom"
+			id="tablaDatos">
+
+
+			<p:column headerText="Nombre Servicio" width="17%">
+				<h:outputText value="#{servicio.nombreServicio}" />
+			</p:column>
+
+			<p:column headerText="Descripción">
+				<h:outputText value="#{servicio.observacion}" />
+			</p:column>
+
+			<p:column headerText="Tipo Servicio">
+				<h:outputText value="#{servicio.tipo.nombreTipo}" />
+			</p:column>
+
+			<p:column headerText="Precio Referencial">
+				<h:outputText value="#{servicio.precioReferencial}">
+					  <f:convertNumber currencySymbol="$" type="currency" maxFractionDigits="2" minFractionDigits="0" />
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Estado" width="8%">
+				<h:outputText
+					value="#{servicio.estado eq beanMantenedorServicio.estadoActivo?'ACTIVO':'INACTIVO'}" />
+			</p:column>
+
+
+			<p:column headerText="Fecha Registro">
+				<h:outputText value="#{servicio.fechaRegistro}">
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"
+						timeZone="#{beanMantenedorServicio.currentTimeZone}" />
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Acciones">
+				<p:commandButton icon="ui-icon-pencil" title="Actualizar"
+					actionListener="#{beanMantenedorServicio.actualizarEntidad}"
+					update=":#{p:component('dialogoMantenimiento')}" process="@this">
+
+					<f:attribute
+						name="#{beanMantenedorServicio.nombreAtributoCambioEstado}"
+						value="#{servicio}"></f:attribute>
+
+				</p:commandButton>
+
+				<p:commandButton icon="ui-icon-refresh" title="Cambiar Estado"
+					actionListener="#{beanMantenedorServicio.cambiarEstado}"
+					update="@form" process="@this">
+					<f:attribute
+						name="#{beanMantenedorServicio.nombreAtributoCambioEstado}"
+						value="#{servicio}"></f:attribute>
+
+					<p:confirm header="Confirmación"
+						message="Seguro que desea realizar esta operación?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+	</ui:define>
+
+	<ui:define name="cab_dialogo">
+		#{beanMantenedorServicio.cabeceraDialogo}
+	</ui:define>
+	<ui:define name="cab_panel_dialogo">
+#{beanMantenedorServicio.cabeceraPanelDialogo}
+</ui:define>
+
+	<ui:define name="datos_dialogo">
+		<p:panelGrid columns="2" layout="grid"
+			style="border:0px !important; background:none;" id="panel">
+			<p:inputText styleClass="Wid70" placeholder="Nombres"
+				value="#{beanMantenedorServicio.entidadRegistrar.nombreServicio}"
+				onblur="ChangeCase(this);" required="true" id="Nombres" />
+			<p:inputText styleClass="Wid70" placeholder="Descripción"
+				value="#{beanMantenedorServicio.entidadRegistrar.observacion}"
+				onblur="ChangeCase(this);" required="true" id="Descripción" />
+
+
+			<p:selectOneMenu id="TipoServicio"
+				value="#{beanMantenedorServicio.entidadRegistrar.tipo.id}"
+				style="width:180px;" required="true">
+				<f:selectItem itemLabel="Seleccione" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{beanMantenedorServicio.listaTipoServicio}"
+					var="tipo" itemLabel="#{tipo.nombreTipo}" itemValue="#{tipo.id}" />
+			</p:selectOneMenu>
+
+			<p:inputText styleClass="Wid70" placeholder="Precio Referencial"
+				value="#{beanMantenedorServicio.entidadRegistrar.precioReferencial}"
+				 required="true" id="Precio" >
+				 <f:convertNumber currencySymbol="$" type="currency" maxFractionDigits="2" minFractionDigits="0" />
+			</p:inputText>
+			
+		</p:panelGrid>
+
+		<p:commandButton value="Actualizar" styleClass="CyanButton"
+			actionListener="#{beanMantenedorServicio.guardarOActualizar}"
+			process="PanelActualizar"
+			update=":#{p:component('mensajeGlobal')}, :#{p:component('tablaDatos')}">
+			<p:confirm header="Confirmación"
+				message="Seguro que desea realizar esta operación?"
+				icon="ui-icon-alert" />
+		</p:commandButton>
+
+	</ui:define>
+
+</ui:composition>

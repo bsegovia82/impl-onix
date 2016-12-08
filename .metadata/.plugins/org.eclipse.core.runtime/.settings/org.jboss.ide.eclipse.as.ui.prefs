@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+org.jboss.ide.eclipse.as.ui.defaultWebServer=Red Hat JBoss EAP 6.1+1479503172869
+org.jboss.ide.eclipse.as.ui.preferences.disabled.automatic.server.view=true
+org.jboss.ide.eclipse.as.ui.preferences.enabledDecorators.1=true
+org.jboss.ide.eclipse.as.ui.preferences.runtime.last.type.org.jboss.ide.eclipse.as.runtime.eap.61=D\:\\jboss-eap-6.3
+org.jboss.ide.eclipse.as.ui.preferences.runtime.last.type.org.jboss.ide.eclipse.as.runtime.wildfly.80=D\:\\wildfly-8.1.0.Final - onix
+org.jboss.ide.eclipse.as.ui.wizards.LAST_RUNTIME_CREATED=WildFly 8.x Runtime
+org.jboss.ide.eclipse.as.ui.wizards.LAST_SERVER_CREATED=WildFly  8.x1481058804312

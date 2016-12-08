@@ -1,0 +1,235 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="head">
+		<style>
+.ui-clock {
+	background-color: transparent !important;
+	color: #546E7A;
+	padding: 0px 0px !important;
+}
+</style>
+	</ui:define>
+
+	<ui:define name="subheader">
+        Examen en ejecución
+    </ui:define>
+
+	<ui:define name="content">
+		<h:form>
+
+			<div class="Container30 Responsive100">
+				<div class="Container100">
+					<div class="ContainerIndent">
+						<p:dataTable
+							value="#{beanSeguimientoEjecucionExamen.listaPreguntasExamen}"
+							var="preguntasExamen"
+							scrollRows="5" scrollable="true" scrollHeight="500" id="tabListaPregunta"
+							selectionMode="single" 
+							selection="#{beanSeguimientoEjecucionExamen.lPreguntaActualLista}" 
+							rowKey="#{preguntasExamen.id}"  
+							>
+
+
+							<f:facet name="header">
+           						Lista Preguntas Examen
+       						</f:facet>
+       						 
+       						<p:ajax event="rowSelect" listener="#{beanSeguimientoEjecucionExamen.seleccionarPregunta}" 
+														update="@form"   
+														process=":#{p:component('tabListaPregunta')}"
+														/>
+
+							<p:column headerText="Pregunta"  filterBy="#{preguntasExamen.lPreguntaMostrada.lPregunta}">
+								<h:outputText
+									value="#{preguntasExamen.lPreguntaMostrada.lPregunta}"
+									style="color : #{preguntasExamen.lEstadoProceso eq 'C' ? 'BLACK' : 'RED' }"
+									 />
+							</p:column>
+
+							<p:column headerText="Estado" width="30%" filterBy="#{preguntasExamen.descripcionEstadoProceso}">
+
+								<h:outputText
+									value="#{preguntasExamen.descripcionEstadoProceso}" 
+									style="color : #{preguntasExamen.lEstadoProceso eq 'C' ? 'BLACK' : 'RED' }"
+									/>
+							</p:column>
+
+						</p:dataTable>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- Left Column -->
+			<div class="Container70 Responsive100">
+
+				<!-- Section 1 -->
+				<div class="Container100">
+					<div class="ContainerIndent">
+						<div class="Card ShadowEffect HeiAutoOnMobile"
+							style="min-height: 275px;">
+
+							<p:tabView style="margin:-20px; border:none 0px;">
+								<p:tab title="Datos Examenes Disponibles">
+									<div class="Container100">
+										<div class="Container40 Responsive100">
+											<div class="ContainerIndent">
+												<div class="Container100 Fs22 BoldGray FontRobotoRegular">
+													Nombre Examen:
+													<h:outputText
+														value="#{beanSeguimientoEjecucionExamen.lExamenUsuario.lExamen.nombreExamen}" />
+												</div>
+												<div class="EmptyBox20"></div>
+												<div class="Card SoftBlueBack">
+												<h:panelGrid columns="3">
+														<i class="icon-message Fs50 White DispBlock"></i>
+
+														<h:outputText value="Pregunta: "
+															styleClass="FontRobotoLight Fs18 White"></h:outputText>
+
+														
+
+													</h:panelGrid>
+													<span class="FontRobotoLight Fs22 White"><h:outputText
+															value="  " /> <h:outputText
+															value="#{beanSeguimientoEjecucionExamen.lPreguntaActual.lPreguntaMostrada.lPregunta}" />
+													</span>
+													<div class="EmptyBox10"></div>
+													<p:button value="Ver Imagen"
+														styleClass="RedButton Fs16 White" />
+												</div>
+												<div class="Separator"></div>
+											</div>
+										</div>
+
+										<div class="Container60 Responsive100">
+											<div class="Fs22 BoldGray FontRobotoRegular">
+												<div class="ContainerIndent">
+													<p:panelGrid columns="10" layout="grid">
+														<h:outputText value="Minutos" />
+														<h:outputText
+															value="#{beanSeguimientoEjecucionExamen.lExamenUsuario.lExamen.tiempo} Min." />
+
+														<h:outputText value="Preguntas" />
+														<h:outputText
+															value="#{beanSeguimientoEjecucionExamen.lExamenUsuario.lExamen.numeroPreguntas}" />
+
+														<h:outputText value="Aprobación" />
+														<h:outputText
+															value="#{beanSeguimientoEjecucionExamen.lExamenUsuario.lExamen.notaAprobacion}" />
+														<h:outputText value="Hora : " />
+														<p:clock pattern="HH:mm:ss"></p:clock>
+													</p:panelGrid>
+												</div>
+
+											</div>
+											<div class="ContainerIndent">
+
+  													<p:dataTable id="tablaRespuestasSimple"
+														var="posibleRespuesta"
+														value="#{beanSeguimientoEjecucionExamen.listaRespuestaPregunta}"
+														selection="#{beanSeguimientoEjecucionExamen.respuestaSeleccionada}"
+														rowKey="#{posibleRespuesta.id}"
+														rendered="#{beanSeguimientoEjecucionExamen.lPreguntaActual.lPreguntaMostrada.lTipoPregunta eq 1}"
+														selectionMode="single"
+														>
+														
+       													
+       													
+       													
+														<p:column selectionMode="single"
+															style="width:16px;text-align:center" >
+															
+															</p:column>
+														<p:column headerText="Respuestas:">
+															<h:outputText value="#{posibleRespuesta.lRespuesta}" />
+														</p:column>
+														
+														<p:ajax event="rowSelect" listener="#{beanSeguimientoEjecucionExamen.responderPregunta}" 
+														update=":#{p:component('tablaRespuestasSimple')}, :#{p:component('tabListaPregunta')}"   
+														process=":#{p:component('tablaRespuestasSimple')}"
+														/>
+														
+														<p:ajax event="rowUnselect" listener="#{beanSeguimientoEjecucionExamen.eliminarPregunta}" 
+														update=":#{p:component('tablaRespuestasSimple')}, :#{p:component('tabListaPregunta')}"   
+														process=":#{p:component('tablaRespuestasSimple')}"
+														/>
+														
+														
+													</p:dataTable>
+
+
+													<p:dataTable id="tablaRespuestasMultiple"
+														var="posibleRespuesta"
+														value="#{beanSeguimientoEjecucionExamen.listaRespuestaPregunta}"
+														selection="#{beanSeguimientoEjecucionExamen.listaRespuestaSeleccionada}"
+														rowKey="#{posibleRespuesta.id}"
+														rendered="#{beanSeguimientoEjecucionExamen.lPreguntaActual.lPreguntaMostrada.lTipoPregunta eq 2}">
+														<f:facet name="header">
+           															 Opciones
+       													</f:facet>
+														<p:column style="width:16px;text-align:center" selectionMode="multiple"/>
+														<p:column headerText="Respuestas:">
+															<h:outputText value="#{posibleRespuesta.lRespuesta}" />
+														</p:column>
+													</p:dataTable>
+
+													<div class="EmptyBox10"></div>
+													<div class="Separator"></div>
+													<div class="EmptyBox10"></div>
+
+
+
+
+	
+
+
+											</div>
+
+										</div>
+
+
+
+
+
+
+
+
+
+
+										<div class="EmptyBox10"></div>
+
+
+									</div>
+								</p:tab>
+
+							</p:tabView>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Si" type="button"
+					styleClass="ui-confirmdialog-yes GreenButton"
+					icon="ui-icon-check fa fa-check Fs14 White" />
+				<p:commandButton value="No" type="button"
+					styleClass="ui-confirmdialog-no RedButton"
+					icon="ui-icon-close fa fa-close Fs14 White" />
+			</p:confirmDialog>
+
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>

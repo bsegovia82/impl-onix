@@ -1,0 +1,241 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template_mantenedor.xhtml">
+
+	<ui:define name="head">
+		<title>Mantenimiento Capacitaciones</title>
+	</ui:define>
+	<ui:define name="subheader">
+       Alta/Baja Capacitaciones
+    </ui:define>
+
+	<ui:define name="titulo_tab">
+		Datos Capacitaciones
+	</ui:define>
+	<ui:define name="cab_formulario">		
+		Cree o edite los datos de la capacitación
+	</ui:define>
+	<ui:define name="grid_formulario">
+		<p:panelGrid columns="2" layout="grid"
+			style="border:0px !important; background:none;" id="panel">
+			
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Descripción de la capacitación:" />
+				</div>
+
+				<p:inputText styleClass="Wid70" placeholder="Descripción o tema"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.persona.nombres}"
+					onblur="ChangeCase(this);" required="true" id="Nombres" />
+			</pe:fluidGridItem>
+			<pe:fluidGridItem type="select" styleClass="select">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Unidad de Negocio:" />
+				</div>
+				<p:selectOneMenu id="UnidadNegocio"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.persona.genero}"
+					style="width:180px;" required="true">
+					<f:selectItem itemLabel="Seleccione" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="GUAYAQUIL" itemValue="F" />
+					<f:selectItem itemLabel="EL ORO" itemValue="M" />
+				</p:selectOneMenu>
+			</pe:fluidGridItem>
+			
+			<pe:fluidGridItem type="select" styleClass="select">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Instructor:" />
+				</div>
+				<p:selectOneMenu id="UnidadNegocio2"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.persona.genero}"
+					style="width:180px;" required="true">
+					<f:selectItem itemLabel="Seleccione" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="BYRON SEGOVIA" itemValue="F" />
+					<f:selectItem itemLabel="SANDRA BRAVO" itemValue="M" />
+				</p:selectOneMenu>
+			</pe:fluidGridItem>
+
+			
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Dirección:" />
+				</div>
+				<p:inputTextarea cols="25"></p:inputTextarea>
+
+			</pe:fluidGridItem>
+
+			
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Fecha Inicio:" />
+				</div>
+				<p:calendar pattern="dd/MM/yyyy" id="FechaIngreso"
+					placeholder="Fecha Inicio" required="true"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.fechaInicio}"></p:calendar>
+			</pe:fluidGridItem>
+			
+			
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Fecha Fin:" />
+				</div>
+				<p:calendar pattern="dd/MM/yyyy" id="FechaIngreso2"
+					placeholder="Fecha Fin" required="true"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.fechaInicio}"></p:calendar>
+			</pe:fluidGridItem>
+			
+			
+		</p:panelGrid>
+		
+		
+		<p:commandButton value="Cancelar" styleClass="RedButton"
+			update="panel" process="@this">
+			<p:resetInput target="panel" />
+		</p:commandButton>
+		<p:commandButton value="Registrar" styleClass="CyanButton"
+			actionListener="#{beanMantenedorEmpleado.guardarOActualizar}"
+			process="contenedor"
+			update=":#{p:component('contenedor')}, :#{p:component('mensajeGlobal')},  :#{p:component('dialogoMantenimiento')}" />
+	</ui:define>
+
+	<ui:define name="cab_tabla_datos">
+		Capacitaciones Registradas
+	</ui:define>
+
+	<ui:define name="tabla_datos">
+	 	
+	 	<pe:fluidGridItem type="select" styleClass="select">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="Mes:" />
+				</div>
+				<p:selectOneMenu id="Mes"
+					style="width:180px;">
+					<f:selectItem itemLabel="ENERO" itemValue="F" />
+					<f:selectItem itemLabel="FEBRERO" itemValue="M" />
+				</p:selectOneMenu>
+				
+			</pe:fluidGridItem>
+	
+		<pe:timeline value="#{limitTimelineRangeController.model}"  
+             min="#{limitTimelineRangeController.min}"  
+             max="#{limitTimelineRangeController.max}"  
+             zoomMin="#{limitTimelineRangeController.zoomMin}"  
+             zoomMax="#{limitTimelineRangeController.zoomMax}"  
+             height="300px" showNavigation="true" themable="false" locale="es" />  
+             
+	</ui:define>
+
+	<ui:define name="cab_dialogo">
+		#{beanMantenedorEmpleado.cabeceraDialogo}
+	</ui:define>
+	<ui:define name="cab_panel_dialogo">
+#{beanMantenedorEmpleado.cabeceraPanelDialogo}
+</ui:define>
+
+	<ui:define name="datos_dialogo">
+		<p:panelGrid columns="2" layout="grid"
+			style="border:0px !important; background:none;" id="panel">
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Nombres:" />
+				</div>
+				<p:inputText styleClass="Wid70" placeholder="Nombres"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.persona.nombres}"
+					onblur="ChangeCase(this);" required="true" id="Nombres" />
+			</pe:fluidGridItem>
+
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Apellidos:" />
+				</div>
+				<p:inputText styleClass="Wid70" placeholder="Apellidos"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.persona.apellidos}"
+					onblur="ChangeCase(this);" required="true" id="Apellidos" />
+
+			</pe:fluidGridItem>
+
+			<pe:fluidGridItem type="select" styleClass="select">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Tipo Documento:" />
+				</div>
+				<p:selectOneMenu id="TipoDocumento"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.persona.tipoDocumentoIdentificacion.id}"
+					style="width:200px;" required="true">
+					<f:selectItem itemLabel="Seleccione" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="CÉDULA" itemValue="1" />
+					<f:selectItem itemLabel="RUC" itemValue="2" />
+					<f:selectItem itemLabel="PASAPORTE" itemValue="3" />
+				</p:selectOneMenu>
+
+			</pe:fluidGridItem>
+
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Identificación:" />
+				</div>
+				<p:inputText styleClass="Wid70" placeholder="Identificación"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.persona.numeroDocumento}"
+					required="true"
+					validatorMessage="La identificación debe ser numérico"
+					id="Identificacion">
+					<f:validateRegex pattern="[0-9]+"></f:validateRegex>
+				</p:inputText>
+			</pe:fluidGridItem>
+
+			<pe:fluidGridItem type="select" styleClass="select">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Genero:" />
+				</div>
+				<p:selectOneMenu id="Genero"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.persona.genero}"
+					style="width:200px;" required="true">
+					<f:selectItem itemLabel="Seleccione" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="FEMENINO" itemValue="F" />
+					<f:selectItem itemLabel="MASCULINO" itemValue="M" />
+				</p:selectOneMenu>
+			</pe:fluidGridItem>
+
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Email:" />
+				</div>
+
+				<p:inputText styleClass="Wid70" placeholder="Email"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.persona.direccionCorreo}"
+					required="true" validatorMessage="Email incorrecto" id="Email">
+					<f:validateRegex
+						pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"></f:validateRegex>
+				</p:inputText>
+			</pe:fluidGridItem>
+
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Teléfono Contacto:" />
+				</div>
+				<p:inputText styleClass="Wid70" placeholder="Teléfono Contacto"
+					value="#{beanMantenedorEmpleado.entidadRegistrar.persona.telefonoContacto}"
+					id="TelefonoContacto" required="true">
+					<f:validateRegex pattern="[0-9]+"></f:validateRegex>
+				</p:inputText>
+			</pe:fluidGridItem>
+		</p:panelGrid>
+
+		<p:commandButton value="Actualizar" styleClass="CyanButton"
+			actionListener="#{beanMantenedorEmpleado.guardarOActualizar}"
+			process="PanelActualizar"
+			update=":#{p:component('mensajeGlobal')}">
+			<p:confirm header="Confirmación"
+				message="Seguro que desea realizar esta operación?"
+				icon="ui-icon-alert" />
+		</p:commandButton>
+
+	</ui:define>
+
+</ui:composition>
