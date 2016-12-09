@@ -1,0 +1,577 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template_mantenedor.xhtml">
+
+	<ui:define name="head">
+		<title>#{beanMantenedorBanco.tituloPagina}</title>
+		<style>
+.dialogoAdicionalFormulario {
+	vertical-align: top;
+	width: 30%;
+}
+
+.dialogoAdicionalTabla {
+	vertical-align: top;
+	width: 70%;
+}
+</style>
+	</ui:define>
+	<ui:define name="subheader">
+       #{beanMantenedorBanco.descripcionPagina}
+    </ui:define>
+
+	<ui:define name="titulo_tab">
+		#{beanMantenedorBanco.tab}
+	</ui:define>
+	<ui:define name="cab_formulario">		
+		#{beanMantenedorBanco.ayudaPagina}
+	</ui:define>
+	<ui:define name="grid_formulario">
+		<p:panelGrid columns="2" layout="grid"
+			style="border:0px !important; background:none;" id="panel">
+
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Nombre:" />
+				</div>
+				<p:inputText styleClass="Wid70" placeholder="Nombre Banco"
+					value="#{beanMantenedorBanco.bancoActual.lNombreBanco}"
+					onblur="ChangeCase(this);" required="true" id="Banco" />
+			</pe:fluidGridItem>
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Descripción:" />
+				</div>
+				<p:inputTextarea styleClass="Wid70" placeholder="Descripción"
+					value="#{beanMantenedorBanco.bancoActual.lDescripcionBanco}"
+					onblur="ChangeCase(this);" required="true" id="Descripción"></p:inputTextarea>
+			</pe:fluidGridItem>
+		</p:panelGrid>
+
+		<div class="EmptyBox60"></div>
+		<p:commandButton value="Cancelar" styleClass="RedButton"
+			update="panel" process="@this">
+			<p:resetInput target="panel" />
+		</p:commandButton>
+
+		<p:commandButton value="Registrar" styleClass="CyanButton"
+			actionListener="#{beanMantenedorBanco.guardarOActualizar}"
+			process="contenedor"
+			update=":#{p:component('contenedor')}, :#{p:component('mensajeGlobal')}, :#{p:component('tablaDatos')}, :#{p:component('dialogoMantenimiento')}" />
+	</ui:define>
+	<ui:define name="cab_tabla_datos">
+		#{beanMantenedorBanco.cabeceraTabla}
+	</ui:define>
+
+	<ui:define name="tabla_datos">
+		<p:dataTable value="#{beanMantenedorBanco.listaEntidades}" var="banco"
+			emptyMessage="#{beanMantenedorBanco.mensajeTablaVacia}" rows="8"
+			reflow="true" paginator="true" paginatorPosition="bottom"
+			id="tablaDatos" paginatorAlwaysVisible="false">
+
+			<p:column filterBy="#{banco.lNombreBanco}" footerText="Nombre Banco">
+				<h:outputText value="#{banco.lNombreBanco}" />
+			</p:column>
+
+			<p:column headerText="Descripción">
+				<h:outputText value="#{banco.lDescripcionBanco}" />
+			</p:column>
+
+			<p:column headerText="Preguntas" width="10%">
+				<center>
+					<h:outputText
+						value="#{beanMantenedorBanco.obtenerTotalPreguntaBanco(banco)}" />
+				</center>
+			</p:column>
+
+			<p:column headerText="Estado" width="9%">
+				<h:outputText
+					value="#{banco.estado eq beanMantenedorBanco.estadoActivo?'ACTIVO':'INACTIVO'}" />
+			</p:column>
+
+			<p:column headerText="Fecha Registro">
+				<h:outputText value="#{banco.fechaRegistro}">
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"
+						timeZone="#{beanMantenedorBanco.currentTimeZone}" />
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Acciones" width="10%">
+
+				<p:panelGrid columns="2" layout="grid"
+					style="border : none; background : none;">
+
+					<p:commandLink title="Preguntas"
+						actionListener="#{beanMantenedorPregunta.verPreguntas}"
+						update=":#{p:component('dialogoMantPreguntas')}"
+						oncomplete="PF('dialogoMantenimientoPreguntas').show();"
+						process="@this">
+						<f:attribute name="BANCO_PREGUNTA" value="#{banco}"></f:attribute>
+
+						<i class="fa fa-question Fs20 BoldGray DispBlock"> </i>
+
+					</p:commandLink>
+
+
+					<p:commandLink title="Actualizar"
+						actionListener="#{beanMantenedorBanco.actualizarEntidad}"
+						update=":#{p:component('dialogoMantenimiento')}" process="@this">
+
+						<i class="fa fa-edit Fs20 BoldGray DispBlock"> </i>
+
+						<f:attribute
+							name="#{beanmantenedorbanco.nombreatributocambioestado}"
+							value="#{banco}"></f:attribute>
+
+					</p:commandLink>
+					<p:commandLink title="Cambiar Estado"
+						actionListener="#{beanMantenedorBanco.cambiarEstado}"
+						update="@form" process="@this">
+
+						<i class="icon-settings_backup_restore Fs20 BoldGray DispBlock">
+						</i>
+						<f:attribute
+							name="#{beanMantenedorBanco.nombreAtributoCambioEstado}"
+							value="#{banco}"></f:attribute>
+
+						<p:confirm header="Confirmación"
+							message="Seguro que desea realizar esta operación?"
+							icon="ui-icon-alert" />
+					</p:commandLink>
+
+
+				</p:panelGrid>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+
+
+	<ui:define name="cab_dialogo">
+		#{beanMantenedorBanco.cabeceraDialogo}
+	</ui:define>
+	<ui:define name="cab_panel_dialogo">
+#{beanMantenedorBanco.cabeceraPanelDialogo}
+</ui:define>
+
+	<ui:define name="datos_dialogo">
+		<p:panelGrid columns="2" layout="grid"
+			style="border:0px !important; background:none;" id="panel">
+
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Nombre:" />
+				</div>
+				<p:inputText styleClass="Wid70" placeholder="Nombre Banco"
+					value="#{beanMantenedorBanco.bancoActual.lNombreBanco}"
+					onblur="ChangeCase(this);" required="true" id="Banco" />
+			</pe:fluidGridItem>
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Descripción:" />
+				</div>
+				<p:inputTextarea styleClass="Wid70" placeholder="Descripción"
+					value="#{beanMantenedorBanco.bancoActual.lDescripcionBanco}"
+					onblur="ChangeCase(this);" required="true" id="Descripción"></p:inputTextarea>
+			</pe:fluidGridItem>
+		</p:panelGrid>
+		<p:commandButton value="Actualizar" styleClass="CyanButton"
+			actionListener="#{beanMantenedorBanco.guardarOActualizar}"
+			process="PanelActualizar"
+			update=":#{p:component('mensajeGlobal')}, :#{p:component('tablaDatos')}">
+			<p:confirm header="Confirmación"
+				message="Seguro que desea realizar esta operación?"
+				icon="ui-icon-alert" />
+		</p:commandButton>
+	</ui:define>
+
+	<ui:define name="ventanas_adicionales">
+
+		<p:dialog widgetVar="dialogoMantenimientoPreguntas" modal="true"
+			height="80%" id="dialogoMantPreguntas" width="90%">
+
+			<f:facet name="header">
+			Registro de Preguntas :  <h:outputText
+					value="#{beanMantenedorPregunta.lBancoPregunta.lNombreBanco}" />
+			</f:facet>
+			<h:panelGrid columns="2"
+				columnClasses="dialogoAdicionalFormulario, dialogoAdicionalTabla">
+
+				<p:panel id="PanelPregunta">
+					<f:facet name="header">
+				Mantenimiento Preguntas
+			</f:facet>
+
+					<p:panelGrid columns="2" layout="grid"
+						style="border:0px !important; background:none;" id="panelPreg">
+
+						<pe:fluidGridItem type="input">
+							<div class="dynaFormLabel">
+								<p:outputLabel value="* Pregunta:" />
+							</div>
+							<p:inputTextarea styleClass="Wid70"
+								placeholder="Ingrese la pregunta" required="true" id="Pregunta"
+								onblur="ChangeCase(this);"
+								value="#{beanMantenedorPregunta.preguntaActual.lPregunta}" />
+						</pe:fluidGridItem>
+						<pe:fluidGridItem type="input">
+							<div class="dynaFormLabel">
+								<p:outputLabel value="  Ayuda:" />
+							</div>
+							<p:inputTextarea styleClass="Wid70" placeholder="Igrese la ayuda"
+								id="Ayuda" onblur="ChangeCase(this);"
+								value="#{beanMantenedorPregunta.preguntaActual.lAyuda}"></p:inputTextarea>
+						</pe:fluidGridItem>
+
+						<pe:fluidGridItem type="input">
+							<div class="dynaFormLabel">
+								<p:outputLabel value="* Ponderación:" />
+							</div>
+							<p:spinner id="Ponderación" required="true" min="0" max="100"
+								placeholder="Ingrese la ponderación"
+								value="#{beanMantenedorPregunta.preguntaActual.lPoderacion}"
+								styleClass="Wid70" />
+
+						</pe:fluidGridItem>
+
+						<pe:fluidGridItem type="input">
+							<div class="dynaFormLabel">
+								<p:outputLabel value="* Orden:" />
+							</div>
+							<p:spinner id="Orden" required="true" min="0" max="100"
+								placeholder="Ingrese el Orden"
+								value="#{beanMantenedorPregunta.preguntaActual.lOrden}"
+								styleClass="Wid70" />
+						</pe:fluidGridItem>
+
+						<pe:fluidGridItem type="select" styleClass="select">
+							<div class="dynaFormLabel">
+								<p:outputLabel value="  Tipo Pregunta:" />
+							</div>
+							<p:selectOneMenu style="width:100px;" required="true"
+								id="TipoPregunta"
+								value="#{beanMantenedorPregunta.preguntaActual.lTipoPregunta}">
+								<f:selectItem itemLabel="Selección simple" itemValue="1" />
+								<f:selectItem itemLabel="Selección multiple" itemValue="2" />
+							</p:selectOneMenu>
+						</pe:fluidGridItem>
+						<h:outputText value="" />
+					</p:panelGrid>
+					<pe:fluidGridItem type="select" styleClass="select">
+						<div class="dynaFormLabel">
+							<p:outputLabel value="Imagen:" />
+						</div>
+						<p:fileUpload
+							fileUploadListener="#{beanMantenedorPregunta.subirImagen}"
+							mode="advanced" dragDropSupport="false" sizeLimit="100000"
+							fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+							cancelLabel="Cancelar" uploadLabel="Subir"
+							invalidFileMessage="Archivo no permitido"
+							invalidSizeMessage="El tamaño no es permitido" required="false"
+							label="Seleccione" />
+					</pe:fluidGridItem>
+					<div class="EmptyBox60"></div>
+					<div class="EmptyBox60"></div>
+					<p:commandButton value="Cancelar" styleClass="RedButton"
+						update="panelPreg" process="@this">
+						<p:resetInput target="panelPreg" />
+					</p:commandButton>
+
+					<p:commandButton value="Registrar" styleClass="CyanButton"
+						actionListener="#{beanMantenedorPregunta.guardarOActualizar}"
+						process="PanelPregunta"
+						update=":#{p:component('PanelPregunta')}, :#{p:component('mensajeGlobal')}, :#{p:component('tablaDatosPregunta')}, :#{p:component('tablaDatos')}" />
+
+				</p:panel>
+				<p:panel header="Preguntas Registradas">
+
+
+					<p:dataTable var="pregunta"
+						value="#{beanMantenedorPregunta.listaEntidades}"
+						emptyMessage="#{beanMantenedorPregunta.mensajeTablaVacia}"
+						rows="5" reflow="true" paginator="true" paginatorPosition="bottom"
+						id="tablaDatosPregunta" paginatorAlwaysVisible="false">
+
+						<p:column footerText="Pregunta" filterBy="#{pregunta.lPregunta}">
+							<h:outputText value="#{pregunta.lPregunta}" />
+						</p:column>
+
+
+						<p:column headerText="Estado" width="9%">
+							<h:outputText
+								value="#{pregunta.estado eq beanMantenedorPregunta.estadoActivo?'ACTIVO':'INACTIVO'}" />
+						</p:column>
+
+						<p:column headerText="Imagen" width="13%">
+
+							<p:graphicImage url="/imagen.do?idPregunta=#{pregunta.id}"
+								cache="false" rendered="#{not empty pregunta.lImagen}"
+								width="50" style="cursor:pointer" id="img">
+
+							</p:graphicImage>
+								
+								<p:contextMenu for="img">
+									<p:menuitem value="Borrar"  icon="ui-icon-close" actionListener="#{beanMantenedorPregunta.eliminarImagen}"
+									process="@this" update=":#{p:component('tablaDatosPregunta')}">
+										<f:attribute name="ID_IMAGEN" value="#{pregunta.id}"></f:attribute>
+									</p:menuitem>
+								</p:contextMenu>	
+
+
+							<p:overlayPanel id="imgPanel" for="img" showEffect="blind"
+								showEvent="click" hideEvent="click" dismissable="false"
+								showCloseIcon="true">
+
+								<p:graphicImage url="/imagen.do?idPregunta=#{pregunta.id}"
+									cache="false" rendered="#{not empty pregunta.lImagen}"
+									style="cursor:pointer">
+								</p:graphicImage>
+
+
+
+							</p:overlayPanel>
+
+
+
+						</p:column>
+
+						<p:column headerText="Tipo Pregunta" width="15%">
+							<h:outputText
+								value="#{ pregunta.lTipoPregunta eq 1 ? 'SELECCION SIMPLE' : 'SELECCION MULTIPLE' }" />
+						</p:column>
+
+
+
+						<p:column headerText="Orden" width="7%">
+							<center>
+								<h:outputText value="#{pregunta.lOrden}" />
+							</center>
+						</p:column>
+
+						<p:column headerText="Ponderación" width="10%">
+							<center>
+								<h:outputText value="#{pregunta.lPoderacion}" />
+							</center>
+						</p:column>
+
+						<p:column headerText="Acciones" width="10%">
+
+							<p:panelGrid columns="2" layout="grid"
+								style="border : none; background : none;">
+
+
+
+
+								<p:commandLink title="Respuestas"
+									actionListener="#{beanMantenedorRespuesta.verRespuestas}"
+									update=":#{p:component('dialogoMantRespuesta')}"
+									process="@this">
+									<i class="icon-question_answer Fs20 BoldGray DispBlock"> </i>
+									<f:attribute name="PREGUNA_SELECCIONADA_RESP"
+										value="#{pregunta}"></f:attribute>
+								</p:commandLink>
+
+								<p:commandLink title="Actualizar"
+									actionListener="#{beanMantenedorPregunta.actualizarEntidadFormulario}"
+									update=":#{p:component('PanelPregunta')}" process="@this">
+
+									<i class="fa fa-edit Fs20 BoldGray DispBlock"> </i>
+
+									<f:attribute
+										name="#{beanMantenedorPregunta.nombreAtributoCambioEstado}"
+										value="#{pregunta}"></f:attribute>
+
+								</p:commandLink>
+
+								<p:commandLink title="Cambiar Estado"
+									actionListener="#{beanMantenedorPregunta.cambiarEstado}"
+									update="@form" process="@this">
+
+									<i class="icon-settings_backup_restore Fs20 BoldGray DispBlock">
+									</i>
+									<f:attribute
+										name="#{beanMantenedorPregunta.nombreAtributoCambioEstado}"
+										value="#{pregunta}"></f:attribute>
+
+									<p:confirm header="Confirmación"
+										message="Seguro que desea realizar esta operación?"
+										icon="ui-icon-alert" />
+								</p:commandLink>
+
+
+							</p:panelGrid>
+						</p:column>
+
+					</p:dataTable>
+
+				</p:panel>
+			</h:panelGrid>
+		</p:dialog>
+
+
+		<p:dialog widgetVar="dialogoMantenimientoRespuesta" modal="true"
+			height="80%" id="dialogoMantRespuesta" width="60%">
+
+			<f:facet name="header">
+			Registro de Respuesta :  <h:outputText
+					value="#{beanMantenedorRespuesta.lPreguntaBanco.lPregunta}" />
+			</f:facet>
+			<h:panelGrid columns="2"
+				columnClasses="dialogoAdicionalFormulario, dialogoAdicionalTabla">
+
+				<p:panel id="PanelRespuesta">
+					<f:facet name="header">
+				Mantenimiento Respuestas
+			</f:facet>
+
+					<p:panelGrid columns="2" layout="grid"
+						style="border:0px !important; background:none;" id="panelResp">
+
+
+						<pe:fluidGridItem type="input">
+							<div class="dynaFormLabel">
+								<p:outputLabel value="* Respuesta:" />
+							</div>
+							<p:inputTextarea styleClass="Wid70"
+								placeholder="Ingrese la respuesta" required="true"
+								id="Respuesta" onblur="ChangeCase(this);"
+								value="#{beanMantenedorRespuesta.respuestaActual.lRespuesta}" />
+						</pe:fluidGridItem>
+
+						<pe:fluidGridItem type="input">
+							<div class="dynaFormLabel">
+								<p:outputLabel value="* Ayuda:" />
+							</div>
+							<p:inputTextarea styleClass="Wid70"
+								placeholder="Ingrese la ayuda de la respuesta" required="true"
+								id="AyudaResp" onblur="ChangeCase(this);"
+								value="#{beanMantenedorRespuesta.respuestaActual.lAyuda}" />
+						</pe:fluidGridItem>
+
+						<pe:fluidGridItem type="input">
+							<div class="dynaFormLabel">
+								<p:outputLabel value=" Orden:" />
+							</div>
+							<p:spinner id="OrdenResp" required="true" min="0" max="100"
+								placeholder="Ingrese el Orden"
+								value="#{beanMantenedorRespuesta.respuestaActual.lOrden}"
+								styleClass="Wid70" />
+						</pe:fluidGridItem>
+
+						<pe:fluidGridItem type="select" styleClass="select">
+							<div class="dynaFormLabel">
+								<p:outputLabel value="* Es Correcta:" />
+							</div>
+							<p:selectOneMenu style="width:100px;" required="true"
+								id="EsCorrecta"
+								value="#{beanMantenedorRespuesta.respuestaActual.lEsCorrecta}">
+								<f:selectItem itemLabel="No" itemValue="false" />
+								<f:selectItem itemLabel="Si" itemValue="true" />
+							</p:selectOneMenu>
+						</pe:fluidGridItem>
+
+
+					</p:panelGrid>
+
+					<div class="EmptyBox60"></div>
+					<div class="EmptyBox60"></div>
+
+					<p:commandButton value="Cancelar" styleClass="RedButton"
+						update="panelResp" process="@this">
+						<p:resetInput target="panelResp" />
+					</p:commandButton>
+
+					<p:commandButton value="Registrar" styleClass="CyanButton"
+						actionListener="#{beanMantenedorRespuesta.guardarOActualizar}"
+						process="PanelRespuesta"
+						update=":#{p:component('PanelRespuesta')}, :#{p:component('mensajeGlobal')}, :#{p:component('tablaDatosRespuesta')}" />
+
+
+				</p:panel>
+
+				<p:panel header="Respuestas Registradas">
+
+
+					<p:dataTable var="respuesta"
+						emptyMessage="#{beanMantenedorRespuesta.mensajeTablaVacia}"
+						rows="4" reflow="true" paginator="true" paginatorPosition="bottom"
+						id="tablaDatosRespuesta" paginatorAlwaysVisible="false"
+						value="#{beanMantenedorRespuesta.listaEntidades}">
+
+						<p:column footerText="Respuesta"
+							filterBy="#{respuesta.lRespuesta}">
+							<h:outputText value="#{respuesta.lRespuesta}" />
+						</p:column>
+
+
+						<p:column headerText="Estado" width="13%">
+							<h:outputText
+								value="#{respuesta.estado eq beanMantenedorRespuesta.estadoActivo?'ACTIVO':'INACTIVO'}" />
+						</p:column>
+
+						<p:column headerText="Orden" width="10%">
+							<center>
+								<h:outputText value="#{respuesta.lOrden}" />
+							</center>
+						</p:column>
+
+						<p:column headerText="Correcta" width="13%">
+							<center>
+								<h:outputText value="#{respuesta.lEsCorrecta ? 'SI' : 'NO'}" />
+							</center>
+						</p:column>
+
+						<p:column headerText="Acciones" width="15%">
+
+							<p:panelGrid columns="2" layout="grid"
+								style="border : none; background : none;">
+
+								<p:commandLink title="Actualizar"
+									actionListener="#{beanMantenedorRespuesta.actualizarEntidadFormulario}"
+									update=":#{p:component('PanelRespuesta')}" process="@this">
+
+									<i class="fa fa-edit Fs20 BoldGray DispBlock"> </i>
+
+									<f:attribute
+										name="#{beanMantenedorRespuesta.nombreAtributoCambioEstado}"
+										value="#{respuesta}"></f:attribute>
+
+								</p:commandLink>
+
+								<p:commandLink title="Cambiar Estado"
+									actionListener="#{beanMantenedorRespuesta.cambiarEstado}"
+									update="@form" process="@this">
+
+									<i class="icon-settings_backup_restore Fs20 BoldGray DispBlock">
+									</i>
+									<f:attribute
+										name="#{beanMantenedorRespuesta.nombreAtributoCambioEstado}"
+										value="#{pregunta}"></f:attribute>
+
+									<p:confirm header="Confirmación"
+										message="Seguro que desea realizar esta operación?"
+										icon="ui-icon-alert" />
+								</p:commandLink>
+
+							</p:panelGrid>
+
+						</p:column>
+
+
+					</p:dataTable>
+				</p:panel>
+
+			</h:panelGrid>
+		</p:dialog>
+
+
+
+
+
+	</ui:define>
+
+
+</ui:composition>

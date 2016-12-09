@@ -1,0 +1,300 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="subheader">
+        Mis examenes
+    </ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<!-- Left Column -->
+			<p:growl sticky="true" id="mensajeGlobal"></p:growl>
+			
+			<div class="Container70 Responsive100">
+
+				<!-- Section 1 -->
+				<div class="Container100">
+					<div class="ContainerIndent">
+						<div class="Card ShadowEffect HeiAutoOnMobile"
+							style="min-height: 275px;">
+
+							<p:tabView style="margin:-20px; border:none 0px;">
+								<p:tab title="Datos Examenes Disponibles">
+									<div class="Container100">
+										<div class="Container40 Responsive100">
+											<div class="ContainerIndent">
+												<div class="Container100 Fs22 BoldGray FontRobotoRegular">Info
+													Examen</div>
+												<div class="EmptyBox20"></div>
+												<div class="Card SoftGrayBack">
+													<p:dataTable reflow="true" rows="2" paginator="true"
+														paginatorPosition="bottom" var="examenes"
+														value="#{beanMantenedorExamenUsuario.listaExamenesListos}"
+														paginatorAlwaysVisible="false">
+														<f:facet name="header">
+                                    				Exámenes Disponibles
+                               				 </f:facet>
+														<p:column headerText="Nombre Examen">
+															<h:outputText value="#{examenes.lExamen.nombreExamen}" />
+														</p:column>
+
+														<p:column headerText="Fecha Asignacion" width="25%">
+															<h:outputText value="#{examenes.fechaRegistro}">
+																<f:convertDateTime pattern="dd/MM/yyyy HH:mm"
+																	timeZone="#{beanMantenedorExamen.currentTimeZone}" />
+															</h:outputText>
+														</p:column>
+
+														<p:column headerText="Estado" width="25%">
+															<h:outputText
+																value="#{examenes.lEstadoProceso eq 'L' ? 'Listo' : 'Ejecutando' }">
+																<f:convertDateTime pattern="dd/MM/yyyy HH:mm"
+																	timeZone="#{beanMantenedorExamen.currentTimeZone}" />
+															</h:outputText>
+														</p:column>
+
+														<p:column width="10%">
+															<p:commandLink title="Selecionar Examen"
+																actionListener="#{beanMantenedorExamenUsuario.seleccionarExamenUsuario}"
+																update=":#{p:component('papInicioExamen')}"
+																process="@this">
+
+																<i
+																	class="icon-settings_backup_restore Fs20 BoldGray DispBlock">
+																</i>
+
+																<f:attribute name="EXAMEN_USUARIO" value="#{examenes}"></f:attribute>
+
+																<p:confirm header="Confirmación"
+																	message="Por favor lea la sección Descripción Del Examen, esta de acuerdo en seleccionar el examen?"
+																	icon="ui-icon-alert" />
+
+															</p:commandLink>
+														</p:column>
+													</p:dataTable>
+												</div>
+												<div class="Separator"></div>
+											</div>
+										</div>
+
+										<div class="Container60 Responsive100">
+											<div class="Fs22 BoldGray FontRobotoRegular">
+												<div class="ContainerIndent">Descripción Examen</div>
+											</div>
+											<div class="ContainerIndent">
+												<div class="Card SoftBlueBack">
+
+													<p:panelGrid columns="2" layout="grid" id="papInicioExamen">
+														<h:outputText value="Nombre Examen: ">
+														</h:outputText>
+														<h:outputText
+															value="#{beanMantenedorExamenUsuario.examenUsuarioActual.lExamen.nombreExamen}"></h:outputText>
+														<h:outputText value="Descripción Examen: ">
+														</h:outputText>
+														<h:outputText
+															value="#{beanMantenedorExamenUsuario.examenUsuarioActual.lExamen.descripcionExamen}"></h:outputText>
+														<h:outputText value="Duración Examen: ">
+														</h:outputText>
+														<h:outputText
+															value="#{beanMantenedorExamenUsuario.examenUsuarioActual.lExamen.tiempo}"></h:outputText>
+														<h:outputText value="Nota Máxima: ">
+														</h:outputText>
+														<h:outputText
+															value="#{beanMantenedorExamenUsuario.examenUsuarioActual.lExamen.notaMaxima}"></h:outputText>
+
+														<h:outputText value="Nota Aprobación: ">
+														</h:outputText>
+														<h:outputText
+															value="#{beanMantenedorExamenUsuario.examenUsuarioActual.lExamen.notaAprobacion}"></h:outputText>
+
+														<h:outputText value="Total Preguntas: ">
+														</h:outputText>
+														<h:outputText
+															value="#{beanMantenedorExamenUsuario.examenUsuarioActual.lExamen.numeroPreguntas}"></h:outputText>
+
+														<h:outputText value="Proceso: ">
+														</h:outputText>
+														<h:outputText
+															value="#{beanMantenedorExamenUsuario.examenUsuarioActual.lEstadoProceso eq 'L' ? 'Listo' : beanMantenedorExamenUsuario.examenUsuarioActual.lEstadoProceso eq 'E' ? 'Ejecución' : beanMantenedorExamenUsuario.examenUsuarioActual.lEstadoProceso eq 'F' ? 'Finalizado' : '' }"
+															></h:outputText>
+
+													</p:panelGrid>
+
+													<div class="EmptyBox10"></div>
+													<div class="Separator"></div>
+													<div class="EmptyBox10"></div>
+
+													<p:commandButton value="Empezar Examen"
+														styleClass="RedButton Fright FloatNoneOnMobile"
+														action="#{beanSeguimientoEjecucionExamen.iniciarExamen(beanMantenedorExamenUsuario.examenUsuarioActual)}"
+														
+														>
+													<p:confirm header="Confirmación"
+																	message="Esta seguro de iniciar el examen?"
+																	icon="ui-icon-alert" />
+													</p:commandButton>
+												</div>
+
+												<div class="EmptyBox10"></div>
+												<div class="Separator"></div>
+												<div class="EmptyBox10"></div>
+
+											</div>
+
+										</div>
+
+										<div class="EmptyBox10"></div>
+
+
+									</div>
+								</p:tab>
+								<p:tab title="Examenes Ejecutados">
+									<div class="Container100">
+										<div class="Container100 Responsive100">
+											<div class="Fs22 BoldGray FontRobotoRegular">
+												<div class="ContainerIndent">Buscar Historial Examenes</div>
+											</div>
+											<div class="ContainerIndent">
+												<div class="Card SoftBlueBack">
+													<p:inputText placeholder="Ingrese el nombre del examen"
+														size="100"></p:inputText>
+
+													<p:button value="Buscar"
+														styleClass="OrangeButton Fright FloatNoneOnMobile" />
+												</div>
+												<div class="EmptyBox10"></div>
+											</div>
+
+
+										</div>
+										<p:panelGrid columns="1">
+											<p:dataTable reflow="true" rows="5" paginator="true"
+												paginatorPosition="bottom">
+												<f:facet name="header">
+                                    Consultas del dia
+                                </f:facet>
+												<p:column headerText="Cédula">
+													<h:outputText value="sdsdsd" />
+												</p:column>
+
+												<p:column headerText="Nombres">
+													<h:outputText value="xcxcxc" />
+												</p:column>
+
+												<p:column headerText="Apellidos">
+													<h:outputText value="xcxcxcxc" />
+												</p:column>
+
+												<p:column headerText="Fecha última consulta">
+													<h:outputText value="xcxcxc" />
+												</p:column>
+												<p:column headerText="Historia">
+													<h:outputText value="xcxcxc" />
+												</p:column>
+												<p:column headerText="Atender">
+													<h:outputText value="xcxcxc" />
+												</p:column>
+												<p:column headerText="Enviar facturar">
+													<h:outputText value="xcxcxc" />
+												</p:column>
+											</p:dataTable>
+										</p:panelGrid>
+									</div>
+								</p:tab>
+							</p:tabView>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Right Column -->
+			<div class="Container30 Responsive100">
+
+				<!-- Section 1 -->
+				<div class="Container100">
+					<div class="ContainerIndent">
+						<div class="Card ShadowEffect HeiAutoOnMobile">
+							<h2 class="CardTopic TexAlCenter">Servicios</h2>
+							<div class="EmptyBox20"></div>
+
+							<div class="Container50 Responsive50">
+								<div class="ContainerIndent">
+									<div class="Card SoftGrayBack TexAlCenter">
+										<i class="icon-phone_in_talk Fs50 BoldGray DispBlock"></i>
+										<div class="EmptyBox5"></div>
+										<span class="FontRobotoLight Fs18">Contactos</span>
+										<div class="EmptyBox10"></div>
+										<p:button value="Lista" styleClass="GreenButton" />
+									</div>
+								</div>
+							</div>
+
+							<div class="Container50 Responsive50">
+								<div class="ContainerIndent">
+									<div class="Card SoftBlueBack TexAlCenter">
+										<i class="icon-message Fs50 White DispBlock"></i>
+										<div class="EmptyBox5"></div>
+										<span class="FontRobotoLight Fs18 White">Notificaciones</span>
+										<div class="EmptyBox10"></div>
+										<p:button value="Registrar" styleClass="RedButton" />
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<div class="Container50 Responsive50">
+								<div class="ContainerIndent">
+									<div class="Card ShadowEffect OrangeBack White TexAlCenter">
+										<i class="icon-contacts Fs50 DispBlock"></i>
+										<div class="EmptyBox5"></div>
+										<span class="FontRobotoLight Fs18">Servicio Correo</span>
+										<div class="EmptyBox10"></div>
+										<p:button value="Redactar" styleClass="RedButton" />
+									</div>
+								</div>
+							</div>
+
+							<div class="Container50 Responsive50">
+								<div class="ContainerIndent">
+									<div class="Card RedBack TexAlCenter">
+										<i class="icon-settings_remote Fs50 DispBlock White"></i>
+										<div class="EmptyBox5"></div>
+										<span class="FontRobotoLight Fs18 White">Admin</span>
+										<div class="EmptyBox10"></div>
+										<p:button value="Chat" styleClass="GreenButton" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Si" type="button"
+					styleClass="ui-confirmdialog-yes GreenButton"
+					icon="ui-icon-check fa fa-check Fs14 White" />
+				<p:commandButton value="No" type="button"
+					styleClass="ui-confirmdialog-no RedButton"
+					icon="ui-icon-close fa fa-close Fs14 White" />
+			</p:confirmDialog>
+
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>

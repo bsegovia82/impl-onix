@@ -1,0 +1,17 @@
+com\onix\modulo\vista\beans\general\implementacion\TestAutenticar.class
+com\onix\modulo\vista\beans\general\implementacion\TestUsuarioSession.class
+com\onix\modulo\vista\beans\modulo\aplicacion\empleados\BeanMantenedorEspecialidad.class
+com\onix\modulo\vista\beans\general\autenticacion\BeanLogin.class
+com\onix\modulo\vista\beans\modulo\aplicacion\seguridad\BeanMantenedorUsuario.class
+com\onix\modulo\vista\servlet\ServletImagen.class
+com\onix\modulo\vista\beans\modulo\aplicacion\empleados\BeanMantenedorEmpleado.class
+com\onix\modulo\vista\beans\modulo\aplicacion\empresa\BeanMantenedorEmpresa.class
+com\onix\modulo\vista\beans\modulo\aplicacion\empleados\BeanMantenedorCargo.class
+com\onix\modulo\vista\beans\general\implementacion\TestGuardiaUsuarioSession.class
+com\onix\modulo\vista\beans\general\implementacion\ServicioAutorizacion.class
+com\onix\modulo\vista\beans\general\implementacion\MenuView.class
+com\onix\modulo\vista\beans\general\implementacion\TestServiciosMenuHorizontal.class
+com\onix\modulo\vista\beans\mantenimientos\aplicacion\BeanPrincipal.class
+com\onix\modulo\vista\beans\general\implementacion\TestParseMenu.class
+com\onix\modulo\vista\beans\modulo\aplicacion\seguridad\BeanMantenedorRol.class
+com\onix\modulo\vista\beans\mantenimientos\aplicacion\MapeadorRolesCargos.class
