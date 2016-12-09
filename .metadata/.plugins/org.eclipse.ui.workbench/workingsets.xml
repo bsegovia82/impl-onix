@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
-<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1479504673941_1" label="onix-implementacion-producto" name="onix-implementacion-producto">
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/onix-implementacion-modulo-vista" type="4"/>
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/onix-implementacion-modulo-servicios" type="4"/>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1481215995734_1" label="onix-implementacion-producto" name="onix-implementacion-producto">
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/onix-implementacion-producto" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/onix-implementacion-modulo-servicios" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/onix-implementacion-modulo-vista" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/onix-implementacion-modulo-base" type="4"/>
 </workingSet>
-<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1479503047166_0" label="Window Working Set" name="Aggregate for window 1479503047163"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1481215965274_0" label="Window Working Set" name="Aggregate for window 1481215965272"/>
 </workingSetManager>

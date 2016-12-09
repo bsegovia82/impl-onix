@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.sebra.onix.producto</groupId>
+    <artifactId>onix-implementacion-producto</artifactId>
+    <version>7.0</version>
+  </parent>
+  <artifactId>onix-implementacion-modulo-base</artifactId>
+  <name>onix-implementacion-modulo-base</name>
+  <description>onix-implementacion-modulo-base</description>
+  <url>https://github.com/bsegovia82/arq-impl</url>
+  
+  <dependencies>
+  <dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sebra.onix.libreria</groupId>
+			<artifactId>onix-modulo-librerias-vista</artifactId>
+			<version>7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sebra.onix.producto</groupId>
+			<artifactId>onix-implementacion-modulo-servicios</artifactId>
+			<version>7.0</version>
+		</dependency>
+  </dependencies>
+</project>
