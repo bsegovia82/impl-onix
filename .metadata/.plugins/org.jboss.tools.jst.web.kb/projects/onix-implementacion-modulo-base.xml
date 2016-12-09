@@ -81,15 +81,15 @@
    <libraries>
     <library class="faces-config">
      <id class="model-object"
-      path="FileSystems/lib-primefaces-6.0.jar/meta-inf/faces-config.xml" project="onix-implementacion-modulo-vista"/>
+      path="FileSystems/lib-primefaces-6.0.jar/meta-inf/faces-config.xml" project="onix-implementacion-modulo-base"/>
     </library>
     <library class="facelet">
      <id class="model-object"
-      path="FileSystems/lib-primefaces-6.0.jar/meta-inf/primefaces-p.taglib.xml" project="onix-implementacion-modulo-vista"/>
+      path="FileSystems/lib-primefaces-6.0.jar/meta-inf/primefaces-p.taglib.xml" project="onix-implementacion-modulo-base"/>
     </library>
     <library class="facelet">
      <id class="model-object"
-      path="FileSystems/lib-primefaces-6.0.jar/meta-inf/primefaces-pm.taglib.xml" project="onix-implementacion-modulo-vista"/>
+      path="FileSystems/lib-primefaces-6.0.jar/meta-inf/primefaces-pm.taglib.xml" project="onix-implementacion-modulo-base"/>
     </library>
    </libraries>
   </path>
