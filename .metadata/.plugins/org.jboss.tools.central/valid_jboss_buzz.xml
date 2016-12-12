@@ -2,21 +2,65 @@
 <?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/atom10full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><feed xmlns="http://www.w3.org/2005/Atom" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0">
 <title>JBoss Central</title>
 <generator uri="http://tt-rss.org/">Tiny Tiny RSS/1.9</generator>
-<updated>2016-10-20T13:39:24+00:00</updated>
+<updated>2016-10-21T08:22:10+00:00</updated>
 <id>http://tiny-man.rhcloud.com/public.php?op=rss&amp;id=1&amp;key=b0143615132bd9efc4e83ba42a5574f6ab939b28</id>
 
 
 <link href="http://tiny-man.rhcloud.com" rel="alternate" />
 
 <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://feeds.feedburner.com/jbossbuzz" /><feedburner:info uri="jbossbuzz" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><entry>
+	<id>https://developer.jboss.org/blogs/weekly-editorial/2016/12/09/this-week-in-jboss-9th-december-2016-winding-down-i-dont-think-so</id>
+	<link href="http://feedproxy.google.com/~r/jbossbuzz/~3/4L5THlPVZsw/this-week-in-jboss-9th-december-2016-winding-down-i-dont-think-so" rel="alternate" type="text/html" />
+	<title>This week in JBoss (9th December 2016): Winding Down?  I Don't Think So!</title>
+	<summary type="html"><![CDATA[<!-- [DocumentBodyStart:b5c17e49-d2b2-461b-bc0d-3d73aba02e39] --><div class="jive-rendered-content"><p>With the end of the year coming you may be forgiven for thinking we would be winding down but the communities are amazing places full of amazing people as can be seen in this week's edition of the JBoss Editorial.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h2>JBoss Data Virtualisation</h2><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>Following the <a class="jive-link-external-small" href="http://www.zdnet.com/article/red-hat-brings-full-jboss-software-stack-to-openshift/" rel="nofollow">recent release of the JBoss Data Virtualisation image on OpenShift</a>, completing the initial move of our current Middleware products in to the cloud, Cojan has begun a series of articles demonstrating the capabilities of the product and how to use them within the OpenShift environment.&#160; In the first article of the series Cojan takes everyone through the <a class="jive-link-external-small" href="https://developers.redhat.com/blog/2016/12/06/red-hat-jboss-data-virtualization-on-openshift-part-1-getting-started/" rel="nofollow">steps necessary to deploy the image on OpenShift, from the installation of vagrant and the Container Development Kit through to the first deployment of JDV</a>.&#160; In the second article Cojan introduces us to the <a class="jive-link-external-small" href="https://developers.redhat.com/blog/2016/12/07/red-hat-jboss-data-virtualization-on-openshift-part-2-service-enable-your-data/" rel="nofollow">concept of a Virtual Database and explains how it can be exposed as a service using the OData protocol</a>.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>Of course we have not forgotten about those of you running JDV on your own machines!&#160; Madou has an article showing how <a class="jive-link-external-small" href="https://developers.redhat.com/blog/2016/12/07/unlock-your-mariadbmysql-data-with-red-hat-jboss-data-virtualization/" rel="nofollow">MySQL/MariaDB can be integrated with JDV in order to expose the contents of your databases</a>.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h2>Infinispan Integration, Streaming and Querying</h2><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>The Infinispan project have also been busy this week, not only have they announced their first Beta of Infinispan 9 (see below) but they have another three published articles.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>In the first article of the week Gustavo walks us through the necessary steps for <a class="jive-link-external-small" href="http://blog.infinispan.org/2016/12/composing-infinispan-docker-image.html" rel="nofollow">using Oracle JDBC Cache store, covering the configuration of Infinispan and how to orchestrate the deployment with docker-compose</a>.&#160; The second article, written by William, <a class="jive-link-external-small" href="http://blog.infinispan.org/2016/12/distributed-stream-quality-of-life.html" rel="nofollow">discusses the Distributed Stream capabilities and the usability improvements which have been introduced in Infinispan 9</a> while the final article, written by Adrian, <a class="jive-link-external-small" href="http://blog.infinispan.org/2016/12/meet-ickle.html" rel="nofollow">introduces Ickle, the new Query Language being introduced in to Infinispan</a>.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h1>Messaging in Cloud and at Speed</h1><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>The standard deployment of A-MQ within OpenShift assumes the server is being provisioned for use by other deployments with access to the same project however sometimes you want to allow access from an external client.&#160; If this is a scenario you are interested in then <a class="jive-link-external-small" href="https://developers.redhat.com/blog/2016/12/05/calling-amq-deployed-in-openshift-by-external-client/" rel="nofollow">take a look at Michelle's article where she demonstrates how to expose the internal service to an external client</a>.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>When using messaging systems you will often be faced with a trade-off, a decision to relax the full guarantees of writing to disk for improved performance.&#160; <a class="jive-link-external-small" href="http://clebertsuconic.blogspot.ca/2016/12/50k-persistent-messages-per-second-on.html" rel="nofollow">Artemis allows you to make the same trade off, allowing you to reach a speed of 50K persistent messages per second on a laptop with a delay of only a few milliseconds before the messages are persisted</a>.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h2>Garbage Collection in the VM</h2><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>For many of us developing on the JVM we have come to trust the default Garbage Collection settings will be sufficient for our applications but what happens when your applications are pushing harder on the VM?&#160; How do you tune the GC behaviour?&#160; In the <a class="jive-link-external-small" href="https://www.redhat.com/en/about/blog/part-1-introduction-g1-garbage-collector" rel="nofollow">first article of a series discussing the GC, Matt Robson takes us through the role of the G1 (Garbage First) collector and how it works</a>.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h2>Kie Server Routing</h2><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>One of the challenges faced by kie server clients has been the requirement to track the location of the servers being used and which kjars are running on them.&#160; With the introduction of the <a class="jive-link-external-small" href="http://mswiderski.blogspot.ca/2016/12/kie-server-router-even-more-flexibility.html" rel="nofollow">Kie Server Router we now have a single service against which we can invoke requests, allowing it to handle the routing to the correct kie server instance and the aggregation of requests spanning multiple servers</a>.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h2>Hibernate News</h2><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>The latest version of the <a class="jive-link-external-small" href="http://in.relation.to/2016/12/05/hibernate-community-newsletter-2016-24/" rel="nofollow">Hibernate Newsletter is out</a> bringing news from the community.&#160; Within the newsletter you will find interviews with developers along with articles discussing Apache Ignite, streaming vs pagination, integrating with Camel, multi-tenancy and much more.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h2>DevNation 2017 Call for Papers</h2><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>DevNation 2017 will be taking place in Boston, alongside <a class="jive-link-external-small" href="https://www.redhat.com/en/summit/2017" rel="nofollow">Red Hat Summit</a>, from May 2nd to May 4th.&#160; The call for papers is still <a class="jive-link-external-small" href="https://developers.redhat.com/blog/2016/12/06/looking-for-devnation-2017-cfp/" rel="nofollow">open but will be closing soon, the current deadline is Friday 16th December</a>.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h2>OptaPlanner and the US Election</h2><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>With the recent US Presidential election being in the news Geoffrey started to wonder what would be the lowest number of votes required for a candidate to win the election, naturally this is a constraint violation problem and something he knows about <span aria-label="Happy" class="emoticon_happy emoticon-inline" style="height:16px;width:16px;"></span>.&#160; With this as his goal Geoffrey began working with <a class="jive-link-external-small" href="https://www.optaplanner.org/" rel="nofollow">OptaPlanner</a> and <a class="jive-link-external-small" href="https://www.optaplanner.org/blog/2016/12/06/HowToBecomeUSPresidentWithLessThanAQuarterOfTheVotes.html" rel="nofollow">created a model to determine an answer that may surprise many of you</a>!</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h2>Camel Maven Plugin Donated to Apache</h2><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>At the beginning of this year Claus wrote an article presenting a <a class="jive-link-external-small" href="http://www.davsclaus.com/2016/01/cheers-fabric8-camel-maven-plugin-to.html" rel="nofollow">new Camel Maven Plugin which could parse your source code and validate endpoints</a>.&#160; After nearly a year of work <a class="jive-link-external-small" href="http://www.davsclaus.com/2016/12/camel-maven-plugin-can-now-parse-your.html" rel="nofollow">the plugin has stabilised and is now being donated to the Apache Camel project</a>.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h2>JBoss Out and About</h2><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>Heiko was recently invited to <a class="jive-link-external-small" href="http://grafanacon.org/" rel="nofollow">GrafanaCon 2016</a> where he gave a <a class="jive-link-external-small" href="http://pilhuhn.blogspot.ca/2016/12/hawkular-at-grafanacon.html" rel="nofollow">presentation on Hawkular</a>.</p><p style="min-height: 8pt; padding: 0px;">&#160;</p><h2>New Releases</h2><p style="min-height: 8pt; padding: 0px;">&#160;</p><ul><li>The <a class="jive-link-external-small" href="http://infinispan.org/" rel="nofollow">Infinispan</a> team have announced the release of <a class="jive-link-external-small" href="http://blog.infinispan.org/2016/12/infinispan-900beta1-ruppaner.html" rel="nofollow">Infinispan 9.0.0.Beta1</a>.</li><li>The <a class="jive-link-external-small" href="https://www.drools.org/" rel="nofollow">Drools</a> team have announced the release of <a class="jive-link-external-small" href="http://blog.athico.com/2016/12/new-650final-tags-for-community-docker.html" rel="nofollow">docker images to match their 6.5.0.Final release</a>.</li><li>The <a class="jive-link-external-small" href="http://hibernate.org/" rel="nofollow">Hibernate</a> team have announced the release of <a class="jive-link-external-small" href="http://in.relation.to/2016/12/08/hibernate-validator-540-beta1-and-534-final-out/" rel="nofollow">Hibernate Validator 5.4.0.Beta1 and 5.3.4.Final</a>.</li><li>The <a class="jive-link-external-small" href="http://www.hawkular.org/" rel="nofollow">Hawkular</a> team have announced the release of <a class="jive-link-external-small" href="http://www.hawkular.org/blog/2016/12/06/hawkular-metrics-0.22.0.Final-released.html" rel="nofollow">Hawkular Metrics 0.22.0</a>.</li><li>The <a class="jive-link-external-small" href="http://teiid.org/" rel="nofollow">Teiid</a> team have announced the release of <a class="jive-link-wiki-small" data-containerId="2131" data-containerType="14" data-objectId="55821" data-objectType="102" href="https://developer.jboss.org/docs/DOC-55821">Teiid Designer 11.0</a> and the <a class="jive-link-external-small" href="http://teiid.blogspot.ca/2016/12/data-service-builder-sprint-8-available.html" rel="nofollow">8th sprint for their Data Service Builder</a>.</li></ul><p style="min-height: 8pt; padding: 0px;">&#160;</p><p>Join us again next week when we will bring you the latest crop of news from across the JBoss Communities.</p></div><!-- [DocumentBodyEnd:b5c17e49-d2b2-461b-bc0d-3d73aba02e39] -->]]></summary>
+	<content type="html">&lt;html&gt;&lt;!-- [DocumentBodyStart:b5c17e49-d2b2-461b-bc0d-3d73aba02e39] --&gt;&lt;body&gt;&lt;div&gt;&lt;p&gt;With the end of the year coming you may be forgiven for thinking we would be winding down but the communities are amazing places full of amazing people as can be seen in this week's edition of the JBoss Editorial.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h2&gt;JBoss Data Virtualisation&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;Following the &lt;a href="http://www.zdnet.com/article/red-hat-brings-full-jboss-software-stack-to-openshift/" rel="nofollow" target="_blank"&gt;recent release of the JBoss Data Virtualisation image on OpenShift&lt;/a&gt;, completing the initial move of our current Middleware products in to the cloud, Cojan has begun a series of articles demonstrating the capabilities of the product and how to use them within the OpenShift environment.&amp;nbsp; In the first article of the series Cojan takes everyone through the &lt;a href="https://developers.redhat.com/blog/2016/12/06/red-hat-jboss-data-virtualization-on-openshift-part-1-getting-started/" rel="nofollow" target="_blank"&gt;steps necessary to deploy the image on OpenShift, from the installation of vagrant and the Container Development Kit through to the first deployment of JDV&lt;/a&gt;.&amp;nbsp; In the second article Cojan introduces us to the &lt;a href="https://developers.redhat.com/blog/2016/12/07/red-hat-jboss-data-virtualization-on-openshift-part-2-service-enable-your-data/" rel="nofollow" target="_blank"&gt;concept of a Virtual Database and explains how it can be exposed as a service using the OData protocol&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;Of course we have not forgotten about those of you running JDV on your own machines!&amp;nbsp; Madou has an article showing how &lt;a href="https://developers.redhat.com/blog/2016/12/07/unlock-your-mariadbmysql-data-with-red-hat-jboss-data-virtualization/" rel="nofollow" target="_blank"&gt;MySQL/MariaDB can be integrated with JDV in order to expose the contents of your databases&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h2&gt;Infinispan Integration, Streaming and Querying&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;The Infinispan project have also been busy this week, not only have they announced their first Beta of Infinispan 9 (see below) but they have another three published articles.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;In the first article of the week Gustavo walks us through the necessary steps for &lt;a href="http://blog.infinispan.org/2016/12/composing-infinispan-docker-image.html" rel="nofollow" target="_blank"&gt;using Oracle JDBC Cache store, covering the configuration of Infinispan and how to orchestrate the deployment with docker-compose&lt;/a&gt;.&amp;nbsp; The second article, written by William, &lt;a href="http://blog.infinispan.org/2016/12/distributed-stream-quality-of-life.html" rel="nofollow" target="_blank"&gt;discusses the Distributed Stream capabilities and the usability improvements which have been introduced in Infinispan 9&lt;/a&gt; while the final article, written by Adrian, &lt;a href="http://blog.infinispan.org/2016/12/meet-ickle.html" rel="nofollow" target="_blank"&gt;introduces Ickle, the new Query Language being introduced in to Infinispan&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h1&gt;Messaging in Cloud and at Speed&lt;/h1&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;The standard deployment of A-MQ within OpenShift assumes the server is being provisioned for use by other deployments with access to the same project however sometimes you want to allow access from an external client.&amp;nbsp; If this is a scenario you are interested in then &lt;a href="https://developers.redhat.com/blog/2016/12/05/calling-amq-deployed-in-openshift-by-external-client/" rel="nofollow" target="_blank"&gt;take a look at Michelle's article where she demonstrates how to expose the internal service to an external client&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;When using messaging systems you will often be faced with a trade-off, a decision to relax the full guarantees of writing to disk for improved performance.&amp;nbsp; &lt;a href="http://clebertsuconic.blogspot.ca/2016/12/50k-persistent-messages-per-second-on.html" rel="nofollow" target="_blank"&gt;Artemis allows you to make the same trade off, allowing you to reach a speed of 50K persistent messages per second on a laptop with a delay of only a few milliseconds before the messages are persisted&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h2&gt;Garbage Collection in the VM&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;For many of us developing on the JVM we have come to trust the default Garbage Collection settings will be sufficient for our applications but what happens when your applications are pushing harder on the VM?&amp;nbsp; How do you tune the GC behaviour?&amp;nbsp; In the &lt;a href="https://www.redhat.com/en/about/blog/part-1-introduction-g1-garbage-collector" rel="nofollow" target="_blank"&gt;first article of a series discussing the GC, Matt Robson takes us through the role of the G1 (Garbage First) collector and how it works&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h2&gt;Kie Server Routing&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;One of the challenges faced by kie server clients has been the requirement to track the location of the servers being used and which kjars are running on them.&amp;nbsp; With the introduction of the &lt;a href="http://mswiderski.blogspot.ca/2016/12/kie-server-router-even-more-flexibility.html" rel="nofollow" target="_blank"&gt;Kie Server Router we now have a single service against which we can invoke requests, allowing it to handle the routing to the correct kie server instance and the aggregation of requests spanning multiple servers&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h2&gt;Hibernate News&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;The latest version of the &lt;a href="http://in.relation.to/2016/12/05/hibernate-community-newsletter-2016-24/" rel="nofollow" target="_blank"&gt;Hibernate Newsletter is out&lt;/a&gt; bringing news from the community.&amp;nbsp; Within the newsletter you will find interviews with developers along with articles discussing Apache Ignite, streaming vs pagination, integrating with Camel, multi-tenancy and much more.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h2&gt;DevNation 2017 Call for Papers&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;DevNation 2017 will be taking place in Boston, alongside &lt;a href="https://www.redhat.com/en/summit/2017" rel="nofollow" target="_blank"&gt;Red Hat Summit&lt;/a&gt;, from May 2nd to May 4th.&amp;nbsp; The call for papers is still &lt;a href="https://developers.redhat.com/blog/2016/12/06/looking-for-devnation-2017-cfp/" rel="nofollow" target="_blank"&gt;open but will be closing soon, the current deadline is Friday 16th December&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h2&gt;OptaPlanner and the US Election&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;With the recent US Presidential election being in the news Geoffrey started to wonder what would be the lowest number of votes required for a candidate to win the election, naturally this is a constraint violation problem and something he knows about &lt;span aria-label="Happy"&gt;&lt;/span&gt;.&amp;nbsp; With this as his goal Geoffrey began working with &lt;a href="https://www.optaplanner.org/" rel="nofollow" target="_blank"&gt;OptaPlanner&lt;/a&gt; and &lt;a href="https://www.optaplanner.org/blog/2016/12/06/HowToBecomeUSPresidentWithLessThanAQuarterOfTheVotes.html" rel="nofollow" target="_blank"&gt;created a model to determine an answer that may surprise many of you&lt;/a&gt;!&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h2&gt;Camel Maven Plugin Donated to Apache&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;At the beginning of this year Claus wrote an article presenting a &lt;a href="http://www.davsclaus.com/2016/01/cheers-fabric8-camel-maven-plugin-to.html" rel="nofollow" target="_blank"&gt;new Camel Maven Plugin which could parse your source code and validate endpoints&lt;/a&gt;.&amp;nbsp; After nearly a year of work &lt;a href="http://www.davsclaus.com/2016/12/camel-maven-plugin-can-now-parse-your.html" rel="nofollow" target="_blank"&gt;the plugin has stabilised and is now being donated to the Apache Camel project&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h2&gt;JBoss Out and About&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;Heiko was recently invited to &lt;a href="http://grafanacon.org/" rel="nofollow" target="_blank"&gt;GrafanaCon 2016&lt;/a&gt; where he gave a &lt;a href="http://pilhuhn.blogspot.ca/2016/12/hawkular-at-grafanacon.html" rel="nofollow" target="_blank"&gt;presentation on Hawkular&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;h2&gt;New Releases&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The &lt;a href="http://infinispan.org/" rel="nofollow" target="_blank"&gt;Infinispan&lt;/a&gt; team have announced the release of &lt;a href="http://blog.infinispan.org/2016/12/infinispan-900beta1-ruppaner.html" rel="nofollow" target="_blank"&gt;Infinispan 9.0.0.Beta1&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;The &lt;a href="https://www.drools.org/" rel="nofollow" target="_blank"&gt;Drools&lt;/a&gt; team have announced the release of &lt;a href="http://blog.athico.com/2016/12/new-650final-tags-for-community-docker.html" rel="nofollow" target="_blank"&gt;docker images to match their 6.5.0.Final release&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;The &lt;a href="http://hibernate.org/" rel="nofollow" target="_blank"&gt;Hibernate&lt;/a&gt; team have announced the release of &lt;a href="http://in.relation.to/2016/12/08/hibernate-validator-540-beta1-and-534-final-out/" rel="nofollow" target="_blank"&gt;Hibernate Validator 5.4.0.Beta1 and 5.3.4.Final&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;The &lt;a href="http://www.hawkular.org/" rel="nofollow" target="_blank"&gt;Hawkular&lt;/a&gt; team have announced the release of &lt;a href="http://www.hawkular.org/blog/2016/12/06/hawkular-metrics-0.22.0.Final-released.html" rel="nofollow" target="_blank"&gt;Hawkular Metrics 0.22.0&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;The &lt;a href="http://teiid.org/" rel="nofollow" target="_blank"&gt;Teiid&lt;/a&gt; team have announced the release of &lt;a data-containerid="2131" data-containertype="14" data-objectid="55821" data-objecttype="102" href="https://developer.jboss.org/docs/DOC-55821" target="_blank"&gt;Teiid Designer 11.0&lt;/a&gt; and the &lt;a href="http://teiid.blogspot.ca/2016/12/data-service-builder-sprint-8-available.html" rel="nofollow" target="_blank"&gt;8th sprint for their Data Service Builder&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;Join us again next week when we will bring you the latest crop of news from across the JBoss Communities.&lt;/p&gt;&lt;/div&gt;&lt;!-- [DocumentBodyEnd:b5c17e49-d2b2-461b-bc0d-3d73aba02e39] --&gt;&lt;/body&gt;&lt;/html&gt;
+&lt;img src="http://feeds.feedburner.com/~r/jbossbuzz/~4/4L5THlPVZsw" height="1" width="1" alt=""/&gt;</content>
+	<updated>2016-12-09T22:44:51+00:00</updated>
+	<author><name>Kevin Conner</name></author>
+	<source>
+		<link rel="self" href="http://community.jboss.org/blogs/weekly-editorial/feeds/" />
+		<title>Weekly Editorial</title></source>
+
+	<category term="hibernate" />
+
+	<category term="drools" />
+
+	<category term="infinispan" />
+
+	<category term="camel" />
+
+	<category term="weekly_update" />
+
+	<category term="news" />
+
+	<category term="weekly_editorial" />
+
+	<category term="optaplanner" />
+
+	<category term="a-mq" />
+
+	<category term="devnation" />
+
+	<category term="datavirtualization" />
+
+	<category term="artemis" />
+
+	<category term="teiid designer" />
+
+	<category term="kieserver" />
+
+
+<feedburner:origLink>https://developer.jboss.org/blogs/weekly-editorial/2016/12/09/this-week-in-jboss-9th-december-2016-winding-down-i-dont-think-so</feedburner:origLink></entry>
+
+<entry>
 	<id>http://tools.jboss.org/blog/10.2.0.ga-for-neon.1.html</id>
 	<link href="http://feedproxy.google.com/~r/jbossbuzz/~3/B4sRviAw5zY/10.2.0.ga-for-neon.1.html" rel="alternate" type="text/html" />
-	<title>JBoss Tools and Red Hat Developer Studio Maintenance Release for Eclipse Neon 1</title>
+	<title>JBoss Tools and Red Hat Developer Studio Maintenance Release for Eclipse Neon.1</title>
 	<summary type="html"><![CDATA[
       <div><div id="preamble">
       <div class="sectionbody">
       <div class="paragraph">
-      <p><a href="http://tools.jboss.org/downloads/jbosstools/neon/4.4.2.Final.html">JBoss Tools 4.4.2</a> and <a href="http://tools.jboss.org/downloads/devstudio/neon/10.2.0.GA.html">Red Hat JBoss Developer Studio 10.2</a> for Eclipse Neon 1 are here waiting for you. Check it out!</p>
+      <p><a href="http://tools.jboss.org/downloads/jbosstools/neon/4.4.2.Final.html">JBoss Tools 4.4.2</a> and <a href="http://tools.jboss.org/downloads/devstudio/neon/10.2.0.GA.html">Red Hat JBoss Developer Studio 10.2</a> for Eclipse Neon.1 are here waiting for you. Check it out!</p>
       </div>
       <div class="imageblock">
       <div class="content">
@@ -40,7 +84,7 @@
       <p>JBoss Tools or Bring-Your-Own-Eclipse (BYOE) JBoss Developer Studio require a bit more:</p>
       </div>
       <div class="paragraph">
-      <p>This release requires at least Eclipse 4.6.1 (Neon 1a) but we recommend
+      <p>This release requires at least Eclipse 4.6.1 (Neon.1a) but we recommend
       using the latest <a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/neon1a">Eclipse 4.6.1 Neon JEE Bundle</a> since then you get most of the dependencies preinstalled.</p>
       </div>
       <div class="paragraph">
@@ -380,7 +424,7 @@
       <h2 id="what-is-next"><a class="anchor" href="#what-is-next"></a>What is next?</h2>
       <div class="sectionbody">
       <div class="paragraph">
-      <p>Having JBoss Tools 4.4.1 and Developer Studio 10.1 out we are already working on the next maintenance release for Eclipse Neon.1.</p>
+      <p>Having JBoss Tools 4.4.2 and Developer Studio 10.2 out we are already working on the next maintenance release for Eclipse Neon.2.</p>
       </div>
       <div class="paragraph">
       <p>Enjoy!</p>
@@ -394,7 +438,7 @@
 	<content type="html">&lt;html&gt;&lt;body&gt;&lt;div&gt;&lt;div&gt;
       &lt;div&gt;
       &lt;div&gt;
-      &lt;p&gt;&lt;a href="http://tools.jboss.org/downloads/jbosstools/neon/4.4.2.Final.html" target="_blank"&gt;JBoss Tools 4.4.2&lt;/a&gt; and &lt;a href="http://tools.jboss.org/downloads/devstudio/neon/10.2.0.GA.html" target="_blank"&gt;Red Hat JBoss Developer Studio 10.2&lt;/a&gt; for Eclipse Neon 1 are here waiting for you. Check it out!&lt;/p&gt;
+      &lt;p&gt;&lt;a href="http://tools.jboss.org/downloads/jbosstools/neon/4.4.2.Final.html" target="_blank"&gt;JBoss Tools 4.4.2&lt;/a&gt; and &lt;a href="http://tools.jboss.org/downloads/devstudio/neon/10.2.0.GA.html" target="_blank"&gt;Red Hat JBoss Developer Studio 10.2&lt;/a&gt; for Eclipse Neon.1 are here waiting for you. Check it out!&lt;/p&gt;
       &lt;/div&gt;
       &lt;div&gt;
       &lt;div&gt;
@@ -417,7 +461,7 @@
       &lt;p&gt;JBoss Tools or Bring-Your-Own-Eclipse (BYOE) JBoss Developer Studio require a bit more:&lt;/p&gt;
       &lt;/div&gt;
       &lt;div&gt;
-      &lt;p&gt;This release requires at least Eclipse 4.6.1 (Neon 1a) but we recommend
+      &lt;p&gt;This release requires at least Eclipse 4.6.1 (Neon.1a) but we recommend
       using the latest &lt;a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/neon1a" target="_blank"&gt;Eclipse 4.6.1 Neon JEE Bundle&lt;/a&gt; since then you get most of the dependencies preinstalled.&lt;/p&gt;
       &lt;/div&gt;
       &lt;div&gt;
@@ -739,7 +783,7 @@
       &lt;h2&gt;&lt;a href="#what-is-next" target="_blank"&gt;&lt;/a&gt;What is next?&lt;/h2&gt;
       &lt;div&gt;
       &lt;div&gt;
-      &lt;p&gt;Having JBoss Tools 4.4.1 and Developer Studio 10.1 out we are already working on the next maintenance release for Eclipse Neon.1.&lt;/p&gt;
+      &lt;p&gt;Having JBoss Tools 4.4.2 and Developer Studio 10.2 out we are already working on the next maintenance release for Eclipse Neon.2.&lt;/p&gt;
       &lt;/div&gt;
       &lt;div&gt;
       &lt;p&gt;Enjoy!&lt;/p&gt;
@@ -750,7 +794,7 @@
       &lt;/div&gt;
       &lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
 &lt;img src="http://feeds.feedburner.com/~r/jbossbuzz/~4/B4sRviAw5zY" height="1" width="1" alt=""/&gt;</content>
-	<updated>2016-12-07T22:09:01+00:00</updated>
+	<updated>2016-12-07T23:07:58+00:00</updated>
 	<author><name>jeffmaury</name></author>
 	<source>
 		<link rel="self" href="http://tools.jboss.org/blog/" />
@@ -1504,181 +1548,6 @@
 
 
 <feedburner:origLink>https://developer.jboss.org/blogs/weekly-editorial/2016/10/21/this-week-in-jboss-21th-october-2016-byteman-and-hawkular</feedburner:origLink></entry>
-
-<entry>
-	<id>http://tools.jboss.org/blog/am2.4.4.2.neon.html</id>
-	<link href="http://feedproxy.google.com/~r/jbossbuzz/~3/I6hUNXollLo/am2.4.4.2.neon.html" rel="alternate" type="text/html" />
-	<title>JBoss Tools 4.4.2.AM2 for Eclipse Neon</title>
-	<summary type="html"><![CDATA[
-      <div><div id="preamble">
-      <div class="sectionbody">
-      <div class="paragraph">
-      <p>Happy to announce 4.4.2.AM2 (Developer Milestone 2) build for Eclipse Neon.</p>
-      </div>
-      <div class="paragraph">
-      <p>Downloads available at <a href="http://tools.jboss.org/downloads/jbosstools/neon/4.4.2.AM2.html">JBoss Tools 4.4.2 AM2</a>.</p>
-      </div>
-      </div>
-      </div>
-      <div class="sect1">
-      <h2 id="what-is-new"><a class="anchor" href="#what-is-new"></a>What is New?</h2>
-      <div class="sectionbody">
-      <div class="paragraph">
-      <p>Full info is at <a href="http://tools.jboss.org/documentation/whatsnew/jbosstools/4.4.2.AM2.html">this page</a>. Some highlights are below.</p>
-      </div>
-      <div class="sect2">
-      <h3 id="openshift-3"><a class="anchor" href="#openshift-3"></a>OpenShift 3</h3>
-      <div class="paragraph">
-      <p>Although our main focus is bug fixes, we continue to work on providing better experience for container based development in JBoss Tools and Developer Studio. Let’s go through a few interesting updates here and you can find more details on <a href="http://tools.jboss.org/documentation/whatsnew/jbosstools/4.4.2.AM2.html">the What’s New page</a>.</p>
-      </div>
-      <div class="sect3">
-      <h4 id="common-namespace-template-support"><a class="anchor" href="#common-namespace-template-support"></a>Common namespace template support</h4>
-      <div class="paragraph">
-      <p>Common namespace was <a href="http://tools.jboss.org/documentation/whatsnew/jbosstools/4.4.2.AM1.html#openshift">added</a> but templates were still loaded from the hardcoded <code>openshift</code> namespace.
-      They are now loaded from the configured common namespace (which still default to <code>openshift</code>)</p>
-      </div>
-      </div>
-      <div class="sect3">
-      <h4 id="user-controlled-hostname-when-creating-routes"><a class="anchor" href="#user-controlled-hostname-when-creating-routes"></a>User controlled hostname when creating routes</h4>
-      <div class="paragraph">
-      <p>When an application is being deployed to Openshift, a route is optionally created if required by the user.
-      Openshift/CDK used to create an <a href="http://xip.io">xip.io</a> based hostname. User can now set its own hostname.
-      This allows for both changing the DNS to local IP provider (<a href="http://nip.io">nip.io</a>) or using you own enterprise DNS naming strategy.</p>
-      </div>
-      <div class="paragraph">
-      <p>The hostname can be accessed from the Services and Routing Settings page when deploying an application:</p>
-      </div>
-      <div class="imageblock">
-      <div class="content">
-      <img src="http://tools.jboss.org/documentation/whatsnew/openshift/images/wizard-new-application-hostname.png" alt="wizard new application hostname" width="600" />
-      </div>
-      </div>
-      </div>
-      </div>
-      <div class="sect2">
-      <h3 id="forge"><a class="anchor" href="#forge"></a>Forge</h3>
-      <div class="sect3">
-      <h4 id="forge-runtime-updated-to-3-3-2-final"><a class="anchor" href="#forge-runtime-updated-to-3-3-2-final"></a>Forge Runtime updated to 3.3.2.Final</h4>
-      <div class="paragraph">
-      <p>The included Forge runtime is now 3.3.2.Final. Read the official announcement <a href="http://forge.jboss.org/news/jboss-forge-3.3.2.final-is-here">here</a>.</p>
-      </div>
-      <div class="imageblock">
-      <div class="content">
-      <img src="http://tools.jboss.org/documentation/whatsnew/forge/images/4.4.2.AM2/startup.png" alt="startup" />
-      </div>
-      </div>
-      </div>
-      <div class="sect3">
-      <h4 id="new-menu-in-forge-console-view-to-trigger-the-command-selection-dialog"><a class="anchor" href="#new-menu-in-forge-console-view-to-trigger-the-command-selection-dialog"></a>New Menu in Forge Console view to trigger the Command Selection Dialog</h4>
-      <div class="paragraph">
-      <p>Now it’s possible to bring the Command Selection Dialog menu (invoked when Ctrl/Command + 4 is pressed) by choosing the &quot;Open Command Selection Dialog…​&quot; menu item in the Forge Console view.</p>
-      </div>
-      <div class="imageblock">
-      <div class="content">
-      <img src="http://tools.jboss.org/documentation/whatsnew/forge/images/4.4.2.AM2/open-command-dialog.png" alt="open command dialog" />
-      </div>
-      </div>
-      <div class="paragraph">
-      <p>Enjoy!</p>
-      </div>
-      <div class="paragraph">
-      <p>Jeff Maury</p>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div></div>
-    ]]></summary>
-	<content type="html">&lt;html&gt;&lt;body&gt;&lt;div&gt;&lt;div&gt;
-      &lt;div&gt;
-      &lt;div&gt;
-      &lt;p&gt;Happy to announce 4.4.2.AM2 (Developer Milestone 2) build for Eclipse Neon.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;p&gt;Downloads available at &lt;a href="http://tools.jboss.org/downloads/jbosstools/neon/4.4.2.AM2.html" target="_blank"&gt;JBoss Tools 4.4.2 AM2&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;h2&gt;&lt;a href="#what-is-new" target="_blank"&gt;&lt;/a&gt;What is New?&lt;/h2&gt;
-      &lt;div&gt;
-      &lt;div&gt;
-      &lt;p&gt;Full info is at &lt;a href="http://tools.jboss.org/documentation/whatsnew/jbosstools/4.4.2.AM2.html" target="_blank"&gt;this page&lt;/a&gt;. Some highlights are below.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;h3&gt;&lt;a href="#openshift-3" target="_blank"&gt;&lt;/a&gt;OpenShift 3&lt;/h3&gt;
-      &lt;div&gt;
-      &lt;p&gt;Although our main focus is bug fixes, we continue to work on providing better experience for container based development in JBoss Tools and Developer Studio. Let&amp;rsquo;s go through a few interesting updates here and you can find more details on &lt;a href="http://tools.jboss.org/documentation/whatsnew/jbosstools/4.4.2.AM2.html" target="_blank"&gt;the What&amp;rsquo;s New page&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;h4&gt;&lt;a href="#common-namespace-template-support" target="_blank"&gt;&lt;/a&gt;Common namespace template support&lt;/h4&gt;
-      &lt;div&gt;
-      &lt;p&gt;Common namespace was &lt;a href="http://tools.jboss.org/documentation/whatsnew/jbosstools/4.4.2.AM1.html#openshift" target="_blank"&gt;added&lt;/a&gt; but templates were still loaded from the hardcoded &lt;code&gt;openshift&lt;/code&gt; namespace.
-      They are now loaded from the configured common namespace (which still default to &lt;code&gt;openshift&lt;/code&gt;)&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;h4&gt;&lt;a href="#user-controlled-hostname-when-creating-routes" target="_blank"&gt;&lt;/a&gt;User controlled hostname when creating routes&lt;/h4&gt;
-      &lt;div&gt;
-      &lt;p&gt;When an application is being deployed to Openshift, a route is optionally created if required by the user.
-      Openshift/CDK used to create an &lt;a href="http://xip.io" target="_blank"&gt;xip.io&lt;/a&gt; based hostname. User can now set its own hostname.
-      This allows for both changing the DNS to local IP provider (&lt;a href="http://nip.io" target="_blank"&gt;nip.io&lt;/a&gt;) or using you own enterprise DNS naming strategy.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;p&gt;The hostname can be accessed from the Services and Routing Settings page when deploying an application:&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;div&gt;
-      &lt;img src="http://tools.jboss.org/documentation/whatsnew/openshift/images/wizard-new-application-hostname.png" alt="wizard new application hostname" width="600"&gt;&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;h3&gt;&lt;a href="#forge" target="_blank"&gt;&lt;/a&gt;Forge&lt;/h3&gt;
-      &lt;div&gt;
-      &lt;h4&gt;&lt;a href="#forge-runtime-updated-to-3-3-2-final" target="_blank"&gt;&lt;/a&gt;Forge Runtime updated to 3.3.2.Final&lt;/h4&gt;
-      &lt;div&gt;
-      &lt;p&gt;The included Forge runtime is now 3.3.2.Final. Read the official announcement &lt;a href="http://forge.jboss.org/news/jboss-forge-3.3.2.final-is-here" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;div&gt;
-      &lt;img src="http://tools.jboss.org/documentation/whatsnew/forge/images/4.4.2.AM2/startup.png" alt="startup"&gt;&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;h4&gt;&lt;a href="#new-menu-in-forge-console-view-to-trigger-the-command-selection-dialog" target="_blank"&gt;&lt;/a&gt;New Menu in Forge Console view to trigger the Command Selection Dialog&lt;/h4&gt;
-      &lt;div&gt;
-      &lt;p&gt;Now it&amp;rsquo;s possible to bring the Command Selection Dialog menu (invoked when Ctrl/Command + 4 is pressed) by choosing the "Open Command Selection Dialog&amp;hellip;&amp;#8203;" menu item in the Forge Console view.&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;div&gt;
-      &lt;img src="http://tools.jboss.org/documentation/whatsnew/forge/images/4.4.2.AM2/open-command-dialog.png" alt="open command dialog"&gt;&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;p&gt;Enjoy!&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;p&gt;Jeff Maury&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
-&lt;img src="http://feeds.feedburner.com/~r/jbossbuzz/~4/I6hUNXollLo" height="1" width="1" alt=""/&gt;</content>
-	<updated>2016-10-20T13:39:24+00:00</updated>
-	<author><name>jeffmaury</name></author>
-	<source>
-		<link rel="self" href="http://tools.jboss.org/blog/" />
-		<title>JBoss Tools</title></source>
-
-	<category term="release" />
-
-	<category term="jbosstools" />
-
-	<category term="jbosscentral" />
-
-
-<feedburner:origLink>http://tools.jboss.org/blog/am2.4.4.2.neon.html</feedburner:origLink></entry>
 
 
 </feed><!-- vim:ft=xml

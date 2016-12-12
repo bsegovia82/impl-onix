@@ -1,29 +1,10 @@
-// FNC for detecting for click outside of any elements ============== 
-$.fn.clickOff = function(callback, selfDestroy) {
-		var clicked = false;
-		var parent = this;
-		var destroy = selfDestroy || true;
-		
-		parent.click(function() {
-			clicked = true;
-		});
-		
-		$(document).click(function(event) { 
-			if (!clicked) {
-				callback(parent, event);
-			}
-			if (destroy) {
-			};
-			clicked = false;
-		});
-	};
-	
 /** 
  * PrimeFaces Modena Layout
  */
-var Modena = {
+PrimeFaces.widget.Modena = PrimeFaces.widget.BaseWidget.extend({
     
-    init: function() {
+    init: function(cfg) {
+        this._super(cfg);
         this.menuWrapper = $('#layout-menu-cover');
         this.menu = this.menuWrapper.find('ul.modena-menu');
         this.menulinks = this.menu.find('a.menulink');
@@ -32,6 +13,7 @@ var Modena = {
         this.mobileMenuButton = $('#mobile-menu-button');
         this.expandedMenuitems = this.expandedMenuitems||[];
         this.mobile = this.isMobile();
+        this.topbarMenuClick = false;
         
         //remove transform on Firefox Mobile 
         if(this.mobile && $.browser.mozilla) {
@@ -39,11 +21,16 @@ var Modena = {
             this.menu.addClass('no-transform');
         }
         
+        this.restoreMenuState();
         this.bindEvents();
     },
     
     bindEvents: function() {
         var $this = this;
+        
+        if(typeof rippleEffect == 'function') {
+            rippleEffect();
+        }
         
         if(this.mobile) {
             this.menuWrapper.css('overflow-y', 'auto');
@@ -100,7 +87,7 @@ var Modena = {
                 $(this).addClass('MenuClose');
                 $this.menuWrapper.addClass('showmenu');
                 $this.topMenu.removeClass('showmenu');
-                $this.topMenuButton.removeClass('showmenu');
+                $this.topMenuButton.removeClass('showmenu MenuClose');
             }
             else {
                 $(this).removeClass('MenuClose');
@@ -122,7 +109,7 @@ var Modena = {
         });
         
         //topbar
-        this.topMenu.find('a').click(function(e) {
+        this.topMenu.find('a').off('click.topmenu mouseenter.topmenu').on('click.topmenu', function(e) {
             var link = $(this),
             submenu = link.next('ul');
             
@@ -144,8 +131,9 @@ var Modena = {
                     $this.topMenuActive = false;
                 }
             }
+            e.preventDefault();
         })
-        .on('mouseenter', function() {
+        .on('mouseenter.topmenu', function() {
             var link = $(this);
     
             if(link.parent().parent().is($this.topMenu)&&$this.topMenuActive&&document.documentElement.clientWidth > 960) {
@@ -159,10 +147,19 @@ var Modena = {
                 }
             }
         });
+        
+        this.topMenu.on('click', function() {
+           $this.topbarMenuClick = true; 
+        });
 
-        this.topMenu.find('li').clickOff(function() {
-            $this.topMenu.find('.active-menu').removeClass('active-menu');
-            $this.topMenuActive = false;
+        this.clickNS = 'click.' + this.id;
+        $(document.body).off(this.clickNS).on(this.clickNS, function (e) {
+            if(!$this.topbarMenuClick) {
+                $this.topMenu.find('.active-menu').removeClass('active-menu');
+                $this.topMenuActive = false;
+            }
+            
+            $this.topbarMenuClick = false;
         });
     },
     
@@ -204,11 +201,6 @@ var Modena = {
     isMobile: function() {
         return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent));
     }
-};
-
-
-$(function() {
-   Modena.init();
 });
 
 
@@ -326,3 +318,16 @@ $(function() {
 	};
 
 }));
+
+/* Issue #924 is fixed for 5.3+ and 6.0. (compatibility with 5.3) */
+if(window['PrimeFaces'] && window['PrimeFaces'].widget.Dialog) {
+    PrimeFaces.widget.Dialog = PrimeFaces.widget.Dialog.extend({
+        
+        enableModality: function() {
+            this._super();
+            $(document.body).children(this.jqId + '_modal').addClass('ui-dialog-mask');
+        },
+        
+        syncWindowResize: function() {}
+    });
+}

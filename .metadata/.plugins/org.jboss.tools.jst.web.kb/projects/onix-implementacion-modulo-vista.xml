@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kb-project>
  <depends-on-projects>
-  <project name="onix-implementacion-modulo-servicios"/>
   <project name="onix-implementacion-modulo-base"/>
+  <project name="onix-implementacion-modulo-servicios"/>
  </depends-on-projects>
  <used-by-projects/>
  <paths>
@@ -135,6 +135,18 @@
   <path value="D:/repositorio/org/jboss/stdio/jboss-stdio/1.0.1.GA/jboss-stdio-1.0.1.GA.jar"/>
   <path value="D:/repositorio/org/jboss/jboss-vfs/3.1.0.Final/jboss-vfs-3.1.0.Final.jar"/>
   <path value="D:/repositorio/org/jboss/as/jboss-as-clustering-jgroups/7.1.0.Final/jboss-as-clustering-jgroups-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/com/sebra/primefaces/modena-layout/2.1.3/modena-layout-2.1.3.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-modena-layout-2.1.3.jar/meta-inf/faces-config.xml" project="onix-implementacion-modulo-vista"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-modena-layout-2.1.3.jar/meta-inf/primefaces-modena.taglib.xml" project="onix-implementacion-modulo-vista"/>
+    </library>
+   </libraries>
+  </path>
   <path value="D:/repositorio/org/jgroups/jgroups/3.0.4.Final/jgroups-3.0.4.Final.jar"/>
  </paths>
  <validation>
@@ -150,6 +162,7 @@
   <core validator-id="verification">
    <linked-resource declaration="true" name="%9;" path="%0"/>
   </core>
+  <core validator-id="jboss.jsf.core"/>
   <el>
    <linked-el length="55" name="%10" offset="2310" path="%11"/>
    <linked-el length="77" name="%12" offset="1055" path="%13"/>
