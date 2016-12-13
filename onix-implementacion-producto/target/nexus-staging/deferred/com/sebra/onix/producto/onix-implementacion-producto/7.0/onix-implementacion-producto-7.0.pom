@@ -174,5 +174,6 @@
 		<module>onix-implementacion-modulo-servicios</module>
 		<module>onix-implementacion-modulo-vista</module>
 		<module>onix-implementacion-modulo-base</module>
+		<module>onix-implementacion-modulo-modena</module>
 	</modules>
 </project>

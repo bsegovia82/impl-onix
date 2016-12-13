@@ -130,5 +130,18 @@
    path="/onix-implementacion-modulo-base/src/main/java/com/onix/modulo/vista/beans/general/implementacion/MenuView.java" value="%0"/>
  </aliases>
  <includes/>
- <uris/>
+ <uris>
+  <uri value="http://primefaces.org/modena">
+   <prefix>pm</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/html">
+   <prefix>h</prefix>
+  </uri>
+  <uri value="http://primefaces.org/ui">
+   <prefix>p</prefix>
+  </uri>
+ </uris>
 </kb-project>

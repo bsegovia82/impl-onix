@@ -10,6 +10,9 @@
         <dependent-module archiveName="onix-implementacion-modulo-base-7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onix-implementacion-modulo-base/onix-implementacion-modulo-base">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="onix-implementacion-modulo-modena-7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onix-implementacion-modulo-modena/onix-implementacion-modulo-modena">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="onix-implementacion-modulo-vista"/>
         <property name="java-output-path" value="/onix-implementacion-modulo-vista/target/classes"/>
     </wb-module>
