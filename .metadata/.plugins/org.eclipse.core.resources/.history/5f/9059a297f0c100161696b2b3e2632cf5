@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+		<!-- TOPBAR START -->
+		<div id="layout-topbar">
+			<a id="mobile-menu-button"> <span class="ButtonLine"
+				id="ButtonLine1"></span> <span class="ButtonLine" id="ButtonLine2"></span>
+				<span class="ButtonLine" id="ButtonLine3"></span>
+			</a> <a href="/onix/privadas/generales/pag_principal.xhtml" id="logo">
+				<h:graphicImage name="#{request.contextPath}/imagenes/general/onix_logo.png" styleClass="Fleft"
+					 style="height : 54px; width : 187px;" />
+			</a> <a id="show-top-menu" class="ShowOnMobile ripplelink"><i
+				class="icon-more_vert" id="active"></i><i
+				class="icon-close DispNone" id="passive"></i> </a>
+
+			<ul id="top-menu">
+				<li><a class="ripplelink"><i class="icon-search"></i> <span
+						class="ShowOnMobile">Busqueda Rápida</span></a>
+					<ul>
+						<li><a href="#"><i class="icon-search"></i><input
+								type="text" /> </a></li>
+					</ul></li>
+				<li><a class="ripplelink"><i class="icon-archive"></i> <span
+						class="ShowOnMobile">Consultas</span></a>
+					<ul>
+						<li><a href="#"><i class="icon-alarm_on"></i> Consultas
+								En curso</a></li>
+						<li><a href="#"><i class="icon-alarm_add"></i> Consultas
+								Hoy</a></li>
+						<li><a href="#"><i class="icon-event_available"></i>
+								Todas</a></li>
+					</ul></li>
+				<li><a class="ripplelink"><i
+						class="icon-notifications_none"></i> <span class="ShowOnMobile">Notifications</span></a>
+					<ul>
+						<li><a href="#"><span class="Orange">Reunión</span><br />
+							<span class="Gray Fs14 FontRobotoLight">Hoy - 13:40 <br />En
+									SweetandCoffe - GYE
+							</span></a></li>
+						<li><a href="#"><span class="Blue">Reunión</span><br />
+							<span class="Gray Fs14 FontRobotoLight">Hoy - 17:10 <br />En
+									San Marino
+							</span></a></li>
+						<li><a href="#"><span class="Blue">Reunión</span><br />
+							<span class="Gray Fs14 FontRobotoLight">Hoy - 18:30 <br />En
+									Mall del sol
+							</span></a></li>
+					</ul></li>
+				<li><a class="ripplelink"><i class="icon-power"></i> <span
+						class="ShowOnMobile">Sistema</span></a>
+					<ul>
+						<li><a href="#" onclick="PF('dlg2').show();"> <span
+								class="Orange"> <i
+									class="icon-lock Fs30 DispBlock"></i> Cambio Clave
+							</span></a></li>
+
+
+
+						<li><h:commandLink action="#{beanLogin.logout}">
+								<span class="Red"> <i class="icon-vpn_key Fs30 DispBlock"></i>
+									Logout
+								</span>
+							</h:commandLink></li>
+					</ul></li>
+			</ul>
+
+
+
+
+		</div>
+
+		<p:dialog header="Cambio de clave" widgetVar="dlg2" modal="true"
+			resizable="false" closable="false"
+			visible="#{beanLogin.usuarioSession.usuarioSession.es_nuevo eq 'S'}">
+			<p:outputPanel id="cambClae">
+
+				<p:messages globalOnly="true" showDetail="false" closable="true"
+					id="mensajeGeneral"></p:messages>
+
+				<h:outputText value="Su primer inicio de sesión, cambie su clave"
+					rendered="#{beanLogin.usuarioSession.usuarioSession.es_nuevo eq 'S'}" />
+				<p:panelGrid columns="2">
+
+					<h:outputText value="Usuario: " />
+					<h:outputText
+						value="#{beanLogin.usuarioSession.usuarioSession.usuario}" />
+					<h:outputText value="Clave: " />
+					<p:password feedback="false" value="#{beanLogin.cambContrase1}"></p:password>
+					<h:outputText value="Rep. Clave: " />
+					<p:password feedback="false" value="#{beanLogin.cambContrase2}"></p:password>
+					<f:facet name="footer">
+						<p:commandButton value="Aceptar"
+							actionListener="#{beanLogin.cambiarContrasenia}"
+							process="@([id$=cambClae])" update="@([id$=cambClae])"
+							partialSubmit="true">
+						</p:commandButton>
+						<p:commandButton value="Cerrar"
+							actionListener="#{beanLogin.cerrarVentana}" process="@this">
+						</p:commandButton>
+					</f:facet>
+				</p:panelGrid>
+			</p:outputPanel>
+
+		</p:dialog>
+		<!-- TOPBAR END -->
+	</h:form>
+</ui:composition>
