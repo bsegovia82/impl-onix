@@ -78,7 +78,7 @@ public class OmsUsuario extends EntidadBaseAuditable<Long> implements Serializab
 		this.usuario = usuario;
 	}
 
-	@OneToMany(mappedBy = "priUsuario", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "priUsuario")
 	public List<OmsUsuariosRole> getPriUsuariosRoles() {
 		return this.priUsuariosRoles;
 	}

@@ -1,0 +1,5 @@
+package com.onix.modulo.vista.notificacion;
+
+public class NotificadorMail {
+
+}

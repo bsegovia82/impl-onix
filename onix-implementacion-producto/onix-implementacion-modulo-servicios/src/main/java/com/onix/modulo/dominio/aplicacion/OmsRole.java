@@ -107,7 +107,7 @@ public class OmsRole extends EntidadBaseAuditable<Long> implements Serializable 
 		return priUsuariosRole;
 	}
 
-	@OneToMany(mappedBy = "idRol", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "idRol")
 	public List<OmsOpcionesRole> getListaOpcionesRoles() {
 		return listaOpcionesRoles;
 	}

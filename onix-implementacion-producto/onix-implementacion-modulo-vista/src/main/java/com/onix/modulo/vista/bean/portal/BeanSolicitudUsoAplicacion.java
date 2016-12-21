@@ -1,0 +1,6 @@
+package com.onix.modulo.vista.bean.portal;
+
+
+public class BeanSolicitudUsoAplicacion {
+
+}
