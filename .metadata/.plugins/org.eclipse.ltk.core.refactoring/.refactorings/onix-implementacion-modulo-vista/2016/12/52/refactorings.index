@@ -1,3 +1,7 @@
 1482176592224	Rename resource 'promotion-page.xhtml'
 1482317274025	Rename package 'com.onix.modulo.vista.notificacion'
 1482317305012	Rename package 'com.onix.modulo.vista.bean.notificacion'
+1482354699605	Move compilation unit
+1482427262640	Rename type 'CdiRecursoNotificadorMail'
+1482427669107	Copy compilation unit
+1482427703703	Delete element

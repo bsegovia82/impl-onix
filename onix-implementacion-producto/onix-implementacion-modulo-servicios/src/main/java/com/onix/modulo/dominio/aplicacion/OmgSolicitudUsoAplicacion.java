@@ -19,6 +19,14 @@ import com.onix.modulo.librerias.dominio.entidades.base.EntidadBaseAuditable;
 public class OmgSolicitudUsoAplicacion extends EntidadBaseAuditable<Long> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private String lNombre;
+	private String lNombreEmpresa;
+	private String lPais;
+	private String lCiudad;
+	private String lEmail;
+	private String lCelular;
+	private String lSolicitud;
+
 
 	public OmgSolicitudUsoAplicacion()
 	{}
@@ -31,11 +39,67 @@ public class OmgSolicitudUsoAplicacion extends EntidadBaseAuditable<Long> implem
 		return this.id;
 	}
 
-	@Override
-	public void setId(Long pId) {
-		id=pId;
+	@Column(name="NOMBRE")
+	public String getlNombre() {
+		return lNombre;
 	}
-	
-	
+
+	public void setlNombre(String lNombre) {
+		this.lNombre = lNombre;
+	}
+
+	@Column(name="NOMBRE_EMPRESA")
+	public String getlNombreEmpresa() {
+		return lNombreEmpresa;
+	}
+
+	public void setlNombreEmpresa(String lNombreEmpresa) {
+		this.lNombreEmpresa = lNombreEmpresa;
+	}
+
+	@Column(name="PAIS")
+	public String getlPais() {
+		return lPais;
+	}
+
+	public void setlPais(String lPais) {
+		this.lPais = lPais;
+	}
+
+	@Column(name="CIUDAD")
+	public String getlCiudad() {
+		return lCiudad;
+	}
+
+	public void setlCiudad(String lCiudad) {
+		this.lCiudad = lCiudad;
+	}
+
+	@Column(name="EMAIL")
+	public String getlEmail() {
+		return lEmail;
+	}
+
+	public void setlEmail(String lEmail) {
+		this.lEmail = lEmail;
+	}
+
+	@Column(name="CELULAR")
+	public String getlCelular() {
+		return lCelular;
+	}
+
+	public void setlCelular(String lCelular) {
+		this.lCelular = lCelular;
+	}
+
+	@Column(name="SOLICITUD")
+	public String getlSolicitud() {
+		return lSolicitud;
+	}
+
+	public void setlSolicitud(String lSolicitud) {
+		this.lSolicitud = lSolicitud;
+	}	
 	
 }

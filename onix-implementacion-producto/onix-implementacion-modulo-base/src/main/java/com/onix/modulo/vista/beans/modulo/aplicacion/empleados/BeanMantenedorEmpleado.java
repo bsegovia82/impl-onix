@@ -17,7 +17,7 @@ import com.onix.modulo.dominio.persona.operacion.OmsoEspecialidad;
 import com.onix.modulo.eao.persona.operacion.OmsoEmpleadoEAO;
 import com.onix.modulo.librerias.vista.JsfUtil;
 import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
-import com.onix.modulo.librerias.vista.exceptions.ErrorValidacionVisual;
+import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
 import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorUsuario;
 import com.onix.modulo.servicio.mantenimiento.persona.operacion.ServicioMantenedorEmpleado;
 
@@ -37,10 +37,6 @@ public class BeanMantenedorEmpleado
 
 	private List<OmsoEspecialidad> listaEspecialidad;
 
-	protected ServicioMantenedorEmpleado getServicioMantenedor() {
-		return servicioMantenedor;
-	}
-
 	public BeanMantenedorEmpleado() {
 		super(new OmsoEmpleado(), OmsoEmpleado.class);
 		OmsgTipoDocumentoIdentificacion tipoDoc = new OmsgTipoDocumentoIdentificacion();
@@ -55,56 +51,26 @@ public class BeanMantenedorEmpleado
 
 	}
 
-	protected void metodoPostErrorTransaccion() {
-		System.out.println("Error al realizar la operacion " + this.getClass().getCanonicalName());
-	}
-
-	protected void validacionesIngreso() throws ErrorValidacionVisual {
-		System.out.println("Sin nada que validar en mantenimiento empleado");
-	}
-
-	public void accionesPreTransaccionServicio() {
-		System.out.println("Sin acciones que realizar en mantenimiento empleado");
-
+	@Override
+	protected ServicioMantenedorEmpleado getServicioMantenedor() {
+		return servicioMantenedor;
 	}
 
 	@Override
-	public String getTituloPagina() {
-		// TODO Auto-generated method stub
-		return "Mantenimiento Empleado";
-	}
-
-	@Override
-	public String getDescripcionPagina() {
-		// TODO Auto-generated method stub
-		return "Mantenedor Empleado";
-	}
-
-	@Override
-	public String getAyudaPagina() {
-		// TODO Auto-generated method stub
-		return "Cree o edite Empleados";
-	}
-
-	@Override
-	public String getTab() {
-		// TODO Auto-generated method stub
-		return "Datos Empleados";
-	}
-
-	@Override
-	public String getCabeceraTabla() {
-		// TODO Auto-generated method stub
-		return "Empleados registrados";
+	protected void cargarListaEtiquetas() {
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TITULOPAGINA.toString(), "Mantenimiento Empleado");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.DESCRIPCIONPAGINA.toString(), "Mantenedor Empleado");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.AYUDAPAGINA.toString(), "Cree o edite Empleados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TAB.toString(), "Datos Empleados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Empleados registrados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERADIALOGO.toString(), "Actualización de Empleados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos Empleado");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
 	}
 
 	@Override
 	protected void metodoPostTransaccion() {
-		super.metodoPostTransaccion();// trae la lista de entidades
-		// EstPaciente obj = new EstPaciente();
-		// OmsgPersona persona = new OmsgPersona();
-		// obj.setPersona(persona);
-		// setEntidadRegistrar(obj);
+		super.metodoPostTransaccion();
 		this.entidadRegistrar = new OmsoEmpleado();
 		OmsgTipoDocumentoIdentificacion tipoDoc = new OmsgTipoDocumentoIdentificacion();
 		OmsgPersona persona = new OmsgPersona();
@@ -118,26 +84,7 @@ public class BeanMantenedorEmpleado
 	}
 
 	@Override
-	public String getMensajeTablaVacia() {
-		// TODO Auto-generated method stub
-		return JsfUtil.MENSAJE_INFO_SINRESULTADO;
-	}
-
-	@Override
-	public String getCabeceraDialogo() {
-		// TODO Auto-generated method stub
-		return "Actualización de Empleados";
-	}
-
-	@Override
-	public String getCabeceraPanelDialogo() {
-		// TODO Auto-generated method stub
-		return "Datos Empleado";
-	}
-
-	@Override
 	protected void metodoPostConstruct() {
-		// TODO Auto-generated method stub
 		try {
 			listaCargos = servicioMantenedor.obtenerListaCargos();
 
@@ -168,12 +115,7 @@ public class BeanMantenedorEmpleado
 		this.listaEspecialidad = listaEspecialidad;
 	}
 
-	@Override
-	protected void postSeleccionRegistro(OmsoEmpleado entidadRegistrar2) {
-
-	}
-
-	public void buscarCodigoDisponible(AjaxBehaviorEvent event) {
+	public void buscarCodigoDisponible(AjaxBehaviorEvent pEvento) {
 		OmsoEmpleado empleadoBase = servicioMantenedor.obtenerObjetoPropiedad("codigoEmpleado",
 				this.entidadRegistrar.getCodigoEmpleado(), OmsoEmpleado.class);
 
@@ -185,7 +127,7 @@ public class BeanMantenedorEmpleado
 
 	}
 
-	public void buscarUsuarioDisponible(AjaxBehaviorEvent event) {
+	public void buscarUsuarioDisponible(AjaxBehaviorEvent pEvento) {
 		OmsUsuario usuarioBase = servicioMantenedorUsuario.obtenerObjetoPropiedad("usuario",
 				this.entidadRegistrar.getPersona().getUsuario().getUsuario(), OmsUsuario.class);
 
@@ -196,7 +138,7 @@ public class BeanMantenedorEmpleado
 		}
 	}
 
-	public void buscarPersonaIdentificacion(AjaxBehaviorEvent event) {
+	public void buscarPersonaIdentificacion(AjaxBehaviorEvent pEvento) {
 
 		OmsgPersona persona = servicioMantenedor
 				.buscarPersonaIdentificacion(this.entidadRegistrar.getPersona().getNumeroDocumento());
@@ -211,9 +153,7 @@ public class BeanMantenedorEmpleado
 				addMensaje("Ya se encuentra registrado un empleado con el número de identificación: "
 						+ this.entidadRegistrar.getPersona().getNumeroDocumento());
 			}
-		}
-		else
-		{
+		} else {
 			System.out.println("No hay persona registrada");
 		}
 	}

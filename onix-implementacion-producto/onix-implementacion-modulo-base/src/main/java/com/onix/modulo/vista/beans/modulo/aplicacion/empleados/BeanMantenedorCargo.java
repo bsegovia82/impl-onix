@@ -11,7 +11,9 @@ import com.onix.modulo.dominio.persona.operacion.OmsoCargo;
 import com.onix.modulo.eao.persona.operacion.OmsoCargoEAO;
 import com.onix.modulo.librerias.vista.JsfUtil;
 import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
-import com.onix.modulo.librerias.vista.exceptions.ErrorValidacionVisual;
+import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostConstructListener;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostTransaccionListener;
 import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorRol;
 import com.onix.modulo.servicio.mantenimiento.persona.operacion.ServicioMantenedorCargo;
 
@@ -29,94 +31,44 @@ public class BeanMantenedorCargo
 
 	private List<OmsRole> listaRoles;
 
+	public BeanMantenedorCargo() {
+		super(new OmsoCargo(), OmsoCargo.class);
+		this.entidadRegistrar.setRolDefault(new OmsRole());
+		addPostConstructuListener(new PostConstructListener() {
+			@Override
+			public void metodoPostConstruct() {
+				listaRoles = servicioMantenedorRol.listaObjetosActivos(OmsRole.class);
+			}
+		});
+
+		addPostTransaccion(new PostTransaccionListener() {
+
+			@Override
+			public void metodoPostTransaccion() {
+				entidadRegistrar = new OmsoCargo();
+				entidadRegistrar.setRolDefault(new OmsRole());
+
+			}
+		});
+
+	}
+
+	@Override
 	protected ServicioMantenedorCargo getServicioMantenedor() {
 		return servicioMantenedor;
 	}
 
-	public BeanMantenedorCargo() {
-		super(new OmsoCargo(), OmsoCargo.class);
-		this.entidadRegistrar.setRolDefault(new OmsRole());
-	}
-
-	protected void metodoPostErrorTransaccion() {
-		System.out.println("Error al realizar la operacion " + this.getClass().getCanonicalName());
-	}
-
-	protected void validacionesIngreso() throws ErrorValidacionVisual {
-		System.out.println("Sin nada que validar en mantenimiento cargo");
-	}
-
-	public void accionesPreTransaccionServicio() {
-		System.out.println("Sin acciones que realizar en mantenimiento cargo");
-	}
-
 	@Override
-	public String getTituloPagina() {
-		// TODO Auto-generated method stub
-		return "Mantenimiento Cargo";
-	}
-
-	@Override
-	public String getDescripcionPagina() {
-		// TODO Auto-generated method stub
-		return "Mantenedor Cargo";
-	}
-
-	@Override
-	public String getAyudaPagina() {
-		// TODO Auto-generated method stub
-		return "Cree o edite Cargos";
-	}
-
-	@Override
-	public String getTab() {
-		// TODO Auto-generated method stub
-		return "Datos Cargo";
-	}
-
-	@Override
-	public String getCabeceraTabla() {
-		// TODO Auto-generated method stub
-		return "Cargos registrados";
-	}
-
-	@Override
-	protected void metodoPostTransaccion() {
-		super.metodoPostTransaccion();// trae la lista de entidades
-		// EstPaciente obj = new EstPaciente();
-		// OmsgPersona persona = new OmsgPersona();
-		// obj.setPersona(persona);
-		// setEntidadRegistrar(obj);
-		this.entidadRegistrar = new OmsoCargo();
-		this.entidadRegistrar.setRolDefault(new OmsRole());
-	}
-
-	@Override
-	public String getMensajeTablaVacia() {
-		// TODO Auto-generated method stub
-		return JsfUtil.MENSAJE_INFO_SINRESULTADO;
-	}
-
-	@Override
-	public String getCabeceraDialogo() {
-		// TODO Auto-generated method stub
-		return "Actualización de Cargo";
-	}
-
-	@Override
-	public String getCabeceraPanelDialogo() {
-		// TODO Auto-generated method stub
-		return "Datos Cargo";
-	}
-
-	@Override
-	protected void metodoPostConstruct() {
-		listaRoles = servicioMantenedorRol.listaObjetosActivos(OmsRole.class);
-	}
-
-	@Override
-	protected void postSeleccionRegistro(OmsoCargo entidadRegistrar2) {
-
+	protected void cargarListaEtiquetas() {
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TITULOPAGINA.toString(), "Mantenimiento Cargo");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.DESCRIPCIONPAGINA.toString(), "Mantenedor Cargo");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.AYUDAPAGINA.toString(), "Cree o edite Cargos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TAB.toString(), "Datos Cargo");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Cargos registrados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERADIALOGO.toString(), "Actualización de Cargo");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos Cargo");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Cargos registrados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
 	}
 
 	public List<OmsRole> getListaRoles() {
@@ -126,5 +78,4 @@ public class BeanMantenedorCargo
 	public void setListaRoles(List<OmsRole> listaRoles) {
 		this.listaRoles = listaRoles;
 	}
-
 }

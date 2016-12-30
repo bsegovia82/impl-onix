@@ -1,0 +1,19 @@
+package com.onix.modulo.vista.bean.portal;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import com.onix.modulo.dominio.persona.operacion.OmsoCargo;
+import com.onix.modulo.eao.persona.operacion.OmsoCargoEAO;
+import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
+import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorSolicitud;
+import com.onix.modulo.servicio.mantenimiento.persona.operacion.ServicioMantenedorCargo;
+
+@ManagedBean
+@ViewScoped
+public class BeanSolicitudUsoAplicacion 
+extends BeanMantenedorGenerico<ServicioMantenedorSolicitud, Long, OmsoCargo, OmsoCargoEAO> {
+	private static final long serialVersionUID = 1L;
+
+
+}

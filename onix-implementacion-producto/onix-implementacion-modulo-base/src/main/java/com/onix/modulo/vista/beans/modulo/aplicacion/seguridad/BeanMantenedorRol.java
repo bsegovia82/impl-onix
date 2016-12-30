@@ -13,6 +13,11 @@ import com.onix.modulo.dominio.aplicacion.OmsRole;
 import com.onix.modulo.eao.aplicacion.OmsRoleEAO;
 import com.onix.modulo.librerias.vista.JsfUtil;
 import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
+import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostConstructListener;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostSeleccionEntidadListener;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostTransaccionListener;
+import com.onix.modulo.librerias.vista.beans.oyentes.ValidadorIngresoDatosListener;
 import com.onix.modulo.librerias.vista.exceptions.ErrorValidacionVisual;
 import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorRol;
 
@@ -28,97 +33,56 @@ public class BeanMantenedorRol extends BeanMantenedorGenerico<ServicioMantenedor
 
 	private List<OmsOpcione> listaOpcionesTerminales;
 
-	protected ServicioMantenedorRol getServicioMantenedor() {
-		return servicioMantenedor;
-	}
-
 	public BeanMantenedorRol() {
 		super(new OmsRole(), OmsRole.class);
-	}
 
-	protected void metodoPostErrorTransaccion() {
-		System.out.println("Error al realizar la operacion " + this.getClass().getCanonicalName());
-	}
+		addValidacionListener(new ValidadorIngresoDatosListener() {
 
-	protected void validacionesIngreso() throws ErrorValidacionVisual {
+			@Override
+			public void validarDatosIngreso() throws ErrorValidacionVisual {
+				try {
+					if (opcionesSeleccionadas != null && opcionesSeleccionadas.length != 0) {
+						for (Long descripcionOpcion : opcionesSeleccionadas)
+							entidadRegistrar.agregarOpciones(servicioMantenedor.obtenerOpcionPorID(descripcionOpcion));
+					}
 
-		try {
-			if (opcionesSeleccionadas!=null && opcionesSeleccionadas.length != 0) {
-				for (Long descripcionOpcion : opcionesSeleccionadas) {
-					entidadRegistrar.agregarOpciones(servicioMantenedor.obtenerOpcionPorID(descripcionOpcion));
+				} catch (Throwable e) {
+					e.printStackTrace();
+					throw new ErrorValidacionVisual("Imposible registrar los roles");
 				}
+
 			}
+		});
 
-		} catch (Throwable e) {
-			e.printStackTrace();
-			throw new ErrorValidacionVisual("Imposible registrar los roles");
-		}
+		addPostTransaccion(new PostTransaccionListener() {
+			@Override
+			public void metodoPostTransaccion() {
+				entidadRegistrar = new OmsRole();
+				opcionesSeleccionadas = null;
+
+			}
+		});
+
+		addPostConstructuListener(new PostConstructListener() {
+
+			@Override
+			public void metodoPostConstruct() {
+				listaOpcionesTerminales = servicioMantenedor.listaOpcionesEjecutables();
+			}
+		});
+
+		addPostSeleccionRegistroListener(new PostSeleccionEntidadListener<OmsRole, Long>() {
+
+			@Override
+			public void postSeleccionRegistro(OmsRole pEntidadSeleccionada) {
+				opcionesSeleccionadas = null;
+
+			}
+		});
 	}
 
-	@Override
-	public void accionesPreTransaccionServicio() {
-		System.out.println("Sin acciones que realizar en mantenimiento cargo");
-		
-	}
-	
-	@Override
-	public String getTituloPagina() {
-		// TODO Auto-generated method stub
-		return "Mantenimiento Roles";
-	}
-
-	@Override
-	public String getDescripcionPagina() {
-		// TODO Auto-generated method stub
-		return "Mantenedor Roles";
-	}
-
-	@Override
-	public String getAyudaPagina() {
-		// TODO Auto-generated method stub
-		return "Cree o edite los Roles";
-	}
-
-	@Override
-	public String getTab() {
-		// TODO Auto-generated method stub
-		return "Datos Rol";
-	}
-
-	@Override
-	public String getCabeceraTabla() {
-		// TODO Auto-generated method stub
-		return "Roles registrados";
-	}
-
-	@Override
-	protected void metodoPostTransaccion() {
-		super.metodoPostTransaccion();// trae la lista de entidades
-		super.entidadRegistrar = new OmsRole();
-		opcionesSeleccionadas = null;
-	}
-
-	@Override
-	public String getMensajeTablaVacia() {
-		// TODO Auto-generated method stub
-		return JsfUtil.MENSAJE_INFO_SINRESULTADO;
-	}
-
-	@Override
-	public String getCabeceraDialogo() {
-		// TODO Auto-generated method stub
-		return "Actualización Rol";
-	}
-
-	@Override
-	public String getCabeceraPanelDialogo() {
-		// TODO Auto-generated method stub
-		return "Datos Rol";
-	}
-
-	@Override
-	protected void metodoPostConstruct() {
-		listaOpcionesTerminales = servicioMantenedor.listaOpcionesEjecutables();
+	protected ServicioMantenedorRol getServicioMantenedor() {
+		return servicioMantenedor;
 	}
 
 	public List<OmsOpcione> getListaOpcionesTerminales() {
@@ -148,20 +112,15 @@ public class BeanMantenedorRol extends BeanMantenedorGenerico<ServicioMantenedor
 		return opcionesRolesAsig;
 	}
 
-	protected void postSeleccionRegistro(OmsRole entidadRegistrar2) {
-		// aqui debo seleccionar los roles asignados
-//		List<OmsOpcione> opcionesSeleccionadasRol = servicioMantenedor.listaOpcionesEjecutables(entidadRegistrar2);
-//		opcionesSeleccionadas = new Long[opcionesSeleccionadasRol.size()];
-//		int i = 0;
-//		for (OmsOpcione opcion : opcionesSeleccionadasRol) {
-//			opcionesSeleccionadas[i] = opcion.getId();
-//			i++;
-//		}
-		opcionesSeleccionadas = null;
-		System.out.println("Sin actualizar las opciones");
-		
+	@Override
+	protected void cargarListaEtiquetas() {
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TITULOPAGINA.toString(), "Mantenimiento Roles");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.DESCRIPCIONPAGINA.toString(), "Mantenedor Roles");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.AYUDAPAGINA.toString(), "Cree o edite los Roles");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TAB.toString(), "Datos Rol");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Roles registrados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERADIALOGO.toString(), "Actualización Rol");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos Rol");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
 	}
-
-	
-
 }

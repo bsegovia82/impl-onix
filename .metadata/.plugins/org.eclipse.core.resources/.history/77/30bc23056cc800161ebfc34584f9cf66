@@ -1,0 +1,20 @@
+package com.onix.modulo.servicio.notificacion;
+
+import javax.annotation.Resource;
+import javax.ejb.Stateless;
+import javax.mail.Session;
+
+import com.onix.modulo.servicio.interfaces.IRecursoNotificadorMail;
+
+@Stateless
+public class ServicioRecursoNotificadorMail implements IRecursoNotificadorMail
+{
+	@Resource(lookup = "java:jboss/mail/gmail")
+	private Session lSession;
+
+	@Override
+	public Session obtenerSessionMail() {
+		return lSession;
+	}
+
+}

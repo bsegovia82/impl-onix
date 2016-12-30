@@ -1,0 +1,109 @@
+package com.onix.modulo.vista.bean.portal;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import com.onix.modulo.dominio.aplicacion.OmgSolicitudUsoAplicacion;
+import com.onix.modulo.dominio.persona.operacion.OmsoCargo;
+import com.onix.modulo.eao.aplicacion.OmgSolicitudUsoAplicacionEAO;
+import com.onix.modulo.eao.persona.operacion.OmsoCargoEAO;
+import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
+import com.onix.modulo.librerias.vista.exceptions.ErrorAccionesPreTransaccion;
+import com.onix.modulo.librerias.vista.exceptions.ErrorValidacionVisual;
+import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorSolicitud;
+import com.onix.modulo.servicio.mantenimiento.persona.operacion.ServicioMantenedorCargo;
+
+@ManagedBean
+@ViewScoped
+public class BeanSolicitudUsoAplicacion 
+extends BeanMantenedorGenerico<ServicioMantenedorSolicitud, Long, OmgSolicitudUsoAplicacion, OmgSolicitudUsoAplicacionEAO> {
+	
+	protected BeanSolicitudUsoAplicacion() {
+		super(new OmgSolicitudUsoAplicacion(), OmgSolicitudUsoAplicacion.class);
+	}
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public void accionesPreTransaccionServicio() throws ErrorAccionesPreTransaccion {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getAyudaPagina() {
+		return "Solicitud de uso de demo";
+	}
+
+	@Override
+	public String getCabeceraDialogo() {
+		return "Solicitud de uso de demo";
+	}
+
+	@Override
+	public String getCabeceraPanelDialogo() {
+		return "Solicitud de uso de demo";
+	}
+
+	@Override
+	public String getCabeceraTabla() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getDescripcionPagina() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getMensajeTablaVacia() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected ServicioMantenedorSolicitud getServicioMantenedor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTab() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTituloPagina() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected void metodoPostConstruct() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void metodoPostErrorTransaccion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void postSeleccionRegistro(OmgSolicitudUsoAplicacion entidadRegistrar2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validacionesIngreso() throws ErrorValidacionVisual {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+}

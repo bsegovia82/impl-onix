@@ -20,10 +20,15 @@
 		type="text/javascript"></script>
 
 	<style>
-	.ui-outputlabel
-	{
-		font-size: 12px;
-	}
+.ui-outputlabel {
+	font-size: 12px;
+}
+
+
+@media screen and (max-height: 575px){
+#rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
+}
+
 #menu-button {
 	height: auto;
 	width: 25px;
@@ -93,8 +98,8 @@
 			<a id="menu-button"><i class="fa fa-bars"></i></a>
 			<ul class="" style="padding: 0px;" id="menubody">
 				<li class=""><a
-					href="#{request.contextPath}/publicas/login.jsf" target="login" class="">Ir al
-						Login</a></li>
+					href="#{request.contextPath}/publicas/login.jsf" target="login"
+					class="">Ir al Login</a></li>
 				<li class=""><a href="#modena-highlight" class=""> Inicio</a></li>
 				<li class=""><a href="#modena-infoArea" class=""> Solicitar
 						una demostración</a></li>
@@ -174,20 +179,14 @@
 							<div class="ContainerIndent"></div>
 						</div>
 						<div class="Container70 Responsive50">
-							<h2 class="BoldGray FontRobotoRegular Fs30">1. Store Stats</h2>
+							<h2 class="BoldGray FontRobotoRegular Fs30">1. Solicitar cuenta de asociado WEB</h2>
 							<div class="EmptyBox10"></div>
-							<h3 class="BoldGray FontRobotoLight Fs20">Monitor the app
-								ecosystem and your competitors.</h3>
+							<h3 class="BoldGray FontRobotoLight Fs20">Incio del plan del servicio.</h3>
 							<div class="EmptyBox20"></div>
-							<span class="BoldGray Fs14 FontModenaLight">Vitae potenti
-								ante praesent a dui eget nibh eu quam accumsan porttitor
-								tincidunt ultrices vel auctor aenean placerat viverra ac vel
-								parturient tristique malesuada hac conubia sed tincidunt.Quisque
-								a imperdiet suspendisse parturient adipiscing justo sem a in
-								eros eros luctus a turpis urna sapien ullamcorper vulputate at
-								mi.Dis vestibulum vel lectus sed vestibulum consectetur vivamus
-								a feugiat pharetra fames ullamcorper adipiscing condimentum
-								tempor egestas at at lacus.</span>
+							<span class="BoldGray Fs14 FontModenaLight">Dependiendo del plan contratado, el asociado web podrá realizar 
+							el registro de los datos de las compañias, usuarios roles opciones y los respectivos permisos.
+							Todo esto representa a la configuración inicial de los datos de la parametría del sistema.
+							</span>
 							<div class="EmptyBox30"></div>
 							<div class="Container50 Responsive50 ui-fluid">
 								<div class="ContainerIndent">
@@ -343,12 +342,14 @@
 			demo !</h1>
 		<div class="EmptyBox30"></div>
 
-		<div class="Wid90 OvHidden MarAuto">
+		<div class="Wid150 OvHidden MarAuto">
 			<div class="Container100">
 
 				<div
 					class="Wid70 WidAutoOnMobile MarAuto White Fs24 TexAlCenter FontModenaLight">
-					Solicite usuarios para la demostración del sistema, los usuarios creados tendrá una vigencia de 5 días a partir de la fecha de inicio
+					Solicite usuarios para la demostración del sistema, los usuarios
+					creados tendrá una vigencia de 5 días a partir de la fecha de
+					inicio
 					<div class="Container100 ui-fluid">
 						<div class="ContainerIndent">
 							<div class="Card ShadowEffect">
@@ -371,27 +372,33 @@
 										<p:outputLabel for="txtCiudad" value="Ciudad:" />
 										<p:inputText id="txtCiudad" required="true" />
 
-										<p:outputLabel for="txtEmail" value="Email:"
-											validatorMessage="Formato de correo invalido">
+										<p:outputLabel for="txtEmail" value="Email:">
 										</p:outputLabel>
-										<p:inputText id="txtEmail"  required="true">
-										<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+										<p:inputText id="txtEmail" required="true"
+											validatorMessage="Formato de Email invalido">
+											<f:validateRegex
+												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
 										</p:inputText>
 
 										<p:outputLabel for="txtCelular" value="Celular:">
 										</p:outputLabel>
-										<p:inputText id="txtCelular" required="true"/>
-										
-										<p:outputLabel for="txtDetalle"
-											value="Solicitud" />
-										<p:inputTextarea id="txtDetalle" required="true" autoResize="false" style="resize: none"/>
+										<p:inputText id="txtCelular" required="true" />
+
+										<p:outputLabel for="txtDetalle" value="Solicitud" />
+										<p:inputTextarea id="txtDetalle" required="true"
+											autoResize="false" style="resize: none" />
+										<h:outputText value="" />
+										<h:panelGroup>
+										<div style="height:50px; width:130px" >
+										<p:captcha label="Captcha" language="es" secure="true"  theme="white"/>
+										</div>
+										</h:panelGroup>
 										<h:outputText value="" />
 										<h:outputText value="" />
 										<h:outputText value="" />
-										<h:outputText value="" />
-										<h:outputText value="" />
-										<p:commandButton id="btnEnviar" value="Solicitar" icon="fa icon-mail"
-											style="max-width:150px;" styleClass="RedButton Fs18" process="@form" update="@form" />
+										<p:commandButton id="btnEnviar" value="Solicitar"
+											icon="fa icon-mail" style="max-width:150px;"
+											styleClass="RedButton Fs18" process="@form" update="@form" />
 									</p:panelGrid>
 
 								</h:form>
@@ -837,9 +844,11 @@
 			id="footerlinks">
 			<div class="ContainerIndent OvHidden">
 				<a href="https://apis-ec.jimdo.com/" target="ir_web"
-					class="DispInlBlock FontModenaLight White Fs14 Fleft HoverEffect">Sítio WEB</a> <span class="DispInlBlock Fleft Fs14 White"
+					class="DispInlBlock FontModenaLight White Fs14 Fleft HoverEffect">Sítio
+					WEB</a> <span class="DispInlBlock Fleft Fs14 White"
 					style="padding: 0px 10px;">|</span> <a href="#modena-highlight"
-					class="DispInlBlock FontModenaLight White Fs14 Fleft HoverEffect">Ir arriba</a>
+					class="DispInlBlock FontModenaLight White Fs14 Fleft HoverEffect">Ir
+					arriba</a>
 
 				<div class="EmptyBox10 ShowOnMobile"></div>
 				<span
@@ -853,9 +862,9 @@
 				<h:graphicImage name="general/onix_logo.png" library="imagenes"
 					style="max-width : 80px; width : 200px;" />
 				<span
-					class="DispInlBlock FontModenaLight White Fs12 Fright HoverEffect TexAlRight">593981060337 <br /> byronsantiago@gmail.com <br /> <br />
-					Copyright © 2016 <i class="icon-primitive-dot Fs10 White"></i> All
-					rights reserved.
+					class="DispInlBlock FontModenaLight White Fs12 Fright HoverEffect TexAlRight">593981060337
+					<br /> byronsantiago@gmail.com <br /> <br /> Copyright © 2016 <i
+					class="icon-primitive-dot Fs10 White"></i> All rights reserved.
 				</span>
 			</div>
 		</div>

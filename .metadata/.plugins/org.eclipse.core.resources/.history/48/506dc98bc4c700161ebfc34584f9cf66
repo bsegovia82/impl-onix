@@ -1,0 +1,20 @@
+package com.onix.modulo.vista.servicio.notificacion;
+
+import javax.annotation.Resource;
+import javax.inject.Named;
+import javax.mail.Session;
+
+import com.onix.modulo.servicio.interfaces.IRecursoNotificadorMail;
+
+@Named
+public class CdiRecursoNotificadorMail implements IRecursoNotificadorMail
+{
+	@Resource(name = "java:jboss/mail/gmail")
+	private Session lSession;
+
+	public Session obtenerSessionMail() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
