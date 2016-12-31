@@ -361,32 +361,41 @@
 										layout="grid" styleClass="ui-panelgrid-blank"
 										style="border:0px none; background-color:transparent;">
 										<p:outputLabel for="txtNombre" value="Su Nombre:" />
-										<p:inputText id="txtNombre" required="true" />
+										<p:inputText id="txtNombre" required="true" value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombre}" />
 
 										<p:outputLabel for="txtNombreEmpresa" value="Nombre Empresa:" />
-										<p:inputText id="txtNombreEmpresa" />
+										<p:inputText id="txtNombreEmpresa" value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombreEmpresa}"/>
 
 										<p:outputLabel for="txtPais" value="País:" />
-										<p:inputText id="txtPais" required="true" />
+										<p:inputText id="txtPais" required="true" 
+										value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lPais}"
+										/>
 
 										<p:outputLabel for="txtCiudad" value="Ciudad:" />
-										<p:inputText id="txtCiudad" required="true" />
+										<p:inputText id="txtCiudad" required="true" 
+										value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCiudad}" />
 
 										<p:outputLabel for="txtEmail" value="Email:">
 										</p:outputLabel>
 										<p:inputText id="txtEmail" required="true"
-											validatorMessage="Formato de Email invalido">
+											validatorMessage="Formato de Email invalido"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lEmail}"
+											>
 											<f:validateRegex
 												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
 										</p:inputText>
 
 										<p:outputLabel for="txtCelular" value="Celular:">
 										</p:outputLabel>
-										<p:inputText id="txtCelular" required="true" />
+										<p:inputText id="txtCelular" required="true" 
+										value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCelular}"
+										/>
 
 										<p:outputLabel for="txtDetalle" value="Solicitud" />
 										<p:inputTextarea id="txtDetalle" required="true"
-											autoResize="false" style="resize: none" />
+											autoResize="false" style="resize: none" 
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lSolicitud}"
+											/>
 										<h:outputText value="" />
 										<h:panelGroup>
 										<div style="height:50px; width:130px" >
@@ -398,8 +407,10 @@
 										<h:outputText value="" />
 										<p:commandButton id="btnEnviar" value="Solicitar"
 											icon="fa icon-mail" style="max-width:150px;"
-											styleClass="RedButton Fs18" process="@form" update="@form" />
-									</p:panelGrid>
+											styleClass="RedButton Fs18" process="@form" update="@form" 
+											actionListener="#{beanSolicitudUsoAplicacion.guardarOActualizar}"
+											/>
+									</p:panelGrid>  
 
 								</h:form>
 

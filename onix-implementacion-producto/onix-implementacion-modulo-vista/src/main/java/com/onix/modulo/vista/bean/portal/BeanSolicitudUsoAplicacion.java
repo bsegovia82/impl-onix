@@ -21,7 +21,7 @@ extends BeanMantenedorGenerico<ServicioMantenedorSolicitud, Long, OmgSolicitudUs
 	private ServicioMantenedorSolicitud servicioMantenedor;
 	private static final long serialVersionUID = 1L;
 	
-	protected BeanSolicitudUsoAplicacion() {
+	public BeanSolicitudUsoAplicacion() {
 		super(new OmgSolicitudUsoAplicacion(), OmgSolicitudUsoAplicacion.class);
 		addPostConstructuListener(new PostConstructListener() {
 			
