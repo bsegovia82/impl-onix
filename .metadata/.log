@@ -2764,3 +2764,9 @@ org.jboss.tools.vpe.xulrunner.XulRunnerBundleNotFoundException: Bundle org.mozil
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1488)
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2016-12-30 22:22:08.788
+!MESSAGE Unable to retrieve a list of remote deployment scanners
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2016-12-30 22:22:08.789
+!MESSAGE Unable to retrieve a list of remote deployment scanners

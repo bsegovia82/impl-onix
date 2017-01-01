@@ -5786,3 +5786,70 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.sebra.oni
 2016-12-30 15:10:01,464 [Worker-465] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2016-12-30 15:10:01,465 [Worker-465] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2016-12-30 15:10:01,465 [Worker-465] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 19:07:37,792 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:07:37,825 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 435 resources
+2016-12-30 19:07:37,858 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:07:37,859 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 19:07:38,120 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:07:38,121 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-30 19:07:38,122 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:07:38,122 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-servicios\src\test\resources
+2016-12-30 19:07:38,254 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:07:38,256 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 9 resources
+2016-12-30 19:07:38,258 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:07:38,258 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-base\src\test\resources
+2016-12-30 19:07:38,330 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:07:38,331 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-30 19:07:38,332 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:07:38,332 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 19:07:38,332 [Worker-475] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of onix-implementacion-modulo-vista
+2016-12-30 19:07:38,332 [Worker-475] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for onix-implementacion-modulo-vista
+2016-12-30 19:07:38,374 [Worker-475] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:52:45,744 [Worker-489] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:52:45,744 [Worker-489] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 19:52:45,745 [Worker-489] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 19:52:45,745 [Worker-489] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:00:35,381 [Worker-500] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:00:35,381 [Worker-500] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 20:00:35,382 [Worker-500] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:00:35,382 [Worker-500] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:00:56,838 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:00:56,839 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 20:00:56,840 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:00:56,840 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:01:24,127 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:01:24,127 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 20:01:24,128 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:01:24,128 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:01:52,947 [Worker-490] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:01:52,947 [Worker-490] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 20:01:52,948 [Worker-490] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:01:52,948 [Worker-490] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:02:06,840 [Worker-498] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:02:06,840 [Worker-498] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 20:02:06,841 [Worker-498] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:02:06,841 [Worker-498] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:02:25,417 [Worker-500] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:02:25,417 [Worker-500] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 20:02:25,418 [Worker-500] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:02:25,418 [Worker-500] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:02:39,031 [Worker-503] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:02:39,031 [Worker-503] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 20:02:39,033 [Worker-503] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:02:39,033 [Worker-503] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:03:19,202 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:03:19,203 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 20:03:19,203 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:03:19,203 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:04:35,788 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:04:35,788 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 20:04:35,789 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:04:35,789 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:05:25,505 [Worker-503] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:05:25,505 [Worker-503] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-30 20:05:25,505 [Worker-503] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:05:25,506 [Worker-503] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources
+2016-12-30 20:06:43,290 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:06:43,290 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-30 20:06:43,291 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-12-30 20:06:43,291 [Worker-496] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\externo\impl-onix\onix-implementacion-producto\onix-implementacion-modulo-vista\src\test\resources

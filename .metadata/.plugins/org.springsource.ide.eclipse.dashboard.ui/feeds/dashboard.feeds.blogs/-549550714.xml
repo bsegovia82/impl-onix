@@ -5,7 +5,7 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-12-30T13:35:40Z</updated>
+  <updated>2016-12-30T13:35:00Z</updated>
   <entry>
     <title>Spring Framework 5.0 M4 released</title>
     <link rel="alternate" href="https://spring.io/blog/2016/12/30/spring-framework-5-0-m4-released" />
@@ -14,9 +14,9 @@
       <name>Juergen Hoeller</name>
     </author>
     <id>tag:spring.io,2016-12-30:2757</id>
-    <updated>2016-12-30T13:35:40Z</updated>
+    <updated>2016-12-30T13:35:00Z</updated>
     <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;
-&lt;p&gt;It is my pleasure to announce that &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10000&amp;version=15721"&gt;the fourth Spring Framework 5.0 milestone&lt;/a&gt; is available now, right in time to wrap up 2016! Once again, please check &lt;a href="http://projects.spring.io/spring-framework/"&gt;the project page&lt;/a&gt; for how to obtain it from our milestone repository.&lt;/p&gt;
+&lt;p&gt;It is my pleasure to announce that &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10000&amp;version=15721"&gt;the fourth Spring Framework 5.0 milestone&lt;/a&gt; is available now, right in time to wrap up 2016! Once again, please check &lt;a href="http://projects.spring.io/spring-framework/"&gt;the project page&lt;/a&gt; for how to obtain it from our milestone repository and the updated &lt;a href="http://docs.spring.io/spring/docs/5.0.0.M4/spring-framework-reference/html/web-reactive.html"&gt;&amp;ldquo;Reactive Web Applications&amp;rdquo;&lt;/a&gt; documentation.&lt;/p&gt;
 &lt;p&gt;This milestone brings our reactive efforts close to completion and introduces a functional bean registration facility as well as comprehensive support for the Kotlin language. Stay tuned for a dedicated blog post on Kotlin&amp;hellip;&lt;/p&gt;
 &lt;p&gt;Cheers,&lt;br/&gt;Juergen&lt;/p&gt;</content>
   </entry>
