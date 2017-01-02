@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "title": "JBoss Tools",
-  "timestamp": 1482983871033,
+  "timestamp": 1483358529145,
   "ttl": 0,
   "helpUrl": "https://aer.ctrlflow.com/redhat/help",
   "feedbackUrl": "http://ctrlflow.com/automated-error-reporting",
@@ -63,5 +63,5 @@
     ":java.net.*:",
     ":org.eclipse.core.runtime.OperationCanceledException:"
   ],
-  "problemsZipLastDownloadTimestamp": 1482984173407
+  "problemsZipLastDownloadTimestamp": 1483358830684
 }

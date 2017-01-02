@@ -355,11 +355,11 @@
 							<div class="Card ShadowEffect">
 								<h2 class="BigTopic">Formulario de solicitud</h2>
 								<h:form>
-									<p:messages closable="true"></p:messages>
+									<p:messages closable="true" id="textoMensaje"></p:messages>
 									<p:panelGrid columns="4"
 										columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
 										layout="grid" styleClass="ui-panelgrid-blank"
-										style="border:0px none; background-color:transparent;">
+										style="border:0px none; background-color:transparent;" id="papSolicitud">
 										<p:outputLabel for="txtNombre" value="Su Nombre:" />
 										<p:inputText id="txtNombre" required="true" value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombre}" />
 
@@ -407,8 +407,9 @@
 										<h:outputText value="" />
 										<p:commandButton id="btnEnviar" value="Solicitar"
 											icon="fa icon-mail" style="max-width:150px;"
-											styleClass="RedButton Fs18" process="@form" update="@form" 
-											actionListener="#{beanSolicitudUsoAplicacion.guardarOActualizar}"
+											styleClass="RedButton Fs18" 
+											process=":#{p:component('papSolicitud')}" update=":#{p:component('papSolicitud')}, :#{p:component('textoMensaje')}" 
+											actionListener="#{beanSolicitudUsoAplicacion.registroSinAutenticacion}"
 											/>
 									</p:panelGrid>  
 

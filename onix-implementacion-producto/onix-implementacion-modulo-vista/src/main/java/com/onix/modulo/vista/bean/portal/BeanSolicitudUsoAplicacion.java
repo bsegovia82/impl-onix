@@ -49,6 +49,8 @@ extends BeanMantenedorGenerico<ServicioMantenedorSolicitud, Long, OmgSolicitudUs
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERADIALOGO.toString(), "Solicitud de uso de demo");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos Cargo");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.MENSAJE_TRANSACCION.toString(), "Solicitud registrada correctamente");
+		
 	}
 
 	

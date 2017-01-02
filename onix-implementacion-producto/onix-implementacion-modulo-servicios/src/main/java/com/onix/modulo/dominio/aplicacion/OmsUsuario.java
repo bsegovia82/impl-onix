@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +15,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import com.onix.modulo.librerias.dominio.entidades.base.EntidadBaseAuditable;
@@ -38,7 +39,11 @@ public class OmsUsuario extends EntidadBaseAuditable<Long> implements Serializab
 	private String correo;
 
 	private String es_nuevo;
+	
+	private String lTokenRecuperacionClave;
 
+	private Date lFechaSolicitudClave;
+	
 	private List<OmsUsuariosRole> priUsuariosRoles;
 
 	private String rolesAsignados;
@@ -143,7 +148,26 @@ public class OmsUsuario extends EntidadBaseAuditable<Long> implements Serializab
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return usuario;
 	}
+	
+	@Column(name = "TOKEN_RECUPERACION_CLAVE")
+	public String getlTokenRecuperacionClave() {
+		return lTokenRecuperacionClave;
+	}
+	
+	public void setlTokenRecuperacionClave(String lTokenRecuperacionClave) {
+		this.lTokenRecuperacionClave = lTokenRecuperacionClave;
+	}
+	
+	@Column(name = "FECHA_SOLICTUD_CLAVE")
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getlFechaSolicitudClave() {
+		return lFechaSolicitudClave;
+	}
+	
+	public void setlFechaSolicitudClave(Date lFechaSolicitudClave) {
+		this.lFechaSolicitudClave = lFechaSolicitudClave;
+	}
+	
 }

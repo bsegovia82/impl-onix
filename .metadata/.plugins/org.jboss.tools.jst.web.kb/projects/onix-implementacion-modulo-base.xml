@@ -38,9 +38,9 @@
   <path value="D:/repositorio/org/jboss/metadata/jboss-metadata-ear/7.0.0.Final/jboss-metadata-ear-7.0.0.Final.jar"/>
   <path value="D:/repositorio/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
   <path value="D:/repositorio/emma/emma_ant/2.0.5312/emma_ant-2.0.5312.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-dominio/7.0/onix-modulo-librerias-dominio-7.0.jar"/>
   <path value="D:/repositorio/org/jboss/jboss-remote-naming/1.0.1.Final/jboss-remote-naming-1.0.1.Final.jar"/>
   <path value="D:/repositorio/org/infinispan/infinispan-cachestore-remote/5.1.1.FINAL/infinispan-cachestore-remote-5.1.1.FINAL.jar"/>
-  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-dominio/7.0/onix-modulo-librerias-dominio-7.0.jar"/>
   <path value="D:/repositorio/org/jboss/as/jboss-as-server/7.1.0.Final/jboss-as-server-7.1.0.Final.jar"/>
   <path value="D:/repositorio/org/jboss/marshalling/jboss-marshalling/1.3.9.GA/jboss-marshalling-1.3.9.GA.jar"/>
   <path value="D:/repositorio/org/jboss/security/jboss-negotiation-spnego/2.2.0.SP1/jboss-negotiation-spnego-2.2.0.SP1.jar"/>

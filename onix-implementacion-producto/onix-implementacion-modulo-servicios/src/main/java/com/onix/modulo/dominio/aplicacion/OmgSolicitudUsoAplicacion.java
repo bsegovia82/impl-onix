@@ -26,6 +26,8 @@ public class OmgSolicitudUsoAplicacion extends EntidadBaseAuditable<Long> implem
 	private String lEmail;
 	private String lCelular;
 	private String lSolicitud;
+	private String lEmailEnviado;
+	private String lUsuarioDemoCreado;
 
 
 	public OmgSolicitudUsoAplicacion()
@@ -100,6 +102,26 @@ public class OmgSolicitudUsoAplicacion extends EntidadBaseAuditable<Long> implem
 
 	public void setlSolicitud(String lSolicitud) {
 		this.lSolicitud = lSolicitud;
+	}
+
+	@Column(name="EMAIL_ENVIADO")
+	public String getlEmailEnviado() {
+		return lEmailEnviado;
+	}
+
+	public void setlEmailEnviado(String lEmailEnviado) {
+		this.lEmailEnviado = lEmailEnviado;
+	}
+
+	@Column(name="USUARIO_DEMO")
+	public String getlUsuarioDemoCreado() {
+		return lUsuarioDemoCreado;
+	}
+
+	public void setlUsuarioDemoCreado(String lUsuarioDemoCreado) {
+		this.lUsuarioDemoCreado = lUsuarioDemoCreado;
 	}	
+	
+	
 	
 }
