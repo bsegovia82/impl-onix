@@ -1,8 +1,0 @@
-package com.onix.modulo.servicio.interfaces;
-
-public interface IRecursoNotificador 
-{
-
-	
-	
-}

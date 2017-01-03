@@ -10,6 +10,7 @@ import com.onix.modulo.librerias.vista.JsfUtil;
 import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
 import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
 import com.onix.modulo.librerias.vista.beans.oyentes.PostConstructListener;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostTransaccionListener;
 import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorSolicitud;
 
 @ManagedBean
@@ -28,6 +29,15 @@ extends BeanMantenedorGenerico<ServicioMantenedorSolicitud, Long, OmgSolicitudUs
 			@Override
 			public void metodoPostConstruct() {
 				entidadRegistrar = new OmgSolicitudUsoAplicacion();
+				
+			}
+		});
+		
+		addPostTransaccion(new PostTransaccionListener() {
+			
+			@Override
+			public void metodoPostTransaccion() {
+				entidadRegistrar=new OmgSolicitudUsoAplicacion();
 				
 			}
 		});
@@ -50,7 +60,6 @@ extends BeanMantenedorGenerico<ServicioMantenedorSolicitud, Long, OmgSolicitudUs
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos Cargo");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.MENSAJE_TRANSACCION.toString(), "Solicitud registrada correctamente");
-		
 	}
 
 	

@@ -17,16 +17,28 @@
 
 	<script
 		src="http://maps.google.com/maps/api/js?key=AIzaSyDStiUrKFbn6B8c7Fn_eFLITGi08ps1FF8"
-		type="text/javascript"></script>
+		type="text/javascript">
+	</script>
+
+	<script>
+	function ChangeCase(elem) {
+		elem.value = elem.value.toUpperCase();
+	}
+	</script>
+
 
 	<style>
 .ui-outputlabel {
 	font-size: 12px;
 }
 
-
-@media screen and (max-height: 575px){
-#rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
+@media screen and (max-height: 575px) {
+	#rc-imageselect, .g-recaptcha {
+		transform: scale(0.77);
+		-webkit-transform: scale(0.77);
+		transform-origin: 0 0;
+		-webkit-transform-origin: 0 0;
+	}
 }
 
 #menu-button {
@@ -179,14 +191,17 @@
 							<div class="ContainerIndent"></div>
 						</div>
 						<div class="Container70 Responsive50">
-							<h2 class="BoldGray FontRobotoRegular Fs30">1. Solicitar cuenta de asociado WEB</h2>
+							<h2 class="BoldGray FontRobotoRegular Fs30">1. Solicitar
+								cuenta de asociado WEB</h2>
 							<div class="EmptyBox10"></div>
-							<h3 class="BoldGray FontRobotoLight Fs20">Incio del plan del servicio.</h3>
+							<h3 class="BoldGray FontRobotoLight Fs20">Incio del plan del
+								servicio.</h3>
 							<div class="EmptyBox20"></div>
-							<span class="BoldGray Fs14 FontModenaLight">Dependiendo del plan contratado, el asociado web podrá realizar 
-							el registro de los datos de las compañias, usuarios roles opciones y los respectivos permisos.
-							Todo esto representa a la configuración inicial de los datos de la parametría del sistema.
-							</span>
+							<span class="BoldGray Fs14 FontModenaLight">Dependiendo
+								del plan contratado, el asociado web podrá realizar el registro
+								de los datos de las compañias, usuarios roles opciones y los
+								respectivos permisos. Todo esto representa a la configuración
+								inicial de los datos de la parametría del sistema. </span>
 							<div class="EmptyBox30"></div>
 							<div class="Container50 Responsive50 ui-fluid">
 								<div class="ContainerIndent">
@@ -359,59 +374,62 @@
 									<p:panelGrid columns="4"
 										columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
 										layout="grid" styleClass="ui-panelgrid-blank"
-										style="border:0px none; background-color:transparent;" id="papSolicitud">
+										style="border:0px none; background-color:transparent;"
+										id="papSolicitud">
 										<p:outputLabel for="txtNombre" value="Su Nombre:" />
-										<p:inputText id="txtNombre" required="true" value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombre}" />
-
+										<p:inputText id="txtNombre" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombre}"
+											onblur="ChangeCase(this);" />
 										<p:outputLabel for="txtNombreEmpresa" value="Nombre Empresa:" />
-										<p:inputText id="txtNombreEmpresa" value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombreEmpresa}"/>
+										<p:inputText id="txtNombreEmpresa" onblur="ChangeCase(this);"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombreEmpresa}" />
 
 										<p:outputLabel for="txtPais" value="País:" />
-										<p:inputText id="txtPais" required="true" 
-										value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lPais}"
-										/>
+										<p:inputText id="txtPais" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lPais}"
+											onblur="ChangeCase(this);" />
 
 										<p:outputLabel for="txtCiudad" value="Ciudad:" />
-										<p:inputText id="txtCiudad" required="true" 
-										value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCiudad}" />
+										<p:inputText id="txtCiudad" onblur="ChangeCase(this);"
+											required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCiudad}" />
 
 										<p:outputLabel for="txtEmail" value="Email:">
 										</p:outputLabel>
 										<p:inputText id="txtEmail" required="true"
 											validatorMessage="Formato de Email invalido"
-											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lEmail}"
-											>
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lEmail}">
 											<f:validateRegex
 												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
 										</p:inputText>
 
 										<p:outputLabel for="txtCelular" value="Celular:">
 										</p:outputLabel>
-										<p:inputText id="txtCelular" required="true" 
-										value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCelular}"
-										/>
+										<p:inputText id="txtCelular" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCelular}" />
 
 										<p:outputLabel for="txtDetalle" value="Solicitud" />
 										<p:inputTextarea id="txtDetalle" required="true"
-											autoResize="false" style="resize: none" 
+											autoResize="false" style="resize: none"
 											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lSolicitud}"
-											/>
+											onblur="ChangeCase(this);" />
 										<h:outputText value="" />
 										<h:panelGroup>
-										<div style="height:50px; width:130px" >
-										<p:captcha label="Captcha" language="es" secure="true"  theme="white"/>
-										</div>
+											<div style="height: 50px; width: 130px">
+												<p:captcha label="Captcha" language="es" secure="true"
+													theme="white" />
+											</div>
 										</h:panelGroup>
 										<h:outputText value="" />
 										<h:outputText value="" />
 										<h:outputText value="" />
 										<p:commandButton id="btnEnviar" value="Solicitar"
 											icon="fa icon-mail" style="max-width:150px;"
-											styleClass="RedButton Fs18" 
-											process=":#{p:component('papSolicitud')}" update=":#{p:component('papSolicitud')}, :#{p:component('textoMensaje')}" 
-											actionListener="#{beanSolicitudUsoAplicacion.registroSinAutenticacion}"
-											/>
-									</p:panelGrid>  
+											styleClass="RedButton Fs18"
+											process=":#{p:component('papSolicitud')}"
+											update=":#{p:component('papSolicitud')}, :#{p:component('textoMensaje')}"
+											actionListener="#{beanSolicitudUsoAplicacion.registroSinAutenticacion}" />
+									</p:panelGrid>
 
 								</h:form>
 

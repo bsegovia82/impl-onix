@@ -1,8 +1,0 @@
-package com.onix.modulo.vista.servicio.notificacion;
-
-import com.onix.modulo.servicio.interfaces.IRecursoNotificadorMail;
-
-public class CdiRecursoNotificadorMail implements IRecursoNotificadorMail
-{
-
-}

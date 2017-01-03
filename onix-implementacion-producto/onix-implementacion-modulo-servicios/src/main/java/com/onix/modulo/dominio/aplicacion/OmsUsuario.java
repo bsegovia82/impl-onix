@@ -44,6 +44,8 @@ public class OmsUsuario extends EntidadBaseAuditable<Long> implements Serializab
 
 	private Date lFechaSolicitudClave;
 	
+	private Date lFechaVencimiento;
+	
 	private List<OmsUsuariosRole> priUsuariosRoles;
 
 	private String rolesAsignados;
@@ -168,6 +170,16 @@ public class OmsUsuario extends EntidadBaseAuditable<Long> implements Serializab
 	
 	public void setlFechaSolicitudClave(Date lFechaSolicitudClave) {
 		this.lFechaSolicitudClave = lFechaSolicitudClave;
+	}
+	
+	@Column(name = "FECHA_VENCIMIENTO")
+	@Temporal(TemporalType.DATE)
+	public Date getlFechaVencimiento() {
+		return lFechaVencimiento;
+	}
+	
+	public void setlFechaVencimiento(Date lFechaVencimiento) {
+		this.lFechaVencimiento = lFechaVencimiento;
 	}
 	
 }

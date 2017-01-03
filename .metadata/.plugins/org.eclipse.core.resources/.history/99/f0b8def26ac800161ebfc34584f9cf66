@@ -1,9 +1,0 @@
-package com.onix.modulo.servicio.interfaces;
-
-import javax.mail.Session;
-
-
-public interface IRecursoNotificadorMail 
-{
-	public Session obtenerSessionMail();
-}
