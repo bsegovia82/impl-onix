@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+	<title>Servicio Capacitación y Evaluación</title>
+
+	<script
+		src="http://maps.google.com/maps/api/js?key=AIzaSyDStiUrKFbn6B8c7Fn_eFLITGi08ps1FF8"
+		type="text/javascript">
+	</script>
+
+	<script>
+	function ChangeCase(elem) {
+		elem.value = elem.value.toUpperCase();
+	}
+	</script>
+
+
+	<style>
+.ui-outputlabel {
+	font-size: 12px;
+}
+
+@media screen and (max-height: 575px) {
+	#rc-imageselect, .g-recaptcha {
+		transform: scale(0.77);
+		-webkit-transform: scale(0.77);
+		transform-origin: 0 0;
+		-webkit-transform-origin: 0 0;
+	}
+}
+
+#menu-button {
+	height: auto;
+	width: 25px;
+	float: left;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+	margin-left: 20px;
+}
+
+#menu-button i {
+	color: #fff;
+	font-size: 20px;
+	margin: 0px auto 0px auto;
+	vertical-align: top;
+}
+
+#menu-button:hover i, #menu-button:active i, #menu-button:focus i {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+#menubody {
+	width: 270px;
+	height: auto;
+	background-color: #fff;
+	position: absolute;
+	overflow: hidden;
+	border-radius: 5px;
+	margin-top: 30px;
+	display: none;
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+#menubody.active {
+	display: block;
+}
+
+#menubody li {
+	display: block;
+	padding: 0px;
+}
+
+#menubody li a {
+	display: block;
+	padding: 15px 20px;
+	color: #567a84;
+	font-size: 16px;
+}
+
+#menubody li a:hover, #menubody li a:active, #menubody li a:focus {
+	background-color: #f2f2f2;
+}
+</style>
+</h:head>
+
+<h:body style="margin: 0px; background-color:#fff;"
+	styleClass="BlueBody PopupMenu">
+
+	<div class="Container100 PosFixed BoldGrayBack" style="z-index: 999;">
+		<div class="EmptyBox20"></div>
+		<div class="Wid90 OvHidden MarAuto">
+			<h:graphicImage name="general/onix_logo.png" library="imagenes"
+				style="max-width : 80px; width : 200px;" />
+
+			<a id="menu-button"><i class="fa fa-bars"></i></a>
+			<ul class="" style="padding: 0px;" id="menubody">
+				<li class=""><a
+					href="#{request.contextPath}/publicas/login.jsf" target="login"
+					class="">Ir al Login</a></li>
+				<li class=""><a href="#onix-inicio" class=""> Inicio</a></li>
+				<li class=""><a href="#onix-solicitud" class=""> Solicitar
+						una demostración</a></li>
+				<li class=""><a href="#onix-detalles" class=""> Conocer
+						más</a></li>
+				<li class=""><a href="#modena-pricingtables" class="">
+						Tabla de precios</a></li>
+				<li class=""><a href="#modena-features" class="">
+						Carácteristicas</a></li>
+				<li class=""><a href="#modena-customers" class=""> Clientes</a></li>
+				<li class=""><a href="#modena-contact" class="">
+						Contáctenos</a></li>
+			</ul>
+		</div>
+		<div class="EmptyBox20"></div>
+	</div>
+
+	<!-- -->
+
+	<div class="Container100 BoldGrayBack" id="onix-inicio"
+		style="padding: 10rem 0px;">
+
+		<div class="Wid90 OvHidden MarAuto">
+			<div class="Container100">
+				<div class="EmptyBox90"></div>
+				<h1 class="FontRobotoRegular Fs50 WhiteBlue TexAlCenter">Software
+					de gestión de capacitación y evaluación</h1>
+				<div class="EmptyBox20"></div>
+				<span class="DispBlock Fs20 FontRobotoLight White TexAlCenter">“
+					Día a día con mayor convicción las empresas verifican que los
+					talento humanos son el activo más importante y la base cierta de
+					la ventaja competitiva en un plan de desarrollo estratégico. La
+					capacitación a todos los niveles constituye una de las mejores
+					inversiones en recursos humanos y una de las principales fuentes de
+					bienestar para el personal de toda organización. La capacitación
+					aumenta la aptitud de un empleado para un puesto”</span>
+				<div class="EmptyBox40"></div>
+				<div class="Wid50 MarAuto ui-fluid Responsive100">
+					<div class="Container50 Responsive100">
+						<div class="ContainerIndent">
+							<p:button href="#onix-solicitud"
+								value="Solicitar una demostración" styleClass="BlueButton Fs18"></p:button>
+						</div>
+					</div>
+					<div class="Container50 Responsive100">
+						<div class="ContainerIndent">
+							<p:button href="#onix-detalles" value="Concer más"
+								styleClass="OrangeButton Fs18" />
+						</div>
+					</div>
+				</div>
+
+				<div class="EmptyBox20 ShowOnMobile"></div>
+				<div class="EmptyBox120 ShowOnDesktop"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- -->
+
+	<div class="Container100 " id="onix-detalles"
+		style="background-color: #F0F2F5; padding: 0px 3rem; box-sizing: border-box;">
+
+		<div class="EmptyBox80"></div>
+
+		<h1 class="FontRobotoRegular Fs30 BoldGray TexAlCenter">Cómo
+			funciona ?</h1>
+		<div class="EmptyBox30"></div>
+
+		<div class="Wid90 OvHidden MarAuto">
+			<div class="Container100">
+
+				<div class="Container50 Responsive50">
+					<div class="ContainerIndent">
+						<i class="icon-toggle SoftRed Fs100 DispBlock Fleft"></i>
+						<div class="Container10 Responsive50">
+							<div class="ContainerIndent"></div>
+						</div>
+						<div class="Container70 Responsive50">
+							<h2 class="BoldGray FontRobotoRegular Fs30">1. Solicitar
+								cuenta</h2>
+							<div class="EmptyBox10"></div>
+							<h3 class="BoldGray FontRobotoLight Fs20">Incio del plan del
+								servicio.</h3>
+							<div class="EmptyBox20"></div>
+							<span class="BoldGray Fs14 FontModenaLight">Dependiendo
+								del plan contratado, el asociado web podrá realizar el registro
+								de los datos de las compañias, usuarios roles opciones y los
+								respectivos permisos. Todo esto representa a la configuración
+								inicial de los datos de la parametría del sistema. </span>
+							<div class="EmptyBox30"></div>
+							
+						</div>
+						<div class="EmptyBox30"></div>
+					</div>
+				</div>
+
+				<div class="Container50 Responsive50">
+					<div class="ContainerIndent">
+						<i class="icon-air-play SoftGreen Fs100 DispBlock Fleft"></i>
+						<div class="Container10 Responsive50">
+							<div class="ContainerIndent"></div>
+						</div>
+						<div class="Container70 Responsive50">
+							<h2 class="BoldGray FontRobotoRegular Fs30">2. Acceso</h2>
+							<div class="EmptyBox10"></div>
+							<h3 class="BoldGray FontRobotoLight Fs20">Registro de evaluaciones</h3>
+							<div class="EmptyBox20"></div>
+							<span class="BoldGray Fs14 FontModenaLight">El sistema ofrece las opciones de creación y configuración de
+							evaluaciones, creación de banco de preguntas, creación de examenes en base a bancos de preguntas, estos examenes 
+							generan preguntas y reespuestas de forma aleatoria, y la asignación, publicación y cierre de evaluaciones.</span>
+							<div class="EmptyBox30"></div>
+							
+						</div>
+						<div class="EmptyBox30"></div>
+					</div>
+				</div>
+
+				<div class="Container50 Responsive50">
+					<div class="ContainerIndent">
+						<i class="icon-monitor SoftOrange Fs100 DispBlock Fleft"></i>
+						<div class="Container10 Responsive50">
+							<div class="ContainerIndent"></div>
+						</div>
+						<div class="Container70 Responsive50">
+							<h2 class="BoldGray FontRobotoRegular Fs30">3. Ejecución
+								Evaluación</h2>
+							<div class="EmptyBox10"></div>
+							<h3 class="BoldGray FontRobotoLight Fs20">Usuarios a evaluar.</h3>
+							<div class="EmptyBox20"></div>
+							<span class="BoldGray Fs14 FontModenaLight">En el momento de la autenticación de los usuarios a evaluar
+							se muestra una bandeja con las evaluaciones que tienen pendientes y su respectivo historial, el usuario ejecuta la 
+							evaluación y al finalizar le indica el total de calificación obtenido.</span>
+							<div class="EmptyBox30"></div>
+							
+						</div>
+						<div class="EmptyBox30"></div>
+					</div>
+				</div>
+
+				<div class="Container50 Responsive50">
+					<div class="ContainerIndent">
+						<i class="icon-cloud-upload SoftPurple Fs100 DispBlock Fleft"></i>
+						<div class="Container10 Responsive50">
+							<div class="ContainerIndent"></div>
+						</div>
+						<div class="Container70 Responsive50">
+							<h2 class="BoldGray FontRobotoRegular Fs30">4. Reportes</h2>
+							<div class="EmptyBox10"></div>
+							<h3 class="BoldGray FontRobotoLight Fs20">Resultado y estadísticas.</h3>
+							<div class="EmptyBox20"></div>
+							<span class="BoldGray Fs14 FontModenaLight">Revise los resultados de las evaluaciones realizadas, 
+							obtenga una estadística de los usuarios con mayor puntaje, verifique la cantidad de evaluaciones realizadas
+							 durante un periodo de tiempo.</span>
+							<div class="EmptyBox30"></div>
+							
+						</div>
+						<div class="EmptyBox30"></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="EmptyBox50"></div>
+
+	</div>
+
+	<!-- -->
+
+	<div class="Container100 LeadenGreenBack" id="onix-solicitud"
+		style="padding: 0px 3rem; box-sizing: border-box;">
+
+		<div class="EmptyBox80"></div>
+
+		<h1 class="FontRobotoRegular Fs30 White TexAlCenter">Empezar el
+			demo !</h1>
+		<div class="EmptyBox30"></div>
+
+		<div class="Wid150 OvHidden MarAuto">
+			<div class="Container100">
+
+				<div
+					class="Wid70 WidAutoOnMobile MarAuto White Fs24 TexAlCenter FontModenaLight">
+					Solicite usuarios para la demostración del sistema, los usuarios
+					creados tendrá una vigencia de 5 días a partir de la fecha de
+					inicio
+					<div class="Container100 ui-fluid">
+						<div class="ContainerIndent">
+							<div class="Card ShadowEffect">
+								<h2 class="BigTopic">Formulario de solicitud</h2>
+								<h:form>
+									<p:messages closable="true" id="textoMensaje"></p:messages>
+									<p:panelGrid columns="4"
+										columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+										layout="grid" styleClass="ui-panelgrid-blank"
+										style="border:0px none; background-color:transparent;"
+										id="papSolicitud">
+										<p:outputLabel for="txtNombre" value="Su Nombre:" />
+										<p:inputText id="txtNombre" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombre}"
+											onblur="ChangeCase(this);"
+											validatorMessage="Debe ingresar un nombre válido, mínimo 10 caracteres máximo 100">
+											<f:validateRegex pattern="[a-zA-Z-\s]{10,100}"></f:validateRegex>
+										</p:inputText>
+										<p:outputLabel for="txtNombreEmpresa" value="Nombre Empresa:" />
+										<p:inputText id="txtNombreEmpresa" onblur="ChangeCase(this);"
+											required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombreEmpresa}"
+											validatorMessage="Debe ingresar un nombre de empresa válido, mínimo 5 caracteres máximo 100">
+											<f:validateRegex pattern="[a-zA-Z-\s-0-9]{5,100}"></f:validateRegex>
+										</p:inputText>
+
+										<p:outputLabel for="txtPais" value="País:" />
+										<p:selectOneMenu id="txtPais" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lPais}">
+											<f:selectItem itemLabel="ECUADOR" itemValue="ECUADOR"></f:selectItem>
+											<f:selectItem itemLabel="PERÚ" itemValue="PERÚ"></f:selectItem>
+											<f:selectItem itemLabel="COLOMBIA" itemValue="COLOMBIA"></f:selectItem>
+										</p:selectOneMenu>
+
+
+										<p:outputLabel for="txtCiudad" value="Ciudad:" />
+										<p:selectOneMenu id="txtCiudad" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCiudad}">
+											<f:selectItem itemLabel="GUAYAQUIL" itemValue="GUAYAQUIL"></f:selectItem>
+											<f:selectItem itemLabel="QUITO" itemValue="QUITO"></f:selectItem>
+											<f:selectItem itemLabel="CUENCA" itemValue="CUENCA"></f:selectItem>
+											<f:selectItem itemLabel="BOGOTÁ" itemValue="BOGOTÁ"></f:selectItem>
+											<f:selectItem itemLabel="LIMA" itemValue="LIMA"></f:selectItem>
+											<f:selectItem itemLabel="OTROS" itemValue="OTROS"></f:selectItem>
+										</p:selectOneMenu>
+
+
+
+										<p:outputLabel for="txtEmail" value="Email:">
+										</p:outputLabel>
+										<p:inputText id="txtEmail" required="true"
+											validatorMessage="Formato de Email inválido"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lEmail}">
+											<f:validateRegex
+												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+										</p:inputText>
+
+										<p:outputLabel for="txtCelular" value="Celular:">
+										</p:outputLabel>
+
+
+										<p:inputText id="txtCelular" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCelular}"
+											validatorMessage="Número celular inválido EJ: 0981060337">
+											<f:validateRegex pattern="\d{10}"></f:validateRegex>
+										</p:inputText>
+
+										<p:outputLabel for="txtDetalle" value="Solicitud" />
+										<p:inputTextarea id="txtDetalle" required="true"
+											autoResize="false" style="resize: none"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lSolicitud}"
+											onblur="ChangeCase(this);"
+											validatorMessage="Debe ingresar un minímo de 20 caracteres hasta un máximo de 500">
+											<f:validateRegex pattern="[a-zA-Z-\s-0-9]{20,500}"></f:validateRegex>
+										</p:inputTextarea>
+										<h:outputText value="" />
+										<h:panelGroup>
+											<div style="height: 50px; width: 130px">
+												<p:captcha label="Captcha" language="es" secure="true"
+													theme="white" />
+											</div>
+										</h:panelGroup>
+										<h:outputText value="" />
+										<h:outputText value="" />
+										<h:outputText value="" />
+										<p:commandButton id="btnEnviar" value="Solicitar"
+											icon="fa icon-mail" style="max-width:150px;"
+											styleClass="RedButton Fs18"
+											process=":#{p:component('papSolicitud')}"
+											update=":#{p:component('papSolicitud')}, :#{p:component('textoMensaje')}"
+											actionListener="#{beanSolicitudUsoAplicacion.registroSinAutenticacion}" />
+									</p:panelGrid>
+
+								</h:form>
+
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="EmptyBox50"></div>
+
+	</div>
+
+	<!-- -->
+
+	<div class="Container100 " id="modena-pricingtables"
+		style="background-color: #F0F2F5; padding: 0px 3rem; box-sizing: border-box;">
+
+		<div class="EmptyBox80"></div>
+
+		<h1 class="FontRobotoRegular Fs30 BoldGray TexAlCenter">Tabla de precios</h1>
+		<div class="EmptyBox30"></div>
+
+		<div class="Wid90 MarAuto Responsive100  ">
+
+			<div class="Container25 TexAlCenter Responsive50 ">
+				<div class="ContainerIndent">
+					<div class="Card ShadowEffect">
+						<div class="Container100 FontDosisSemibold BoldLeaden"
+							style="font-size: 1.4rem;">Standard</div>
+						<div class="Separator"></div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="Container100 FontRobotoLight BoldLeaden"
+							style="font-size: 3rem;">
+							$20<span class="Fs30 Leaden">/Mensual</span>
+						</div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">
+							Cliente básico<br /> Permite la creación de una empresa, con la opción de crear cinco usuarios más el usuario administrador
+						</div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="Separator"></div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">Soporte 2x5</div>
+						<div class="EmptyBox20"></div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container25 TexAlCenter Responsive50 ">
+				<div class="ContainerIndent">
+					<div class="Card ShadowEffect">
+						<div class="Container100 FontDosisSemibold Turquoise"
+							style="font-size: 1.4rem;">Pro</div>
+						<div class="Separator"></div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="Container100 FontRobotoLight BoldLeaden"
+							style="font-size: 3rem;">
+							$40<span class="Fs30 Leaden">/Mensuales</span>
+						</div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">
+							Cliente medio<br /> Permite la creación de dos empresas, con la opción de crear 10 usuarios
+						</div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="Separator"></div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">$35
+							for monthly</div>
+						<div class="EmptyBox20"></div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container25 TexAlCenter Responsive50 ">
+				<div class="ContainerIndent">
+					<div class="Card ShadowEffect">
+						<div class="Container100 FontDosisSemibold BoldLeaden"
+							style="font-size: 1.4rem;">Business</div>
+						<div class="Separator"></div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="Container100 FontRobotoLight BoldLeaden"
+							style="font-size: 3rem;">
+							$15<span class="Fs30 Leaden">/mo*</span>
+						</div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">
+							Business class customer <br />support + One to one help
+						</div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="Separator"></div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">$155
+							for monthly</div>
+						<div class="EmptyBox20"></div>
+						<div class="Container100 ui-fluid">
+							<p:button value="Get Started" styleClass="GreenButton Fleft" />
+						</div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container25 TexAlCenter Responsive50 ">
+				<div class="ContainerIndent">
+					<div class="Card ShadowEffect">
+						<div class="Container100 FontDosisSemibold BoldLeaden"
+							style="font-size: 1.4rem;">Business Plus</div>
+						<div class="Separator"></div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="Container100 FontRobotoLight BoldLeaden"
+							style="font-size: 3rem;">
+							$50<span class="Fs30 Leaden">/mo*</span>
+						</div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">
+							Business class customer <br />support + One to one help
+						</div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="Separator"></div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">$555
+							for monthly</div>
+						<div class="EmptyBox20"></div>
+						<div class="Container100 ui-fluid">
+							<p:button value="Get Started" styleClass="GreenButton Fleft" />
+						</div>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="EmptyBox50"></div>
+
+	</div>
+
+	<!-- -->
+
+	<div class="Container100 " id="modena-features"
+		style="padding: 0px 3rem; box-sizing: border-box;">
+
+		<div class="EmptyBox80"></div>
+
+		<h1 class="FontRobotoRegular Fs30 BoldGray TexAlCenter">Features</h1>
+		<div class="EmptyBox30"></div>
+
+		<div class="Wid90 MarAuto">
+
+			<div class="Container20 Responsive TexAlCenter">
+				<div class="ContainerIndent">
+					<div class="Container100">
+						<i class="icon-paper-stack SoftBlue Wid100"
+							style="font-size: 4rem;"></i>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="FontRobotoRegular LeadenGreen"
+							style="font-size: 1.6rem;">HTML5 &amp; CSS3</div>
+						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
+							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
+							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.</div>
+						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container20 Responsive TexAlCenter">
+				<div class="ContainerIndent">
+					<div class="Container100">
+						<i class="icon-cog SoftBlue Wid100" style="font-size: 4rem;"></i>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="FontRobotoRegular LeadenGreen"
+							style="font-size: 1.6rem;">Cross-Browser</div>
+						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
+							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
+							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.</div>
+						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container20 Responsive TexAlCenter">
+				<div class="ContainerIndent">
+					<div class="Container100">
+						<i class="icon-content-right SoftBlue Wid100"
+							style="font-size: 4rem;"></i>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="FontRobotoRegular LeadenGreen"
+							style="font-size: 1.6rem;">Responsive</div>
+						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
+							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
+							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.</div>
+						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container20 Responsive TexAlCenter">
+				<div class="ContainerIndent">
+					<div class="Container100">
+						<i class="icon-flag SoftBlue Wid100" style="font-size: 4rem;"></i>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="FontRobotoRegular LeadenGreen"
+							style="font-size: 1.6rem;">Handcrafted</div>
+						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
+							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
+							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.</div>
+						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container20 Responsive TexAlCenter">
+				<div class="ContainerIndent">
+					<div class="Container100">
+						<i class="icon-drop SoftBlue Wid100" style="font-size: 4rem;"></i>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="FontRobotoRegular LeadenGreen"
+							style="font-size: 1.6rem;">Rock-Solid</div>
+						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
+							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
+							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.</div>
+						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container20 Responsive TexAlCenter">
+				<div class="ContainerIndent">
+					<div class="Container100">
+						<i class="icon-paper-stack SoftBlue Wid100"
+							style="font-size: 4rem;"></i>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="FontRobotoRegular LeadenGreen"
+							style="font-size: 1.6rem;">HTML5 &amp; CSS3</div>
+						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
+							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
+							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.</div>
+						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container20 Responsive TexAlCenter">
+				<div class="ContainerIndent">
+					<div class="Container100">
+						<i class="icon-cog SoftBlue Wid100" style="font-size: 4rem;"></i>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="FontRobotoRegular LeadenGreen"
+							style="font-size: 1.6rem;">Cross-Browser</div>
+						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
+							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
+							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.</div>
+						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container20 Responsive TexAlCenter">
+				<div class="ContainerIndent">
+					<div class="Container100">
+						<i class="icon-content-right SoftBlue Wid100"
+							style="font-size: 4rem;"></i>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="FontRobotoRegular LeadenGreen"
+							style="font-size: 1.6rem;">Responsive</div>
+						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
+							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
+							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.</div>
+						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container20 Responsive TexAlCenter">
+				<div class="ContainerIndent">
+					<div class="Container100">
+						<i class="icon-flag SoftBlue Wid100" style="font-size: 4rem;"></i>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="FontRobotoRegular LeadenGreen"
+							style="font-size: 1.6rem;">Handcrafted</div>
+						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
+							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
+							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.</div>
+						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="Container20 Responsive TexAlCenter">
+				<div class="ContainerIndent">
+					<div class="Container100">
+						<i class="icon-drop SoftBlue Wid100" style="font-size: 4rem;"></i>
+						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+						<div class="FontRobotoRegular LeadenGreen"
+							style="font-size: 1.6rem;">Rock-Solid</div>
+						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
+							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
+							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.</div>
+						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="EmptyBox50"></div>
+
+	</div>
+
+	<!-- -->
+
+	<div class="Container100 " id="modena-customers"
+		style="background-color: #F0F2F5; padding: 0px 3rem; box-sizing: border-box;">
+
+		<div class="EmptyBox80"></div>
+
+		<h1 class="FontRobotoRegular Fs30 BoldGray TexAlCenter">Hundreds
+			Of Thousands Of Customers Trust Us !</h1>
+		<div class="EmptyBox30"></div>
+		<div class="Wid80 MarAuto">
+
+			<div class="Container33 Responsive50">
+				<div class="ContainerIndent">
+					<div class="Container100 TexAlCenter">
+						<div class="EmptyBox20"></div>
+						<h:graphicImage name="images/avatar1.svg" library="modena-layout"
+							style="width:150px; height:150px;" />
+						<div class="EmptyBox20"></div>
+						<span class="DispBlock BoldGray FontRobotoLight">"We
+							realized Modena was a great tool that would give us more insights
+							on both a strategic and technical level, so we could make more
+							intelligent business decisions."</span>
+						<div class="EmptyBox20"></div>
+						<span class="FontRobotoRegular DispBlock BoldGray">—Luke
+							Skywalker, Vice President of Operations</span>
+					</div>
+				</div>
+			</div>
+			<div class="Container33 Responsive50">
+				<div class="ContainerIndent">
+					<div class="Container100 TexAlCenter">
+						<div class="EmptyBox20"></div>
+						<h:graphicImage name="images/avatar2.svg" library="modena-layout"
+							style="width:150px; height:150px;" />
+						<div class="EmptyBox20"></div>
+						<span class="DispBlock BoldGray FontRobotoLight">"We
+							realized Modena was a great tool that would give us more insights
+							on both a strategic and technical level, so we could make more
+							intelligent business decisions."</span>
+						<div class="EmptyBox20"></div>
+						<span class="FontRobotoRegular DispBlock BoldGray">—Luke
+							Skywalker, Vice President of Operations</span>
+					</div>
+				</div>
+			</div>
+			<div class="Container33 Responsive50">
+				<div class="ContainerIndent">
+					<div class="Container100 TexAlCenter">
+						<div class="EmptyBox20"></div>
+						<h:graphicImage name="images/avatar1.svg" library="modena-layout"
+							style="width:150px; height:150px;" />
+						<div class="EmptyBox20"></div>
+						<span class="DispBlock BoldGray FontRobotoLight">"We
+							realized Modena was a great tool that would give us more insights
+							on both a strategic and technical level, so we could make more
+							intelligent business decisions."</span>
+						<div class="EmptyBox20"></div>
+						<span class="FontRobotoRegular DispBlock BoldGray">—Luke
+							Skywalker, Vice President of Operations</span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="EmptyBox80"></div>
+
+	</div>
+
+	<!-- -->
+
+	<div class="Container100  TealBack" id="modena-contact">
+
+
+
+		<p:gmap id="gmap" center="-2.058441, -79.908506" zoom="13"
+			type="HYBRID" style="width:100%;height:400px"
+			disableDoubleClickZoom="true" scrollWheel="false" draggable="false" />
+
+		<div class="Wid100 PosRelative MarAuto OvHidden"
+			style="background-color: rgba(255, 255, 255, 0.7);">
+			<div class="Container100 TexAlCenter">
+				<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+				<div
+					class="Wid100 MarAuto DispBlock OvHidden FontRobotoRegular Blue"
+					style="font-size: 2.0rem;">Estamos Aquí!</div>
+				<div class="Wid100 OvHidden" style="height: 0.5rem;"></div>
+				<div
+					class="Wid100 MarAuto DispBlock OvHidden FontRobotoLight Fs20 Leaden">Avenida
+					Narcisa de Jesús, km 3.5. Urbanización la Perla, primera etapa
+					manzana 6039 villa 4.</div>
+				<div class="Wid100 OvHidden" style="height: 1rem;"></div>
+				<div class="Container100 ui-fluid">
+					<p:button value="Contáctenos" styleClass="BlueButton MarAuto"
+						style="max-width:250px;" />
+				</div>
+				<div class="Wid100 OvHidden" style="height: 2rem;"></div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- FOOTER -->
+	<div class="Container100 BoldGrayBack">
+		<div class="Container100" style="border-bottom: solid 1px #5B616B;"
+			id="footerlinks">
+			<div class="ContainerIndent OvHidden">
+				<a href="https://apis-ec.jimdo.com/" target="ir_web"
+					class="DispInlBlock FontModenaLight White Fs14 Fleft HoverEffect">Sítio
+					WEB</a> <span class="DispInlBlock Fleft Fs14 White"
+					style="padding: 0px 10px;">|</span> <a href="#onix-inicio"
+					class="DispInlBlock FontModenaLight White Fs14 Fleft HoverEffect">Ir
+					arriba</a>
+
+				<div class="EmptyBox10 ShowOnMobile"></div>
+				<span
+					class="DispInlBlock FontModenaLight White Fs14 Fright HoverEffect TexAlRight FloatNoneOnMobile">
+					SEBRA - IT</span>
+			</div>
+		</div>
+
+		<div class="Container100">
+			<div class="ContainerIndent OvHidden">
+				<h:graphicImage name="general/onix_logo.png" library="imagenes"
+					style="max-width : 80px; width : 200px;" />
+				<span
+					class="DispInlBlock FontModenaLight White Fs12 Fright HoverEffect TexAlRight">593981060337
+					<br /> byronsantiago@gmail.com <br /> <br /> Copyright © 2016 <i
+					class="icon-primitive-dot Fs10 White"></i> All rights reserved.
+				</span>
+			</div>
+		</div>
+
+		<div class="EmptyBox30"></div>
+	</div>
+
+	<h:outputStylesheet name="css/core-layout.css" library="modena-layout" />
+	<h:outputStylesheet name="css/font-awesome.css" library="modena-layout" />
+	<h:outputStylesheet name="css/animate.css" library="modena-layout" />
+	<h:outputStylesheet name="css/modena-layout.css"
+		library="modena-layout" />
+	<h:outputStylesheet name="css/modena-font.css" library="modena-layout" />
+
+	<script>
+            // FNC for detecting for click outside of any elements ============== 
+            $.fn.clickOff = function (callback, selfDestroy) {
+                var clicked = false;
+                var parent = this;
+                var destroy = selfDestroy || true;
+
+                parent.click(function () {
+                    clicked = true;
+                });
+
+                $(document).click(function (event) {
+                    if (!clicked) {
+                        callback(parent, event);
+                    }
+                    if (destroy) {
+                    }
+                    ;
+                    clicked = false;
+                });
+            };
+
+            var menubtn = $(document.getElementById("menu-button")),
+                    menubody = $(document.getElementById("menubody")),
+                    menustatus = true,
+                    menuButtonClick = false;
+
+            menubtn.on("click", function () {
+                menuButtonClick = true;
+
+                if (menustatus) {
+                    menubody.addClass('active');
+                    menustatus = false;
+                } else {
+                    menubody.removeClass('active');
+                    menustatus = true;
+                }
+            });
+
+            menubody.clickOff(function (e) {
+                if (menuButtonClick) {
+                    menuButtonClick = false;
+                }
+                else {
+                    menubody.removeClass('active');
+                    menustatus = true;
+                }
+            });
+        </script>
+
+</h:body>
+
+</html>

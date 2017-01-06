@@ -61,9 +61,6 @@ extends BeanMantenedorGenerico<ServicioMantenedorSolicitud, Long, OmgSolicitudUs
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.MENSAJE_TRANSACCION.toString(), "Solicitud registrada correctamente");
 	}
-
-	
-
 	
 
 }

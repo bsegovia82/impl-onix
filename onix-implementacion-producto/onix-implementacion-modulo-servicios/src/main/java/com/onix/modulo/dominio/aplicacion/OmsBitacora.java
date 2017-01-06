@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,14 +21,14 @@ import com.onix.modulo.librerias.dominio.entidades.base.EntidadBaseAuditable;
  */
 @Entity
 @Table(name = "OMS_BITACORA")
-@NamedQuery(name = "OmsBitacora.findAll", 
-query = "SELECT p FROM OmsBitacora p")
+@NamedQuery(name = "OmsBitacora.findAll", query = "SELECT p FROM OmsBitacora p")
 public class OmsBitacora extends EntidadBaseAuditable<Long> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String proceso;
-
 	private String usuario;
+
+	private TIPO_BITACORA lTipoBitacora;
 
 	public OmsBitacora() {
 	}
@@ -59,6 +61,20 @@ public class OmsBitacora extends EntidadBaseAuditable<Long> implements Serializa
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+
+	@Enumerated(EnumType.STRING)
+	@Column(name="TIPO_BITACORA")
+	public TIPO_BITACORA getlTipoBitacora() {
+		return lTipoBitacora;
+	}
+	
+	public void setlTipoBitacora(TIPO_BITACORA lTipoBitacora) {
+		this.lTipoBitacora = lTipoBitacora;
+	}
+	
+	public enum TIPO_BITACORA {
+		NOVEDAD, INFORMACION, ALERTA, ERROR, FATAL
 	}
 
 }

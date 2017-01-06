@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+
+	<script type="text/javascript">
+	function ChangeCase(elem) {
+		elem.value = elem.value.toUpperCase();
+	}
+</script>
+	<ui:insert name="head">
+		<title>SEBRA-IT</title>
+	</ui:insert>
+</h:head>
+
+<h:body styleClass="BlueModena Geometry" style="height:auto;">
+	<h:form>
+		<div class="Wid90 DispBlock MarAuto MarTopPerc5 TexAlCenter">
+			<div class="Wid33 MarAuto WidAutoOnMobile">
+				<h:graphicImage name="general/onix_logo.png" library="imagenes"
+					style="max-width : 200px; width : 250px;" />
+				<div class="EmptyBox30"></div>
+				<div class="Card ShadowEffect">
+					<div class="EmptyBox20"></div>
+					<div class="Wid100 OvHidden BigTopic Fs30">
+						<i class="icon-security Fs60 DispBlock"></i> Ingreso al sistema
+					</div>
+					<div class="EmptyBox30"></div>
+					<p:messages showDetail="false" closable="true" ></p:messages>
+					
+					<div class="Wid100">
+						<p:inputText placeholder="Usuario"
+							styleClass="Wid80 TexAlCenter Fs18" 
+							id="txtUsuario"
+							value="#{beanLogin.usuario}" onblur="ChangeCase(this);"  required="true" requiredMessage="Ingrese el usuario" />
+					</div>
+					<div class="EmptyBox10"></div>
+					<div class="Wid100">
+						<p:inputText type="password" placeholder="Clave"
+							styleClass="Wid80 TexAlCenter Fs18" 
+							id="txtPassword"
+							value="#{beanLogin.clave}" required="true" requiredMessage="Ingrese la clave"/>
+					</div>
+					<div class="EmptyBox30"></div>
+					<div class="EmptyBox30"></div>
+					<div class="Wid50 Fleft Responsive50">
+						<p:commandButton value="Accesar" icon="fa fa-sign-in"
+							styleClass=" Fs18 White RaisedButton Fright FloatNoneOnMobile"
+							action="#{beanLogin.login}" update="@form"></p:commandButton>
+					</div>
+					<div class="EmptyBox5 ShowOnMobile"></div>
+					<div class="Wid50 Fleft Responsive50">
+						<p:button value="Solicitar clave" icon="fa fa-lock"
+							styleClass="RedButton Fs18 White RaisedButton Fleft FloatNoneOnMobile" />
+					</div>
+					<div class="EmptyBox20"></div>
+					<div class="Separator"></div>
+					<div class="EmptyBox20"></div>
+				</div>
+				<div class="Wid100 TexAlCenter MarTop20 Fs14 FontRobotoRegular Gray">
+					<i class="fa fa-copyright"></i> SEBRA-IT <br />  
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="Container100 LeadenGreenBack" id="onix-solicitud"
+		style="padding: 0px 3rem; box-sizing: border-box;">
+
+		<div class="EmptyBox80"></div>
+
+		<h1 class="FontRobotoRegular Fs30 White TexAlCenter">Solicitar contraseña</h1>
+		<div class="EmptyBox30"></div>
+
+		<div class="Wid150 OvHidden MarAuto">
+			<div class="Container100">
+
+				<div
+					class="Wid70 WidAutoOnMobile MarAuto White Fs24 TexAlCenter FontModenaLight">
+					Solicite usuarios para la demostración del sistema, los usuarios
+					creados tendrá una vigencia de 5 días a partir de la fecha de
+					inicio
+					<div class="Container100 ui-fluid">
+						<div class="ContainerIndent">
+							<div class="Card ShadowEffect">
+								<h2 class="BigTopic">Formulario de solicitud</h2>
+								<h:form>
+									<p:messages closable="true" id="textoMensaje"></p:messages>
+									<p:panelGrid columns="2"
+										columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+										layout="grid" styleClass="ui-panelgrid-blank"
+										style="border:0px none; background-color:transparent;"
+										id="papSolicitud">
+										<p:outputLabel for="txtEmail" value="Su Email:" />
+										<p:inputText id="txtEmail" required="true"
+											onblur="ChangeCase(this);"
+											validatorMessage="El email no tiene el formato correcto">
+											<f:validateRegex pattern="[a-zA-Z-\s]{10,100}"></f:validateRegex>
+										</p:inputText>
+										<p:outputLabel for="txtNombreEmpresa" value="Nombre Empresa:" />
+										<p:inputText id="txtNombreEmpresa" onblur="ChangeCase(this);"
+											required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombreEmpresa}"
+											validatorMessage="Debe ingresar un nombre de empresa válido, mínimo 5 caracteres máximo 100">
+											<f:validateRegex pattern="[a-zA-Z-\s-0-9]{5,100}"></f:validateRegex>
+										</p:inputText>
+
+										<p:outputLabel for="txtPais" value="País:" />
+										<p:selectOneMenu id="txtPais" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lPais}">
+											<f:selectItem itemLabel="ECUADOR" itemValue="ECUADOR"></f:selectItem>
+											<f:selectItem itemLabel="PERÚ" itemValue="PERÚ"></f:selectItem>
+											<f:selectItem itemLabel="COLOMBIA" itemValue="COLOMBIA"></f:selectItem>
+										</p:selectOneMenu>
+
+
+										<p:outputLabel for="txtCiudad" value="Ciudad:" />
+										<p:selectOneMenu id="txtCiudad" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCiudad}">
+											<f:selectItem itemLabel="GUAYAQUIL" itemValue="GUAYAQUIL"></f:selectItem>
+											<f:selectItem itemLabel="QUITO" itemValue="QUITO"></f:selectItem>
+											<f:selectItem itemLabel="CUENCA" itemValue="CUENCA"></f:selectItem>
+											<f:selectItem itemLabel="BOGOTÁ" itemValue="BOGOTÁ"></f:selectItem>
+											<f:selectItem itemLabel="LIMA" itemValue="LIMA"></f:selectItem>
+											<f:selectItem itemLabel="OTROS" itemValue="OTROS"></f:selectItem>
+										</p:selectOneMenu>
+
+
+
+										<p:outputLabel for="txtEmail" value="Email:">
+										</p:outputLabel>
+										<p:inputText id="txtEmail" required="true"
+											validatorMessage="Formato de Email inválido"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lEmail}">
+											<f:validateRegex
+												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+										</p:inputText>
+
+										<p:outputLabel for="txtCelular" value="Celular:">
+										</p:outputLabel>
+
+
+										<p:inputText id="txtCelular" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCelular}"
+											validatorMessage="Número celular inválido EJ: 0981060337">
+											<f:validateRegex pattern="\d{10}"></f:validateRegex>
+										</p:inputText>
+
+										<p:outputLabel for="txtDetalle" value="Solicitud" />
+										<p:inputTextarea id="txtDetalle" required="true"
+											autoResize="false" style="resize: none"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lSolicitud}"
+											onblur="ChangeCase(this);"
+											validatorMessage="Debe ingresar un minímo de 20 caracteres hasta un máximo de 500">
+											<f:validateRegex pattern="[a-zA-Z-\s-0-9]{20,500}"></f:validateRegex>
+										</p:inputTextarea>
+										<h:outputText value="" />
+										<h:panelGroup>
+											<div style="height: 50px; width: 130px">
+												<p:captcha label="Captcha" language="es" secure="true"
+													theme="white" />
+											</div>
+										</h:panelGroup>
+										<h:outputText value="" />
+										<h:outputText value="" />
+										<h:outputText value="" />
+										<p:commandButton id="btnEnviar" value="Solicitar"
+											icon="fa icon-mail" style="max-width:150px;"
+											styleClass="RedButton Fs18"
+											process=":#{p:component('papSolicitud')}"
+											update=":#{p:component('papSolicitud')}, :#{p:component('textoMensaje')}"
+											actionListener="#{beanSolicitudUsoAplicacion.registroSinAutenticacion}" />
+									</p:panelGrid>
+
+								</h:form>
+
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="EmptyBox50"></div>
+
+	</div>
+
+		<h:outputStylesheet name="css/core-layout.css" library="modena-layout" />
+		<h:outputStylesheet name="css/animate.css" library="modena-layout" />
+		<h:outputStylesheet name="css/modena-font.css" library="modena-layout" />
+		<h:outputStylesheet name="css/ripple-effect.css"
+			library="modena-layout" />
+		<h:outputStylesheet name="css/font-awesome.css"
+			library="modena-layout" />
+		<h:outputStylesheet name="css/modena-layout.css"
+			library="modena-layout" />
+
+	</h:form>
+</h:body>
+
+</html>

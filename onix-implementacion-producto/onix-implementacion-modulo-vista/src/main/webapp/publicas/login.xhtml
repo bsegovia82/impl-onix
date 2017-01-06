@@ -37,20 +37,20 @@
 						<i class="icon-security Fs60 DispBlock"></i> Ingreso al sistema
 					</div>
 					<div class="EmptyBox30"></div>
-					<p:messages showDetail="false" closable="true" ></p:messages>
-					
+					<p:messages showDetail="false" closable="true"></p:messages>
+
 					<div class="Wid100">
 						<p:inputText placeholder="Usuario"
-							styleClass="Wid80 TexAlCenter Fs18" 
-							id="txtUsuario"
-							value="#{beanLogin.usuario}" onblur="ChangeCase(this);"  required="true" requiredMessage="Ingrese el usuario" />
+							styleClass="Wid80 TexAlCenter Fs18" id="txtUsuario"
+							value="#{beanLogin.usuario}" onblur="ChangeCase(this);"
+							required="true" requiredMessage="Ingrese el usuario" />
 					</div>
 					<div class="EmptyBox10"></div>
 					<div class="Wid100">
 						<p:inputText type="password" placeholder="Clave"
-							styleClass="Wid80 TexAlCenter Fs18" 
-							id="txtPassword"
-							value="#{beanLogin.clave}" required="true" requiredMessage="Ingrese la clave"/>
+							styleClass="Wid80 TexAlCenter Fs18" id="txtPassword"
+							value="#{beanLogin.clave}" required="true"
+							requiredMessage="Ingrese la clave" />
 					</div>
 					<div class="EmptyBox30"></div>
 					<div class="EmptyBox30"></div>
@@ -62,6 +62,7 @@
 					<div class="EmptyBox5 ShowOnMobile"></div>
 					<div class="Wid50 Fleft Responsive50">
 						<p:button value="Solicitar clave" icon="fa fa-lock"
+							href="#onix-clave"
 							styleClass="RedButton Fs18 White RaisedButton Fleft FloatNoneOnMobile" />
 					</div>
 					<div class="EmptyBox20"></div>
@@ -69,10 +70,13 @@
 					<div class="EmptyBox20"></div>
 				</div>
 				<div class="Wid100 TexAlCenter MarTop20 Fs14 FontRobotoRegular Gray">
-					<i class="fa fa-copyright"></i> SEBRA-IT <br />  
+					<i class="fa fa-copyright"></i> SEBRA-IT <br />
 				</div>
 			</div>
 		</div>
+
+
+
 
 		<h:outputStylesheet name="css/core-layout.css" library="modena-layout" />
 		<h:outputStylesheet name="css/animate.css" library="modena-layout" />
@@ -85,6 +89,71 @@
 			library="modena-layout" />
 
 	</h:form>
+
+
+	<div class="EmptyBox100"></div>
+
+	<h:form>
+		<div class="Container100" id="onix-clave"
+			style="padding: 0px 3rem; box-sizing: border-box;">
+			<div class="Wid70 OvHidden MarAuto">
+				<div class="Container100">
+					<div
+						class="Wid70 WidAutoOnMobile MarAuto White Fs24 TexAlCenter FontModenaLight">
+						<div class="Container100 ui-fluid">
+							<div class="ContainerIndent">
+								<div class="Card ShadowEffect">
+
+									<div class="Wid100 OvHidden BigTopic Fs30">
+										<i class="fa fa-user Fs60 DispBlock"></i> Formulario de
+										solicitud de contraseña
+									</div>
+
+									<p:messages closable="true" id="textoMensaje"></p:messages>
+									<p:panelGrid columns="2" layout="grid"
+										styleClass="ui-panelgrid-blank"
+										style="border:0px none; background-color:transparent;"
+										id="papSolicitud">
+										<p:outputLabel for="txtEmail" value="Su Email:" />
+										<p:inputText id="txtEmail" required="true"
+											onblur="ChangeCase(this);"
+											validatorMessage="El email no tiene el formato correcto">
+											<f:validateRegex
+												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+										</p:inputText>
+										<h:outputText />
+										<p:commandButton id="btnEnviar" value="Solicitar"
+											icon="fa fa-envelope" style="max-width:150px;"
+											styleClass="RedButton Fs18 White RaisedButton Fleft FloatNoneOnMobile" />
+									</p:panelGrid>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:form>
+	<div class="EmptyBox100"></div>
+
+	<div class="Container100" id="onix-oculto"
+		style="padding: 0px 3rem; box-sizing: border-box;">
+		<div class="Wid70 OvHidden MarAuto">
+			<div class="Container100">
+				<div>
+					<div class="Container100 ui-fluid">
+						<div class="ContainerIndent">
+							<div>
+
+								<div class="EmptyBox100"></div>
+								<div class="EmptyBox100"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </h:body>
 
 </html>

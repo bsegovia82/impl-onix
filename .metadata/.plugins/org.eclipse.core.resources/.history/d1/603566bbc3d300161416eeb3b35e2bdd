@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+
+	<script type="text/javascript">
+	function ChangeCase(elem) {
+		elem.value = elem.value.toUpperCase();
+	}
+</script>
+	<ui:insert name="head">
+		<title>SEBRA-IT</title>
+	</ui:insert>
+</h:head>
+
+<h:body styleClass="BlueModena Geometry" style="height:auto;">
+	<h:form>
+		<div class="Wid90 DispBlock MarAuto MarTopPerc5 TexAlCenter">
+			<div class="Wid33 MarAuto WidAutoOnMobile">
+				<h:graphicImage name="general/onix_logo.png" library="imagenes"
+					style="max-width : 200px; width : 250px;" />
+				<div class="EmptyBox30"></div>
+				<div class="Card ShadowEffect">
+					<div class="EmptyBox20"></div>
+					<div class="Wid100 OvHidden BigTopic Fs30">
+						<i class="icon-security Fs60 DispBlock"></i> Ingreso al sistema
+					</div>
+					<div class="EmptyBox30"></div>
+					<p:messages showDetail="false" closable="true"></p:messages>
+
+					<div class="Wid100">
+						<p:inputText placeholder="Usuario"
+							styleClass="Wid80 TexAlCenter Fs18" id="txtUsuario"
+							value="#{beanLogin.usuario}" onblur="ChangeCase(this);"
+							required="true" requiredMessage="Ingrese el usuario" />
+					</div>
+					<div class="EmptyBox10"></div>
+					<div class="Wid100">
+						<p:inputText type="password" placeholder="Clave"
+							styleClass="Wid80 TexAlCenter Fs18" id="txtPassword"
+							value="#{beanLogin.clave}" required="true"
+							requiredMessage="Ingrese la clave" />
+					</div>
+					<div class="EmptyBox30"></div>
+					<div class="EmptyBox30"></div>
+					<div class="Wid50 Fleft Responsive50">
+						<p:commandButton value="Accesar" icon="fa fa-sign-in"
+							styleClass=" Fs18 White RaisedButton Fright FloatNoneOnMobile"
+							action="#{beanLogin.login}" update="@form"></p:commandButton>
+					</div>
+					<div class="EmptyBox5 ShowOnMobile"></div>
+					<div class="Wid50 Fleft Responsive50">
+						<p:button value="Solicitar clave" icon="fa fa-lock"
+							styleClass="RedButton Fs18 White RaisedButton Fleft FloatNoneOnMobile" />
+					</div>
+					<div class="EmptyBox20"></div>
+					<div class="Separator"></div>
+					<div class="EmptyBox20"></div>
+				</div>
+				<div class="Wid100 TexAlCenter MarTop20 Fs14 FontRobotoRegular Gray">
+					<i class="fa fa-copyright"></i> SEBRA-IT <br />
+				</div>
+			</div>
+		</div>
+
+
+		<div class="Container100" id="onix-clave"
+			style="padding: 0px 3rem; box-sizing: border-box;">
+
+			<div class="EmptyBox80"></div>
+
+			<h1 class="FontRobotoRegular Fs30 White TexAlCenter"></h1>
+			<div class="EmptyBox30"></div>
+
+			<div class="Wid70 OvHidden MarAuto">
+				<div class="Container100">
+
+					<div
+						class="Wid70 WidAutoOnMobile MarAuto White Fs24 TexAlCenter FontModenaLight">
+						<div class="Container100 ui-fluid">
+							<div class="ContainerIndent">
+								<div class="Card ShadowEffect">
+									<i class="fa fa-lock Fs60 DispBlock"></i>
+									<h2 class="BigTopic">
+									Formulario de solicitud de contraseña</h2>
+									<h:form>
+										<p:messages closable="true" id="textoMensaje"></p:messages>
+										<p:panelGrid columns="2"
+											layout="grid" styleClass="ui-panelgrid-blank"
+											style="border:0px none; background-color:transparent;"
+											id="papSolicitud">
+											<p:outputLabel for="txtEmail" value="Su Email:" />
+											<p:inputText id="txtEmail" required="true"
+												onblur="ChangeCase(this);"
+												validatorMessage="El email no tiene el formato correcto">
+												<f:validateRegex
+													pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+											</p:inputText>
+											<h:outputText/>
+											<p:commandButton id="btnEnviar" value="Solicitar"
+											icon="fa fa-envelope" style="max-width:150px;"
+											
+											styleClass="RedButton Fs18 White RaisedButton Fleft FloatNoneOnMobile" />
+										</p:panelGrid>
+										
+
+									</h:form>
+
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="EmptyBox50"></div>
+
+		</div>
+
+		<h:outputStylesheet name="css/core-layout.css" library="modena-layout" />
+		<h:outputStylesheet name="css/animate.css" library="modena-layout" />
+		<h:outputStylesheet name="css/modena-font.css" library="modena-layout" />
+		<h:outputStylesheet name="css/ripple-effect.css"
+			library="modena-layout" />
+		<h:outputStylesheet name="css/font-awesome.css"
+			library="modena-layout" />
+		<h:outputStylesheet name="css/modena-layout.css"
+			library="modena-layout" />
+
+	</h:form>
+</h:body>
+
+</html>

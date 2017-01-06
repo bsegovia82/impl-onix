@@ -112,17 +112,17 @@
 				<li class=""><a
 					href="#{request.contextPath}/publicas/login.jsf" target="login"
 					class="">Ir al Login</a></li>
-				<li class=""><a href="#modena-highlight" class=""> Inicio</a></li>
-				<li class=""><a href="#modena-infoArea" class=""> Solicitar
+				<li class=""><a href="#onix-inicio" class=""> Inicio</a></li>
+				<li class=""><a href="#onix-solicitud" class=""> Solicitar
 						una demostración</a></li>
-				<li class=""><a href="#modena-cardsArea" class=""> Conocer
+				<li class=""><a href="#onix-detalles" class=""> Conocer
 						más</a></li>
-				<li class=""><a href="#modena-pricingtables" class="">
+				<li class=""><a href="#onix-precios" class="">
 						Tabla de precios</a></li>
-				<li class=""><a href="#modena-features" class="">
+				<li class=""><a href="#onix-caracteristicas" class="">
 						Carácteristicas</a></li>
-				<li class=""><a href="#modena-customers" class=""> Clientes</a></li>
-				<li class=""><a href="#modena-contact" class="">
+				<li class=""><a href="#onix-respaldo" class=""> Respaldo</a></li>
+				<li class=""><a href="#onix-contactenos" class="">
 						Contáctenos</a></li>
 			</ul>
 		</div>
@@ -131,7 +131,7 @@
 
 	<!-- -->
 
-	<div class="Container100 BoldGrayBack" id="modena-highlight"
+	<div class="Container100 BoldGrayBack" id="onix-inicio"
 		style="padding: 10rem 0px;">
 
 		<div class="Wid90 OvHidden MarAuto">
@@ -142,7 +142,7 @@
 				<div class="EmptyBox20"></div>
 				<span class="DispBlock Fs20 FontRobotoLight White TexAlCenter">“
 					Día a día con mayor convicción las empresas verifican que los
-					recursos humanos son el activo más importante y la base cierta de
+					talento humanos son el activo más importante y la base cierta de
 					la ventaja competitiva en un plan de desarrollo estratégico. La
 					capacitación a todos los niveles constituye una de las mejores
 					inversiones en recursos humanos y una de las principales fuentes de
@@ -152,13 +152,13 @@
 				<div class="Wid50 MarAuto ui-fluid Responsive100">
 					<div class="Container50 Responsive100">
 						<div class="ContainerIndent">
-							<p:button href="#modena-infoArea"
+							<p:button href="#onix-solicitud"
 								value="Solicitar una demostración" styleClass="BlueButton Fs18"></p:button>
 						</div>
 					</div>
 					<div class="Container50 Responsive100">
 						<div class="ContainerIndent">
-							<p:button href="#modena-cardsArea" value="Concer más"
+							<p:button href="#onix-detalles" value="Concer más"
 								styleClass="OrangeButton Fs18" />
 						</div>
 					</div>
@@ -172,7 +172,7 @@
 
 	<!-- -->
 
-	<div class="Container100 " id="modena-cardsArea"
+	<div class="Container100 " id="onix-detalles"
 		style="background-color: #F0F2F5; padding: 0px 3rem; box-sizing: border-box;">
 
 		<div class="EmptyBox80"></div>
@@ -192,7 +192,7 @@
 						</div>
 						<div class="Container70 Responsive50">
 							<h2 class="BoldGray FontRobotoRegular Fs30">1. Solicitar
-								cuenta de asociado WEB</h2>
+								cuenta</h2>
 							<div class="EmptyBox10"></div>
 							<h3 class="BoldGray FontRobotoLight Fs20">Incio del plan del
 								servicio.</h3>
@@ -203,18 +203,7 @@
 								respectivos permisos. Todo esto representa a la configuración
 								inicial de los datos de la parametría del sistema. </span>
 							<div class="EmptyBox30"></div>
-							<div class="Container50 Responsive50 ui-fluid">
-								<div class="ContainerIndent">
-									<p:commandButton value="Learn More"
-										styleClass="PinkButton Fleft" />
-								</div>
-							</div>
-							<div class="Container50 Responsive50 ui-fluid">
-								<div class="ContainerIndent">
-									<p:commandButton value="Try Now"
-										styleClass="TealGreenButton Fleft" />
-								</div>
-							</div>
+							
 						</div>
 						<div class="EmptyBox30"></div>
 					</div>
@@ -227,34 +216,15 @@
 							<div class="ContainerIndent"></div>
 						</div>
 						<div class="Container70 Responsive50">
-							<h2 class="BoldGray FontRobotoRegular Fs30">2. Server Stats
-								Pro</h2>
+							<h2 class="BoldGray FontRobotoRegular Fs30">2. Acceso</h2>
 							<div class="EmptyBox10"></div>
-							<h3 class="BoldGray FontRobotoLight Fs20">Monitor the app
-								ecosystem and your competitors.</h3>
+							<h3 class="BoldGray FontRobotoLight Fs20">Registro de evaluaciones</h3>
 							<div class="EmptyBox20"></div>
-							<span class="BoldGray Fs14 FontModenaLight">Vitae potenti
-								ante praesent a dui eget nibh eu quam accumsan porttitor
-								tincidunt ultrices vel auctor aenean placerat viverra ac vel
-								parturient tristique malesuada hac conubia sed tincidunt.Quisque
-								a imperdiet suspendisse parturient adipiscing justo sem a in
-								eros eros luctus a turpis urna sapien ullamcorper vulputate at
-								mi.Dis vestibulum vel lectus sed vestibulum consectetur vivamus
-								a feugiat pharetra fames ullamcorper adipiscing condimentum
-								tempor egestas at at lacus.</span>
+							<span class="BoldGray Fs14 FontModenaLight">El sistema ofrece las opciones de creación y configuración de
+							evaluaciones, creación de banco de preguntas, creación de examenes en base a bancos de preguntas, estos examenes 
+							generan preguntas y reespuestas de forma aleatoria, y la asignación, publicación y cierre de evaluaciones.</span>
 							<div class="EmptyBox30"></div>
-							<div class="Container50 Responsive50 ui-fluid">
-								<div class="ContainerIndent">
-									<p:commandButton value="Learn More"
-										styleClass="PinkButton Fleft" />
-								</div>
-							</div>
-							<div class="Container50 Responsive50 ui-fluid">
-								<div class="ContainerIndent">
-									<p:commandButton value="Try Now"
-										styleClass="TealGreenButton Fleft" />
-								</div>
-							</div>
+							
 						</div>
 						<div class="EmptyBox30"></div>
 					</div>
@@ -267,34 +237,16 @@
 							<div class="ContainerIndent"></div>
 						</div>
 						<div class="Container70 Responsive50">
-							<h2 class="BoldGray FontRobotoRegular Fs30">3. Store
-								Statistics</h2>
+							<h2 class="BoldGray FontRobotoRegular Fs30">3. Ejecución
+								Evaluación</h2>
 							<div class="EmptyBox10"></div>
-							<h3 class="BoldGray FontRobotoLight Fs20">Monitor the app
-								ecosystem and your competitors.</h3>
+							<h3 class="BoldGray FontRobotoLight Fs20">Usuarios a evaluar.</h3>
 							<div class="EmptyBox20"></div>
-							<span class="BoldGray Fs14 FontModenaLight">Vitae potenti
-								ante praesent a dui eget nibh eu quam accumsan porttitor
-								tincidunt ultrices vel auctor aenean placerat viverra ac vel
-								parturient tristique malesuada hac conubia sed tincidunt.Quisque
-								a imperdiet suspendisse parturient adipiscing justo sem a in
-								eros eros luctus a turpis urna sapien ullamcorper vulputate at
-								mi.Dis vestibulum vel lectus sed vestibulum consectetur vivamus
-								a feugiat pharetra fames ullamcorper adipiscing condimentum
-								tempor egestas at at lacus.</span>
+							<span class="BoldGray Fs14 FontModenaLight">En el momento de la autenticación de los usuarios a evaluar
+							se muestra una bandeja con las evaluaciones que tienen pendientes y su respectivo historial, el usuario ejecuta la 
+							evaluación y al finalizar le indica el total de calificación obtenido.</span>
 							<div class="EmptyBox30"></div>
-							<div class="Container50 Responsive50 ui-fluid">
-								<div class="ContainerIndent">
-									<p:commandButton value="Learn More"
-										styleClass="PinkButton Fleft" />
-								</div>
-							</div>
-							<div class="Container50 Responsive50 ui-fluid">
-								<div class="ContainerIndent">
-									<p:commandButton value="Try Now"
-										styleClass="TealGreenButton Fleft" />
-								</div>
-							</div>
+							
 						</div>
 						<div class="EmptyBox30"></div>
 					</div>
@@ -307,33 +259,15 @@
 							<div class="ContainerIndent"></div>
 						</div>
 						<div class="Container70 Responsive50">
-							<h2 class="BoldGray FontRobotoRegular Fs30">4. Usage Datas</h2>
+							<h2 class="BoldGray FontRobotoRegular Fs30">4. Reportes</h2>
 							<div class="EmptyBox10"></div>
-							<h3 class="BoldGray FontRobotoLight Fs20">Monitor the app
-								ecosystem and your competitors.</h3>
+							<h3 class="BoldGray FontRobotoLight Fs20">Resultado y estadísticas.</h3>
 							<div class="EmptyBox20"></div>
-							<span class="BoldGray Fs14 FontModenaLight">Vitae potenti
-								ante praesent a dui eget nibh eu quam accumsan porttitor
-								tincidunt ultrices vel auctor aenean placerat viverra ac vel
-								parturient tristique malesuada hac conubia sed tincidunt.Quisque
-								a imperdiet suspendisse parturient adipiscing justo sem a in
-								eros eros luctus a turpis urna sapien ullamcorper vulputate at
-								mi.Dis vestibulum vel lectus sed vestibulum consectetur vivamus
-								a feugiat pharetra fames ullamcorper adipiscing condimentum
-								tempor egestas at at lacus.</span>
+							<span class="BoldGray Fs14 FontModenaLight">Revise los resultados de las evaluaciones realizadas, 
+							obtenga una estadística de los usuarios con mayor puntaje, verifique la cantidad de evaluaciones realizadas
+							 durante un periodo de tiempo.</span>
 							<div class="EmptyBox30"></div>
-							<div class="Container50 Responsive50 ui-fluid">
-								<div class="ContainerIndent">
-									<p:commandButton value="Learn More"
-										styleClass="PinkButton Fleft" />
-								</div>
-							</div>
-							<div class="Container50 Responsive50 ui-fluid">
-								<div class="ContainerIndent">
-									<p:commandButton value="Try Now"
-										styleClass="TealGreenButton Fleft" />
-								</div>
-							</div>
+							
 						</div>
 						<div class="EmptyBox30"></div>
 					</div>
@@ -348,7 +282,7 @@
 
 	<!-- -->
 
-	<div class="Container100 LeadenGreenBack" id="modena-infoArea"
+	<div class="Container100 LeadenGreenBack" id="onix-solicitud"
 		style="padding: 0px 3rem; box-sizing: border-box;">
 
 		<div class="EmptyBox80"></div>
@@ -379,25 +313,44 @@
 										<p:outputLabel for="txtNombre" value="Su Nombre:" />
 										<p:inputText id="txtNombre" required="true"
 											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombre}"
-											onblur="ChangeCase(this);" />
+											onblur="ChangeCase(this);"
+											validatorMessage="Debe ingresar un nombre válido, mínimo 10 caracteres máximo 100">
+											<f:validateRegex pattern="[a-zA-Z-\s]{10,100}"></f:validateRegex>
+										</p:inputText>
 										<p:outputLabel for="txtNombreEmpresa" value="Nombre Empresa:" />
 										<p:inputText id="txtNombreEmpresa" onblur="ChangeCase(this);"
-											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombreEmpresa}" />
+											required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lNombreEmpresa}"
+											validatorMessage="Debe ingresar un nombre de empresa válido, mínimo 5 caracteres máximo 100">
+											<f:validateRegex pattern="[a-zA-Z-\s-0-9]{5,100}"></f:validateRegex>
+										</p:inputText>
 
 										<p:outputLabel for="txtPais" value="País:" />
-										<p:inputText id="txtPais" required="true"
-											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lPais}"
-											onblur="ChangeCase(this);" />
+										<p:selectOneMenu id="txtPais" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lPais}">
+											<f:selectItem itemLabel="ECUADOR" itemValue="ECUADOR"></f:selectItem>
+											<f:selectItem itemLabel="PERÚ" itemValue="PERÚ"></f:selectItem>
+											<f:selectItem itemLabel="COLOMBIA" itemValue="COLOMBIA"></f:selectItem>
+										</p:selectOneMenu>
+
 
 										<p:outputLabel for="txtCiudad" value="Ciudad:" />
-										<p:inputText id="txtCiudad" onblur="ChangeCase(this);"
-											required="true"
-											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCiudad}" />
+										<p:selectOneMenu id="txtCiudad" required="true"
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCiudad}">
+											<f:selectItem itemLabel="GUAYAQUIL" itemValue="GUAYAQUIL"></f:selectItem>
+											<f:selectItem itemLabel="QUITO" itemValue="QUITO"></f:selectItem>
+											<f:selectItem itemLabel="CUENCA" itemValue="CUENCA"></f:selectItem>
+											<f:selectItem itemLabel="BOGOTÁ" itemValue="BOGOTÁ"></f:selectItem>
+											<f:selectItem itemLabel="LIMA" itemValue="LIMA"></f:selectItem>
+											<f:selectItem itemLabel="OTROS" itemValue="OTROS"></f:selectItem>
+										</p:selectOneMenu>
+
+
 
 										<p:outputLabel for="txtEmail" value="Email:">
 										</p:outputLabel>
 										<p:inputText id="txtEmail" required="true"
-											validatorMessage="Formato de Email invalido"
+											validatorMessage="Formato de Email inválido"
 											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lEmail}">
 											<f:validateRegex
 												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
@@ -405,14 +358,22 @@
 
 										<p:outputLabel for="txtCelular" value="Celular:">
 										</p:outputLabel>
+
+
 										<p:inputText id="txtCelular" required="true"
-											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCelular}" />
+											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lCelular}"
+											validatorMessage="Número celular inválido EJ: 0981060337">
+											<f:validateRegex pattern="\d{10}"></f:validateRegex>
+										</p:inputText>
 
 										<p:outputLabel for="txtDetalle" value="Solicitud" />
 										<p:inputTextarea id="txtDetalle" required="true"
 											autoResize="false" style="resize: none"
 											value="#{beanSolicitudUsoAplicacion.entidadRegistrar.lSolicitud}"
-											onblur="ChangeCase(this);" />
+											onblur="ChangeCase(this);"
+											validatorMessage="Debe ingresar un minímo de 20 caracteres hasta un máximo de 500">
+											<f:validateRegex pattern="[a-zA-Z-\s-0-9]{20,500}"></f:validateRegex>
+										</p:inputTextarea>
 										<h:outputText value="" />
 										<h:panelGroup>
 											<div style="height: 50px; width: 130px">
@@ -449,13 +410,12 @@
 
 	<!-- -->
 
-	<div class="Container100 " id="modena-pricingtables"
+	<div class="Container100 " id="onix-precios"
 		style="background-color: #F0F2F5; padding: 0px 3rem; box-sizing: border-box;">
 
 		<div class="EmptyBox80"></div>
 
-		<h1 class="FontRobotoRegular Fs30 BoldGray TexAlCenter">Pricing
-			Tables</h1>
+		<h1 class="FontRobotoRegular Fs30 BoldGray TexAlCenter">Tabla de precios</h1>
 		<div class="EmptyBox30"></div>
 
 		<div class="Wid90 MarAuto Responsive100  ">
@@ -469,19 +429,15 @@
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 						<div class="Container100 FontRobotoLight BoldLeaden"
 							style="font-size: 3rem;">
-							$2<span class="Fs30 Leaden">/mo*</span>
+							$20<span class="Fs30 Leaden">/Mensual</span>
 						</div>
 						<div class="Container100 FontRobotoLight Leaden Fs16">
-							Basic customer support for<br /> small business
+							Cliente básico<br /> Permite la creación de una empresa, con la opción de crear cinco usuarios más el usuario administrador
 						</div>
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 						<div class="Separator"></div>
-						<div class="Container100 FontRobotoLight Leaden Fs16">$25
-							for monthly</div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">Soporte 2x5</div>
 						<div class="EmptyBox20"></div>
-						<div class="Container100 ui-fluid">
-							<p:button value="Get Started" styleClass="GreenButton Fleft" />
-						</div>
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 					</div>
 				</div>
@@ -496,19 +452,15 @@
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 						<div class="Container100 FontRobotoLight BoldLeaden"
 							style="font-size: 3rem;">
-							$3<span class="Fs30 Leaden">/mo*</span>
+							$40<span class="Fs30 Leaden">/Mensuales</span>
 						</div>
 						<div class="Container100 FontRobotoLight Leaden Fs16">
-							All-in-one customer support<br /> for small business
+							Cliente medio<br /> Permite la creación de dos empresas, con la opción de crear 10 usuarios
 						</div>
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 						<div class="Separator"></div>
-						<div class="Container100 FontRobotoLight Leaden Fs16">$35
-							for monthly</div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">Soporte 4X5</div>
 						<div class="EmptyBox20"></div>
-						<div class="Container100 ui-fluid">
-							<p:button value="Get Started" styleClass="CyanButton Fleft" />
-						</div>
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 					</div>
 				</div>
@@ -523,19 +475,15 @@
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 						<div class="Container100 FontRobotoLight BoldLeaden"
 							style="font-size: 3rem;">
-							$15<span class="Fs30 Leaden">/mo*</span>
+							$60<span class="Fs30 Leaden">/Mensuales</span>
 						</div>
 						<div class="Container100 FontRobotoLight Leaden Fs16">
-							Business class customer <br />support + One to one help
+							Cliente instructor <br />Permite la creación de tres empresas, con la opcion de crear 15 usuarios
 						</div>
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 						<div class="Separator"></div>
-						<div class="Container100 FontRobotoLight Leaden Fs16">$155
-							for monthly</div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">Soporte 8X5</div>
 						<div class="EmptyBox20"></div>
-						<div class="Container100 ui-fluid">
-							<p:button value="Get Started" styleClass="GreenButton Fleft" />
-						</div>
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 					</div>
 				</div>
@@ -550,19 +498,15 @@
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 						<div class="Container100 FontRobotoLight BoldLeaden"
 							style="font-size: 3rem;">
-							$50<span class="Fs30 Leaden">/mo*</span>
+							$80<span class="Fs30 Leaden">/Mensual</span>
 						</div>
 						<div class="Container100 FontRobotoLight Leaden Fs16">
-							Business class customer <br />support + One to one help
+							Cliente instructor plus <br />Permite la creación de cuatro empresas, con la opcion de crear usuarios ilimitados
 						</div>
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 						<div class="Separator"></div>
-						<div class="Container100 FontRobotoLight Leaden Fs16">$555
-							for monthly</div>
+						<div class="Container100 FontRobotoLight Leaden Fs16">Soporte 8X7</div>
 						<div class="EmptyBox20"></div>
-						<div class="Container100 ui-fluid">
-							<p:button value="Get Started" styleClass="GreenButton Fleft" />
-						</div>
 						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
 					</div>
 				</div>
@@ -576,13 +520,13 @@
 
 	<!-- -->
 
-	<div class="Container100 " id="modena-features"
+	<div class="Container100 " id="onix-caracteristicas"
 		style="padding: 0px 3rem; box-sizing: border-box;">
 
 		<div class="EmptyBox80"></div>
 
-		<h1 class="FontRobotoRegular Fs30 BoldGray TexAlCenter">Features</h1>
-		<div class="EmptyBox30"></div>
+		<h1 class="FontRobotoRegular Fs30 BoldGray TexAlCenter">Características Técnicas</h1>
+		<div class="EmptyBox50"></div>
 
 		<div class="Wid90 MarAuto">
 
@@ -595,10 +539,9 @@
 						<div class="FontRobotoRegular LeadenGreen"
 							style="font-size: 1.6rem;">HTML5 &amp; CSS3</div>
 						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
-						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
-							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
-							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-							voluptua.</div>
+						<div class="FontRobotoLight Leaden Fs14" align="justify">El HTML5 (HyperText Markup Language) es la quinta revisión del lenguaje de programación “básico” 
+						de la World Wide Web. Esta nueva versión pretende remplazar al actual (X)HTML, corrigiendo problemas con los que los desarrolladores web 
+						se encuentran, así como rediseñar el código actualizándolo a nuevas necesidades que demanda la web de hoy en día.</div>
 						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
 					</div>
 				</div>
@@ -612,10 +555,11 @@
 						<div class="FontRobotoRegular LeadenGreen"
 							style="font-size: 1.6rem;">Cross-Browser</div>
 						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
-						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
-							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
-							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-							voluptua.</div>
+						<div class="FontRobotoLight Leaden Fs14" align="justify">El término cross browser hace alusión al desarrollo de sitios web que funcionan 
+						y se visualizan de igual manera en cualquier navegador.
+						Si bien existen organismos como el W3C (World Wide Web Consortium) encargados de establecer los estándares web y los lenguajes de 
+						programación que son utilizados y sus compatibilidades, 
+						como HTML, CSS o Javascript.</div>
 						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
 					</div>
 				</div>
@@ -630,10 +574,10 @@
 						<div class="FontRobotoRegular LeadenGreen"
 							style="font-size: 1.6rem;">Responsive</div>
 						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
-						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
-							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
-							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-							voluptua.</div>
+						<div class="FontRobotoLight Leaden Fs14" align="justify">El responsive design o diseño adaptable no consiste en hacer una versión móvil 
+						del sitio con un subdominio paralelo, 
+						sino en prepararlo estructuralmente para que sea capaz de adaptar todos sus contenidos en función no solo de la resolución, 
+						sino también del tipo de de dispositivo sobre el que se está viendo.</div>
 						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
 					</div>
 				</div>
@@ -647,10 +591,10 @@
 						<div class="FontRobotoRegular LeadenGreen"
 							style="font-size: 1.6rem;">Handcrafted</div>
 						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
-						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
-							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
-							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-							voluptua.</div>
+						<div class="FontRobotoLight Leaden Fs14" align="justify">El software artesanal es un “movimiento” que indica que, aunque incluya procesos, métodos, y demás, 
+						un software no es algo que se fabrique y se de en línea como cualquier otro producto; 
+						es algo que incluye la percepción y la habilidad de las personas, no solo el programador, 
+						sino el cliente y cualquier otro que intervenga en el proceso.</div>
 						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
 					</div>
 				</div>
@@ -664,117 +608,29 @@
 						<div class="FontRobotoRegular LeadenGreen"
 							style="font-size: 1.6rem;">Rock-Solid</div>
 						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
-						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
-							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
-							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-							voluptua.</div>
+						<div class="FontRobotoLight Leaden Fs14" align="justify">Roca es un intento de definir un conjunto de recomendaciones - independiente de cualquier marco determinado, 
+						lenguaje de programación o herramientas - que encarna los principios de lo que consideramos que es una buena arquitectura de aplicaciones web. 
+						Su finalidad es la de servir como referencia, 
+						uno que puede ser implementado como está o ser comparado con otros enfoques para resaltar divergentes decisiones de diseño.</div>
 						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
 					</div>
 				</div>
-			</div>
-
-			<div class="Container20 Responsive TexAlCenter">
-				<div class="ContainerIndent">
-					<div class="Container100">
-						<i class="icon-paper-stack SoftBlue Wid100"
-							style="font-size: 4rem;"></i>
-						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
-						<div class="FontRobotoRegular LeadenGreen"
-							style="font-size: 1.6rem;">HTML5 &amp; CSS3</div>
-						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
-						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
-							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
-							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-							voluptua.</div>
-						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="Container20 Responsive TexAlCenter">
-				<div class="ContainerIndent">
-					<div class="Container100">
-						<i class="icon-cog SoftBlue Wid100" style="font-size: 4rem;"></i>
-						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
-						<div class="FontRobotoRegular LeadenGreen"
-							style="font-size: 1.6rem;">Cross-Browser</div>
-						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
-						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
-							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
-							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-							voluptua.</div>
-						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="Container20 Responsive TexAlCenter">
-				<div class="ContainerIndent">
-					<div class="Container100">
-						<i class="icon-content-right SoftBlue Wid100"
-							style="font-size: 4rem;"></i>
-						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
-						<div class="FontRobotoRegular LeadenGreen"
-							style="font-size: 1.6rem;">Responsive</div>
-						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
-						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
-							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
-							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-							voluptua.</div>
-						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="Container20 Responsive TexAlCenter">
-				<div class="ContainerIndent">
-					<div class="Container100">
-						<i class="icon-flag SoftBlue Wid100" style="font-size: 4rem;"></i>
-						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
-						<div class="FontRobotoRegular LeadenGreen"
-							style="font-size: 1.6rem;">Handcrafted</div>
-						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
-						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
-							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
-							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-							voluptua.</div>
-						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="Container20 Responsive TexAlCenter">
-				<div class="ContainerIndent">
-					<div class="Container100">
-						<i class="icon-drop SoftBlue Wid100" style="font-size: 4rem;"></i>
-						<div class="Wid100 OvHidden" style="height: 2rem;"></div>
-						<div class="FontRobotoRegular LeadenGreen"
-							style="font-size: 1.6rem;">Rock-Solid</div>
-						<div class="Wid100 OvHidden" style="height: 1rem;"></div>
-						<div class="FontRobotoLight Leaden Fs14">Lorem ipsum dolor
-							sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod
-							tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-							voluptua.</div>
-						<div class="Wid100 OvHidden" style="height: 3rem;"></div>
-					</div>
-				</div>
-			</div>
-
+			</div>	
+			<div class="EmptyBox100"></div>
 		</div>
 
-		<div class="EmptyBox50"></div>
+		<div class="EmptyBox30"></div>
 
 	</div>
 
 	<!-- -->
 
-	<div class="Container100 " id="modena-customers"
+	<div class="Container100 " id="onix-respaldo"
 		style="background-color: #F0F2F5; padding: 0px 3rem; box-sizing: border-box;">
 
 		<div class="EmptyBox80"></div>
 
-		<h1 class="FontRobotoRegular Fs30 BoldGray TexAlCenter">Hundreds
-			Of Thousands Of Customers Trust Us !</h1>
+		<h1 class="FontRobotoRegular Fs30 BoldGray TexAlCenter">Respaldo de los desarrolladores!</h1>
 		<div class="EmptyBox30"></div>
 		<div class="Wid80 MarAuto">
 
@@ -782,16 +638,9 @@
 				<div class="ContainerIndent">
 					<div class="Container100 TexAlCenter">
 						<div class="EmptyBox20"></div>
-						<h:graphicImage name="images/avatar1.svg" library="modena-layout"
-							style="width:150px; height:150px;" />
 						<div class="EmptyBox20"></div>
-						<span class="DispBlock BoldGray FontRobotoLight">"We
-							realized Modena was a great tool that would give us more insights
-							on both a strategic and technical level, so we could make more
-							intelligent business decisions."</span>
 						<div class="EmptyBox20"></div>
-						<span class="FontRobotoRegular DispBlock BoldGray">—Luke
-							Skywalker, Vice President of Operations</span>
+						<span class="FontRobotoRegular DispBlock BoldGray"></span>
 					</div>
 				</div>
 			</div>
@@ -799,16 +648,12 @@
 				<div class="ContainerIndent">
 					<div class="Container100 TexAlCenter">
 						<div class="EmptyBox20"></div>
-						<h:graphicImage name="images/avatar2.svg" library="modena-layout"
-							style="width:150px; height:150px;" />
+						<h:graphicImage name="portal/Incios.jpg" library="imagenes"
+					style="max-width : 200px; width : 200px;" />
 						<div class="EmptyBox20"></div>
-						<span class="DispBlock BoldGray FontRobotoLight">"We
-							realized Modena was a great tool that would give us more insights
-							on both a strategic and technical level, so we could make more
-							intelligent business decisions."</span>
+						<span class="DispBlock BoldGray FontRobotoLight">"Lo mejor del software se encuentra en su middleware, cuenta con patrones de diseño de integración y la aplicación estricta de los principios SOLID."</span>
 						<div class="EmptyBox20"></div>
-						<span class="FontRobotoRegular DispBlock BoldGray">—Luke
-							Skywalker, Vice President of Operations</span>
+						<span class="FontRobotoRegular DispBlock BoldGray">—Byron Segovia, desarrollador experto en tecnologías JEE : https://ec.linkedin.com/in/byron-santiago-segovia-quntero-a3806a24</span>
 					</div>
 				</div>
 			</div>
@@ -816,16 +661,11 @@
 				<div class="ContainerIndent">
 					<div class="Container100 TexAlCenter">
 						<div class="EmptyBox20"></div>
-						<h:graphicImage name="images/avatar1.svg" library="modena-layout"
-							style="width:150px; height:150px;" />
+						
 						<div class="EmptyBox20"></div>
-						<span class="DispBlock BoldGray FontRobotoLight">"We
-							realized Modena was a great tool that would give us more insights
-							on both a strategic and technical level, so we could make more
-							intelligent business decisions."</span>
+						<span class="DispBlock BoldGray FontRobotoLight"></span>
 						<div class="EmptyBox20"></div>
-						<span class="FontRobotoRegular DispBlock BoldGray">—Luke
-							Skywalker, Vice President of Operations</span>
+						<span class="FontRobotoRegular DispBlock BoldGray"></span>
 					</div>
 				</div>
 			</div>
@@ -837,7 +677,7 @@
 
 	<!-- -->
 
-	<div class="Container100  TealBack" id="modena-contact">
+	<div class="Container100  TealBack" id="onix-contactenos">
 
 
 
@@ -876,7 +716,7 @@
 				<a href="https://apis-ec.jimdo.com/" target="ir_web"
 					class="DispInlBlock FontModenaLight White Fs14 Fleft HoverEffect">Sítio
 					WEB</a> <span class="DispInlBlock Fleft Fs14 White"
-					style="padding: 0px 10px;">|</span> <a href="#modena-highlight"
+					style="padding: 0px 10px;">|</span> <a href="#onix-inicio"
 					class="DispInlBlock FontModenaLight White Fs14 Fleft HoverEffect">Ir
 					arriba</a>
 
