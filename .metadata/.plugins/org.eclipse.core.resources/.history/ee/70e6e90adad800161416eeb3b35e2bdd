@@ -1,0 +1,18 @@
+package com.onix.modulo.dominio.aplicacion;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+import com.onix.modulo.librerias.dominio.entidades.base.EntidadBaseAuditable;
+
+@Entity
+@Table(name = "OMG_PARAMETRO")
+@NamedQuery(name = "OmgParametro.findAll", query = "SELECT p FROM OmgParametro p")
+public class OmgParametro extends EntidadBaseAuditable<Long> implements Serializable{
+
+	
+	
+}

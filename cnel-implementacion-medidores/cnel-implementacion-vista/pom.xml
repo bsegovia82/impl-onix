@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.cnel.medidores</groupId>
+		<artifactId>cnel-implementacion-medidores</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>cnel-implementacion-vista</artifactId>
+	<name>cnel-implementacion-vista</name>
+	<description>cnel-implementacion-vista</description>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sebra.onix.libreria</groupId>
+			<artifactId>onix-modulo-librerias-vista</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.cnel.medidores</groupId>
+			<artifactId>cnel-implementacion-servicios-integracion</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sebra.onix.libreria</groupId>
+			<artifactId>onix-modulo-librerias-generales</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sebra.onix.libreria</groupId>
+			<artifactId>onix-modulo-librerias-servicio</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>SEBRA_RELEASES</id>
+			<url>http://nexus-globalitmind.rhcloud.com/nexus/content/repositories/SEBRA_RELEASES</url>
+		</repository>
+		<snapshotRepository>
+			<id>SEBRA_SNAPSHOT</id>
+			<url>http://nexus-globalitmind.rhcloud.com/nexus/content/repositories/SEBRA_SNAPSHOT</url>
+		</snapshotRepository>
+		<site>
+			<id>github</id>
+			<url>https://github.com/bsegovia82/impl-onix.git</url>
+		</site>
+	</distributionManagement>
+</project>

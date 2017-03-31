@@ -1,0 +1,12 @@
+package com.onix.modulo.dominio.aplicacion;
+
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "OMG_TIPO_PARAMETRO")
+@NamedQuery(name = "OmgTipoParametro.findAll", query = "SELECT p FROM OmgTipoParametro p")
+public class OmgTipoParametro {
+
+}

@@ -175,5 +175,11 @@
 		<module>onix-implementacion-modulo-vista</module>
 		<module>onix-implementacion-modulo-base</module>
 		<module>onix-implementacion-modulo-modena</module>
+		<module>onix-implementacion-modulo-timers</module>
+		<module>onix-implementacion-api-clientes</module>
+		<module>onix-implementacion-modulo-omega</module>
+		<module>onix-implementacion-modulo-spark</module>
+		<module>onix-implementacion-modulo-vista-omega</module>
+		<module>onix-implementacion-modulo-vista-spark</module>
 	</modules>
 </project>

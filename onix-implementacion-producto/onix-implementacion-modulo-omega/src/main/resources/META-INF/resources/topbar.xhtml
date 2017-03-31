@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="frmAccesosDirectos">
+
+		<div class="topbar clearfix">
+			<a id="omega-menu-button" href="#"> <span class="fa fa-bars"></span>
+			</a> <span class="topbar-title"> <ui:insert name="title"></ui:insert></span>
+
+			<a id="options-menu-button" href="#"> <span
+				class="fa fa-ellipsis-h"></span>
+			</a>
+
+			<div id="topbar-icons">
+				<!-- 				<span class="topbar-search"> <input type="text" -->
+				<!-- 					placeholder="Search" /> <span -->
+				<!-- 					class="topbar-search-icon fa fa-search"></span> -->
+				<!-- 				</span>  -->
+				<a href="#"><span class="topbar-item-text">Mensajes</span><span
+					class="topbar-icon fa fa-envelope-o"></span></a>
+				<p:commandLink title="Accesos directos" id="listaAccesos"
+				actionListener="#{beanAccesosDirectos.cargarListaAccesosDirectos}" update="@([id$=panelCargaAccesos])" process="@this">
+					<span class="topbar-icon fa fa-list-ol"></span>
+				</p:commandLink>
+				<a href="#" onclick="PF('dlg2').show();" title="Cambio Clave"><span
+					class="topbar-icon fa fa-key"></span></a>
+				<h:commandLink action="#{beanLogin.logout}" title="Salir">
+					<span class="topbar-icon fa fa-power-off"></span>
+				</h:commandLink>
+
+
+			</div>
+
+		</div>
+
+
+		<p:overlayPanel id="panelAccesos" for="listaAccesos" hideEffect="fade"
+			dynamic="true" style="width:300px" widgetVar="panelAccesos">
+			<p:panel id="panelCargaAccesos">
+				<f:facet name="header">
+					<h:outputText value="Lista de accesos directos" />
+				</f:facet>
+
+				<ui:repeat var="acceso"
+					value="#{beanAccesosDirectos.lListaAccesosActivos}"
+					varStatus="status">
+					<h:outputLink
+						value="#{request.contextPath}#{acceso.priOpcione.accion}">
+						<i class="#{acceso.priOpcione.rutaimagen}"></i> #{acceso.priOpcione.opcion}</h:outputLink>
+					<br></br>
+				</ui:repeat>
+
+				<f:facet name="footer">
+					<a href="#"
+					onclick="PF('panelAccesos').hide();"
+					>
+					<i class="fa fa-sign-in"></i>
+					</a>
+					
+				</f:facet>
+			</p:panel>
+
+
+
+
+		</p:overlayPanel>
+
+		<p:dialog header="Cambio de clave" widgetVar="dlg2" modal="true"
+			resizable="false" closable="false"
+			visible="#{beanLogin.usuarioSession.usuarioSession.esNuevo eq 'S'}"
+			width="400">
+			<p:outputPanel id="cambClae">
+
+				<p:messages globalOnly="true" showDetail="false" closable="true"
+					id="mensajeGeneral"></p:messages>
+
+				<h:outputText value="Su primer inicio de sesión, cambie su clave"
+					rendered="#{beanLogin.usuarioSession.usuarioSession.esNuevo eq 'S'}" />
+				<p:panelGrid columns="2" layout="grid">
+
+					<h:outputText value="Usuario: " />
+					<h:outputText
+						value="#{beanLogin.usuarioSession.usuarioSession.usuario}" />
+					<h:outputText value="Clave: " />
+					<p:password feedback="false" value="#{beanLogin.cambContrase1}"></p:password>
+					<h:outputText value="Rep. Clave: " />
+					<p:password feedback="false" value="#{beanLogin.cambContrase2}"></p:password>
+					<f:facet name="footer">
+						<p:commandButton value="Aceptar"
+							actionListener="#{beanLogin.cambiarContrasenia}"
+							process="@([id$=cambClae])" update="@([id$=cambClae])"
+							partialSubmit="true">
+						</p:commandButton>
+						<p:commandButton value="Cerrar"
+							actionListener="#{beanLogin.cerrarVentana}" ajax="false">
+						</p:commandButton>
+					</f:facet>
+				</p:panelGrid>
+			</p:outputPanel>
+
+		</p:dialog>
+
+	</h:form>
+
+
+</ui:composition>

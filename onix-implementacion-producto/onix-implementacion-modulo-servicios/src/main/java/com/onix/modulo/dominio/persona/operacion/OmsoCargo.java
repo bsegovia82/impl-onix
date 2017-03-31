@@ -48,7 +48,6 @@ public class OmsoCargo extends EntidadBaseAuditable<Long> implements Serializabl
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return nombreCargo;
 	}
 	

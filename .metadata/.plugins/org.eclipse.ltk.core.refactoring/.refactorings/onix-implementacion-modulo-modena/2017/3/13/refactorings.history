@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;pag_principal_tmpl.xhtml&apos; to &apos;resources&apos;&#x0D;&#x0A;- Original project: &apos;onix-implementacion-modulo-modena&apos;&#x0D;&#x0A;- Destination element: &apos;resources&apos;&#x0D;&#x0A;- Original element: &apos;pag_principal_tmpl.xhtml&apos;" description="Copy file" element1="src/main/resources/META-INF/resources/pag_principal_tmpl.xhtml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1490024849142" target="/onix-implementacion-modulo-spark/src/main/resources/META-INF/resources" units="0" version="1.0"/>
+</session>

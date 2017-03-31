@@ -42,8 +42,8 @@ public class ServiciosMantenimientoSeguridad {
 		return rolEAO.listarRolesDisponibles();
 	}
 
-	public List<OmsOpcione> listaOpcionesTerminales() {
-		return opcionEAO.listaOpcionesTerminales();
+	public List<OmsOpcione> listaOpcionesTerminales(String pUsuario) {
+		return opcionEAO.listaOpcionesTerminales(pUsuario);
 	}
 
 	public List<OmsOpcione> listaOpcionesAsignada(String rol) {

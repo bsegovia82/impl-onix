@@ -27,11 +27,11 @@ public class BeanMantenedorEspecialidad
 	private List<OmsoEspecialidad> lListaEspecialidad;
 
 	public BeanMantenedorEspecialidad() {
-		super(new OmsoEspecialidad(), OmsoEspecialidad.class);
+		super(OmsoEspecialidad.class);
 		addPostTransaccion(new PostTransaccionListener() {
 			@Override
 			public void metodoPostTransaccion() {
-				entidadRegistrar = new OmsoEspecialidad();
+				
 			}
 		});
 

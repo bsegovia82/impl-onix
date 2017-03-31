@@ -22,6 +22,7 @@ public class OmslPais extends EntidadBaseAuditable<Long> implements Serializable
 	
 	private static final long serialVersionUID = 1L;
 	private String nombre;
+	private String lCodigoIso;
 	private List<OmslProvincia> provincias=new ArrayList<OmslProvincia>();
 	//no se debe ensuciar las tablas con otro detalles
 //	private List<OmsgNacionalidad> nacionalidades=new ArrayList<OmsgNacionalidad>();
@@ -31,16 +32,9 @@ public class OmslPais extends EntidadBaseAuditable<Long> implements Serializable
 	@Id
 	@Column(name = "ID")
 	public Long getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 
-	@Override
-	public void setId(Long id) {
-		// TODO Auto-generated method stub
-		this.id = id;
-	}
-	
 	@Column(name="NOMBRE",length=64,nullable=false)
 	public String getNombre() {
 		return nombre;
@@ -59,6 +53,15 @@ public class OmslPais extends EntidadBaseAuditable<Long> implements Serializable
 		this.provincias = provincias;
 	}
 
+	@Column(name="CODIGO_ISO")
+	public String getlCodigoIso() {
+		return lCodigoIso;
+	}
+	
+	public void setlCodigoIso(String lCodigoIso) {
+		this.lCodigoIso = lCodigoIso;
+	}
+	
 	//No relacionarlas por que eso corresponde a otra implementacion
 //	@OneToMany(mappedBy="pais")
 //	public List<OmsgNacionalidad> getNacionalidades() {

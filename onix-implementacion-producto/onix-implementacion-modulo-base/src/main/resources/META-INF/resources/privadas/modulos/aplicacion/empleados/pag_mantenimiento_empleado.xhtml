@@ -375,5 +375,9 @@
 		</p:commandButton>
 
 	</ui:define>
+	
+	<ui:define name="control_dialogo">
+		<p:ajax event="close" update=":#{p:component('panel')}" listener="#{beanMantenedorEmpleado.eventoControlCierreDialogo}" />
+	</ui:define>
 
 </ui:composition>

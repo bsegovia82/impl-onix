@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +39,9 @@ public class OmsUsuario extends EntidadBaseAuditable<Long> implements Serializab
 
 	private String correo;
 
-	private String es_nuevo;
+	private String esNuevo;
+	
+	private String lDescripcion;
 	
 	private String lTokenRecuperacionClave;
 
@@ -51,6 +54,8 @@ public class OmsUsuario extends EntidadBaseAuditable<Long> implements Serializab
 	private String rolesAsignados;
 
 	private byte[] imagenReferencia;
+	
+	private String rolPrincipal;
 
 	public OmsUsuario() {
 	}
@@ -85,7 +90,7 @@ public class OmsUsuario extends EntidadBaseAuditable<Long> implements Serializab
 		this.usuario = usuario;
 	}
 
-	@OneToMany(mappedBy = "priUsuario")
+	@OneToMany(mappedBy = "priUsuario", fetch=FetchType.EAGER)
 	public List<OmsUsuariosRole> getPriUsuariosRoles() {
 		return this.priUsuariosRoles;
 	}
@@ -112,13 +117,13 @@ public class OmsUsuario extends EntidadBaseAuditable<Long> implements Serializab
 		this.correo = correo;
 	}
 
-	public void setEs_nuevo(String es_nuevo) {
-		this.es_nuevo = es_nuevo;
+	public String getEsNuevo() {
+		return esNuevo;
 	}
 
 	@Column(name = "ES_NUEVO")
-	public String getEs_nuevo() {
-		return es_nuevo;
+	public void setEsNuevo(String esNuevo) {
+		this.esNuevo = esNuevo;
 	}
 
 	public void agregarRol(OmsUsuariosRole usuarioRol) {
@@ -180,6 +185,24 @@ public class OmsUsuario extends EntidadBaseAuditable<Long> implements Serializab
 	
 	public void setlFechaVencimiento(Date lFechaVencimiento) {
 		this.lFechaVencimiento = lFechaVencimiento;
+	}
+	
+	public String getRolPrincipal() {
+		return rolPrincipal;
+	}
+	
+	@Transient
+	public void setRolPrincipal(String rolPrincipal) {
+		this.rolPrincipal = rolPrincipal;
+	}
+	
+	@Column(name = "DESCRIPCION")
+	public String getlDescripcion() {
+		return lDescripcion;
+	}
+	
+	public void setlDescripcion(String lDescripcion) {
+		this.lDescripcion = lDescripcion;
 	}
 	
 }

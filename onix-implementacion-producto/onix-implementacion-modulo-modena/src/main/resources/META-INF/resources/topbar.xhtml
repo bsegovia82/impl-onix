@@ -4,16 +4,27 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+	<style>
+.ui-panelgrid {
+	font-size: 12px;
+}
+
+.ui-panelgrid .ui-panelgrid-footer {
+	text-align: center;
+}
+</style>
+
 	<h:form>
 		<!-- TOPBAR START -->
-		<div id="layout-topbar">
+		<div id="layout-topbar" style="height: 35px;">
 			<a id="mobile-menu-button"> <span class="ButtonLine"
 				id="ButtonLine1"></span> <span class="ButtonLine" id="ButtonLine2"></span>
 				<span class="ButtonLine" id="ButtonLine3"></span>
-			</a> <a href="/onix/privadas/generales/pag_principal.xhtml" id="logo">
-				
-				<h:graphicImage url="#{request.contextPath}/imagenes/general/onix_logo.png"  styleClass="Fleft"
-					 style="height : 54px; width : 187px;" />
+			</a> <a
+				href="#{request.contextPath}/privadas/generales/pag_principal.jsf"
+				id="logo"> <h:graphicImage name="general/onix_logo.png"
+					library="imagenes" styleClass="Fleft"
+					style="height : 40px; width : 130px;" />
 			</a> <a id="show-top-menu" class="ShowOnMobile ripplelink"><i
 				class="icon-more_vert" id="active"></i><i
 				class="icon-close DispNone" id="passive"></i> </a>
@@ -39,15 +50,15 @@
 						class="icon-notifications_none"></i> <span class="ShowOnMobile">Notifications</span></a>
 					<ul>
 						<li><a href="#"><span class="Orange">Reunión</span><br />
-							<span class="Gray Fs14 FontRobotoLight">Hoy - 13:40 <br />En
+								<span class="Gray Fs14 FontRobotoLight">Hoy - 13:40 <br />En
 									SweetandCoffe - GYE
 							</span></a></li>
 						<li><a href="#"><span class="Blue">Reunión</span><br />
-							<span class="Gray Fs14 FontRobotoLight">Hoy - 17:10 <br />En
+								<span class="Gray Fs14 FontRobotoLight">Hoy - 17:10 <br />En
 									San Marino
 							</span></a></li>
 						<li><a href="#"><span class="Blue">Reunión</span><br />
-							<span class="Gray Fs14 FontRobotoLight">Hoy - 18:30 <br />En
+								<span class="Gray Fs14 FontRobotoLight">Hoy - 18:30 <br />En
 									Mall del sol
 							</span></a></li>
 					</ul></li>
@@ -55,8 +66,8 @@
 						class="ShowOnMobile">Sistema</span></a>
 					<ul>
 						<li><a href="#" onclick="PF('dlg2').show();"> <span
-								class="Orange"> <i
-									class="icon-lock Fs30 DispBlock"></i> Cambio Clave
+								class="Orange"> <i class="icon-lock Fs30 DispBlock"></i>
+									Cambio Clave
 							</span></a></li>
 
 
@@ -76,15 +87,15 @@
 
 		<p:dialog header="Cambio de clave" widgetVar="dlg2" modal="true"
 			resizable="false" closable="false"
-			visible="#{beanLogin.usuarioSession.usuarioSession.es_nuevo eq 'S'}">
+			visible="#{beanLogin.usuarioSession.usuarioSession.esNuevo eq 'S'}" width="300">
 			<p:outputPanel id="cambClae">
 
 				<p:messages globalOnly="true" showDetail="false" closable="true"
 					id="mensajeGeneral"></p:messages>
 
 				<h:outputText value="Su primer inicio de sesión, cambie su clave"
-					rendered="#{beanLogin.usuarioSession.usuarioSession.es_nuevo eq 'S'}" />
-				<p:panelGrid columns="2">
+					rendered="#{beanLogin.usuarioSession.usuarioSession.esNuevo eq 'S'}" />
+				<p:panelGrid columns="2" layout="grid">
 
 					<h:outputText value="Usuario: " />
 					<h:outputText
@@ -100,7 +111,7 @@
 							partialSubmit="true">
 						</p:commandButton>
 						<p:commandButton value="Cerrar"
-							actionListener="#{beanLogin.cerrarVentana}" process="@this">
+							actionListener="#{beanLogin.cerrarVentana}"  ajax="false">
 						</p:commandButton>
 					</f:facet>
 				</p:panelGrid>

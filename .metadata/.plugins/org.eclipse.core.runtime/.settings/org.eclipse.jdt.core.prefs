@@ -1,7 +1,16 @@
 M2_REPO=C\:/Users/BYRON/.m2/repository
 eclipse.preferences.version=1
 org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=*.ucls,*.useq
+org.eclipse.jdt.core.classpathVariable.ASPECTJRT_LIB=D\:/eclipse-2/plugins/org.aspectj.runtime_1.8.9.201602042048.jar
+org.eclipse.jdt.core.classpathVariable.ECLIPSE_HOME=D\:/eclipse-2/
+org.eclipse.jdt.core.classpathVariable.FINDBUGS_ANNOTATIONS=D\:/eclipse-2/plugins/edu.umd.cs.findbugs.plugin.eclipse_3.0.1.20150306-5afe4d1/lib/annotations.jar
+org.eclipse.jdt.core.classpathVariable.JRE_LIB=C\:/Program Files/Java/jdk1.8.0_111/jre/lib/rt.jar
+org.eclipse.jdt.core.classpathVariable.JRE_SRC=C\:/Program Files/Java/jdk1.8.0_111/src.zip
+org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
+org.eclipse.jdt.core.classpathVariable.JSR305_ANNOTATIONS=D\:/eclipse-2/plugins/edu.umd.cs.findbugs.plugin.eclipse_3.0.1.20150306-5afe4d1/lib/jsr305.jar
+org.eclipse.jdt.core.classpathVariable.JUNIT_HOME=D\:/eclipse-2/plugins/org.junit_4.12.0.v201504281640/
 org.eclipse.jdt.core.classpathVariable.M2_REPO=D\:/repositorio
+org.eclipse.jdt.core.classpathVariable.librerias_arq=D\:/externo/arq-onix/onix-librerias-producto
 org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
 org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8

@@ -16,14 +16,6 @@
   <path value="D:/repositorio/org/jboss/as/jboss-as-network/7.1.0.Final/jboss-as-network-7.1.0.Final.jar"/>
   <path value="D:/repositorio/org/jboss/security/jboss-negotiation-extras/2.2.0.SP1/jboss-negotiation-extras-2.2.0.SP1.jar"/>
   <path value="D:/repositorio/junit/junit/3.8.1/junit-3.8.1.jar"/>
-  <path value="/onix-implementacion-modulo-modena/src/main/resources/META-INF/primefaces-modena.taglib.xml">
-   <libraries>
-    <library class="facelet">
-     <id class="model-object"
-      path="FileSystems/src-3/meta-inf/primefaces-modena.taglib.xml" project="onix-implementacion-modulo-modena"/>
-    </library>
-   </libraries>
-  </path>
   <path value="D:/repositorio/org/jboss/msc/jboss-msc/1.0.2.GA/jboss-msc-1.0.2.GA.jar"/>
   <path value="D:/repositorio/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
   <path value="D:/repositorio/org/jboss/logmanager/jboss-logmanager/1.2.2.GA/jboss-logmanager-1.2.2.GA.jar"/>
@@ -69,6 +61,14 @@
   <path value="D:/repositorio/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
   <path value="D:/repositorio/org/jgroups/jgroups/3.0.4.Final/jgroups-3.0.4.Final.jar"/>
   <path value="D:/repositorio/org/jboss/ws/jbossws-api/1.0.0.CR1/jbossws-api-1.0.0.CR1.jar"/>
+  <path value="/onix-implementacion-modulo-modena/src/main/resources/META-INF/resources/WEB-INF/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/src-3/meta-inf/resources/web-inf/faces-config.xml" project="onix-implementacion-modulo-modena"/>
+    </library>
+   </libraries>
+  </path>
   <path value="D:/repositorio/org/jboss/naming/jnp-client/5.0.5.Final/jnp-client-5.0.5.Final.jar"/>
   <path value="D:/repositorio/org/infinispan/infinispan-core/5.1.1.FINAL/infinispan-core-5.1.1.FINAL.jar"/>
   <path value="D:/repositorio/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
@@ -94,14 +94,6 @@
   <path value="D:/repositorio/org/jboss/xnio/xnio-api/3.0.3.GA/xnio-api-3.0.3.GA.jar"/>
   <path value="D:/repositorio/org/jacorb/jacorb/2.3.1.jbossorg-1/jacorb-2.3.1.jbossorg-1.jar"/>
   <path value="D:/repositorio/org/jboss/spec/javax/resource/jboss-connector-api_1.6_spec/1.0.0.Final/jboss-connector-api_1.6_spec-1.0.0.Final.jar"/>
-  <path value="/onix-implementacion-modulo-modena/src/main/resources/META-INF/faces-config.xml">
-   <libraries>
-    <library class="faces-config">
-     <id class="model-object"
-      path="FileSystems/src-3/meta-inf/faces-config.xml" project="onix-implementacion-modulo-modena"/>
-    </library>
-   </libraries>
-  </path>
   <path value="D:/repositorio/org/jboss/as/jboss-as-domain-management/7.1.0.Final/jboss-as-domain-management-7.1.0.Final.jar"/>
   <path value="D:/repositorio/org/jboss/as/jboss-as-ee/7.1.0.Final/jboss-as-ee-7.1.0.Final.jar"/>
   <path value="D:/repositorio/org/jboss/web/jbossweb/7.0.0.CR2/jbossweb-7.0.0.CR2.jar"/>
@@ -120,6 +112,14 @@
   <path value="D:/repositorio/org/jboss/as/jboss-as-domain-http-interface/7.1.0.Final/jboss-as-domain-http-interface-7.1.0.Final.jar"/>
   <path value="D:/repositorio/org/hornetq/hornetq-core/2.2.7.Final/hornetq-core-2.2.7.Final.jar"/>
   <path value="D:/repositorio/org/jboss/jboss-vfs/3.1.0.Final/jboss-vfs-3.1.0.Final.jar"/>
+  <path value="/onix-implementacion-modulo-modena/src/main/resources/META-INF/resources/WEB-INF/primefaces-modena.taglib.xml">
+   <libraries>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/src-3/meta-inf/resources/web-inf/primefaces-modena.taglib.xml" project="onix-implementacion-modulo-modena"/>
+    </library>
+   </libraries>
+  </path>
   <path value="D:/repositorio/com/sebra/primefaces/modena-layout/2.1.3/modena-layout-2.1.3.jar">
    <libraries>
     <library class="faces-config">
@@ -136,72 +136,163 @@
  </paths>
  <validation>
   <el>
-   <linked-el length="69" name="%0" offset="611" path="%1"/>
-   <linked-el length="57" name="%2" offset="583" path="%3"/>
-   <linked-el length="60" name="%4" offset="2907" path="%3"/>
-   <linked-el length="53" name="%4" offset="3374" path="%3"/>
-   <linked-el length="42" name="%4" offset="3774" path="%3"/>
-   <linked-el length="76" name="%4" offset="5720" path="%1"/>
-   <linked-el length="61" name="%4" offset="3203" path="%3"/>
-   <linked-el length="21" name="%4" offset="2582" path="%3"/>
-   <linked-el length="28" name="%4" offset="3510" path="%3"/>
-   <linked-el length="28" name="%4" offset="3638" path="%3"/>
-   <linked-el length="29" name="%4" offset="3989" path="%3"/>
-   <linked-el length="60" name="%5" offset="2907" path="%3"/>
-   <linked-el length="53" name="%5" offset="3374" path="%3"/>
-   <linked-el length="76" name="%5" offset="5720" path="%1"/>
-   <linked-el length="61" name="%5" offset="3203" path="%3"/>
-   <linked-el length="21" name="%6" offset="2582" path="%3"/>
-   <linked-el length="19" name="%7" offset="399" path="%8"/>
-   <linked-el length="53" name="%9" offset="3374" path="%3"/>
-   <linked-el length="60" name="%10" offset="2907" path="%3"/>
-   <linked-el length="53" name="%10" offset="3374" path="%3"/>
-   <linked-el length="76" name="%10" offset="5720" path="%1"/>
-   <linked-el length="61" name="%10" offset="3203" path="%3"/>
-   <linked-el length="69" name="%11" offset="611" path="%1"/>
-   <linked-el length="60" name="%12" offset="2907" path="%3"/>
-   <linked-el length="61" name="%12" offset="3203" path="%3"/>
-   <linked-el length="28" name="%13" offset="3510" path="%3"/>
-   <linked-el length="28" name="%14" offset="3638" path="%3"/>
-   <linked-el length="29" name="%15" offset="3989" path="%3"/>
-   <linked-el length="26" name="%16" offset="5016" path="%17"/>
-   <linked-el length="69" name="%18" offset="611" path="%1"/>
-   <linked-el length="42" name="%19" offset="3774" path="%3"/>
-   <linked-el length="76" name="%20" offset="5720" path="%1"/>
-   <linked-el length="19" name="%21" offset="399" path="%8"/>
-   <linked-el length="57" name="%22" offset="583" path="%3"/>
-   <linked-el length="26" name="%23" offset="5016" path="%17"/>
+   <linked-el length="69" name="%0" offset="698" path="%1"/>
+   <linked-el length="67" name="%2" offset="647" path="%3"/>
+   <linked-el length="62" name="%2" offset="9510" path="%1"/>
+   <linked-el length="73" name="%4" offset="8911" path="%1"/>
+   <linked-el length="60" name="%4" offset="3064" path="%3"/>
+   <linked-el length="21" name="%4" offset="2739" path="%3"/>
+   <linked-el length="42" name="%4" offset="3955" path="%3"/>
+   <linked-el length="60" name="%4" offset="3371" path="%3"/>
+   <linked-el length="28" name="%4" offset="3691" path="%3"/>
+   <linked-el length="28" name="%4" offset="3819" path="%3"/>
+   <linked-el length="81" name="%4" offset="8417" path="%1"/>
+   <linked-el length="44" name="%4" offset="7971" path="%1"/>
+   <linked-el length="30" name="%4" offset="4170" path="%3"/>
+   <linked-el length="77" name="%4" offset="8261" path="%1"/>
+   <linked-el length="53" name="%4" offset="3555" path="%3"/>
+   <linked-el length="81" name="%4" offset="8717" path="%1"/>
+   <linked-el length="46" name="%5" offset="9415" path="%1"/>
+   <linked-el length="21" name="%6" offset="2739" path="%3"/>
+   <linked-el length="60" name="%7" offset="3371" path="%3"/>
+   <linked-el length="60" name="%7" offset="3064" path="%3"/>
+   <linked-el length="28" name="%8" offset="9698" path="%1"/>
+   <linked-el length="62" name="%8" offset="9510" path="%1"/>
+   <linked-el length="34" name="%8" offset="9659" path="%1"/>
+   <linked-el length="28" name="%9" offset="9698" path="%1"/>
+   <linked-el length="12" name="%9" offset="14609" path="%1"/>
+   <linked-el length="62" name="%9" offset="9510" path="%1"/>
+   <linked-el length="12" name="%9" offset="13989" path="%1"/>
+   <linked-el length="18" name="%9" offset="13961" path="%1"/>
+   <linked-el length="34" name="%9" offset="9659" path="%1"/>
+   <linked-el length="54" name="%10" offset="7738" path="%1"/>
+   <linked-el length="37" name="%11" offset="284" path="%12"/>
+   <linked-el length="53" name="%13" offset="3555" path="%3"/>
+   <linked-el length="73" name="%14" offset="8911" path="%1"/>
+   <linked-el length="60" name="%14" offset="3371" path="%3"/>
+   <linked-el length="81" name="%14" offset="8417" path="%1"/>
+   <linked-el length="60" name="%14" offset="3064" path="%3"/>
+   <linked-el length="44" name="%14" offset="7971" path="%1"/>
+   <linked-el length="77" name="%14" offset="8261" path="%1"/>
+   <linked-el length="53" name="%14" offset="3555" path="%3"/>
+   <linked-el length="81" name="%14" offset="8717" path="%1"/>
+   <linked-el length="77" name="%15" offset="8261" path="%1"/>
+   <linked-el length="30" name="%16" offset="4170" path="%3"/>
+   <linked-el length="28" name="%17" offset="9698" path="%1"/>
+   <linked-el length="26" name="%18" offset="2724" path="%19"/>
+   <linked-el length="52" name="%20" offset="13870" path="%1"/>
+   <linked-el length="69" name="%21" offset="698" path="%1"/>
+   <linked-el length="34" name="%22" offset="9659" path="%1"/>
+   <linked-el length="53" name="%23" offset="14372" path="%1"/>
+   <linked-el length="46" name="%23" offset="9415" path="%1"/>
+   <linked-el length="52" name="%23" offset="13870" path="%1"/>
+   <linked-el length="54" name="%24" offset="13311" path="%1"/>
+   <linked-el length="42" name="%25" offset="12822" path="%1"/>
+   <linked-el length="19" name="%26" offset="399" path="%27"/>
+   <linked-el length="64" name="%28" offset="7901" path="%1"/>
+   <linked-el length="57" name="%29" offset="503" path="%12"/>
+   <linked-el length="75" name="%30" offset="11215" path="%1"/>
+   <linked-el length="67" name="%30" offset="11139" path="%1"/>
+   <linked-el length="58" name="%31" offset="12288" path="%1"/>
+   <linked-el length="75" name="%31" offset="11215" path="%1"/>
+   <linked-el length="54" name="%31" offset="13311" path="%1"/>
+   <linked-el length="57" name="%31" offset="503" path="%12"/>
+   <linked-el length="67" name="%31" offset="11139" path="%1"/>
+   <linked-el length="42" name="%31" offset="12822" path="%1"/>
+   <linked-el length="37" name="%31" offset="284" path="%12"/>
+   <linked-el length="54" name="%31" offset="7738" path="%1"/>
+   <linked-el length="59" name="%31" offset="11529" path="%1"/>
+   <linked-el length="66" name="%31" offset="8078" path="%1"/>
+   <linked-el length="64" name="%31" offset="11918" path="%1"/>
+   <linked-el length="64" name="%31" offset="7901" path="%1"/>
+   <linked-el length="73" name="%32" offset="8911" path="%1"/>
+   <linked-el length="60" name="%32" offset="3371" path="%3"/>
+   <linked-el length="81" name="%32" offset="8417" path="%1"/>
+   <linked-el length="60" name="%32" offset="3064" path="%3"/>
+   <linked-el length="44" name="%32" offset="7971" path="%1"/>
+   <linked-el length="77" name="%32" offset="8261" path="%1"/>
+   <linked-el length="53" name="%32" offset="3555" path="%3"/>
+   <linked-el length="81" name="%32" offset="8717" path="%1"/>
+   <linked-el length="73" name="%33" offset="8911" path="%1"/>
+   <linked-el length="81" name="%33" offset="8417" path="%1"/>
+   <linked-el length="81" name="%33" offset="8717" path="%1"/>
+   <linked-el length="58" name="%34" offset="12288" path="%1"/>
+   <linked-el length="19" name="%35" offset="399" path="%27"/>
+   <linked-el length="53" name="%36" offset="14372" path="%1"/>
+   <linked-el length="62" name="%37" offset="9510" path="%1"/>
+   <linked-el length="58" name="%38" offset="12288" path="%1"/>
+   <linked-el length="75" name="%38" offset="11215" path="%1"/>
+   <linked-el length="67" name="%38" offset="11139" path="%1"/>
+   <linked-el length="59" name="%38" offset="11529" path="%1"/>
+   <linked-el length="64" name="%38" offset="11918" path="%1"/>
+   <linked-el length="69" name="%39" offset="698" path="%1"/>
+   <linked-el length="28" name="%40" offset="3691" path="%3"/>
+   <linked-el length="28" name="%41" offset="3819" path="%3"/>
+   <linked-el length="48" name="%42" offset="7799" path="%1"/>
+   <linked-el length="42" name="%43" offset="3955" path="%3"/>
+   <linked-el length="59" name="%44" offset="11529" path="%1"/>
+   <linked-el length="66" name="%45" offset="8078" path="%1"/>
+   <linked-el length="67" name="%46" offset="647" path="%3"/>
+   <linked-el length="62" name="%46" offset="9510" path="%1"/>
+   <linked-el length="64" name="%47" offset="11918" path="%1"/>
+   <linked-el length="26" name="%48" offset="2724" path="%19"/>
   </el>
  </validation>
  <aliases>
-  <alias path="pageContext.session" value="%0"/>
-  <alias path="request" value="%2"/>
   <alias
    path="/onix-implementacion-modulo-modena/src/main/resources/META-INF/resources/template.xhtml" value="%1"/>
-  <alias path="beanLogin" value="%4"/>
-  <alias path="beanLogin.usuarioSession.usuarioSession" value="%5"/>
+  <alias path="beanAccesosDirectos.lListaAccesosActivos" value="%5"/>
   <alias path="beanLogin.logout" value="%6"/>
-  <alias path="menuView" value="%7"/>
-  <alias path="beanLogin.usuarioSession.usuarioSession.usuario" value="%9"/>
+  <alias path="beanLogin.usuarioSession.usuarioSession.esNuevo" value="%7"/>
+  <alias path="beanMantenedorUsuario.actualizarEntidad" value="%10"/>
+  <alias path="beanMantenedorUsuario.tituloPagina" value="%11"/>
+  <alias path="beanLogin.usuarioSession.usuarioSession.usuario" value="%13"/>
+  <alias path="beanLogin.usuarioSession" value="%14"/>
   <alias
-   path="/onix-implementacion-modulo-modena/src/main/resources/META-INF/resources/privadas/generales/pag_principal.xhtml" value="%17"/>
-  <alias path="beanLogin.usuarioSession" value="%10"/>
-  <alias path="pageContext.session.maxInactiveInterval" value="%11"/>
-  <alias path="beanLogin.usuarioSession.usuarioSession.es_nuevo" value="%12"/>
-  <alias path="beanLogin.cambContrase1" value="%13"/>
-  <alias path="beanLogin.cambContrase2" value="%14"/>
-  <alias path="beanLogin.cerrarVentana" value="%15"/>
-  <alias path="beanPrincipal.modelo" value="%16"/>
+   path="/onix-implementacion-modulo-modena/src/main/resources/META-INF/resources/WEB-INF/template_mantenedor.xhtml" value="%12"/>
+  <alias path="acceso.priOpcione.opcion" value="%17"/>
+  <alias path="pageContext" value="%21"/>
+  <alias path="acceso.priOpcione.rutaimagen" value="%22"/>
+  <alias path="beanAccesosDirectos" value="%23"/>
+  <alias path="beanMantenedorUsuario.guardarOActualizar" value="%24"/>
+  <alias path="beanMantenedorUsuario.subir" value="%25"/>
+  <alias path="menuView.model" value="%26"/>
+  <alias
+   path="/onix-implementacion-modulo-modena/src/main/resources/META-INF/resources/layoutmenu.xhtml" value="%27"/>
+  <alias path="beanMantenedorUsuario.usuarioActual.imagenReferencia" value="%30"/>
+  <alias path="beanMantenedorUsuario" value="%31"/>
+  <alias
+   path="/onix-implementacion-modulo-modena/src/main/resources/META-INF/resources/pag_principal_tmpl.xhtml" value="%19"/>
+  <alias path="menuView" value="%35"/>
+  <alias path="pageContext.session.maxInactiveInterval" value="%39"/>
   <alias
    path="/onix-implementacion-modulo-modena/src/main/resources/META-INF/resources/topbar.xhtml" value="%3"/>
-  <alias path="pageContext" value="%18"/>
-  <alias path="beanLogin.cambiarContrasenia" value="%19"/>
-  <alias path="beanLogin.usuarioSession.usuarioSession.observacion" value="%20"/>
-  <alias path="menuView.model" value="%21"/>
-  <alias path="request.contextPath" value="%22"/>
-  <alias
-   path="/onix-implementacion-modulo-modena/src/main/resources/META-INF/resources/layoutmenu.xhtml" value="%8"/>
-  <alias path="beanPrincipal" value="%23"/>
+  <alias path="beanLogin.cambiarContrasenia" value="%43"/>
+  <alias path="beanMantenedorUsuario.usuarioActual.usuario" value="%44"/>
+  <alias path="beanMantenedorUsuario.usuarioActual.lDescripcion" value="%47"/>
+  <alias path="beanPrincipal" value="%48"/>
+  <alias path="pageContext.session" value="%0"/>
+  <alias path="request" value="%2"/>
+  <alias path="beanLogin" value="%4"/>
+  <alias path="acceso.priOpcione" value="%8"/>
+  <alias path="acceso" value="%9"/>
+  <alias path="beanLogin.usuarioSession.usuarioSession.lDescripcion" value="%15"/>
+  <alias path="beanLogin.cerrarVentana" value="%16"/>
+  <alias path="beanPrincipal.modelo" value="%18"/>
+  <alias path="beanAccesosDirectos.listaSeleccionAcceso" value="%20"/>
+  <alias path="beanMantenedorUsuario.nombreAtributoCambioEstado" value="%28"/>
+  <alias path="beanMantenedorUsuario.descripcionPagina" value="%29"/>
+  <alias path="beanLogin.usuarioSession.usuarioSession" value="%32"/>
+  <alias path="beanLogin.usuarioSession.usuarioSession.imagenReferencia" value="%33"/>
+  <alias path="beanMantenedorUsuario.usuarioActual.correo" value="%34"/>
+  <alias path="beanAccesosDirectos.controlTransferencia" value="%36"/>
+  <alias path="acceso.priOpcione.accion" value="%37"/>
+  <alias path="beanMantenedorUsuario.usuarioActual" value="%38"/>
+  <alias path="beanLogin.cambContrase1" value="%40"/>
+  <alias path="beanLogin.cambContrase2" value="%41"/>
+  <alias path="p" value="%42"/>
+  <alias path="beanMantenedorUsuario.nombreAtributoDialogoAlterno" value="%45"/>
+  <alias path="request.contextPath" value="%46"/>
  </aliases>
  <includes/>
  <uris>

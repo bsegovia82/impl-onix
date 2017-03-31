@@ -9,6 +9,11 @@
 	<ui:define name="head">
 		<title>#{beanMantenedorRol.tituloPagina}</title>
 	</ui:define>
+	
+	<ui:define name="title">
+		#{beanMantenedorRol.tituloPagina}
+	</ui:define>
+	
 	<ui:define name="subheader">
        #{beanMantenedorRol.descripcionPagina}
     </ui:define>
@@ -22,7 +27,6 @@
 	<ui:define name="grid_formulario">
 		<p:panelGrid columns="2" layout="grid"
 			style="border:0px !important; background:none;" id="panel">
-
 			<pe:fluidGridItem type="input">
 				<div class="dynaFormLabel">
 					<p:outputLabel value="* Nombre Rol:" />
@@ -128,7 +132,7 @@
 						actionListener="#{beanMantenedorRol.cambiarEstado}" update="@form"
 						process="@this">
 
-						<i class="icon-settings_backup_restore Fs20 BoldGray DispBlock">
+						<i class="fa fa-exchange Fs20 BoldGray DispBlock">
 						</i>
 						<f:attribute
 							name="#{beanMantenedorRol.nombreAtributoCambioEstado}"
@@ -141,28 +145,18 @@
 
 
 					<p:commandLink id="opcionesAsignadas"
-						title="Ver las opciones asignados">
-
-						<i class="icon-view_list Fs20 BoldGray DispBlock"> </i>
+						title="Ver las opciones asignados" 
+						oncomplete="PF('dialogoMantenimientoOpcionesRoles').show()"
+						actionListener="#{beanMantenedorRol.seleccionarEntidad}" 
+						update=":#{p:component('dialogoMantenimientoOpcionesRoles')}" process="@this"
+						>
+						
+						<i class="fa fa-server Fs20 BoldGray DispBlock"> </i>
+						<f:attribute
+							name="#{beanMantenedorRol.nombreAtributoCambioEstado}"
+							value="#{rol}"></f:attribute>
 					</p:commandLink>
 				</p:panelGrid>
-				<p:overlayPanel id="opcionPanel" for="opcionesAsignadas"
-					hideEffect="clip" dynamic="true" style="width:400px">
-					<p:dataTable var="rowOpcion"
-						emptyMessage="El rol no tiene opciones asignadas"
-						value="#{beanMantenedorRol.obtenerOpcionesAsignadasRol( rol.listaOpcionesRoles)}"
-						rows="5" paginator="true" reflow="true" paginatorPosition="bottom">
-						<f:facet name="header">
-        Opciones Asignadas
-    </f:facet>
-						<p:column headerText="Descripción">
-							<h:outputText value="#{rowOpcion.descripcion}" />
-						</p:column>
-						<p:column headerText="Responsable">
-							<h:outputText value="#{rowOpcion.auditoria}" />
-						</p:column>
-					</p:dataTable>
-				</p:overlayPanel>
 			</p:column>
 		</p:dataTable>
 	</ui:define>
@@ -221,6 +215,35 @@
 				message="Seguro que desea realizar esta operación?"
 				icon="ui-icon-alert" />
 		</p:commandButton>
+	</ui:define>
+	
+	<ui:define name="control_dialogo">
+		<p:ajax event="close" update=":#{p:component('panel')}" listener="#{beanMantenedorRol.eventoControlCierreDialogo}" />
+	</ui:define>
+
+	<ui:define name="ventanas_adicionales">
+		<p:dialog widgetVar="dialogoMantenimientoOpcionesRoles" modal="true"
+			height="300" id="dialogoMantenimientoOpcionesRoles" width="600" header="Opciones asignadas para el rol : #{beanMantenedorRol.entidadRegistrar.rol}" showHeader="true">
+			<p:panel 
+				style="border:0px !important; background:none;"
+				id="panelSeleccionOpciones">
+				<p:pickList id="listaOpciones" value="#{beanMantenedorRol.listaSeleccionOpcion}"
+					var="opcion" effect="bounce" itemValue="#{opcion}"
+					itemLabel="#{opcion}" showSourceControls="true"
+					showTargetControls="true" showCheckbox="true" responsive="true"
+					showSourceFilter="true" showTargetFilter="true"
+					filterMatchMode="contains" >
+
+					<f:facet name="sourceCaption">Opciones por asignar</f:facet>
+					<f:facet name="targetCaption">Opciones Asignadas</f:facet>
+					<p:ajax event="transfer" listener="#{beanMantenedorRol.controlTransferencia}" update="panelSeleccionOpciones" />
+					
+					<p:column style="width:90%;">
+						<h:outputText value="#{opcion}" />
+					</p:column>
+				</p:pickList>
+			</p:panel>
+			</p:dialog>
 	</ui:define>
 
 </ui:composition>

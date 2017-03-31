@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,12 +34,16 @@ public class OmsRole extends EntidadBaseAuditable<Long> implements Serializable 
 	private String rol;
 
 	private String tipoRol;
+	
+	
 
 	private List<OmsOpcionesRole> listaOpcionesRoles;
 
 	// bi-directional many-to-one association to PriUsuariosRole
 
 	private List<OmsUsuariosRole> priUsuariosRoles;
+	
+	private String lPaginaPrincipal;
 
 	public OmsRole() {
 	}
@@ -157,6 +160,15 @@ public class OmsRole extends EntidadBaseAuditable<Long> implements Serializable 
 		opcionesRoles.setPriOpcione(opcion);
 		agregarOpcionesRoles(opcionesRoles);
 
+	}
+	
+	@Column(name="PAGINA_PRINCIPAL")
+	public String getlPaginaPrincipal() {
+		return lPaginaPrincipal;
+	}
+	
+	public void setlPaginaPrincipal(String lPaginaPrincipal) {
+		this.lPaginaPrincipal = lPaginaPrincipal;
 	}
 
 	

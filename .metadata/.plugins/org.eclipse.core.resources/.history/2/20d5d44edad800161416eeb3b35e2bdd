@@ -1,0 +1,37 @@
+package com.onix.modulo.dominio.aplicacion;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import com.onix.modulo.librerias.dominio.entidades.base.EntidadBaseAuditable;
+
+@Entity
+@Table(name = "OMG_PARAMETRO")
+@NamedQuery(name = "OmgParametro.findAll", query = "SELECT p FROM OmgParametro p")
+public class OmgParametro extends EntidadBaseAuditable<Long> implements Serializable{
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@GeneratedValue(generator = "secParametro", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "secParametro", allocationSize = 1, initialValue = 1, sequenceName = "SEC_PARAMETRO")
+	@Id
+	@Column(name = "ID")
+	public Long getId() {
+		return this.id;
+	}
+	
+	
+	
+}

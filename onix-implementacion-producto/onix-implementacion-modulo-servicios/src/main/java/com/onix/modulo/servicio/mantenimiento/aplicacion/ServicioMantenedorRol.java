@@ -1,6 +1,7 @@
 package com.onix.modulo.servicio.mantenimiento.aplicacion;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -13,10 +14,13 @@ import com.onix.modulo.eao.aplicacion.OmsRoleEAO;
 import com.onix.modulo.librerias.eao.GenericEAO;
 import com.onix.modulo.librerias.exceptions.ErrorServicioNegocio;
 import com.onix.modulo.librerias.exceptions.ErrorValidacionGeneral;
-import com.onix.modulo.librerias.servicio.ServicioMantenimientoEntidad;
+import com.onix.modulo.librerias.servicio.oyentes.AccionTransaccionalListener;
+import com.onix.modulo.librerias.servicio.oyentes.AccionValidacionListener;
+import com.onix.modulo.librerias.servicio.oyentes.AccionValidacionSimpleListener;
+import com.onix.modulo.servicio.ServicioMantenedorControlAuditoria;
 
 @Stateless
-public class ServicioMantenedorRol extends ServicioMantenimientoEntidad<OmsRoleEAO, OmsRole, Long> {
+public class ServicioMantenedorRol extends ServicioMantenedorControlAuditoria<OmsRoleEAO, OmsRole, Long> {
 
 	@EJB
 	private OmsRoleEAO crud;
@@ -27,81 +31,13 @@ public class ServicioMantenedorRol extends ServicioMantenimientoEntidad<OmsRoleE
 	@EJB
 	private ServicioMantenedorOpcionRol servicioOpcionRol;
 
+	@Override
 	protected OmsRoleEAO getCrud() {
 		return crud;
 	}
 
-	@Override
-	protected void validacionesConBaseActualizar(OmsRole entidad) throws ErrorServicioNegocio {
-		OmsRole rol = crud.obtenerObjetoPorCampoGenerico("rol", entidad.getRol(), OmsRole.class);
-		if (rol != null) {
-			if (!entidad.getId().equals(rol.getId())) {
-				throw new ErrorServicioNegocio("El rol " + entidad.getRol() + ", ya se encuentra registrado");
-			}
-		}
-	}
-
-	@Override
-	protected void validacionesBasicasActualizar(OmsRole entidad) throws ErrorValidacionGeneral {
-		entidad.setFechaActualizacion(new Date());
-		entidad.setObservacion(
-				entidad.getObservacion().length() < 2 ? OBSERVACION_APLICACION : entidad.getObservacion());
-		entidad.setAuditoria(entidad.getAuditoria().length() < 2 ? REFERENCIA : entidad.getAuditoria());
-	}
-
-	@Override
-	protected void validacionesConBaseGuardar(OmsRole entidad) throws ErrorServicioNegocio {
-		OmsRole rol = crud.obtenerObjetoPorCampoGenerico("rol", entidad.getRol(), OmsRole.class);
-		if (rol != null) {
-			throw new ErrorServicioNegocio("El rol " + entidad.getRol() + ", ya se encuentra registrado");
-		}
-	}
-
-	@Override
-	protected void validacionesBasicasGuardar(OmsRole entidad) throws ErrorValidacionGeneral {
-
-		if (entidad.getRol().length() < 3) {
-			throw new ErrorValidacionGeneral("La rol debe tener más de tres caracteres");
-		}
-
-		entidad.setEstado(GenericEAO.ESTADO_ACTIVO);
-		entidad.setFechaRegistro(new Date());
-		entidad.setObservacion(entidad.getObservacion() == null || entidad.getObservacion().length() < 2
-				? OBSERVACION_APLICACION : entidad.getObservacion());
-		entidad.setAuditoria(entidad.getAuditoria() == null || entidad.getAuditoria().length() < 2 ? REFERENCIA
-				: entidad.getAuditoria());
-
-	}
-
-	
-	protected void actualizacionPrevia(OmsRole entidad) {
-		System.out.println("Sin nada que hacer actualizacionPrevia");
-	}
-
-	
-	protected void persistenciaPrevia(OmsRole entidad) {
-		System.out.println("Sin nada que hacer persistenciaPrevia");
-
-	}
-
-	public List<OmsOpcione> listaOpcionesEjecutables() {
-		return servicioOpcion.listaOpcionesEjecutables();
-	}
-
-	@Override
-	protected void postActualizacion(OmsRole entidad) throws ErrorServicioNegocio, ErrorValidacionGeneral {
-		// // Quitar las opciones del rol
-		// servicioOpcionRol.eliminarOpcionesRole(entidad.getId());
-		// // Asignar las nuevas opciones
-		// List<OmsOpcionesRole> listaOpcionesRoles =
-		// entidad.getListaOpcionesRoles();
-		//
-		// for (OmsOpcionesRole opcionRol : listaOpcionesRoles) {
-		// opcionRol.setAuditoria(entidad.getAuditoria());
-		// servicioOpcionRol.guardarActualizar(opcionRol);
-		// }
-		System.out.println("No voy a actualizar los roles");
-
+	public List<OmsOpcione> listaOpcionesEjecutables(String pUsuario) {
+		return servicioOpcion.listaOpcionesEjecutables(pUsuario);
 	}
 
 	private OmsOpcionesRole registrarPadres(OmsRole rol, OmsOpcione opcionRol)
@@ -109,7 +45,8 @@ public class ServicioMantenedorRol extends ServicioMantenimientoEntidad<OmsRoleE
 		OmsOpcionesRole opcionRolPdre = new OmsOpcionesRole();
 		if (opcionRol != null) {
 			opcionRolPdre.setAuditoria(rol.getAuditoria());
-			opcionRolPdre.setObservacion("DESCRIPCION ASIGNACION: " +rol.getRol() + " - " + opcionRol.getDescripcion());
+			opcionRolPdre
+					.setObservacion("DESCRIPCION ASIGNACION: " + rol.getRol() + " - " + opcionRol.getDescripcion());
 			opcionRolPdre.setEstado("A");
 			opcionRolPdre.setFechaRegistro(new Date());
 			opcionRolPdre.setIdRol(rol);
@@ -129,28 +66,174 @@ public class ServicioMantenedorRol extends ServicioMantenimientoEntidad<OmsRoleE
 				opcionRolPdre.getPriOpcione().getId());
 	}
 
-	protected void postPersistencia(OmsRole entidad) throws ErrorServicioNegocio, ErrorValidacionGeneral {
-		List<OmsOpcionesRole> listaOpcionesRoles = entidad.getListaOpcionesRoles();
-		if (listaOpcionesRoles != null && listaOpcionesRoles.size() > 0) {
-			for (OmsOpcionesRole opcionRol : listaOpcionesRoles) {
-				opcionRol.setAuditoria(entidad.getAuditoria());
-				servicioOpcionRol.guardarActualizar(opcionRol);
-				registrarPadres(entidad, 
-						opcionRol.getPriOpcione().getModuloPadre());
-			}
-		}
-	}
-
 	public OmsOpcione obtenerOpcionPorID(Long idOpcion) {
 		return servicioOpcion.obtenerObjtoPK(idOpcion, OmsOpcione.class);
 	}
 
-	public List<OmsOpcione> listaOpcionesEjecutables(OmsRole entidad, String tipo) {
-		return servicioOpcionRol.listaOpcionesEjecutablesRol(entidad.getId(), tipo);
+	public List<OmsOpcione> listaOpcionesEjecutables(String pUsuario, String tipo) {
+
+		return servicioOpcionRol.listaOpcionesEjecutablesRol(pUsuario, tipo);
 	}
 
 	public OmsRole buscarRolPorID(Long idRol) {
 		return crud.obtenerObjetoPorPk(idRol, OmsRole.class);
+	}
+
+	@Override
+	protected void cargarConfiguracionServicio() {
+		
+		addValidacionSimpleUpdateListener(new AccionValidacionSimpleListener<OmsRole, Long>() 
+		{
+
+			@Override
+			public void validacionDatos(OmsRole entidad) throws ErrorValidacionGeneral {
+				if (entidad.getRol().length() < 3)
+					throw new ErrorValidacionGeneral("La rol debe tener más de tres caracteres");
+
+			}
+
+		});
+
+		addValidacionSimpleInsertListener(new AccionValidacionSimpleListener<OmsRole, Long>() {
+
+			@Override
+			public void validacionDatos(OmsRole entidad) throws ErrorValidacionGeneral {
+				if (entidad.getRol().length() < 3)
+					throw new ErrorValidacionGeneral("La rol debe tener más de tres caracteres");
+
+			}
+		});
+
+		addValidacionTransaccionalInsertListener(new AccionValidacionListener<OmsRole, Long>() {
+
+			@Override
+			public void validacionTransaccional(OmsRole entidad) throws ErrorServicioNegocio {
+				OmsRole rol = crud.obtenerObjetoPorCampoGenerico("rol", entidad.getRol(), OmsRole.class);
+				if (rol != null)
+					throw new ErrorServicioNegocio("El rol " + entidad.getRol() + ", ya se encuentra registrado");
+			}
+		});
+		
+		addValidacionTransaccionalUpdateListener(new AccionValidacionListener<OmsRole, Long>() {
+			@Override
+			public void validacionTransaccional(OmsRole entidad) throws ErrorServicioNegocio {
+				OmsRole rol = crud.obtenerObjetoPorCampoGenerico("rol", entidad.getRol(), OmsRole.class);
+				if (rol != null && !entidad.getId().equals(rol.getId()))
+					throw new ErrorServicioNegocio("El rol " + entidad.getRol() + ", ya se encuentra registrado");
+
+			}
+
+		});
+		addPostInsertListener(new AccionTransaccionalListener<OmsRole, Long>() {
+			@Override
+			public void controlTransaccional(OmsRole entidad) throws ErrorServicioNegocio, ErrorValidacionGeneral {
+				List<OmsOpcionesRole> listaOpcionesRoles = entidad.getListaOpcionesRoles();
+				if (listaOpcionesRoles != null && !listaOpcionesRoles.isEmpty())
+					for (OmsOpcionesRole opcionRol : listaOpcionesRoles) {
+						opcionRol.setAuditoria(entidad.getAuditoria());
+						servicioOpcionRol.guardarActualizar(opcionRol);
+						registrarPadres(entidad, opcionRol.getPriOpcione().getModuloPadre());
+					}
+			}
+		});
+	}
+
+	public List<String> obtenerOpcionesAsignadasRol(Long lRol) {
+		String lQuery = "select g.descripcion  from oms_opciones g " + "where g.id in ( "
+				+ "select c.id_opcion from OMS_OPCIONES_ROLES c " + "where c.id_rol = :pRol and c.estado = 'A' ) "
+				+ "and g.estado = 'A' " + "and g.modulo_padre is not null and g.accion is not null";
+		HashMap<String, Object> lParametros = new HashMap<>();
+		lParametros.put("pRol", lRol);
+		return crud.ejecutarNativeQueryList(lQuery, lParametros, String.class);
+	}
+
+	public List<String> obtenerOpcionesPorAsignarRol(String lUsuario, Long lRol, Long idReferencia) {
+
+		String lQuery = "select g.descripcion  from oms_opciones g " + "where g.id in ( "
+				+ "select c.id_opcion from OMS_OPCIONES_ROLES c " + "where c.id_rol in ( " + "select a.id_rol  "
+				+ "from OMS_USUARIOS_ROLES a,  OMS_USUARIOS b " + "where a.id_usuario = b.id "
+				+ "and b.usuario = :pUsuario " + "and a.estado = 'A' " + "and b.estado = 'A' ) "
+				+ "and c.estado = 'A' ) " + "and g.estado = 'A' " + "and g.modulo_padre is not null "
+				+ "and g.id not in ( " + "select c.id_opcion from OMS_OPCIONES_ROLES c " + "where c.id_rol = :pRol "
+				+ "and c.estado = 'A' ) union "
+				+ "select a.descripcion  from oms_opciones a  "
+				+ "where a.id_referencia = :referencia "
+				+ "and a.accion is not null  "
+				+ "and a.id not in ( select c.id_opcion from OMS_OPCIONES_ROLES c  where c.id_rol = '2' "
+				+ "and c.estado = 'A' )";
+
+		HashMap<String, Object> lParametros = new HashMap<>();
+		lParametros.put("pUsuario", lUsuario);
+		lParametros.put("pRol", lRol);
+		lParametros.put("referencia", idReferencia);
+		return crud.ejecutarNativeQueryList(lQuery, lParametros, String.class);
+	}
+
+	public void asigarOpciones(List<String> lOpcionesTransferidas, String lUsuario, Long pIdRol, Long pReferencia)
+			throws ErrorServicioNegocio, ErrorValidacionGeneral
+
+	{
+		for (String lOpcion : lOpcionesTransferidas) {
+			asignarOpcionRol(lUsuario, pIdRol, pReferencia, lOpcion,
+					servicioOpcion.obtenerObjetoPropiedad("opcion", lOpcion, OmsOpcione.class));
+		}
+	}
+
+	private void asignarOpcionRol(String lUsuario, Long pIdRol, Long pReferencia, String lOpcion, OmsOpcione lOmsOpcion)
+			throws ErrorServicioNegocio, ErrorValidacionGeneral {
+
+		OmsOpcionesRole lOmsOpcionRol = servicioOpcionRol.obtenerOpcionRolPorOpcionRol(lOpcion, pIdRol);
+		if (lOmsOpcionRol != null) {
+			if (lOmsOpcionRol.getEstado().equals(GenericEAO.ESTADO_INACTIVO)) {
+				lOmsOpcionRol.setAuditoria(lUsuario);
+				lOmsOpcionRol.setFechaActualizacion(new Date());
+				lOmsOpcionRol.setEstado(GenericEAO.ESTADO_ACTIVO);
+				lOmsOpcionRol.setObservacion("ACTIVACION DE OPCION DESDE LA WEB POR EL USUARIO " + lUsuario);
+				servicioOpcionRol.guardarActualizar(lOmsOpcionRol);
+			}
+		} else {
+			lOmsOpcionRol = new OmsOpcionesRole();
+			lOmsOpcionRol.setEstado(GenericEAO.ESTADO_ACTIVO);
+			lOmsOpcionRol.setObservacion("REGISTRO DE OPCION DESDE LA WEB POR EL USUARIO " + lUsuario);
+			lOmsOpcionRol.setFechaRegistro(new Date());
+			lOmsOpcionRol.setIdReferencia(pReferencia);
+			lOmsOpcionRol.setAuditoria(lUsuario);
+			lOmsOpcionRol.setIdRol(getCrud().find(pIdRol, OmsRole.class));
+			lOmsOpcionRol.setPriOpcione(lOmsOpcion);
+			servicioOpcionRol.guardarActualizar(lOmsOpcionRol);
+		}
+		
+		if (lOmsOpcion.getModuloPadre() == null)
+			return;
+		else
+			asignarOpcionRol(lUsuario, pIdRol, pReferencia, lOmsOpcion.getModuloPadre().getOpcion(),
+					servicioOpcion.obtenerObjtoPK(lOmsOpcion.getModuloPadre().getId(), OmsOpcione.class));
+
+	}
+
+	public void inactivarOpciones(List<String> lOpcionesTransferidas, String lUsuario, Long pIdRol)
+			throws ErrorServicioNegocio, ErrorValidacionGeneral {
+		for (String lOpcion : lOpcionesTransferidas)
+			inactivarOpcionesRol(lUsuario, servicioOpcion.obtenerObjetoPropiedad("opcion", lOpcion, OmsOpcione.class),
+					pIdRol);
+
+	}
+
+	private void inactivarOpcionesRol(String lUsuario, OmsOpcione lOmsOpcion, Long pIdRol)
+			throws ErrorServicioNegocio, ErrorValidacionGeneral {
+		OmsOpcionesRole lOmsOpcionRol = servicioOpcionRol.obtenerOpcionRolPorOpcionRol(lOmsOpcion.getOpcion(), pIdRol);
+		if (lOmsOpcionRol != null && lOmsOpcionRol.getEstado().equals(GenericEAO.ESTADO_ACTIVO)) {
+			lOmsOpcionRol.setAuditoria(lUsuario);
+			lOmsOpcionRol.setFechaActualizacion(new Date());
+			lOmsOpcionRol.setEstado(GenericEAO.ESTADO_INACTIVO);
+			lOmsOpcionRol.setObservacion("INACTIVACION DE OPCION DESDE LA WEB POR EL USUARIO " + lUsuario);
+			servicioOpcionRol.guardarActualizar(lOmsOpcionRol);
+		}
+		if (lOmsOpcion.getModuloPadre() == null)
+			return;
+		else
+			inactivarOpcionesRol(lUsuario,
+					servicioOpcion.obtenerObjtoPK(lOmsOpcion.getModuloPadre().getId(), OmsOpcione.class), pIdRol);
 	}
 
 }

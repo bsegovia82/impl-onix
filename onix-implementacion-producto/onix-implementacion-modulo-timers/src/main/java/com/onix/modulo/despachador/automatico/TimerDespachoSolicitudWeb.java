@@ -1,0 +1,52 @@
+package com.onix.modulo.despachador.automatico;
+
+import javax.ejb.EJB;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+
+import com.onix.modulo.despachador.solicitudweb.FachadaDespachoSolicitud;
+import com.onix.modulo.librerias.timer.DatosEjecucionTimer;
+import com.onix.modulo.librerias.timer.TimerEjecutorIntervaloTiempo;
+import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorParametro;
+
+@Singleton
+@Startup
+@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+public class TimerDespachoSolicitudWeb extends TimerEjecutorIntervaloTiempo {
+
+	private String lTiempoMinutosEjecucion = "LONG_MINUTOS_EJECUCION_DESPACHO_SOLICITUD";
+
+	private String lTimerActivo = "STRING_TIMER_ACTIVO_DESPACHO_SOLICITUD";
+
+	@EJB
+	private FachadaDespachoSolicitud lServicioDespacho;
+
+	@EJB
+	private ServicioMantenedorParametro lServicioParametro;
+
+	@Override
+	protected void ejecutarAccionRecurrente() throws Throwable {
+		String lEjecutarTimer = lServicioParametro.obtenerValorParametro(lTimerActivo);
+		lEjecutarTimer = lEjecutarTimer == null ? "N" : lEjecutarTimer;
+		if (lEjecutarTimer.equals("S"))
+		{
+			lServicioDespacho.despacharSolitudesWeb();
+		}
+		else
+		{
+			System.out.println("------------------------------------------------------------------------------------------");
+			System.out.println("TIMER : TimerDespachoSolicitudWeb, desactivado");
+			System.out.println("------------------------------------------------------------------------------------------");
+		}
+	}
+
+	@Override
+	protected DatosEjecucionTimer inicializacionTimer() {
+		String lMinutosEjecucion = lServicioParametro.obtenerValorParametro(lTiempoMinutosEjecucion);
+		return new DatosEjecucionTimer(lMinutosEjecucion == null ? 5L : new Long(lMinutosEjecucion),
+				"DESPACHADOR_SOLICITUD_WEB", false);
+	}
+
+}

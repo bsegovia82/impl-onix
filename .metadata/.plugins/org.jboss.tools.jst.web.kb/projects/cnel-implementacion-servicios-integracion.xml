@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects>
+  <project name="cnel-cliente-servicio-login"/>
+  <project name="onix-implementacion-api-clientes"/>
+  <project name="cnel-cliente-servicio-medidores"/>
+ </depends-on-projects>
+ <used-by-projects>
+  <project name="onix-implementacion-modulo-vista-omega"/>
+  <project name="onix-implementacion-modulo-base"/>
+  <project name="onix-implementacion-modulo-vista"/>
+  <project name="cnel-implementacion-vista"/>
+  <project name="onix-implementacion-modulo-vista-spark"/>
+ </used-by-projects>
+ <paths>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-dominio/7.0/onix-modulo-librerias-dominio-7.0.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-generales/7.0/onix-modulo-librerias-generales-7.0.jar"/>
+  <path value="D:/repositorio/javax/activation/activation/1.1/activation-1.1.jar"/>
+  <path value="D:/repositorio/com/sun/mail/javax.mail/1.5.0/javax.mail-1.5.0.jar"/>
+  <path value="D:/repositorio/javax/javaee-api/7.0/javaee-api-7.0.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-servicio/7.0/onix-modulo-librerias-servicio-7.0.jar"/>
+ </paths>
+ <validation>
+  <core validator-id="jboss.cdi.core">
+   <linked-resource name="%1;" path="%0"/>
+   <linked-resource name="%1;" path="%2"/>
+   <linked-resource name="%0;" path="%3"/>
+   <linked-resource name="%1;" path="%4"/>
+  </core>
+  <el/>
+ </validation>
+ <aliases>
+  <alias
+   path="/cnel-implementacion-servicios-integracion/src/main/java/com/cnel/servicios/login/ConexionServicioLogin.java" value="%1"/>
+  <alias
+   path="/onix-implementacion-api-clientes/src/main/java/com/onix/api/dtosesion/AlmacenObjetoSesion.java" value="%2"/>
+  <alias
+   path="/onix-implementacion-api-clientes/src/main/java/com/onix/api/dtosesion/AlmacenSesion.java" value="%3"/>
+  <alias
+   path="/cnel-implementacion-servicios-integracion/src/main/java/com/cnel/servicios/sesion/GestorObjetosSesion.java" value="%0"/>
+  <alias
+   path="/onix-implementacion-api-clientes/src/main/java/com/onix/api/cliente/login/ExtensionLogin.java" value="%4"/>
+ </aliases>
+ <includes/>
+ <uris/>
+</kb-project>

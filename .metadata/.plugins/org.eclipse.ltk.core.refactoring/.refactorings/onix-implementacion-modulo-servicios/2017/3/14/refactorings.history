@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.onix.modulo.dominio.aplicacion.OmgIconos&apos; to &apos;OmgIcono&apos;&#x0D;&#x0A;- Original project: &apos;onix-implementacion-modulo-servicios&apos;&#x0D;&#x0A;- Original element: &apos;com.onix.modulo.dominio.aplicacion.OmgIconos&apos;&#x0D;&#x0A;- Renamed element: &apos;com.onix.modulo.dominio.aplicacion.OmgIcono&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;OmgIconos&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.onix.modulo.dominio.aplicacion{OmgIconos.java[OmgIconos" matchStrategy="1" name="OmgIcono" qualified="false" references="true" similarDeclarations="false" stamp="1490875844454" textual="false" version="1.0"/>
+</session>

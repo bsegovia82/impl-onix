@@ -26,7 +26,7 @@
 	</classpathentry>
 	<classpathentry kind="var" path="M2_REPO/javax/javaee-api/7.0/javaee-api-7.0.jar" sourcepath="M2_REPO/javax/javaee-api/7.0/javaee-api-7.0-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/sun/mail/javax.mail/1.5.1/javax.mail-1.5.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/sebra/onix/libreria/onix-modulo-librerias-servicio/7.0/onix-modulo-librerias-servicio-7.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/sebra/onix/libreria/onix-modulo-librerias-servicio/7.0/onix-modulo-librerias-servicio-7.0.jar" sourcepath="/librerias_arq"/>
 	<classpathentry kind="var" path="M2_REPO/com/sebra/onix/libreria/onix-modulo-librerias-dominio/7.0/onix-modulo-librerias-dominio-7.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/sebra/onix/libreria/onix-modulo-librerias-generales/7.0/onix-modulo-librerias-generales-7.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar" sourcepath="M2_REPO/junit/junit/3.8.1/junit-3.8.1-sources.jar"/>
@@ -36,7 +36,7 @@
 	<classpathentry kind="var" path="M2_REPO/org/jboss/msc/jboss-msc/1.0.2.GA/jboss-msc-1.0.2.GA.jar" sourcepath="M2_REPO/org/jboss/msc/jboss-msc/1.0.2.GA/jboss-msc-1.0.2.GA-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/as/jboss-as-domain-management/7.1.0.Final/jboss-as-domain-management-7.1.0.Final.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/jboss-common-core/2.2.17.GA/jboss-common-core-2.2.17.GA.jar" sourcepath="M2_REPO/org/jboss/jboss-common-core/2.2.17.GA/jboss-common-core-2.2.17.GA-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar" sourcepath="M2_REPO/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar" sourcepath="D:/repositorio/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/as/jboss-as-controller/7.1.0.Final/jboss-as-controller-7.1.0.Final.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/jboss-dmr/1.1.1.Final/jboss-dmr-1.1.1.Final.jar" sourcepath="M2_REPO/org/jboss/jboss-dmr/1.1.1.Final/jboss-dmr-1.1.1.Final-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/as/jboss-as-controller-client/7.1.0.Final/jboss-as-controller-client-7.1.0.Final.jar"/>
@@ -74,7 +74,7 @@
 	<classpathentry kind="var" path="M2_REPO/org/jboss/as/jboss-as-clustering-jgroups/7.1.0.Final/jboss-as-clustering-jgroups-7.1.0.Final.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/as/jboss-as-clustering-common/7.1.0.Final/jboss-as-clustering-common-7.1.0.Final.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jgroups/jgroups/3.0.4.Final/jgroups-3.0.4.Final.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/jboss/as/jboss-as-ee/7.1.0.Final/jboss-as-ee-7.1.0.Final.jar" sourcepath="M2_REPO/org/jboss/as/jboss-as-ee/7.1.0.Final/jboss-as-ee-7.1.0.Final-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/jboss/as/jboss-as-ee/7.1.0.Final/jboss-as-ee-7.1.0.Final.jar" sourcepath="D:/repositorio/org/jboss/as/jboss-as-ee/7.1.0.Final/jboss-as-ee-7.1.0.Final-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-validator/4.2.0.Final/hibernate-validator-4.2.0.Final.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/interceptor/jboss-interceptor-spi/2.0.0.Final/jboss-interceptor-spi-2.0.0.Final.jar"/>

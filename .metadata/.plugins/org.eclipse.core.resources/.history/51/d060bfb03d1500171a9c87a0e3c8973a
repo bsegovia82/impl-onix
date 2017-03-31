@@ -1,0 +1,19 @@
+package com.onix.modulo.dominio.aplicacion;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.onix.modulo.librerias.dominio.entidades.base.EntidadBaseAuditable;
+
+@Entity
+@Table(name="OMG_ICONOS")
+public class OmgIconos extends EntidadBaseAuditable<Long> implements Serializable {
+{
+
+	private String lIconoFontPrimefaces;
+	
+	
+	
+}

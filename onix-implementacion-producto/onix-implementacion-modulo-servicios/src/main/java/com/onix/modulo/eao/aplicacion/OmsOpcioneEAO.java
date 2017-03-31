@@ -46,10 +46,14 @@ public class OmsOpcioneEAO extends OnixEAO<OmsOpcione, Long> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<OmsOpcione> listaOpcionesTerminales() {
+	public List<OmsOpcione> listaOpcionesTerminales(String usuario) 
+	{
 		Query query = adminEntidad.createNativeQuery(
-				" select op.* from oms_opciones op where op.Modulo_Padre is not null and op.estado='A' and op.accion is not null  ",
-				OmsOpcione.class);
+				"SELECT OP.* " + "FROM oms_usuarios        U, "
+				+ "oms_USUARIOS_ROLES UR, " + "oms_OPCIONES       OP, " + "oms_OPCIONES_ROLES OPR "
+				+ "WHERE U.ID = UR.ID_USUARIO " + "AND UR.ID_ROL = OPR.ID_ROL " + "AND OPR.ID_OPCION = OP.ID "
+				+ "AND OPR.ESTADO = 'A' " + "AND OP.ACCION IS NOT NULL " + "AND UPPER(U.USUARIO) = ? and op.ESTADO = 'A'",
+				OmsOpcione.class).setParameter(1, usuario);
 		return query.getResultList();
 	}
 

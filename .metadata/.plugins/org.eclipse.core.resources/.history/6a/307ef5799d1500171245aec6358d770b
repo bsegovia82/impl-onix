@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="onix-implementacion-modulo-vista">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="onix-implementacion-modulo-servicios-7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onix-implementacion-modulo-servicios/onix-implementacion-modulo-servicios">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="onix-implementacion-modulo-base-7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onix-implementacion-modulo-base/onix-implementacion-modulo-base">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="onix-implementacion-api-clientes-7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onix-implementacion-api-clientes/onix-implementacion-api-clientes">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="onix-implementacion-modulo-omega-7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onix-implementacion-modulo-omega/onix-implementacion-modulo-omega">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="onix-implementacion-modulo-timers-7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onix-implementacion-modulo-timers/onix-implementacion-modulo-timers">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/onix-implementacion-modulo-vista/target/classes"/>
+        <property name="context-root" value="onix-implementacion-modulo-vista-omega"/>
+    </wb-module>
+</project-modules>

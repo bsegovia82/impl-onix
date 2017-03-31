@@ -1,0 +1,21 @@
+package com.onix.modulo.servicio.mantenimiento.aplicacion;
+
+import javax.ejb.Stateless;
+
+import com.onix.modulo.dominio.aplicacion.OmgIcono;
+import com.onix.modulo.eao.aplicacion.OmgIconoEAO;
+import com.onix.modulo.servicio.ServicioMantenedorControlAuditoria;
+
+@Stateless
+public class ServicioMantenedorIcono extends  ServicioMantenedorControlAuditoria<OmgIconoEAO, OmgIcono, Long>
+{
+
+	protected OmgIconoEAO getCrud() {
+		return null;
+	}
+
+	protected void cargarConfiguracionServicio() {
+		
+	}
+
+}

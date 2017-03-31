@@ -1,0 +1,9 @@
+1488985581182	Rename type 'ConfiguracionServicion'
+1489094041992	Delete element
+1489094099371	Rename type 'ServicioMantenedorUsuario'
+1489094173606	Delete element
+1489094246402	Rename type 'OmsgTipoTelefonoEAO'
+1489096278729	Rename type 'OnixEAO'
+1489100772889	Delete element
+1489100838173	Rename package 'com.onix.modulo.eao.bitacora'
+1489100854704	Rename package 'com.onix.modulo.servicio.bitacora'

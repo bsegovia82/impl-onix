@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sebra.onix.producto</groupId>
+		<artifactId>onix-implementacion-producto</artifactId>
+		<version>7.0</version>
+	</parent>
+	<artifactId>onix-implementacion-modulo-spark</artifactId>
+	<name>onix-implementacion-modulo-spark</name>
+	<description>onix-implementacion-modulo-spark</description>
+
+	<url>https://github.com/bsegovia82/impl-onix</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.sebra.primefaces</groupId>
+			<artifactId>spark-theme</artifactId>
+			<version>2.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>primefaces-extensions</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>SEBRA-RELEASE</id>
+			<name>SEBRA</name>
+			<url>http://nexus-globalitmind.rhcloud.com/nexus/content/repositories/SEBRA_RELEASES/</url>
+		</repository>
+	</repositories>
+
+
+</project>

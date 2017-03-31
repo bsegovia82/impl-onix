@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,12 +26,17 @@ public class OmgSolicitudUsoAplicacion extends EntidadBaseAuditable<Long> implem
 	private String lPais;
 	private String lCiudad;
 	private String lEmail;
-	private String lCelular;
+	private String lCelular;  
 	private String lSolicitud;
 	private String lEmailEnviado;
 	private String lUsuarioDemoCreado;
+	
 
+	private CANAL_REGISTRO lCanalRegistro;
 
+	private Long idTipoPlan;
+	
+	
 	public OmgSolicitudUsoAplicacion()
 	{}
 	
@@ -120,8 +127,31 @@ public class OmgSolicitudUsoAplicacion extends EntidadBaseAuditable<Long> implem
 
 	public void setlUsuarioDemoCreado(String lUsuarioDemoCreado) {
 		this.lUsuarioDemoCreado = lUsuarioDemoCreado;
-	}	
+	}
+	@Enumerated(EnumType.STRING)
+	@Column(name="CANAL_REGISTRO")
+	public CANAL_REGISTRO getlCanalRegistro() {
+		return lCanalRegistro;
+	}
 	
+	public void setlCanalRegistro(CANAL_REGISTRO lCanalRegistro) {
+		this.lCanalRegistro = lCanalRegistro;
+	}
+	
+	@Column(name="ID_TIPO_PLAN")
+	public Long getIdTipoPlan() {
+		return idTipoPlan;
+	}
+	
+	public void setIdTipoPlan(Long idTipoPlan) {
+		this.idTipoPlan = idTipoPlan;
+	}
+	
+	public enum CANAL_REGISTRO {
+	    WEB,
+	    APP	
+	}
+	     
 	
 	
 }

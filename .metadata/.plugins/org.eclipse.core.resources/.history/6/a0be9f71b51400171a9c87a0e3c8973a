@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>SEBRA-IT</title>
+        <h:outputScript name="js/layout.js" library="spark-layout" />
+
+        <ui:insert name="head" />
+    </h:head>
+
+    <h:body>    
+        <div id="menu-mask"></div>
+
+        <ui:include src="topbar.xhtml" />
+
+        <ui:include src="layoutmenu.xhtml" />
+
+        <div id="layout-portlets-cover">
+            <ui:insert name="content">
+                Template
+            </ui:insert>
+            
+            <ui:include src="footer.xhtml" />
+        </div>
+
+        <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+            <f:facet name="start">
+                <p:graphicImage name="images/preloader.gif" library="spark-layout"/>
+            </f:facet>
+
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+
+			<h:form>
+		
+		<p:growl sticky="true" id="mensajeProfile"  ></p:growl>
+		<p:dialog widgetVar="dialogoMantenimientoPerfil" modal="true" height="380"
+			id="dialogoMantenimientoPerfil" width="600">
+			<f:facet name="header">
+				<h:outputText value="Actualización de Perfil" />
+			</f:facet>
+
+			<p:tabView >
+				<p:tab title="Mis datos">
+
+					<p:panel id="PanelActualizar">
+						<p:panelGrid columns="2" layout="grid"
+							style="border:0px !important; background:none;" id="panel">
+							<o:graphicImage
+								style="outline: aliceblue; width: 70px; height: 70px; vertical-align: top; border-radius: 10%;"
+								value="#{beanMantenedorUsuario.usuarioActual.imagenReferencia}"
+								rendered="#{beanMantenedorUsuario.usuarioActual.imagenReferencia != null}"
+								dataURI="true" />
+
+							<pe:fluidGridItem type="input">
+								<div class="dynaFormLabel">
+									<p:outputLabel value="* Usuario:" />
+								</div>
+								<p:inputText styleClass="Wid70" placeholder="Usuario"
+									value="#{beanMantenedorUsuario.usuarioActual.usuario}"
+									onblur="ChangeCase(this);" required="true" id="Usuario" readonly="true" />
+							</pe:fluidGridItem>
+							<pe:fluidGridItem type="input">
+								<div class="dynaFormLabel">
+									<p:outputLabel value="* Descripción:" />
+								</div>
+								<p:inputText styleClass="Wid70" placeholder="Descripción"
+									value="#{beanMantenedorUsuario.usuarioActual.lDescripcion}"
+									onblur="ChangeCase(this);" required="true" id="Descripción" />
+							</pe:fluidGridItem>
+							<pe:fluidGridItem type="input">
+								<div class="dynaFormLabel">
+									<p:outputLabel value="* Email:" />
+								</div>
+								<p:inputText styleClass="Wid70" placeholder="Email"
+									value="#{beanMantenedorUsuario.usuarioActual.correo}"
+									required="true" validatorMessage="Email incorrecto" id="Email">
+									<f:validateRegex
+										pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"></f:validateRegex>
+								</p:inputText>
+							</pe:fluidGridItem>
+
+
+						</p:panelGrid>
+
+						<pe:fluidGridItem type="select" styleClass="select">
+							<div class="dynaFormLabel">
+								<p:outputLabel value="Avatar:" />
+							</div>
+							<p:fileUpload fileUploadListener="#{beanMantenedorUsuario.subir}"
+								mode="advanced" dragDropSupport="false" sizeLimit="100000"
+								fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+								cancelLabel="Cancelar" uploadLabel="Subir"
+								invalidFileMessage="Archivo no permitido"
+								invalidSizeMessage="El tamaño no es permitido" required="false"
+								label="Seleccione" />
+						</pe:fluidGridItem>
+
+						<p:commandButton value="Actualizar" styleClass="CyanButton"
+							actionListener="#{beanMantenedorUsuario.guardarOActualizar}"
+							process="@form" update="@([id$=frmDatosProfile]), @([id$=mensajeProfile])">
+							<p:confirm header="Confirmación"
+								message="Seguro que desea realizar esta operación?"
+								icon="ui-icon-alert" />
+						</p:commandButton>
+					</p:panel>
+				</p:tab>
+				<p:tab title="Mis Accesos">
+
+					
+					
+					<p:panel 
+				style="border:0px !important; background:none;"
+				id="PanelAccesos" header="Administración de accesos directos">
+						
+						<p:pickList id="listaAccesos" value="#{beanAccesosDirectos.listaSeleccionAcceso}"
+					var="acceso" effect="bounce" itemValue="#{acceso}"
+					itemLabel="#{acceso}" showSourceControls="true"
+					showTargetControls="true" showCheckbox="true" responsive="true"
+					showSourceFilter="true" showTargetFilter="true"
+					filterMatchMode="contains" >
+
+					<f:facet name="sourceCaption">Accesos por asignar</f:facet>
+					<f:facet name="targetCaption">Accesos Asignados</f:facet>
+					
+					<p:ajax event="transfer" 
+					listener="#{beanAccesosDirectos.controlTransferencia}" 
+					update="@([id$=mensajeProfile]), @([id$=PanelAccesos]), @([id$=frmDatosProfile])" 
+					process="@this"
+					/>
+					
+					<p:column style="width:90%;">
+						<h:outputText value="#{acceso}" />
+					</p:column>
+				</p:pickList>
+				
+					</p:panel>
+				</p:tab>
+			</p:tabView>
+		</p:dialog>
+
+
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Si" type="button"
+				styleClass="ui-confirmdialog-yes GreenButton"
+				icon="ui-icon-check fa fa-check Fs14 White" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no RedButton"
+				icon="ui-icon-close fa fa-close Fs14 White" />
+		</p:confirmDialog>
+
+
+	</h:form>
+
+        <h:outputStylesheet name="css/core-layout.css" library="spark-layout" />
+        <h:outputStylesheet name="css/font-awesome.css" library="spark-layout" />
+        <h:outputStylesheet name="css/animate.css" library="spark-layout" />
+        <h:outputStylesheet name="css/spark-layout#{themeView.color}.css" library="spark-layout" />
+    </h:body>
+
+</html>

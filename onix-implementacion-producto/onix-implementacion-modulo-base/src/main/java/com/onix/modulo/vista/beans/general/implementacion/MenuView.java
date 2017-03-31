@@ -3,7 +3,7 @@ package com.onix.modulo.vista.beans.general.implementacion;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -21,7 +21,7 @@ import com.onix.modulo.librerias.vista.anotaciones.ITestServicioMenuOpcionesHori
 import com.onix.modulo.librerias.vista.interfaces.IServiciosMenu;
 
 @Named("menuView")
-@SessionScoped
+@RequestScoped
 public class MenuView implements Serializable {
 
 	/**

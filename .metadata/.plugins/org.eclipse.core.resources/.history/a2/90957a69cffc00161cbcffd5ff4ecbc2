@@ -1,0 +1,89 @@
+package com.onix.modulo.dominio.persona.social;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.onix.modulo.librerias.dominio.entidades.base.EntidadBaseAuditable;
+
+@Entity
+@Table(name = "OMSO_CAMPANIA_NOTIFICACION")
+public class OmsoConfiguracionNotificacionAutomatica extends EntidadBaseAuditable<Long> implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private Long lTimpoIntervaloNotificacion;
+	private Date lFechaInicio;
+	private Date lFechaFinal;
+	private List<OmsoCuentaCampana> lListaCuenta;
+	private List<OmsoMensajeCampana> lListaMensajes;
+
+	@GeneratedValue(generator = "secCompaniaConfi", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "secCompaniaConfi", allocationSize = 1, initialValue = 1, sequenceName = "SEC_COMP_RED_SOC")
+	@Id
+	@Column(name = "ID")
+	@Override
+	public Long getId() {
+		return id;
+	}
+
+	@Column(name = "MINUTOS_INTERVALO")
+	public Long getlTimpoIntervaloNotificacion() {
+		return lTimpoIntervaloNotificacion;
+	}
+
+	public void setlTimpoIntervaloNotificacion(Long lTimpoIntervaloNotificacion) {
+		this.lTimpoIntervaloNotificacion = lTimpoIntervaloNotificacion;
+	}
+	
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="FECHA_INICIO")
+	public Date getlFechaInicio() {
+		return lFechaInicio;
+	}
+
+	public void setlFechaInicio(Date lFechaInicio) {
+		this.lFechaInicio = lFechaInicio;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="FECHA_FINAL")
+	public Date getlFechaFinal() {
+		return lFechaFinal;
+	}
+
+	public void setlFechaFinal(Date lFechaFinal) {
+		this.lFechaFinal = lFechaFinal;
+	}
+
+	@OneToMany(mappedBy="lConfiguracion")
+	public List<OmsoCuentaCampana> getlListaCuenta() {
+		return lListaCuenta;
+	}
+
+	public void setlListaCuenta(List<OmsoCuentaCampana> lListaCuenta) {
+		this.lListaCuenta = lListaCuenta;
+	}
+
+	public List<OmsoMensajeCampana> getlListaMensajes() {
+		return lListaMensajes;
+	}
+
+	public void setlListaMensajes(List<OmsoMensajeCampana> lListaMensajes) {
+		this.lListaMensajes = lListaMensajes;
+	}
+
+	
+
+}

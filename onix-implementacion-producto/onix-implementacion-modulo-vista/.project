@@ -3,7 +3,7 @@
 	<name>onix-implementacion-modulo-vista</name>
 	<comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
-		<project>onix-implementacion-modulo-servicios</project>
+		<project>onix-implementacion-modulo-vista</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

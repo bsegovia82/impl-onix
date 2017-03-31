@@ -38,7 +38,7 @@ public class BeanMantenedorEmpleado
 	private List<OmsoEspecialidad> listaEspecialidad;
 
 	public BeanMantenedorEmpleado() {
-		super(new OmsoEmpleado(), OmsoEmpleado.class);
+		super(OmsoEmpleado.class);
 		OmsgTipoDocumentoIdentificacion tipoDoc = new OmsgTipoDocumentoIdentificacion();
 		OmsgPersona persona = new OmsgPersona();
 		persona.setUsuario(new OmsUsuario());
@@ -71,7 +71,6 @@ public class BeanMantenedorEmpleado
 	@Override
 	protected void metodoPostTransaccion() {
 		super.metodoPostTransaccion();
-		this.entidadRegistrar = new OmsoEmpleado();
 		OmsgTipoDocumentoIdentificacion tipoDoc = new OmsgTipoDocumentoIdentificacion();
 		OmsgPersona persona = new OmsgPersona();
 		OmsoCargo cargo = new OmsoCargo();

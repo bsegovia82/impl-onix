@@ -1,0 +1,148 @@
+package com.onix.modulo.vista.beans.mantenimientos.aplicacion;
+
+import java.util.List;
+
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
+
+import org.primefaces.event.TransferEvent;
+import org.primefaces.model.DualListModel;
+
+import com.onix.modulo.dominio.aplicacion.OmsAccesosDirecto;
+import com.onix.modulo.dominio.aplicacion.OmsUsuario;
+import com.onix.modulo.eao.aplicacion.OmsAccesosDirectoEAO;
+import com.onix.modulo.librerias.exceptions.ErrorServicioNegocio;
+import com.onix.modulo.librerias.exceptions.ErrorValidacionGeneral;
+import com.onix.modulo.librerias.vista.JsfUtil;
+import com.onix.modulo.librerias.vista.anotaciones.ITestUsuarioSession;
+import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
+import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostConstructListener;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostTransaccionListener;
+import com.onix.modulo.librerias.vista.interfaces.IUsuarioSession;
+import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorAccesoDirecto;
+
+@ManagedBean
+@ViewScoped
+public class BeanAccesosDirectos
+		extends BeanMantenedorGenerico<ServicioMantenedorAccesoDirecto, Long, OmsAccesosDirecto, OmsAccesosDirectoEAO> {
+
+	private DualListModel<String> listaSeleccionAcceso;
+
+	@Inject
+	@ITestUsuarioSession
+	private IUsuarioSession<OmsUsuario> usuarioSession;
+
+	private List<OmsAccesosDirecto> lListaAccesosActivos;
+
+	@EJB
+	private ServicioMantenedorAccesoDirecto lServicioMantenedor;
+
+	public BeanAccesosDirectos() {
+		super(OmsAccesosDirecto.class);
+		listaSeleccionAcceso = new DualListModel<>();
+		addPostTransaccion(new PostTransaccionListener() {
+
+			@Override
+			public void metodoPostTransaccion() {
+				entidadRegistrar = new OmsAccesosDirecto();
+				setListaEntidades(lServicioMantenedor.obtenerAccesosDirectosUsuario(usuarioSession.getUsuarioSession().getId()));
+
+			}
+		});
+
+		addPostConstructuListener(new PostConstructListener() {
+			public void metodoPostConstruct() {
+				lListaAccesosActivos = lServicioMantenedor.obtenerAccesosDirectosUsuario(usuarioSession.getUsuarioSession().getId());
+				cargatListaAccesos();
+			}
+		});
+
+	}
+
+	private void cargatListaAccesos() {
+		listaSeleccionAcceso = new DualListModel<>(
+				lServicioMantenedor.obtenerAccesosPorAsignar(usuarioSession.getUsuarioSession().getId()),
+				lServicioMantenedor.obtenerAccesosAsignadosActivos(usuarioSession.getUsuarioSession().getId()));
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void cargarListaEtiquetas() {
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TITULOPAGINA.toString(), "Mantenimiento Accesos Directos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.DESCRIPCIONPAGINA.toString(), "Mantenedor Accesos Directos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.AYUDAPAGINA.toString(), "Cree o edite Accesos Directoss");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TAB.toString(), "Datos Accesos Directos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Accesos Directoss registrados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERADIALOGO.toString(),
+				"Actualización de Accesos Directos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos Accesos Directos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Accesos Directoss registrados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
+
+	}
+
+	@Override
+	protected ServicioMantenedorAccesoDirecto getServicioMantenedor() {
+		return lServicioMantenedor;
+	}
+
+	public DualListModel<String> getListaSeleccionAcceso() {
+		return listaSeleccionAcceso;
+	}
+
+	public void setListaSeleccionAcceso(DualListModel<String> listaSeleccionAcceso) {
+		this.listaSeleccionAcceso = listaSeleccionAcceso;
+
+	}
+	
+	public void cargarListaAccesosDirectos()
+	{
+		lListaAccesosActivos = lServicioMantenedor.obtenerAccesosDirectosUsuario(usuarioSession.getUsuarioSession().getId());
+	}
+	
+
+	public void controlTransferencia(TransferEvent pEvento) {
+
+		Long referencia = obtenerObjetoSesion(JsfUtil.REFERENCIA_SESION);
+		List<String> lAccesosSeleccionados = (List<String>) pEvento.getItems();
+		try {
+			if (pEvento.isAdd())
+
+				lServicioMantenedor.asigarAcceso(lAccesosSeleccionados, usuarioSession.getUsuarioSession().getId(),
+						referencia, usuarioSession.getUsuarioSession().getUsuario());
+
+			else {
+				if (pEvento.isRemove())
+					lServicioMantenedor.inactivarAcceso(lAccesosSeleccionados,
+							usuarioSession.getUsuarioSession().getId(),
+							usuarioSession.getUsuarioSession().getUsuario());
+
+			}
+			cargatListaAccesos();
+			lListaAccesosActivos = lServicioMantenedor.obtenerAccesosDirectosUsuario(usuarioSession.getUsuarioSession().getId());
+		} catch (ErrorServicioNegocio e) {
+			e.printStackTrace();
+			addError(e.getMessage());
+
+		} catch (ErrorValidacionGeneral e) {
+			e.printStackTrace();
+			addError(e.getMessage());
+		}
+	}
+
+	public List<OmsAccesosDirecto> getlListaAccesosActivos() {
+		return lListaAccesosActivos;
+	}
+
+	public void setlListaAccesosActivos(List<OmsAccesosDirecto> lListaAccesosActivos) {
+		this.lListaAccesosActivos = lListaAccesosActivos;
+	}
+
+}

@@ -32,7 +32,7 @@ public class BeanMantenedorCargo
 	private List<OmsRole> listaRoles;
 
 	public BeanMantenedorCargo() {
-		super(new OmsoCargo(), OmsoCargo.class);
+		super(OmsoCargo.class);
 		this.entidadRegistrar.setRolDefault(new OmsRole());
 		addPostConstructuListener(new PostConstructListener() {
 			@Override
@@ -45,7 +45,6 @@ public class BeanMantenedorCargo
 
 			@Override
 			public void metodoPostTransaccion() {
-				entidadRegistrar = new OmsoCargo();
 				entidadRegistrar.setRolDefault(new OmsRole());
 
 			}

@@ -3,7 +3,7 @@
 	<persistence-unit name="ONIX-PU" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/ONIX-ORCL</jta-data-source>
-<!-- 		<class>com.onix.modulo.dominio.aplicacion.OmsAccesosDirecto</class> -->
+<!-- 		<class>com.cnel.modulo.dominio.bitacora.CnelBitacora</class> -->
 <!-- 		<class>com.onix.modulo.dominio.aplicacion.OmsBitacora</class> -->
 <!-- 		<class>com.onix.modulo.dominio.aplicacion.OmsOpcione</class> -->
 <!-- 		<class>com.onix.modulo.dominio.aplicacion.OmsOpcionesRole</class> -->

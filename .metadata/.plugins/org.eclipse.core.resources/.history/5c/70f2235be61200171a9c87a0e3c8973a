@@ -1,0 +1,158 @@
+package com.onix.modulo.vista.beans.modulo.aplicacion.seguridad;
+
+import java.util.List;
+
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.event.AjaxBehaviorEvent;
+
+import com.onix.modulo.dominio.aplicacion.OmsOpcione;
+import com.onix.modulo.eao.aplicacion.OmsOpcioneEAO;
+import com.onix.modulo.librerias.vista.JsfUtil;
+import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
+import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostConstructListener;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostTransaccionListener;
+import com.onix.modulo.librerias.vista.beans.oyentes.PreTransaccionListener;
+import com.onix.modulo.librerias.vista.exceptions.ErrorAccionesPreTransaccion;
+import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorOpcion;
+
+@ManagedBean
+@ViewScoped
+public class BeanMantenedorOpciones
+		extends BeanMantenedorGenerico<ServicioMantenedorOpcion, Long, OmsOpcione, OmsOpcioneEAO> {
+	private static final long serialVersionUID = 1L;
+
+	@EJB
+	private ServicioMantenedorOpcion servicioMantenedor;
+
+	private List<OmsOpcione> lListaOpcionesPadre;
+
+	private List<OmsOpcione> lListaCompletaOpciones;
+
+	private String lTipoOpcion;
+
+	private boolean lCamposSubmenu;
+	private boolean lCamposOpcion;
+
+	public BeanMantenedorOpciones() {
+		super(new OmsOpcione(), OmsOpcione.class);
+		lCamposSubmenu = false;
+		lCamposOpcion = false;
+		addPostTransaccion(new PostTransaccionListener() {
+			@Override
+			public void metodoPostTransaccion() {
+				entidadRegistrar = new OmsOpcione();
+				lListaOpcionesPadre = servicioMantenedor
+						.listaOpcionesPadre(obtenerObjetoSesion(JsfUtil.REFERENCIA_SESION));
+//				lListaSubmenu = servicioMantenedor.listaOpcionesSubmenu(obtenerObjetoSesion(JsfUtil.REFERENCIA_SESION));
+				lListaCompletaOpciones = servicioMantenedor
+						.listaOpciones(obtenerObjetoSesion(JsfUtil.REFERENCIA_SESION));
+				
+			}
+		});
+
+		addPostConstructuListener(new PostConstructListener() {
+
+			@Override
+			public void metodoPostConstruct() {
+				lListaOpcionesPadre = servicioMantenedor
+						.listaOpcionesPadre(obtenerObjetoSesion(JsfUtil.REFERENCIA_SESION));
+				lListaCompletaOpciones = servicioMantenedor
+						.listaOpciones(obtenerObjetoSesion(JsfUtil.REFERENCIA_SESION));
+				
+			}
+		});
+		
+		addPreTransaccionServicioListener(new PreTransaccionListener() {
+			
+			@Override
+			public void accionPreTransaccion() throws ErrorAccionesPreTransaccion {
+				entidadRegistrar.setOrientacion("V");
+				entidadRegistrar.setTipo("P");
+				entidadRegistrar.setObservacion("CREACIÓN DE OPCION DESDE LA CAPA WEB");
+			}
+		});
+	}
+
+	@Override
+	protected void cargarListaEtiquetas() {
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TITULOPAGINA.toString(), "Mantenimiento Opción");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.DESCRIPCIONPAGINA.toString(), "Mantenedor Opción");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.AYUDAPAGINA.toString(), "Cree o edite los Opción");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TAB.toString(), "Datos Opción");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Opciones registrados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERADIALOGO.toString(), "Actualización Opción");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos Opción");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
+	}
+
+	@Override
+	protected ServicioMantenedorOpcion getServicioMantenedor() {
+		return servicioMantenedor;
+	}
+
+	public List<OmsOpcione> getlListaOpcionesPadre() {
+		return lListaOpcionesPadre;
+	}
+
+	public void setlListaOpcionesPadre(List<OmsOpcione> lListaOpcionesPadre) {
+		this.lListaOpcionesPadre = lListaOpcionesPadre;
+	}
+
+
+	public String getlTipoOpcion() {
+		return lTipoOpcion;
+	}
+
+	public void setlTipoOpcion(String lTipoOpcion) {
+		this.lTipoOpcion = lTipoOpcion;
+	}
+
+	public List<OmsOpcione> getlListaCompletaOpciones() {
+		return lListaCompletaOpciones;
+	}
+
+	public void setlListaCompletaOpciones(List<OmsOpcione> lListaCompletaOpciones) {
+		this.lListaCompletaOpciones = lListaCompletaOpciones;
+	}
+
+	public void presentarCamposAdicionales() {
+		switch (lTipoOpcion) {
+		case "SUBMENU":
+			lCamposSubmenu = true;
+			lCamposOpcion = false;
+			
+			break;
+		case "OPCION":
+			lCamposOpcion = true;
+			lCamposSubmenu = false;
+			lListaOpcionesPadre = servicioMantenedor.listaOpcionesSubmenu(obtenerObjetoSesion(JsfUtil.REFERENCIA_SESION));
+			break;
+		default:
+			lCamposSubmenu = false;
+			lCamposOpcion = false;
+			break;
+		}
+	}
+
+	public boolean getlCamposSubmenu()
+	{
+		return this.lCamposSubmenu;
+	}
+	
+	public void setlCamposSubmenu(boolean lCamposSubmenu) {
+		this.lCamposSubmenu = lCamposSubmenu;
+	}
+
+	public boolean getlCamposOpcion()
+	{
+		return this.lCamposOpcion;
+	}
+
+	public void setlCamposOpcion(boolean lCamposOpcion) {
+		this.lCamposOpcion = lCamposOpcion;
+	}
+
+}

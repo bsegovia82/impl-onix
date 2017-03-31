@@ -1,0 +1,24 @@
+package com.onix.modulo.servicio.mantenimiento.aplicacion;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+
+import com.onix.modulo.dominio.aplicacion.OmgIcono;
+import com.onix.modulo.eao.aplicacion.OmgIconoEAO;
+import com.onix.modulo.servicio.ServicioMantenedorControlAuditoria;
+
+@Stateless
+public class ServicioMantenedorIcono extends  ServicioMantenedorControlAuditoria<OmgIconoEAO, OmgIcono, Long>
+{
+	@EJB
+	private OmgIconoEAO crud;
+	
+	protected OmgIconoEAO getCrud() {
+		return crud;
+	}
+
+	protected void cargarConfiguracionServicio() {
+		System.out.println("NO EXISTE CONFIGURACIÓN ADICIONAL PARA ESTE SERVICIO " + ServicioMantenedorIcono);
+	}
+
+}

@@ -1,0 +1,28 @@
+package com.onix.modulo.vista.beans.modulo.aplicacion.configuracion;
+
+import javax.ejb.EJB;
+
+import com.onix.modulo.dominio.aplicacion.OmgIcono;
+import com.onix.modulo.eao.aplicacion.OmgIconoEAO;
+import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
+import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorIcono;
+
+public class BeanMantenedorIcono 
+extends BeanMantenedorGenerico<ServicioMantenedorIcono, Long, OmgIcono, OmgIconoEAO>
+{
+
+	@EJB
+	private ServicioMantenedorIcono lServicio;
+	
+	@Override
+	protected void cargarListaEtiquetas() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected ServicioMantenedorIcono getServicioMantenedor() {
+		return lServicio;
+	}
+
+}

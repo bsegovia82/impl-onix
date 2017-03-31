@@ -7,10 +7,15 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.primefaces.event.TransferEvent;
+import org.primefaces.model.DualListModel;
+
 import com.onix.modulo.dominio.aplicacion.OmsOpcione;
 import com.onix.modulo.dominio.aplicacion.OmsOpcionesRole;
 import com.onix.modulo.dominio.aplicacion.OmsRole;
 import com.onix.modulo.eao.aplicacion.OmsRoleEAO;
+import com.onix.modulo.librerias.exceptions.ErrorServicioNegocio;
+import com.onix.modulo.librerias.exceptions.ErrorValidacionGeneral;
 import com.onix.modulo.librerias.vista.JsfUtil;
 import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
 import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
@@ -33,9 +38,12 @@ public class BeanMantenedorRol extends BeanMantenedorGenerico<ServicioMantenedor
 
 	private List<OmsOpcione> listaOpcionesTerminales;
 
-	public BeanMantenedorRol() {
-		super(new OmsRole(), OmsRole.class);
+	private DualListModel<String> listaSeleccionOpcion;
+	
 
+	public BeanMantenedorRol() {
+		super(OmsRole.class);
+		listaSeleccionOpcion = new DualListModel<>();
 		addValidacionListener(new ValidadorIngresoDatosListener() {
 
 			@Override
@@ -57,7 +65,6 @@ public class BeanMantenedorRol extends BeanMantenedorGenerico<ServicioMantenedor
 		addPostTransaccion(new PostTransaccionListener() {
 			@Override
 			public void metodoPostTransaccion() {
-				entidadRegistrar = new OmsRole();
 				opcionesSeleccionadas = null;
 
 			}
@@ -67,7 +74,7 @@ public class BeanMantenedorRol extends BeanMantenedorGenerico<ServicioMantenedor
 
 			@Override
 			public void metodoPostConstruct() {
-				listaOpcionesTerminales = servicioMantenedor.listaOpcionesEjecutables();
+				listaOpcionesTerminales = servicioMantenedor.listaOpcionesEjecutables(usuarioAutenticado());
 			}
 		});
 
@@ -76,11 +83,21 @@ public class BeanMantenedorRol extends BeanMantenedorGenerico<ServicioMantenedor
 			@Override
 			public void postSeleccionRegistro(OmsRole pEntidadSeleccionada) {
 				opcionesSeleccionadas = null;
-
+				cargarOpcionesRoles(pEntidadSeleccionada);
 			}
+
+			
 		});
 	}
 
+	private void cargarOpcionesRoles(OmsRole pEntidadSeleccionada) {
+		List<String> listaOpcionesAsignadas = servicioMantenedor
+				.obtenerOpcionesAsignadasRol(pEntidadSeleccionada.getId());
+		List<String> listaOpcionesPorAsignar = servicioMantenedor
+				.obtenerOpcionesPorAsignarRol(usuarioAutenticado(), pEntidadSeleccionada.getId(), obtenerObjetoSesion(JsfUtil.REFERENCIA_SESION));
+		listaSeleccionOpcion = new DualListModel<>(listaOpcionesPorAsignar, listaOpcionesAsignadas);
+	}
+	
 	protected ServicioMantenedorRol getServicioMantenedor() {
 		return servicioMantenedor;
 	}
@@ -112,6 +129,33 @@ public class BeanMantenedorRol extends BeanMantenedorGenerico<ServicioMantenedor
 		return opcionesRolesAsig;
 	}
 
+	public void controlTransferencia(TransferEvent pEvento) {
+
+		Long referencia = obtenerObjetoSesion(JsfUtil.REFERENCIA_SESION);
+		List<String> lOpcionesTransferidas = (List<String>) pEvento.getItems();
+		try {
+			if (pEvento.isAdd())
+
+				servicioMantenedor.asigarOpciones(lOpcionesTransferidas, usuarioAutenticado(), entidadRegistrar.getId(),
+						referencia);
+
+			else {
+				if (pEvento.isRemove())
+					servicioMantenedor.inactivarOpciones(lOpcionesTransferidas, usuarioAutenticado(),
+							entidadRegistrar.getId());
+			}
+			cargarOpcionesRoles(this.entidadRegistrar);
+		} catch (ErrorServicioNegocio e) {
+			e.printStackTrace();
+			addError(e.getMessage());
+
+		} catch (ErrorValidacionGeneral e) {
+			e.printStackTrace();
+			addError(e.getMessage());
+		}
+
+	}
+
 	@Override
 	protected void cargarListaEtiquetas() {
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.TITULOPAGINA.toString(), "Mantenimiento Roles");
@@ -122,5 +166,13 @@ public class BeanMantenedorRol extends BeanMantenedorGenerico<ServicioMantenedor
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERADIALOGO.toString(), "Actualización Rol");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos Rol");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
+	}
+
+	public DualListModel<String> getListaSeleccionOpcion() {
+		return listaSeleccionOpcion;
+	}
+
+	public void setListaSeleccionOpcion(DualListModel<String> listaSeleccionOpcion) {
+		this.listaSeleccionOpcion = listaSeleccionOpcion;
 	}
 }

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects>
+  <project name="cnel-implementacion-servicios-integracion"/>
+  <project name="cnel-cliente-servicio-login"/>
+  <project name="cnel-cliente-servicio-medidores"/>
+ </depends-on-projects>
+ <used-by-projects>
+  <project name="onix-implementacion-modulo-vista-omega"/>
+  <project name="onix-implementacion-modulo-vista"/>
+  <project name="onix-implementacion-modulo-vista-spark"/>
+ </used-by-projects>
+ <paths>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-dominio/7.0/onix-modulo-librerias-dominio-7.0.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-vista/7.0/onix-modulo-librerias-vista-7.0.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-generales/7.0/onix-modulo-librerias-generales-7.0.jar"/>
+  <path value="D:/repositorio/javax/javaee-web-api/7.0/javaee-web-api-7.0.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-servicio/7.0/onix-modulo-librerias-servicio-7.0.jar"/>
+ </paths>
+ <validation>
+  <core validator-id="jboss.cdi.core">
+   <linked-resource name="%1;" path="%0"/>
+   <linked-resource name="%1;" path="%2"/>
+   <linked-resource name="%0;" path="%3"/>
+   <linked-resource name="%1;" path="%4"/>
+  </core>
+  <el>
+   <linked-el length="39" name="%5" offset="2204" path="%6"/>
+   <linked-el length="65" name="%5" offset="2250" path="%6"/>
+   <linked-el length="57" name="%7" offset="503" path="%8"/>
+   <linked-el length="37" name="%7" offset="284" path="%8"/>
+   <linked-el length="47" name="%9" offset="881" path="%6"/>
+   <linked-el length="79" name="%9" offset="1457" path="%6"/>
+   <linked-el length="12" name="%9" offset="2418" path="%6"/>
+   <linked-el length="28" name="%9" offset="1615" path="%6"/>
+   <linked-el length="46" name="%9" offset="765" path="%6"/>
+   <linked-el length="32" name="%9" offset="1318" path="%6"/>
+   <linked-el length="44" name="%9" offset="1859" path="%6"/>
+   <linked-el length="16" name="%9" offset="1153" path="%6"/>
+   <linked-el length="46" name="%9" offset="959" path="%6"/>
+   <linked-el length="58" name="%9" offset="576" path="%6"/>
+   <linked-el length="16" name="%9" offset="1216" path="%6"/>
+   <linked-el length="26" name="%9" offset="1760" path="%6"/>
+   <linked-el length="38" name="%9" offset="395" path="%6"/>
+   <linked-el length="44" name="%9" offset="487" path="%6"/>
+   <linked-el length="45" name="%9" offset="2151" path="%6"/>
+   <linked-el length="36" name="%9" offset="680" path="%6"/>
+   <linked-el length="44" name="%10" offset="1859" path="%6"/>
+   <linked-el length="47" name="%10" offset="881" path="%6"/>
+   <linked-el length="79" name="%10" offset="1457" path="%6"/>
+   <linked-el length="46" name="%10" offset="959" path="%6"/>
+   <linked-el length="58" name="%10" offset="576" path="%6"/>
+   <linked-el length="46" name="%10" offset="765" path="%6"/>
+   <linked-el length="38" name="%10" offset="395" path="%6"/>
+   <linked-el length="44" name="%10" offset="487" path="%6"/>
+   <linked-el length="45" name="%10" offset="2151" path="%6"/>
+   <linked-el length="36" name="%10" offset="680" path="%6"/>
+   <linked-el length="37" name="%11" offset="284" path="%8"/>
+   <linked-el length="32" name="%12" offset="1318" path="%6"/>
+   <linked-el length="16" name="%12" offset="1153" path="%6"/>
+   <linked-el length="28" name="%12" offset="1615" path="%6"/>
+   <linked-el length="16" name="%12" offset="1216" path="%6"/>
+   <linked-el length="57" name="%13" offset="503" path="%8"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias path="beanMantenedorUsuario" value="%7"/>
+  <alias path="beanMantenedorUsuario.tituloPagina" value="%11"/>
+  <alias
+   path="/onix-implementacion-api-clientes/src/main/java/com/onix/api/cliente/login/ExtensionLogin.java" value="%4"/>
+  <alias
+   path="/cnel-implementacion-vista/src/main/resources/META-INF/resources/WEB-INF/template_mantenedor_cnel.xhtml" value="%8"/>
+  <alias
+   path="/cnel-implementacion-vista/src/main/resources/META-INF/resources/privadas/modulos/medidores/pag_toma_lectura_medidor.xhtml" value="%6"/>
+  <alias
+   path="/cnel-implementacion-servicios-integracion/src/main/java/com/cnel/servicios/login/ConexionServicioLogin.java" value="%1"/>
+  <alias path="p" value="%5"/>
+  <alias
+   path="/onix-implementacion-api-clientes/src/main/java/com/onix/api/dtosesion/AlmacenObjetoSesion.java" value="%2"/>
+  <alias path="beanTomaLecturaMedidor" value="%9"/>
+  <alias
+   path="/onix-implementacion-api-clientes/src/main/java/com/onix/api/dtosesion/AlmacenSesion.java" value="%3"/>
+  <alias
+   path="/cnel-implementacion-vista/src/main/java/com/cnel/modulo/vista/bean/medidor/BeanTomaLecturaMedidor.java" value="%10"/>
+  <alias
+   path="/cnel-implementacion-servicios-integracion/src/main/java/com/cnel/modulo/dominio/bitacora/CnelBitacora.java" value="%12"/>
+  <alias
+   path="/cnel-implementacion-servicios-integracion/src/main/java/com/cnel/servicios/sesion/GestorObjetosSesion.java" value="%0"/>
+  <alias path="beanMantenedorUsuario.descripcionPagina" value="%13"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/html">
+   <prefix>h</prefix>
+  </uri>
+ </uris>
+</kb-project>

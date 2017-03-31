@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sebra.onix.producto</groupId>
+		<artifactId>onix-implementacion-producto</artifactId>
+		<version>7.0</version>
+	</parent>
+	<artifactId>onix-implementacion-api-clientes</artifactId>
+	<name>onix-implementacion-api-clientes</name>
+	<description>onix-implementacion-api-clientes</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+</project>

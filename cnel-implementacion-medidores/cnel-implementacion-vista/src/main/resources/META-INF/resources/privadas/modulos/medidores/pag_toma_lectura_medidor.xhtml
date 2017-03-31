@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/template_mantenedor_cnel.xhtml">
+
+	<ui:define name="head">
+		<title>#{beanTomaLecturaMedidor.tituloPagina}</title>
+	</ui:define>
+
+
+	<ui:define name="title">
+	#{beanTomaLecturaMedidor.tituloPagina}
+	</ui:define>
+
+	<ui:define name="subheader">
+       #{beanTomaLecturaMedidor.descripcionPagina}
+    </ui:define>
+
+	<ui:define name="titulo_tab">
+		#{beanTomaLecturaMedidor.tab}
+	</ui:define>
+	<ui:define name="cab_tabla_datos">
+		#{beanTomaLecturaMedidor.cabeceraTabla}
+	</ui:define>
+
+	<ui:define name="tabla_datos">
+		<p:dataTable value="#{beanTomaLecturaMedidor.listaEntidades}"
+			var="lectura"
+			emptyMessage="#{beanTomaLecturaMedidor.mensajeTablaVacia}" rows="8"
+			reflow="true" paginator="true" paginatorPosition="bottom"
+			id="tablaDatos" paginatorAlwaysVisible="false">
+
+			<p:column filterBy="#{lectura.id}" footerText="Usuario">
+				<h:outputText value="#{lectura.id}" />
+			</p:column>
+
+			<p:column headerText="Descripción">
+				<h:outputText value="#{lectura.lDescripcionEvento}" />
+			</p:column>
+
+			<p:column headerText="Estado Registro" width="9%">
+				<h:outputText
+					value="#{lectura.estado eq beanTomaLecturaMedidor.estadoActivo?'ACTIVO':'INACTIVO'}" />
+			</p:column>
+
+			<p:column headerText="Valor">
+				<p:inputText value="#{lectura.lValorAlterado}" id="txtLectura"></p:inputText>
+			</p:column>
+
+			<p:column headerText="Fecha Registro">
+				<h:outputText value="#{lectura.fechaRegistro}">
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"
+						timeZone="#{beanTomaLecturaMedidor.currentTimeZone}" />
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Eventos" width="10%">
+
+				<p:panelGrid columns="2" layout="grid"
+					style="border : none; background : none;">
+
+					<p:commandLink title="Registrar"
+						actionListener="#{beanTomaLecturaMedidor.resgistar}"
+						process=":#{p:component('tablaDatos')}"
+						update=":#{p:component('tablaDatos')}, :#{p:component('mensajeGlobal')}">
+
+						<i class="fa fa-edit Fs20 BoldGray DispBlock"> </i>
+
+						<f:attribute name="dato" value="#{lectura}"></f:attribute>
+					</p:commandLink>
+				</p:panelGrid>
+
+
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+
+</ui:composition>

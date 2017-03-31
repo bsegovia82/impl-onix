@@ -7,10 +7,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.event.TransferEvent;
+import org.primefaces.model.DualListModel;
 
 import com.onix.modulo.dominio.aplicacion.OmsRole;
 import com.onix.modulo.dominio.aplicacion.OmsUsuario;
 import com.onix.modulo.eao.aplicacion.OmsUsuarioEAO;
+import com.onix.modulo.librerias.exceptions.ErrorServicioNegocio;
+import com.onix.modulo.librerias.exceptions.ErrorValidacionGeneral;
 import com.onix.modulo.librerias.vista.JsfUtil;
 import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
 import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
@@ -36,31 +40,36 @@ public class BeanMantenedorUsuario
 
 	private List<OmsRole> listaRoles;
 
+	private DualListModel<String> listaSeleccionRol;
+
 	public BeanMantenedorUsuario() {
-		super(new OmsUsuario(), OmsUsuario.class);
+		super(OmsUsuario.class);
 		super.entidadRegistrar.setClave(JsfUtil.CLAVE_INICIAL_DEFAULT);
+		listaSeleccionRol = new DualListModel<>();
 		addPostTransaccion(new PostTransaccionListener() {
-			
+
 			@Override
 			public void metodoPostTransaccion() {
-				entidadRegistrar = new OmsUsuario();
 				entidadRegistrar.setClave(JsfUtil.CLAVE_INICIAL_DEFAULT);
-				entidadSelecionable = new OmsUsuario();
 				rolesSeleccionadas = null;
-				
+
 			}
 		});
-		
+
 		addPostSeleccionRegistroListener(new PostSeleccionEntidadListener<OmsUsuario, Long>() {
-			
+
 			@Override
 			public void postSeleccionRegistro(OmsUsuario pEntidadSeleccionada) {
 				rolesSeleccionadas = null;
+
+				cargatListaRoles(pEntidadSeleccionada);
 			}
-		});
-		
-		addPreTransaccionServicioListener(new PreTransaccionListener() {
+
 			
+		});
+
+		addPreTransaccionServicioListener(new PreTransaccionListener() {
+
 			@Override
 			public void accionPreTransaccion() throws ErrorAccionesPreTransaccion {
 				try {
@@ -82,23 +91,31 @@ public class BeanMantenedorUsuario
 				} else {
 					System.out.println("No registra avatar");
 				}
-				
+
 			}
 		});
-		
+
 		addPostConstructuListener(new PostConstructListener() {
-			
+
 			@Override
 			public void metodoPostConstruct() {
 				listaRoles = getServicioMantenedor().listaRoles();
 			}
 		});
 	}
-	
+
 	protected ServicioMantenedorUsuario getServicioMantenedor() {
 		return servicioMantenedor;
 	}
 
+	private void cargatListaRoles(OmsUsuario pEntidadSeleccionada) {
+		List<String> listaOpcionesAsignadas = servicioMantenedor
+				.obtenerRolesAsignados(pEntidadSeleccionada.getId());
+		List<String> listaOpcionesPorAsignar = servicioMantenedor.obtenerRolesPorAsignar(usuarioAutenticado(),
+				pEntidadSeleccionada.getId());
+		listaSeleccionRol = new DualListModel<>(listaOpcionesPorAsignar, listaOpcionesAsignadas);
+	}
+	
 	public OmsUsuario getUsuarioActual() {
 		return getEntidadRegistrar();
 	}
@@ -132,24 +149,58 @@ public class BeanMantenedorUsuario
 	}
 
 	public void subir(FileUploadEvent event) {
-       avatar = event.getFile().getContents();
-    }
+		avatar = event.getFile().getContents();
+	}
 
 	@Override
 	protected void cargarListaEtiquetas() {
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.TITULOPAGINA.toString(), "Mantenimiento Usuarios");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.DESCRIPCIONPAGINA.toString(), "Mantenedor Usuarios");
-		this.listaEtiquetasPantalla.put(NombresEtiquetas.AYUDAPAGINA.toString(), "Desde esta opción, se pueden editar o crear usuarios");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.AYUDAPAGINA.toString(),
+				"Desde esta opción, se pueden editar o crear usuarios");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.TAB.toString(), "Datos Usuario");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Usuarios registrados");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERADIALOGO.toString(), "Actualización Usuario");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos usuario");
 		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
-		
-		
+
 	}
-	
-	
-	
-	
+
+	public DualListModel<String> getListaSeleccionRol() {
+		return listaSeleccionRol;
+	}
+
+	public void setListaSeleccionRol(DualListModel<String> listaSeleccionRol) {
+		this.listaSeleccionRol = listaSeleccionRol;
+	}
+
+	public void controlTransferencia(TransferEvent pEvento) {
+
+		Long referencia = obtenerObjetoSesion(JsfUtil.REFERENCIA_SESION);
+		List<String> lRolesTransferidas = (List<String>) pEvento.getItems();
+		try {
+			if (pEvento.isAdd())
+
+				servicioMantenedor.asigarRoles(lRolesTransferidas, usuarioAutenticado(), entidadRegistrar.getId(),
+						referencia);
+
+			else {
+				if (pEvento.isRemove() && servicioMantenedor.inactivarRoles(lRolesTransferidas, usuarioAutenticado(),
+						entidadRegistrar.getId()) > 0)
+				{
+					addError("El usuario debe pernecer por lo menos a un rol");
+				}
+			}
+			cargatListaRoles(entidadRegistrar);
+		} catch (ErrorServicioNegocio e) {
+			e.printStackTrace();
+			addError(e.getMessage());
+
+		} catch (ErrorValidacionGeneral e) {
+			e.printStackTrace();
+			addError(e.getMessage());
+		}
+
+	}
+
 }

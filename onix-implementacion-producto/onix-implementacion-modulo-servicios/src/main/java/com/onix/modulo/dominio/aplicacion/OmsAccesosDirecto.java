@@ -40,10 +40,6 @@ public class OmsAccesosDirecto extends EntidadBaseAuditable<Long> implements Ser
 		return this.id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	@ManyToOne
 	@JoinColumn(name = "ID_OPCION")
 	public OmsOpcione getPriOpcione() {

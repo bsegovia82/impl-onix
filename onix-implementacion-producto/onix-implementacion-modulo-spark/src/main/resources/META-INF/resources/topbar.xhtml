@@ -1,0 +1,190 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+		<style>
+.ui-widget-content a {
+	color: #27aae1;
+}
+</style>
+
+		<div id="layout-topbar" class="ShadowGray">
+			<div id="layout-topbar-indent">
+				<a
+					href="#{request.contextPath}/privadas/generales/pag_principal.jsf"
+					id="logo"> <h:graphicImage name="general/onix_logo.png"
+						library="imagenes" styleClass="Fleft"
+						style="height : 40px; width : 110px;" />
+				</a> <a href="#" id="mobile-menu-button"
+					class="BordRad3 white ShowOnMobile"><i class="fa fa-bars"></i>
+					Menu</a> <a href="#" id="mobile-menu-button-gray"
+					class="BordRad3 white ShowOnMobile"><i class="fa fa-caret-down"></i>
+					Top Menu</a>
+
+				<ul id="layout-topbar-menu">
+					<li><h:commandLink action="#{beanLogin.logout}"
+							class="Animated05">
+							<i class="fa fa-sign-out animated swing infinite yellow"></i> Logout</h:commandLink></li>
+					<li class="fa fa-ellipsis-v menu-separator"></li>
+					<li><p:commandLink title="Accesos directos" id="listaAccesos"
+							class="Animated05 CursPointer"
+							actionListener="#{beanAccesosDirectos.cargarListaAccesosDirectos}"
+							update="@([id$=panelCargaAccesos])" process="@this">
+							<i class="fa fa-list-ol animated swing infinite blue"></i> Accesos Directos <i
+								class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i>
+						</p:commandLink></li>
+					<li class="fa fa-ellipsis-v menu-separator"></li>
+
+
+					<li><a class="Animated05 CursPointer"><i
+							class="fa fa-bell animated swing infinite red"></i> Mensajes <span
+							class="notification-bubble BordRad3 animated rubberBand">24</span>
+							<i class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i></a>
+						<ul style="width: 200px; margin-left: -45px;"
+							class="Animated03 submenu">
+							<li><a href="#" class="Animated05"><i
+									class="fa fa-envelope Fs18 blue"></i> <span
+									class="Fright Fs16 TexAlRight">Brian Connely<span
+										class="Fs10 DispBlock">Sales Reports</span></span></a></li>
+							<li><a href="#" class="Animated05"><i
+									class="fa fa-envelope Fs18"></i> <span
+									class="Fright Fs16 TexAlRight">Jack O'Neill<span
+										class="Fs10 DispBlock">Last Meeting Notes</span></span></a></li>
+							<li><a href="#" class="Animated05"><i
+									class="fa fa-envelope Fs18 blue"></i> <span
+									class="Fright Fs16 TexAlRight">Tony Parker<span
+										class="Fs10 DispBlock">Web Site Visitors</span></span></a></li>
+							<li><a href="#" class="Animated05"><i
+									class="fa fa-envelope Fs18 red animated infinite rubberBand"></i>
+									<span class="Fright Fs16 TexAlRight">Bob Ross<span
+										class="Fs10 DispBlock">IK Reports</span></span></a></li>
+							<li><a href="#" class="Animated05"><i
+									class="fa fa-envelope Fs18 orange"></i> <span
+									class="Fright Fs16 TexAlRight">Sarah White<span
+										class="Fs10 DispBlock">Marketing News</span></span></a></li>
+						</ul></li>
+					<li class="fa fa-ellipsis-v menu-separator"></li>
+					<li><a class="Animated05 CursPointer"> <p:graphicImage
+								rendered="#{beanLogin.usuarioSession.usuarioSession.imagenReferencia == null}"
+								name="general/usuarioDefault.png" library="imagenes" value="#"
+								style="outline: aliceblue; width: 20px; height: 20px; vertical-align: top; border-radius: 50%;  " />
+							<o:graphicImage
+								rendered="#{beanLogin.usuarioSession.usuarioSession.imagenReferencia != null}"
+								style="outline: aliceblue; width: 20px; height: 20px; vertical-align: top; border-radius: 50%;  "
+								value="#{beanLogin.usuarioSession.usuarioSession.imagenReferencia}"
+								dataURI="true" />
+
+							#{beanLogin.usuarioSession.usuarioSession.lDescripcion},
+							bienvenido <i class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i></a>
+						<ul style="width: 175px; margin-left: -10px;"
+							class="Animated03 submenu">
+							<li><a class="Animated05" style="vertical-align: middle;">
+									<span style="text-align: center;">
+										<center>
+											<p:graphicImage
+												rendered="#{beanLogin.usuarioSession.usuarioSession.imagenReferencia == null}"
+												name="general/usuarioDefault.png" library="imagenes"
+												value="#"
+												style="outline: aliceblue; width: 60px; height: 60px; vertical-align: top; border-radius: 50%;  " />
+											<o:graphicImage
+												rendered="#{beanLogin.usuarioSession.usuarioSession.imagenReferencia != null}"
+												style="outline: aliceblue; width: 60px; height: 60px; vertical-align: top; border-radius: 50%;  "
+												value="#{beanLogin.usuarioSession.usuarioSession.imagenReferencia}"
+												dataURI="true" />
+										</center> <span class="Fs10 DispBlock">#{beanLogin.usuarioSession.usuarioSession.lDescripcion}</span>
+								</span>
+							</a></li>
+							<li><p:commandLink title="Mi Perfil"
+									actionListener="#{beanMantenedorUsuario.actualizarEntidad}"
+									update=":#{p:component('dialogoMantenimientoPerfil')}"
+									process="@this">
+									<i class="fa fa-cog fa-spin fa-3x fa-fw"></i> Editar Mi Perfil
+								
+								<f:attribute
+										name="#{beanMantenedorUsuario.nombreAtributoCambioEstado}"
+										value="#{beanLogin.usuarioSession.usuarioSession}"></f:attribute>
+
+									<f:attribute
+										name="#{beanMantenedorUsuario.nombreAtributoDialogoAlterno}"
+										value="dialogoMantenimientoPerfil"></f:attribute>
+								</p:commandLink></li>
+							<li><a href="#" onclick="PF('dlg2').show();" 
+								title="Cambio Clave"><i class="fa fa-key animated swing infinite red"></i>Cambiar Clave</a>
+
+							</li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<p:overlayPanel id="panelAccesos" for="listaAccesos" hideEffect="fade"
+			dynamic="true" style="width:300px" widgetVar="panelAccesos">
+			<p:panel id="panelCargaAccesos">
+				<f:facet name="header">
+					<h:outputText value="Lista de accesos directos" />
+				</f:facet>
+
+				<ui:repeat var="acceso"
+					value="#{beanAccesosDirectos.lListaAccesosActivos}"
+					varStatus="status">
+					<h:outputLink 
+						value="#{request.contextPath}#{acceso.priOpcione.accion}">
+						<i class="#{acceso.priOpcione.rutaimagen} animated swing infinite blue"></i> #{acceso.priOpcione.opcion}</h:outputLink>
+					<br></br>
+				</ui:repeat>
+
+				<f:facet name="footer">
+					<a href="#" onclick="PF('panelAccesos').hide();"> <i
+						class="fa fa-sign-in"></i>
+					</a>
+
+				</f:facet>
+			</p:panel>
+
+
+
+
+		</p:overlayPanel>
+
+		<p:dialog header="Cambio de clave" widgetVar="dlg2" modal="true"
+			resizable="false" closable="false"
+			visible="#{beanLogin.usuarioSession.usuarioSession.esNuevo eq 'S'}"
+			width="450">
+			<p:outputPanel id="cambClae">
+
+				<p:messages globalOnly="true" showDetail="false" closable="true"
+					id="mensajeGeneral"></p:messages>
+
+				<h:outputText value="Su primer inicio de sesión, cambie su clave"
+					rendered="#{beanLogin.usuarioSession.usuarioSession.esNuevo eq 'S'}" />
+				<p:panelGrid columns="2" layout="grid">
+
+					<h:outputText value="Usuario: " />
+					<h:outputText
+						value="#{beanLogin.usuarioSession.usuarioSession.usuario}" />
+					<h:outputText value="Clave: " />
+					<p:password feedback="false" value="#{beanLogin.cambContrase1}"></p:password>
+					<h:outputText value="Rep. Clave: " />
+					<p:password feedback="false" value="#{beanLogin.cambContrase2}"></p:password>
+					<f:facet name="footer">
+						<p:commandButton value="Aceptar"
+							actionListener="#{beanLogin.cambiarContrasenia}"
+							process="@([id$=cambClae])" update="@([id$=cambClae])"
+							partialSubmit="true">
+						</p:commandButton>
+						<p:commandButton value="Cerrar"
+							actionListener="#{beanLogin.cerrarVentana}" ajax="false">
+						</p:commandButton>
+					</f:facet>
+				</p:panelGrid>
+			</p:outputPanel>
+
+		</p:dialog>
+
+	</h:form>
+
+</ui:composition>

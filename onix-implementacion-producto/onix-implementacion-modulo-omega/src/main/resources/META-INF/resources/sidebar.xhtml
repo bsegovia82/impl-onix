@@ -1,0 +1,189 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:po="http://primefaces.org/omega"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	>
+
+	<div class="sidebar">
+		<div class="nano">
+			<div class="nano-content sidebar-scroll-content">
+				<div class="logo">
+					<a
+						href="#{request.contextPath}/privadas/generales/pag_principal.jsf"
+						id="logo"> <h:graphicImage name="general/onix_logo.png"
+							library="imagenes" 
+							style="height : 40px; width : 100px;" />
+					</a>
+
+
+				</div>
+				<h:form id="frmDatosProfile">
+					<div class="profile">
+						<p:commandLink title="Mi Perfil"
+							actionListener="#{beanMantenedorUsuario.actualizarEntidad}"
+							update=":#{p:component('dialogoMantenimientoPerfil')}"
+							process="@this">
+							<f:attribute
+								name="#{beanMantenedorUsuario.nombreAtributoCambioEstado}"
+								value="#{beanLogin.usuarioSession.usuarioSession}"></f:attribute>
+
+							<f:attribute
+								name="#{beanMantenedorUsuario.nombreAtributoDialogoAlterno}"
+								value="dialogoMantenimientoPerfil"></f:attribute>
+
+							<p:graphicImage
+								rendered="#{beanLogin.usuarioSession.usuarioSession.imagenReferencia == null}"
+								name="general/usuarioDefault.png" library="imagenes" value="#"
+								style="outline: aliceblue; width: 70px; height: 70px; vertical-align: top; border-radius: 50%;" />
+							<o:graphicImage
+								rendered="#{beanLogin.usuarioSession.usuarioSession.imagenReferencia != null}"
+								style="outline: aliceblue; width: 70px; height: 70px; vertical-align: top; border-radius: 50%;"
+								value="#{beanLogin.usuarioSession.usuarioSession.imagenReferencia}"
+								dataURI="true" />
+
+						</p:commandLink>
+						<span class="username">#{beanLogin.usuarioSession.usuarioSession.lDescripcion}</span>
+					</div>
+
+				</h:form>
+
+				<div class="menu">
+					<po:menu model="#{menuView.model}">
+					</po:menu>
+				</div>
+
+				<h:form>
+
+					<p:growl sticky="true" id="mensajeProfile"></p:growl>
+					<p:dialog widgetVar="dialogoMantenimientoPerfil" 
+						height="380" id="dialogoMantenimientoPerfil" width="600" responsive="true">
+						<f:facet name="header">
+							<h:outputText value="Actualización de Perfil" />
+						</f:facet>
+
+						<p:tabView>
+							<p:tab title="Mis datos">
+
+								<p:panel id="PanelActualizar">
+									<p:panelGrid columns="2" layout="grid"
+										style="border:0px !important; background:none;" id="panel">
+										<o:graphicImage
+											style="outline: aliceblue; width: 70px; height: 70px; vertical-align: top; border-radius: 10%;"
+											value="#{beanMantenedorUsuario.usuarioActual.imagenReferencia}"
+											rendered="#{beanMantenedorUsuario.usuarioActual.imagenReferencia != null}"
+											dataURI="true" />
+
+										<pe:fluidGridItem type="input">
+											<div class="dynaFormLabel">
+												<p:outputLabel value="* Usuario:" />
+											</div>
+											<p:inputText styleClass="Wid70" placeholder="Usuario"
+												value="#{beanMantenedorUsuario.usuarioActual.usuario}"
+												onblur="ChangeCase(this);" required="true" id="Usuario" readonly="true"/>
+										</pe:fluidGridItem>
+										<pe:fluidGridItem type="input">
+											<div class="dynaFormLabel">
+												<p:outputLabel value="* Descripción:" />
+											</div>
+											<p:inputText styleClass="Wid70" placeholder="Descripción"
+												value="#{beanMantenedorUsuario.usuarioActual.lDescripcion}"
+												onblur="ChangeCase(this);" required="true" id="Descripción" />
+										</pe:fluidGridItem>
+										<pe:fluidGridItem type="input">
+											<div class="dynaFormLabel">
+												<p:outputLabel value="* Email:" />
+											</div>
+											<p:inputText styleClass="Wid70" placeholder="Email"
+												value="#{beanMantenedorUsuario.usuarioActual.correo}"
+												required="true" validatorMessage="Email incorrecto"
+												id="Email">
+												<f:validateRegex
+													pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"></f:validateRegex>
+											</p:inputText>
+										</pe:fluidGridItem>
+
+
+									</p:panelGrid>
+
+									<pe:fluidGridItem type="select" styleClass="select">
+										<div class="dynaFormLabel">
+											<p:outputLabel value="Avatar:" />
+										</div>
+										<p:fileUpload
+											fileUploadListener="#{beanMantenedorUsuario.subir}"
+											mode="advanced" dragDropSupport="false" sizeLimit="100000"
+											fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+											cancelLabel="Cancelar" uploadLabel="Subir"
+											invalidFileMessage="Archivo no permitido"
+											invalidSizeMessage="El tamaño no es permitido"
+											required="false" label="Seleccione" />
+									</pe:fluidGridItem>
+
+									<p:commandButton value="Actualizar" styleClass="CyanButton"
+										actionListener="#{beanMantenedorUsuario.guardarOActualizar}"
+										process="@form"
+										update="@([id$=frmDatosProfile]), @([id$=mensajeProfile])">
+										<p:confirm header="Confirmación"
+											message="Seguro que desea realizar esta operación?"
+											icon="ui-icon-alert" />
+									</p:commandButton>
+								</p:panel>
+							</p:tab>
+							<p:tab title="Mis Accesos">
+
+
+
+								<p:panel style="border:0px !important; background:none;"
+									id="PanelAccesos" header="Administración de accesos directos">
+
+									<p:pickList id="listaAccesos"
+										value="#{beanAccesosDirectos.listaSeleccionAcceso}"
+										var="acceso" effect="bounce" itemValue="#{acceso}"
+										itemLabel="#{acceso}" showSourceControls="true"
+										showTargetControls="true" showCheckbox="true"
+										responsive="true" showSourceFilter="true"
+										showTargetFilter="true" filterMatchMode="contains">
+
+										<f:facet name="sourceCaption">Accesos por asignar</f:facet>
+										<f:facet name="targetCaption">Accesos Asignados</f:facet>
+
+										<p:ajax event="transfer"
+											listener="#{beanAccesosDirectos.controlTransferencia}"
+											update="@([id$=mensajeProfile]), @([id$=PanelAccesos]), @([id$=frmDatosProfile])"
+											process="@this" />
+
+										<p:column style="width:90%;">
+											<h:outputText value="#{acceso}" />
+										</p:column>
+									</p:pickList>
+
+								</p:panel>
+							</p:tab>
+						</p:tabView>
+					</p:dialog>
+
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Si" type="button"
+							styleClass="ui-confirmdialog-yes GreenButton"
+							icon="ui-icon-check fa fa-check Fs14 White" />
+						<p:commandButton value="No" type="button"
+							styleClass="ui-confirmdialog-no RedButton"
+							icon="ui-icon-close fa fa-close Fs14 White" />
+					</p:confirmDialog>
+
+
+				</h:form>
+
+			</div>
+		</div>
+	</div>
+		<h:outputScript name="js/nanoscroller.js" library="omega-layout" />
+        <h:outputScript name="js/layout.js" library="omega-layout" />
+        <h:outputStylesheet name="css/nanoscroller.css" library="omega-layout" />
+        <h:outputStylesheet name="css/layout.css" library="omega-layout" />
+</ui:composition>

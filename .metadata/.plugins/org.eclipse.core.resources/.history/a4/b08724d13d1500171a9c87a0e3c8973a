@@ -1,0 +1,32 @@
+package com.onix.modulo.dominio.aplicacion;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.onix.modulo.librerias.dominio.entidades.base.EntidadBaseAuditable;
+
+@Entity
+@Table(name="OMG_ICONOS")
+public class OmgIconos extends EntidadBaseAuditable<Long> implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	private String lIconoFontPrimefaces;
+
+
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public String getlIconoFontPrimefaces() {
+		return lIconoFontPrimefaces;
+	}
+	
+	public void setlIconoFontPrimefaces(String lIconoFontPrimefaces) {
+		this.lIconoFontPrimefaces = lIconoFontPrimefaces;
+	}
+	
+	
+}

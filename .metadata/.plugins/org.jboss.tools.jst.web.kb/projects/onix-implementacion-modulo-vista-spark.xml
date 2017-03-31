@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects>
+  <project name="onix-implementacion-modulo-base"/>
+  <project name="cnel-implementacion-servicios-integracion"/>
+  <project name="cnel-cliente-servicio-login"/>
+  <project name="onix-implementacion-api-clientes"/>
+  <project name="onix-implementacion-modulo-spark"/>
+  <project name="onix-implementacion-modulo-timers"/>
+  <project name="cnel-cliente-servicio-medidores"/>
+  <project name="cnel-implementacion-vista"/>
+  <project name="onix-implementacion-modulo-servicios"/>
+ </depends-on-projects>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/Program Files/Java/jdk1.8.0_111/lib/tools.jar"/>
+  <path value="D:/repositorio/org/jboss/javaee/jboss-transaction-api/1.0.1.GA/jboss-transaction-api-1.0.1.GA.jar"/>
+  <path value="D:/repositorio/org/jboss/jandex/1.0.3.Final/jandex-1.0.3.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/jbossts/jbossjts/4.16.2.Final/jbossjts-4.16.2.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-protocol/7.1.0.Final/jboss-as-protocol-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/sasl/jboss-sasl/1.0.0.Final/jboss-sasl-1.0.0.Final.jar"/>
+  <path value="D:/repositorio/emma/emma/2.0.5312/emma-2.0.5312.jar"/>
+  <path value="D:/repositorio/org/jboss/com/sun/httpserver/httpserver/1.0.0.Final/httpserver-1.0.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-network/7.1.0.Final/jboss-as-network-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/security/jboss-negotiation-extras/2.2.0.SP1/jboss-negotiation-extras-2.2.0.SP1.jar"/>
+  <path value="D:/repositorio/junit/junit/3.8.1/junit-3.8.1.jar"/>
+  <path value="D:/repositorio/org/jboss/msc/jboss-msc/1.0.2.GA/jboss-msc-1.0.2.GA.jar"/>
+  <path value="D:/repositorio/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-generales/7.0/onix-modulo-librerias-generales-7.0.jar"/>
+  <path value="D:/repositorio/org/jboss/logmanager/jboss-logmanager/1.2.2.GA/jboss-logmanager-1.2.2.GA.jar"/>
+  <path value="D:/repositorio/org/jboss/logging/jboss-logging-processor/1.0.0.CR4/jboss-logging-processor-1.0.0.CR4.jar"/>
+  <path value="D:/repositorio/org/rhq/helpers/rhq-pluginAnnotations/3.0.4/rhq-pluginAnnotations-3.0.4.jar"/>
+  <path value="D:/repositorio/org/jboss/logging/jboss-logging-generator/1.0.0.CR4/jboss-logging-generator-1.0.0.CR4.jar"/>
+  <path value="D:/repositorio/org/picketbox/jbosssx-client/3.0.0.CR2/jbosssx-client-3.0.0.CR2.jar"/>
+  <path value="D:/repositorio/org/picketbox/picketbox/4.0.6.final/picketbox-4.0.6.final.jar"/>
+  <path value="D:/repositorio/org/jboss/remoting3/jboss-remoting/3.2.2.GA/jboss-remoting-3.2.2.GA.jar"/>
+  <path value="D:/repositorio/ant/ant/1.6.3/ant-1.6.3.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-embedded/7.1.0.Final/jboss-as-embedded-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/metadata/jboss-metadata-common/7.0.0.Final/jboss-metadata-common-7.0.0.Final.jar"/>
+  <path value="D:/repositorio/org/infinispan/infinispan-client-hotrod/5.1.1.FINAL/infinispan-client-hotrod-5.1.1.FINAL.jar"/>
+  <path value="D:/repositorio/org/jboss/logging/jboss-logging-spi/2.2.0.CR1/jboss-logging-spi-2.2.0.CR1.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-timer/7.0/onix-modulo-librerias-timer-7.0.jar"/>
+  <path value="D:/repositorio/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-threads/7.1.0.Final/jboss-as-threads-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/metadata/jboss-metadata-ear/7.0.0.Final/jboss-metadata-ear-7.0.0.Final.jar"/>
+  <path value="D:/repositorio/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+  <path value="D:/repositorio/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.jar"/>
+  <path value="D:/repositorio/emma/emma_ant/2.0.5312/emma_ant-2.0.5312.jar"/>
+  <path value="D:/repositorio/org/jboss/jboss-remote-naming/1.0.1.Final/jboss-remote-naming-1.0.1.Final.jar"/>
+  <path value="D:/repositorio/org/infinispan/infinispan-cachestore-remote/5.1.1.FINAL/infinispan-cachestore-remote-5.1.1.FINAL.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-dominio/7.0/onix-modulo-librerias-dominio-7.0.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-server/7.1.0.Final/jboss-as-server-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/marshalling/jboss-marshalling/1.3.9.GA/jboss-marshalling-1.3.9.GA.jar"/>
+  <path value="D:/repositorio/org/jboss/security/jboss-negotiation-spnego/2.2.0.SP1/jboss-negotiation-spnego-2.2.0.SP1.jar"/>
+  <path value="D:/repositorio/javax/javaee-web-api/7.0/javaee-web-api-7.0.jar"/>
+  <path value="D:/repositorio/com/cnel/medidores/cnel-cliente-servicio-medidores/1.0/cnel-cliente-servicio-medidores-1.0.jar"/>
+  <path value="D:/repositorio/jacorb/idl/2.3.1jboss.patch01-brew/idl-2.3.1jboss.patch01-brew.jar"/>
+  <path value="D:/repositorio/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/invocation/jboss-invocation/1.1.1.Final/jboss-invocation-1.1.1.Final.jar"/>
+  <path value="D:/repositorio/org/picketbox/picketbox-commons/1.0.0.final/picketbox-commons-1.0.0.final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-platform-mbean/7.1.0.Final/jboss-as-platform-mbean-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-clustering-common/7.1.0.Final/jboss-as-clustering-common-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/picketbox/jboss-security-spi/3.0.0.CR2/jboss-security-spi-3.0.0.CR2.jar"/>
+  <path value="D:/repositorio/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar"/>
+  <path value="D:/repositorio/commons-collections/commons-collections/3.0/commons-collections-3.0.jar"/>
+  <path value="D:/repositorio/org/jboss/spec/javax/servlet/jboss-servlet-api_3.0_spec/1.0.0.Final/jboss-servlet-api_3.0_spec-1.0.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/spec/javax/ejb/jboss-ejb-api_3.2_spec/1.0.0.Final/jboss-ejb-api_3.2_spec-1.0.0.Final.jar"/>
+  <path value="D:/repositorio/javax/activation/activation/1.1.1/activation-1.1.1.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-controller-client/7.1.0.Final/jboss-as-controller-client-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/primefaces/primefaces/6.0/primefaces-6.0.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-6.0.jar/meta-inf/faces-config.xml" project="onix-implementacion-modulo-vista-spark"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-6.0.jar/meta-inf/primefaces-p.taglib.xml" project="onix-implementacion-modulo-vista-spark"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-6.0.jar/meta-inf/primefaces-pm.taglib.xml" project="onix-implementacion-modulo-vista-spark"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="D:/repositorio/org/jboss/staxmapper/1.1.0.Final/staxmapper-1.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-build-config/7.1.0.Final/jboss-as-build-config-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/integration/jboss-corba-ots-spi/6.0.0.CR1/jboss-corba-ots-spi-6.0.0.CR1.jar"/>
+  <path value="D:/repositorio/commons-httpclient/commons-httpclient/3.1-jbossorg-1/commons-httpclient-3.1-jbossorg-1.jar"/>
+  <path value="D:/repositorio/org/jboss/xnio/xnio-nio/3.0.3.GA/xnio-nio-3.0.3.GA.jar"/>
+  <path value="D:/repositorio/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/modules/jboss-modules/1.1.1.GA/jboss-modules-1.1.1.GA.jar"/>
+  <path value="D:/repositorio/org/jboss/stdio/jboss-stdio/1.0.1.GA/jboss-stdio-1.0.1.GA.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-seguridad/7.0/onix-modulo-librerias-seguridad-7.0.jar"/>
+  <path value="D:/repositorio/org/jgroups/jgroups/3.0.4.Final/jgroups-3.0.4.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/ws/jbossws-api/1.0.0.CR1/jbossws-api-1.0.0.CR1.jar"/>
+  <path value="D:/repositorio/org/omnifaces/omnifaces/2.6/omnifaces-2.6.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-omnifaces-2.6.jar/meta-inf/faces-config.xml" project="onix-implementacion-modulo-vista-spark"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-omnifaces-2.6.jar/meta-inf/omnifaces-functions.taglib.xml" project="onix-implementacion-modulo-vista-spark"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-omnifaces-2.6.jar/meta-inf/omnifaces-ui.taglib.xml" project="onix-implementacion-modulo-vista-spark"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="D:/repositorio/com/cnel/medidores/cnel-implementacion-vista/1.0/cnel-implementacion-vista-1.0.jar"/>
+  <path value="D:/repositorio/org/jboss/naming/jnp-client/5.0.5.Final/jnp-client-5.0.5.Final.jar"/>
+  <path value="D:/repositorio/org/infinispan/infinispan-core/5.1.1.FINAL/infinispan-core-5.1.1.FINAL.jar"/>
+  <path value="D:/repositorio/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+  <path value="D:/repositorio/com/cnel/medidores/cnel-implementacion-servicios-integracion/1.0/cnel-implementacion-servicios-integracion-1.0.jar"/>
+  <path value="D:/repositorio/org/jboss/netty/netty/3.2.5.Final/netty-3.2.5.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/remoting/jboss-remoting/2.5.3/jboss-remoting-2.5.3.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-process-controller/7.1.0.Final/jboss-as-process-controller-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/tanukisoft/wrapper/3.2.3/wrapper-3.2.3.jar"/>
+  <path value="D:/repositorio/org/jboss/spec/javax/annotation/jboss-annotations-api_1.1_spec/1.0.0.Final/jboss-annotations-api_1.1_spec-1.0.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/jboss-common-core/2.2.17.GA/jboss-common-core-2.2.17.GA.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-remoting/7.1.0.Final/jboss-as-remoting-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.0.Final/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/jboss-dmr/1.1.1.Final/jboss-dmr-1.1.1.Final.jar"/>
+  <path value="D:/repositorio/org/hibernate/hibernate-validator/4.2.0.Final/hibernate-validator-4.2.0.Final.jar"/>
+  <path value="D:/repositorio/org/infinispan/infinispan-cachestore-jdbc/5.1.1.FINAL/infinispan-cachestore-jdbc-5.1.1.FINAL.jar"/>
+  <path value="D:/repositorio/com/cnel/medidores/cnel-cliente-servicio-login/1.0/cnel-cliente-servicio-login-1.0.jar"/>
+  <path value="D:/repositorio/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.1_spec/1.0.0.Final/jboss-interceptors-api_1.1_spec-1.0.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/spec/javax/faces/jboss-jsf-api_2.1_spec/2.1.19.1.Final-redhat-1/jboss-jsf-api_2.1_spec-2.1.19.1.Final-redhat-1.jar"/>
+  <path value="D:/repositorio/org/jboss/interceptor/jboss-interceptor-spi/2.0.0.Final/jboss-interceptor-spi-2.0.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/logmanager/jboss-logmanager-log4j/1.0.0.GA/jboss-logmanager-log4j-1.0.0.GA.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-servicio/7.0/onix-modulo-librerias-servicio-7.0.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-controller/7.1.0.Final/jboss-as-controller-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-transactions/7.1.0.Final/jboss-as-transactions-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/jacorb/jacorb/2.3.1jboss.patch01-brew/jacorb-2.3.1jboss.patch01-brew.jar"/>
+  <path value="D:/repositorio/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar"/>
+  <path value="D:/repositorio/org/jboss/jboss-ejb-client/1.0.0.Final/jboss-ejb-client-1.0.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/xnio/xnio-api/3.0.3.GA/xnio-api-3.0.3.GA.jar"/>
+  <path value="D:/repositorio/org/jacorb/jacorb/2.3.1.jbossorg-1/jacorb-2.3.1.jbossorg-1.jar"/>
+  <path value="D:/repositorio/org/jboss/spec/javax/resource/jboss-connector-api_1.6_spec/1.0.0.Final/jboss-connector-api_1.6_spec-1.0.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-domain-management/7.1.0.Final/jboss-as-domain-management-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-ee/7.1.0.Final/jboss-as-ee-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/web/jbossweb/7.0.0.CR2/jbossweb-7.0.0.CR2.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-clustering-infinispan/7.1.0.Final/jboss-as-clustering-infinispan-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/com/sebra/onix/libreria/onix-modulo-librerias-vista/7.0/onix-modulo-librerias-vista-7.0.jar"/>
+  <path value="D:/repositorio/org/jboss/threads/jboss-threads/2.0.0.GA/jboss-threads-2.0.0.GA.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-naming/7.1.0.Final/jboss-as-naming-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/security/jboss-negotiation-common/2.2.0.SP1/jboss-negotiation-common-2.2.0.SP1.jar"/>
+  <path value="D:/repositorio/org/picketbox/picketbox-infinispan/4.0.6.final/picketbox-infinispan-4.0.6.final.jar"/>
+  <path value="D:/repositorio/org/jboss/jbossts/jbossjts-integration/4.16.2.Final/jbossjts-integration-4.16.2.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-security/7.1.0.Final/jboss-as-security-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/jboss-transaction-spi/7.0.0.Final/jboss-transaction-spi-7.0.0.Final.jar"/>
+  <path value="D:/repositorio/javax/jms/javax.jms-api/2.0/javax.jms-api-2.0.jar"/>
+  <path value="D:/repositorio/org/jboss/spec/javax/ejb/jboss-ejb-api_3.1_spec/1.0.1.Final/jboss-ejb-api_3.1_spec-1.0.1.Final.jar"/>
+  <path value="D:/repositorio/org/primefaces/extensions/primefaces-extensions/3.0.0/primefaces-extensions-3.0.0.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-extensions-3.0.0.jar/meta-inf/faces-config.xml" project="onix-implementacion-modulo-vista-spark"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-extensions-3.0.0.jar/meta-inf/primefaces-extensions.taglib.xml" project="onix-implementacion-modulo-vista-spark"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="D:/repositorio/com/sebra/primefaces/spark-theme/2.1.2/spark-theme-2.1.2.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-spark-theme-2.1.2.jar/meta-inf/faces-config.xml" project="onix-implementacion-modulo-vista-spark"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-spark-theme-2.1.2.jar/meta-inf/primefaces-spark.taglib.xml" project="onix-implementacion-modulo-vista-spark"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="D:/repositorio/javax/mail/mail/1.4.7/mail-1.4.7.jar"/>
+  <path value="D:/repositorio/org/jboss/spec/javax/security/jacc/jboss-jacc-api_1.4_spec/1.0.1.Final/jboss-jacc-api_1.4_spec-1.0.1.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-deployment-repository/7.1.0.Final/jboss-as-deployment-repository-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/jbossas/jboss-server-manager/1.0.4.Final/jboss-server-manager-1.0.4.Final.jar"/>
+  <path value="D:/repositorio/commons-io/commons-io/2.5/commons-io-2.5.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-domain-http-interface/7.1.0.Final/jboss-as-domain-http-interface-7.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/hornetq/hornetq-core/2.2.7.Final/hornetq-core-2.2.7.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/jboss-vfs/3.1.0.Final/jboss-vfs-3.1.0.Final.jar"/>
+  <path value="D:/repositorio/org/jboss/as/jboss-as-clustering-jgroups/7.1.0.Final/jboss-as-clustering-jgroups-7.1.0.Final.jar"/>
+ </paths>
+ <validation>
+  <core validator-id="jsf-verification"/>
+  <core validator-id="jboss.cdi.core">
+   <linked-resource name="%1;" path="%0"/>
+   <linked-resource name="%1;" path="%2"/>
+   <linked-resource declaration="true" name="%4;" path="%3"/>
+   <linked-resource name="%3;" path="%5"/>
+   <linked-resource name="%7;%5;%8;%9;" path="%6"/>
+   <linked-resource name="%0;" path="%10"/>
+   <linked-resource name="%1;" path="%11"/>
+   <linked-resource name="%3;" path="%9"/>
+  </core>
+  <core validator-id="jboss.jsf.core"/>
+  <el>
+   <linked-el length="68" name="%12" offset="12371" path="%13"/>
+   <linked-el length="75" name="%12" offset="12854" path="%13"/>
+   <linked-el length="71" name="%12" offset="15296" path="%13"/>
+   <linked-el length="56" name="%12" offset="13719" path="%13"/>
+   <linked-el length="69" name="%12" offset="14888" path="%13"/>
+   <linked-el length="57" name="%12" offset="16280" path="%13"/>
+   <linked-el length="54" name="%12" offset="13258" path="%13"/>
+   <linked-el length="55" name="%12" offset="14490" path="%13"/>
+   <linked-el length="68" name="%14" offset="12371" path="%13"/>
+   <linked-el length="75" name="%14" offset="12854" path="%13"/>
+   <linked-el length="71" name="%14" offset="15296" path="%13"/>
+   <linked-el length="56" name="%14" offset="13719" path="%13"/>
+   <linked-el length="69" name="%14" offset="14888" path="%13"/>
+   <linked-el length="54" name="%14" offset="13258" path="%13"/>
+   <linked-el length="55" name="%14" offset="14490" path="%13"/>
+   <linked-el length="174" name="%15" offset="1168" path="%16"/>
+   <linked-el length="174" name="%15" offset="975" path="%17"/>
+   <linked-el length="174" name="%15" offset="974" path="%18"/>
+   <linked-el length="174" name="%15" offset="976" path="%19"/>
+   <linked-el length="68" name="%20" offset="12371" path="%13"/>
+   <linked-el length="75" name="%20" offset="12854" path="%13"/>
+   <linked-el length="71" name="%20" offset="15296" path="%13"/>
+   <linked-el length="56" name="%20" offset="13719" path="%13"/>
+   <linked-el length="69" name="%20" offset="14888" path="%13"/>
+   <linked-el length="57" name="%20" offset="16280" path="%13"/>
+   <linked-el length="54" name="%20" offset="13258" path="%13"/>
+   <linked-el length="55" name="%20" offset="14490" path="%13"/>
+   <linked-el length="21" name="%21" offset="2467" path="%16"/>
+   <linked-el length="21" name="%21" offset="2028" path="%16"/>
+   <linked-el length="28" name="%21" offset="1741" path="%16"/>
+   <linked-el length="44" name="%22" offset="2613" path="%13"/>
+   <linked-el length="21" name="%23" offset="2467" path="%16"/>
+   <linked-el length="21" name="%23" offset="2028" path="%16"/>
+   <linked-el length="28" name="%23" offset="1741" path="%16"/>
+   <linked-el length="78" name="%24" offset="16187" path="%13"/>
+   <linked-el length="45" name="%24" offset="16135" path="%13"/>
+   <linked-el length="44" name="%25" offset="2613" path="%13"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias
+   path="/onix-implementacion-modulo-vista-spark/src/main/webapp/publicas/portal/portal.xhtml" value="%13"/>
+  <alias path="request" value="%22"/>
+  <alias path="beanLogin" value="%23"/>
+  <alias
+   path="/onix-implementacion-api-clientes/src/main/java/com/onix/api/cliente/login/ExtensionLogin.java" value="%11"/>
+  <alias path="beanSolicitudUsoAplicacion" value="%12"/>
+  <alias
+   path="/onix-implementacion-modulo-vista-spark/src/main/webapp/publicas/login.xhtml" value="%16"/>
+  <alias
+   path="/onix-implementacion-api-clientes/src/main/java/com/onix/api/dtosesion/AlmacenSesion.java" value="%10"/>
+  <alias
+   path="/onix-implementacion-modulo-base/src/main/java/com/onix/modulo/vista/beans/general/implementacion/TestServiciosMenuHorizontal.java" value="%5"/>
+  <alias
+   path="/onix-implementacion-modulo-base/src/main/java/com/onix/modulo/vista/beans/general/implementacion/TestUsuarioSession.java" value="%6"/>
+  <alias
+   path="/onix-implementacion-modulo-servicios/src/main/java/com/onix/modulo/dominio/aplicacion/OmgSolicitudUsoAplicacion.java" value="%14"/>
+  <alias
+   path="/cnel-implementacion-servicios-integracion/src/main/java/com/cnel/servicios/sesion/GestorObjetosSesion.java" value="%0"/>
+  <alias
+   path="/onix-implementacion-modulo-base/src/main/java/com/onix/modulo/vista/beans/general/implementacion/TestGuardiaUsuarioSession.java" value="%8"/>
+  <alias
+   path="/onix-implementacion-modulo-vista-spark/src/main/webapp/publicas/error/access-denied.xhtml" value="%19"/>
+  <alias path="resource" value="%15"/>
+  <alias
+   path="/onix-implementacion-modulo-base/src/main/java/com/onix/modulo/vista/beans/general/implementacion/ServicioAutorizacion.java" value="%7"/>
+  <alias path="menuView" value="%4"/>
+  <alias
+   path="/onix-implementacion-modulo-vista-spark/src/main/java/com/onix/modulo/vista/bean/portal/BeanSolicitudUsoAplicacion.java" value="%20"/>
+  <alias
+   path="/onix-implementacion-modulo-base/src/main/java/com/onix/modulo/vista/beans/general/implementacion/TestParseMenu.java" value="%9"/>
+  <alias
+   path="/onix-implementacion-modulo-base/src/main/java/com/onix/modulo/vista/beans/general/implementacion/MenuView.java" value="%3"/>
+  <alias
+   path="/cnel-implementacion-servicios-integracion/src/main/java/com/cnel/servicios/login/ConexionServicioLogin.java" value="%1"/>
+  <alias path="p" value="%24"/>
+  <alias
+   path="/onix-implementacion-api-clientes/src/main/java/com/onix/api/dtosesion/AlmacenObjetoSesion.java" value="%2"/>
+  <alias
+   path="/onix-implementacion-modulo-vista-spark/src/main/webapp/publicas/error/error.xhtml" value="%18"/>
+  <alias path="request.contextPath" value="%25"/>
+  <alias
+   path="/onix-implementacion-modulo-base/src/main/java/com/onix/modulo/vista/beans/general/autenticacion/BeanLogin.java" value="%21"/>
+  <alias
+   path="/onix-implementacion-modulo-vista-spark/src/main/webapp/publicas/error/404.xhtml" value="%17"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/html">
+   <prefix>h</prefix>
+  </uri>
+  <uri value="http://primefaces.org/ui">
+   <prefix>p</prefix>
+  </uri>
+ </uris>
+</kb-project>

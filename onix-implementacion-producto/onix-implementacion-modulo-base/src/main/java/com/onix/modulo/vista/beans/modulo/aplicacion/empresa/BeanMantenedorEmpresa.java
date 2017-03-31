@@ -24,7 +24,7 @@ public class BeanMantenedorEmpresa
 	private ServicioMantenedorEmpresa servicioMantenedor;
 
 	public BeanMantenedorEmpresa() {
-		super(new OmseEmpresa(), OmseEmpresa.class);
+		super(OmseEmpresa.class);
 
 		addValidacionListener(new ValidadorIngresoDatosListener() {
 			@Override
@@ -37,8 +37,7 @@ public class BeanMantenedorEmpresa
 
 			@Override
 			public void metodoPostTransaccion() {
-				OmseEmpresa obj = new OmseEmpresa();
-				setEntidadRegistrar(obj);
+				
 			}
 		});
 	}

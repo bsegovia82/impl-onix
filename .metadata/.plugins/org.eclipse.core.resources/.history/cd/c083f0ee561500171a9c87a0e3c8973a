@@ -1,0 +1,13 @@
+package com.onix.modulo.servicio.mantenimiento.aplicacion;
+
+import javax.ejb.Stateless;
+
+import com.onix.modulo.dominio.aplicacion.OmsRole;
+import com.onix.modulo.eao.aplicacion.OmsRoleEAO;
+import com.onix.modulo.servicio.ServicioMantenedorControlAuditoria;
+
+@Stateless
+public class ServicioMantenedorIcono extends  ServicioMantenedorControlAuditoria<OmsRoleEAO, OmsRole, Long>
+{
+
+}

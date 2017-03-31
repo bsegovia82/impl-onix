@@ -5,12 +5,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import com.onix.modulo.dominio.aplicacion.OmgSolicitudUsoAplicacion;
+import com.onix.modulo.dominio.aplicacion.OmgSolicitudUsoAplicacion.CANAL_REGISTRO;
 import com.onix.modulo.eao.aplicacion.OmgSolicitudUsoAplicacionEAO;
 import com.onix.modulo.librerias.vista.JsfUtil;
 import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
 import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
 import com.onix.modulo.librerias.vista.beans.oyentes.PostConstructListener;
 import com.onix.modulo.librerias.vista.beans.oyentes.PostTransaccionListener;
+import com.onix.modulo.librerias.vista.beans.oyentes.PreTransaccionListener;
+import com.onix.modulo.librerias.vista.exceptions.ErrorAccionesPreTransaccion;
 import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorSolicitud;
 
 @ManagedBean
@@ -20,15 +23,16 @@ extends BeanMantenedorGenerico<ServicioMantenedorSolicitud, Long, OmgSolicitudUs
 	
 	@EJB
 	private ServicioMantenedorSolicitud servicioMantenedor;
+	
 	private static final long serialVersionUID = 1L;
 	
 	public BeanSolicitudUsoAplicacion() {
-		super(new OmgSolicitudUsoAplicacion(), OmgSolicitudUsoAplicacion.class);
+		super(OmgSolicitudUsoAplicacion.class);
 		addPostConstructuListener(new PostConstructListener() {
 			
 			@Override
 			public void metodoPostConstruct() {
-				entidadRegistrar = new OmgSolicitudUsoAplicacion();
+			
 				
 			}
 		});
@@ -37,8 +41,15 @@ extends BeanMantenedorGenerico<ServicioMantenedorSolicitud, Long, OmgSolicitudUs
 			
 			@Override
 			public void metodoPostTransaccion() {
-				entidadRegistrar=new OmgSolicitudUsoAplicacion();
 				
+			}
+		});
+		
+		addPreTransaccionServicioListener(new PreTransaccionListener() {
+			
+			public void accionPreTransaccion() throws ErrorAccionesPreTransaccion {
+				entidadRegistrar.setlCanalRegistro(CANAL_REGISTRO.WEB);
+				entidadRegistrar.setIdTipoPlan(new Long(1));
 			}
 		});
 	}

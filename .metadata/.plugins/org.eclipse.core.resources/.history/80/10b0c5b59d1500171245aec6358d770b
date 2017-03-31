@@ -1,0 +1,55 @@
+package com.onix.modulo.vista.beans.modulo.aplicacion.configuracion;
+
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import com.onix.modulo.dominio.aplicacion.OmgIcono;
+import com.onix.modulo.eao.aplicacion.OmgIconoEAO;
+import com.onix.modulo.librerias.vista.JsfUtil;
+import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
+import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostTransaccionListener;
+import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorIcono;
+
+@ManagedBean
+@ViewScoped
+public class BeanMantenedorIcono 
+extends BeanMantenedorGenerico<ServicioMantenedorIcono, Long, OmgIcono, OmgIconoEAO>
+{
+
+	public BeanMantenedorIcono() {
+		super( OmgIcono.class);
+		entidadRegistrar = new OmgIcono();
+		addPostTransaccion(new PostTransaccionListener() {
+			@Override
+			public void metodoPostTransaccion() {
+				
+			}
+		});
+	}
+
+	
+	private static final long serialVersionUID = 1L;
+	@EJB
+	private ServicioMantenedorIcono lServicio;
+	
+	@Override
+	protected void cargarListaEtiquetas() {
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TITULOPAGINA.toString(), "Mantenimiento Íconos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.DESCRIPCIONPAGINA.toString(), "Mantenedor Íconos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.AYUDAPAGINA.toString(), "Cree o edite Íconos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TAB.toString(), "Datos Íconos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Íconos registrados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERADIALOGO.toString(), "Actualización de Íconos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos Íconos");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Íconos registrados");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
+	}
+
+	@Override
+	protected ServicioMantenedorIcono getServicioMantenedor() {
+		return lServicio;
+	}
+
+}

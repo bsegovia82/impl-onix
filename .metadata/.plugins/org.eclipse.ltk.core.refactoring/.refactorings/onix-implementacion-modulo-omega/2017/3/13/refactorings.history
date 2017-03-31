@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;template_mantenedor.xhtml&apos; to &apos;WEB-INF&apos;&#x0D;&#x0A;- Original project: &apos;onix-implementacion-modulo-omega&apos;&#x0D;&#x0A;- Destination element: &apos;WEB-INF&apos;&#x0D;&#x0A;- Original element: &apos;template_mantenedor.xhtml&apos;" description="Copy file" element1="src/main/resources/META-INF/resources/WEB-INF/template_mantenedor.xhtml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1490106471717" target="/onix-implementacion-modulo-spark/src/main/resources/META-INF/resources/WEB-INF" units="0" version="1.0"/>
+</session>

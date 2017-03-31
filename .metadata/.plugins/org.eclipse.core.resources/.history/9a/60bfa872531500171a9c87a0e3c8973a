@@ -1,0 +1,9 @@
+package com.onix.modulo.eao.aplicacion;
+
+import javax.ejb.Stateful;
+
+@Stateful
+public class OmgIconoEAO  
+{
+
+}

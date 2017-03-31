@@ -1,0 +1,63 @@
+package com.onix.modulo.vista.beans.modulo.aplicacion.empresa;
+
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import com.onix.modulo.dominio.empresa.OmseEmpresa;
+import com.onix.modulo.eao.empresa.OmseEmpresaEAO;
+import com.onix.modulo.librerias.vista.JsfUtil;
+import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
+import com.onix.modulo.librerias.vista.beans.NombresEtiquetas;
+import com.onix.modulo.librerias.vista.beans.oyentes.PostTransaccionListener;
+import com.onix.modulo.librerias.vista.beans.oyentes.ValidadorIngresoDatosListener;
+import com.onix.modulo.librerias.vista.exceptions.ErrorValidacionVisual;
+import com.onix.modulo.servicio.mantenimiento.empresa.ServicioMantenedorEmpresa;
+
+@ManagedBean
+@ViewScoped
+public class BeanMantenedorEmpresa
+		extends BeanMantenedorGenerico<ServicioMantenedorEmpresa, Long, OmseEmpresa, OmseEmpresaEAO> {
+	private static final long serialVersionUID = 1L;
+
+	@EJB
+	private ServicioMantenedorEmpresa servicioMantenedor;
+
+	public BeanMantenedorEmpresa() {
+		super(new OmseEmpresa(), OmseEmpresa.class);
+
+		addValidacionListener(new ValidadorIngresoDatosListener() {
+			@Override
+			public void validarDatosIngreso() throws ErrorValidacionVisual {
+				if (!JsfUtil.validarCedulaORUC(entidadRegistrar.getRuc()))
+					throw new ErrorValidacionVisual("El ruc es invalido");
+			}
+		});
+		addPostTransaccion(new PostTransaccionListener() {
+
+			@Override
+			public void metodoPostTransaccion() {
+				OmseEmpresa obj = new OmseEmpresa();
+				setEntidadRegistrar(obj);
+			}
+		});
+	}
+
+	protected ServicioMantenedorEmpresa getServicioMantenedor() {
+		return servicioMantenedor;
+	}
+
+	@Override
+	protected void cargarListaEtiquetas() {
+
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TITULOPAGINA.toString(), "Mantenimiento Empresas");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.DESCRIPCIONPAGINA.toString(), "Mantenedor Empresas");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.AYUDAPAGINA.toString(), "Cree o edite Empresas");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TAB.toString(), "Datos Empresa");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERATABLA.toString(), "Empresas registradas");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERADIALOGO.toString(), "Actualización de Empresa");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.CABECERAPANELDIALOGO.toString(), "Datos Empresa");
+		this.listaEtiquetasPantalla.put(NombresEtiquetas.TABLAVACIA.toString(), JsfUtil.MENSAJE_INFO_SINRESULTADO);
+	}
+
+}

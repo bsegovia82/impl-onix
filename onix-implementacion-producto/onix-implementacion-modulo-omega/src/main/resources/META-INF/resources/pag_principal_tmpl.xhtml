@@ -1,0 +1,133 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/template.xhtml">
+
+	<ui:define name="head">
+
+<script type="text/javascript">
+            //<![CDATA[
+            function skinChart() {
+                this.cfg.shadow = false;
+                this.cfg.title = '';
+                this.cfg.seriesColors = ['#007be5', '#20d077'];
+                this.cfg.grid = {
+                    background: '#ffffff',
+                    borderColor: '#ffffff',
+                    gridLineColor: '#F5F5F5',
+                    shadow: false
+                };
+                this.cfg.axesDefaults = {
+                    rendererOptions: {
+                        textColor: '#666F77'
+                    }
+                };
+                this.cfg.seriesDefaults = {
+                    shadow: false,
+                    lineWidth: 1,
+                    markerOptions: {
+                        shadow: false,
+                        size: 7,
+                        style: 'circle'
+                    }
+                }
+            }
+            //]]>  
+        </script>
+        <style type="text/css">
+            .main-content {
+                padding: 0;
+            }
+        </style>
+        
+	</ui:define>
+
+	<ui:define name="subheader">
+        Principal
+    </ui:define>
+
+	<ui:define name="content">
+		<div class="ui-g ui-fluid dashboard">
+			<div class="ui-g-12 ui-md-6 ui-lg-4">
+				<div class="highlight-box">
+					<div class="initials"
+						style="background-color: #007be5; color: #00448f">Usuarios</div>
+					<div class="card">
+						<span class="fa fa-user"></span> <span>Total Usuarios
+							Registrados</span> <span class="count">523</span>
+					</div>
+				</div>
+			</div>
+			<div class="ui-g-12 ui-md-6 ui-lg-4">
+				<div class="highlight-box">
+					<div class="initials"
+						style="background-color: #ef6262; color: #a83d3b">Roles</div>
+					<div class="card">
+						<span class="fa fa-users"></span> <span>Total Roles</span> <span
+							class="count">81</span>
+					</div>
+				</div>
+			</div>
+			<div class="ui-g-12 ui-md-6 ui-lg-4">
+				<div class="highlight-box">
+					<div class="initials"
+						style="background-color: #20d077; color: #038d4a">Tareas</div>
+					<div class="card">
+						<span class="fa fa-eye"></span> <span>Lecturas por hacer</span> <span
+							class="count">21</span>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<div class="ui-g-12 ui-md-6">
+				<div class="card">
+					<p:panel header="Enviar mensaje de problemas reportados"
+						style="text-align:center;background:#fff;height:100%">
+						<div class="ui-g-12 ui-md-6">
+							<div class="ui-g-12">
+								<p:selectOneMenu id="console"
+									value="#{selectOneMenuView.console}" autoWidth="false">
+									<f:selectItem itemLabel="Que problema tiene?" itemValue="" />
+									<f:selectItem itemLabel="Casa no encontrada"
+										itemValue="Xbox One" />
+									<f:selectItem itemLabel="No existe el medidor" itemValue="PS4" />
+									<f:selectItem itemLabel="Otro" itemValue="Wii U" />
+								</p:selectOneMenu>
+							</div>
+							<div class="ui-g-12">
+								<p:inputText placeholder="Nombre del abonado" />
+							</div>
+						</div>
+						<div class="ui-g-12 ui-md-6">
+							<div class="ui-g-12">
+								<p:inputText placeholder="Direccion" />
+							</div>
+							<div class="ui-g-12">
+								<p:inputText placeholder="Teléfono" />
+							</div>
+						</div>
+						<div class="ui-g-12">
+							<p:inputTextarea rows="3" placeholder="Registre la novedad">
+							</p:inputTextarea>
+						</div>
+						<p:commandButton type="button" value="Enviar" icon="fa fa-check"></p:commandButton>
+					</p:panel>
+				</div>
+			</div>
+
+			<div class="ui-g-12 ui-md-6">
+                <div class="card">
+                    <p:chart type="line" model="#{beanPrincipal.lineModel1}" responsive="true"/>
+                </div>
+            </div>
+
+		</div>
+
+
+	</ui:define>
+
+</ui:composition>

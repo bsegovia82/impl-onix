@@ -1,0 +1,179 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template_mantenedor.xhtml">
+
+	<ui:define name="head">
+		<title>#{beanAccesosDirectos.tituloPagina}</title>
+	</ui:define>
+	<ui:define name="subheader">
+       #{beanAccesosDirectos.descripcionPagina}
+    </ui:define>
+
+	<ui:define name="titulo_tab">
+		#{beanAccesosDirectos.tab}
+	</ui:define>
+	<ui:define name="cab_formulario">		
+		#{beanAccesosDirectos.ayudaPagina}
+	</ui:define>
+	<ui:define name="grid_formulario">
+		<p:panelGrid columns="2" layout="grid"
+			style="border:0px !important; background:none;" id="panel">
+
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="Nombre Acceso :" for="txtNombreAcceso" />
+				</div>
+				<p:inputText styleClass="Wid70" placeholder="Nombre del acceso"
+					value="#{beanAccesosDirectos.entidadRegistrar.observacion}"
+					onblur="ChangeCase(this);" required="true" id="txtNombreAcceso" />
+
+			</pe:fluidGridItem>
+
+
+			<pe:fluidGridItem type="select" styleClass="select">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="Opción:" for="txtOpcion" />
+				</div>
+				<p:selectOneMenu id="txtOpcion"
+					value="#{beanAccesosDirectos.entidadRegistrar.priOpcione}"
+					style="width:180px;" required="true" label="Seleccione la opcion">
+				</p:selectOneMenu>
+			</pe:fluidGridItem>
+		</p:panelGrid>
+		<p:commandButton value="Cancelar" styleClass="RedButton"
+			update="panel" process="@this">
+			<p:resetInput target="panel" />
+		</p:commandButton>
+
+		<p:commandButton value="Registrar" styleClass="CyanButton"
+			actionListener="#{beanAccesosDirectos.guardarOActualizar}"
+			process="contenedor"
+			update=":#{p:component('contenedor')}, :#{p:component('mensajeGlobal')}, :#{p:component('tablaDatos')}, :#{p:component('dialogoMantenimiento')}" />
+	</ui:define>
+	<ui:define name="cab_tabla_datos">
+		#{beanAccesosDirectos.cabeceraTabla}
+	</ui:define>
+
+	<ui:define name="tabla_datos">
+		<p:dataTable value="#{beanAccesosDirectos.listaEntidades}" var="acceso"
+			emptyMessage="#{beanAccesosDirectos.mensajeTablaVacia}" rows="8"
+			reflow="true" paginator="true" paginatorPosition="bottom"
+			id="tablaDatos" paginatorAlwaysVisible="false">
+
+			<p:column filterBy="#{acceso.observacion}" footerText="Nombre acceso">
+				<h:outputText value="#{acceso.observacion}" />
+			</p:column>
+
+			<p:column headerText="Opción">
+				<h:outputText value="#{acceso.priOpcione.accion}" />
+			</p:column>
+
+			<p:column headerText="Estado">
+				<h:outputText
+					value="#{acceso.estado eq beanAccesosDirectos.estadoActivo?'ACTIVO':'INACTIVO'}" />
+			</p:column>
+
+			<p:column headerText="Fecha Registro">
+				<h:outputText value="#{acceso.fechaRegistro}">
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"
+						timeZone="#{beanAccesosDirectos.currentTimeZone}" />
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Acciones" width="10%">
+
+				<p:panelGrid columns="2" layout="grid"
+					style="border : none; background : none;">
+
+					<p:commandLink title="Actualizar"
+						actionListener="#{beanAccesosDirectos.actualizarEntidad}"
+						update=":#{p:component('dialogoMantenimiento')}" process="@this">
+
+						<i class="fa fa-edit Fs20 BoldGray DispBlock"> </i>
+
+						<f:attribute
+							name="#{beanAccesosDirectos.nombreAtributoCambioEstado}"
+							value="#{rol}"></f:attribute>
+
+					</p:commandLink>
+					<p:commandLink title="Cambiar Estado"
+						actionListener="#{beanAccesosDirectos.cambiarEstado}"
+						update="@form" process="@this">
+
+						<i class="icon-settings_backup_restore Fs20 BoldGray DispBlock">
+						</i>
+						<f:attribute
+							name="#{beanAccesosDirectos.nombreAtributoCambioEstado}"
+							value="#{rol}"></f:attribute>
+
+						<p:confirm header="Confirmación"
+							message="Seguro que desea realizar esta operación?"
+							icon="ui-icon-alert" />
+					</p:commandLink>
+				</p:panelGrid>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+
+
+	<ui:define name="cab_dialogo">
+		#{beanAccesosDirectos.cabeceraDialogo}
+	</ui:define>
+	<ui:define name="cab_panel_dialogo">
+#{beanAccesosDirectos.cabeceraPanelDialogo}
+</ui:define>
+
+	<ui:define name="datos_dialogo">
+		<p:panelGrid columns="2" layout="grid"
+			style="border:0px !important; background:none;" id="panel">
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="Nombre Acceso :" for="txtNombreAccesoActu" />
+				</div>
+				<p:inputText styleClass="Wid70" placeholder="Rol"
+					value="#{beanAccesosDirectos.entidadRegistrar.observacion}"
+					onblur="ChangeCase(this);" required="true" id="txtNombreAccesoActu" 
+					 />
+			</pe:fluidGridItem>
+			<pe:fluidGridItem type="input">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="* Descripción:" />
+				</div>
+				<p:inputText styleClass="Wid70" placeholder="Descripción"
+					value="#{beanAccesosDirectos.entidadRegistrar.observacion}"
+					onblur="ChangeCase(this);" required="true" id="Descripción" />
+			</pe:fluidGridItem>
+			
+			
+			
+			<pe:fluidGridItem type="select" styleClass="select">
+				<div class="dynaFormLabel">
+					<p:outputLabel value="Opción:" for="txtOpcionAct" />
+				</div>
+				<p:selectOneMenu id="txtOpcionAct"
+					value="#{beanAccesosDirectos.entidadRegistrar.priOpcione}"
+					style="width:180px;" required="true" label="Seleccione la opcion">
+				</p:selectOneMenu>
+			</pe:fluidGridItem>
+
+
+			<h:outputText value="" />
+
+		</p:panelGrid>
+
+
+		<p:commandButton value="Actualizar" styleClass="CyanButton"
+			actionListener="#{beanAccesosDirectos.guardarOActualizar}"
+			process="PanelActualizar"
+			update=":#{p:component('mensajeGlobal')}, :#{p:component('tablaDatos')}">
+			<p:confirm header="Confirmación"
+				message="Seguro que desea realizar esta operación?"
+				icon="ui-icon-alert" />
+		</p:commandButton>
+	</ui:define>
+
+</ui:composition>

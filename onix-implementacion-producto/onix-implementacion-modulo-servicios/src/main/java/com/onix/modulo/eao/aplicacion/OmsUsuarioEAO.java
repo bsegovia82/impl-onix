@@ -60,10 +60,10 @@ public class OmsUsuarioEAO extends OnixEAO<OmsUsuario, Long>{
 	public void cambioClaveUsuario(OmsUsuario usuario) 
 	{
 		String lsQuery = "update oms_usuarios a " + "set a.clave = ?, "
-				+ "a.fecha_actualizacion = sysdate, a.es_nuevo = ?, a.estado = ? " + "where a.id = ? ";
+				+ "a.fecha_actualizacion = sysdate, a.esnuevo = ?, a.estado = ? " + "where a.id = ? ";
 		Query query = adminEntidad.createNativeQuery(lsQuery);
 		query.setParameter(1, usuario.getClave());
-		query.setParameter(2, usuario.getEs_nuevo());
+		query.setParameter(2, usuario.getEsNuevo());
 		query.setParameter(3, usuario.getEstado());
 		query.setParameter(4, usuario.getId());
 		query.executeUpdate();

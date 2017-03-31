@@ -1,0 +1,5 @@
+package com.onix.modulo.vista.beans.modulo.aplicacion.configuracion;
+
+public class BeanMantenedorIcono {
+
+}

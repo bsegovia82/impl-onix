@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
 
 import com.onix.modulo.ConstantesServicio;
 import com.onix.modulo.librerias.dominio.entidades.IEntidadPersistible;
@@ -44,11 +45,10 @@ extends GenericEAO<T, Id>
     }
     
     public int count(Class<T> clase) {
-        javax.persistence.criteria.CriteriaQuery cq = getAdminEntidad().getCriteriaBuilder().createQuery();
+        CriteriaQuery<Object> cq = getAdminEntidad().getCriteriaBuilder().createQuery();
         javax.persistence.criteria.Root<T> rt = cq.from(clase);
         cq.select(getAdminEntidad().getCriteriaBuilder().count(rt));
-        javax.persistence.Query q = getAdminEntidad().createQuery(cq);
-        return ((Long) q.getSingleResult()).intValue();
+        return ((Long) getAdminEntidad().createQuery(cq).getSingleResult()).intValue();
     }
 	
 }

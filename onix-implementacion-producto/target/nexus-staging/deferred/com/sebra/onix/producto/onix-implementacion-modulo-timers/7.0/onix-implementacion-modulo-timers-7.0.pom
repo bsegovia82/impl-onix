@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.sebra.onix.producto</groupId>
+    <artifactId>onix-implementacion-producto</artifactId>
+    <version>7.0</version>
+  </parent>
+  <artifactId>onix-implementacion-modulo-timers</artifactId>
+  <name>onix-implementacion-modulo-timers</name>
+  <description>onix-implementacion-modulo-timers</description>
+  <packaging>ejb</packaging>
+  <url>https://github.com/bsegovia82/impl-onix</url>
+  
+   <dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sebra.onix.producto</groupId>
+			<artifactId>onix-implementacion-modulo-servicios</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sebra.onix.libreria</groupId>
+			<artifactId>onix-modulo-librerias-generales</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sebra.onix.libreria</groupId>
+			<artifactId>onix-modulo-librerias-servicio</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sebra.onix.libreria</groupId>
+			<artifactId>onix-modulo-librerias-timer</artifactId>
+			<version>7.0</version>
+		</dependency>
+	</dependencies>
+
+	
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>3.1</ejbVersion>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>SEBRA-RELEASE</id>
+			<name>SEBRA</name>
+			<url>http://nexus-globalitmind.rhcloud.com/nexus/content/repositories/SEBRA_RELEASES/</url>
+		</repository>
+	</repositories>
+  
+</project>

@@ -1,20 +1,18 @@
 package com.onix.modulo.servicio.mantenimiento.aplicacion;
 
-import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import com.onix.modulo.dominio.aplicacion.OmsUsuariosRole;
 import com.onix.modulo.eao.aplicacion.OmsUsuariosRoleEAO;
-import com.onix.modulo.librerias.eao.GenericEAO;
-import com.onix.modulo.librerias.exceptions.ErrorServicioNegocio;
-import com.onix.modulo.librerias.exceptions.ErrorValidacionGeneral;
-import com.onix.modulo.librerias.servicio.ServicioMantenimientoEntidad;
+import com.onix.modulo.servicio.ServicioMantenedorControlAuditoria;
 
 @Stateless
-public class ServicioMantenedorUsuarioRol extends
-		ServicioMantenimientoEntidad<OmsUsuariosRoleEAO, OmsUsuariosRole, Long> {
+public class ServicioMantenedorUsuarioRol
+		extends ServicioMantenedorControlAuditoria<OmsUsuariosRoleEAO, OmsUsuariosRole, Long> {
 
 	@EJB
 	private OmsUsuariosRoleEAO crud;
@@ -23,59 +21,48 @@ public class ServicioMantenedorUsuarioRol extends
 		return crud;
 	}
 
-	@Override
-	protected void validacionesConBaseActualizar(OmsUsuariosRole entidad) throws ErrorServicioNegocio {
-		System.out.println("sin nada que hacer");
-	}
-
-	@Override
-	protected void validacionesBasicasActualizar(OmsUsuariosRole entidad) throws ErrorValidacionGeneral {
-		entidad.setFechaActualizacion(new Date());
-		entidad.setObservacion(entidad.getObservacion() == null || entidad.getObservacion().length() < 2 ? OBSERVACION_APLICACION
-				: entidad.getObservacion());
-		entidad.setAuditoria(entidad.getAuditoria() == null || entidad.getAuditoria().length() < 2 ? REFERENCIA
-				: entidad.getAuditoria());
-	}
-
-	@Override
-	protected void validacionesConBaseGuardar(OmsUsuariosRole entidad) throws ErrorServicioNegocio {
-		System.out.println("sin nada que hacer");
-	}
-
-	@Override
-	protected void validacionesBasicasGuardar(OmsUsuariosRole entidad) throws ErrorValidacionGeneral {
-
-		entidad.setEstado(GenericEAO.ESTADO_ACTIVO);
-		entidad.setFechaRegistro(new Date());
-		entidad.setObservacion(entidad.getObservacion() == null || entidad.getObservacion().length() < 2 ? OBSERVACION_APLICACION
-				: entidad.getObservacion());
-		entidad.setAuditoria(entidad.getAuditoria() == null || entidad.getAuditoria().length() < 2 ? REFERENCIA
-				: entidad.getAuditoria());
-	}
-
-	protected void actualizacionPrevia(OmsUsuariosRole entidad) {
-		System.out.println("Sin nada que hacer actualizacion previa");
-
-	}
-
-	
-	protected void persistenciaPrevia(OmsUsuariosRole entidad) {
-		System.out.println("Sin nada que hacer actualizacion previa");
-	}
-
-	
-	protected void postActualizacion(OmsUsuariosRole entidad) {
-		// TODO Auto-generated method stub
-
-	}
-
-	
-	protected void postPersistencia(OmsUsuariosRole entidad) {
-		// TODO Auto-generated method stub
-
-	}
-
 	public void eliminarRolesUsuario(Long idUsuario) {
 		crud.eliminarUsuarioRol(idUsuario);
+	}
+	
+	
+
+	@Override
+	protected void cargarConfiguracionServicio() {
+		System.out.println("NO EXISTEN CONFIGURACIONES PARA EL SEVICIO ServicioMantenedorUsuarioRol");
+
+	}
+
+	public List<OmsUsuariosRole> obtenerListaUsuarioRolIdUsuario(Long pIdUsuario)
+	{
+		return getCrud().ejecutarQueryNativo("select * from oms_usuarios_roles where id_usuario = :idUsuario "
+				+ "and estado = 'A'",
+		new HashMap<String, Object>() {
+			static final long serialVersionUID = 1L;
+			{
+				put("idUsuario", pIdUsuario);
+			}
+		}, OmsUsuariosRole.class); 
+		
+		
+		
+	}
+	
+	public OmsUsuariosRole obtenerUsuarioRolPorRolUsuario(String pRol, Long pIdUsuario ) {
+		List<OmsUsuariosRole> lListaOpcionesRoles = obtenerListaUsuarioRolPorRolUsuario(pRol, pIdUsuario);
+		return lListaOpcionesRoles.isEmpty() ? null : lListaOpcionesRoles.get(0);
+	}
+	
+	public List<OmsUsuariosRole>  obtenerListaUsuarioRolPorRolUsuario(String lRol, Long id) {
+		
+		return getCrud().ejecutarQueryNativo("select * from oms_usuarios_roles where id_usuario = :idUsuario "
+				+ "and id_rol = (select ID from oms_roles where rol = :nombreRol)",
+		new HashMap<String, Object>() {
+			static final long serialVersionUID = 1L;
+			{
+				put("idUsuario", id);
+				put("nombreRol", lRol);
+			}
+		}, OmsUsuariosRole.class); 
 	}
 }

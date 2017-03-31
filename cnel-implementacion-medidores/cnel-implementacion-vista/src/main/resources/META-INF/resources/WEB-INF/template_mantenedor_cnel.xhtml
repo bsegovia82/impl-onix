@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/template.xhtml">
+
+	<ui:define name="head">
+		<title>#{beanMantenedorUsuario.tituloPagina}</title>
+		<style>
+.ui-datatable {
+	display: table;
+}
+
+.ui-datatable table {
+	table-layout: auto !important;
+}
+
+
+
+</style>
+
+	</ui:define>
+	<ui:define name="subheader">
+       #{beanMantenedorUsuario.descripcionPagina}
+    </ui:define>
+
+	<ui:define name="content">
+		<h:form id="Formulario" enctype="multipart/form-data">
+			<p:growl sticky="true" id="mensajeGlobal"  ></p:growl>
+			<div class="Container100 Responsive100">
+				<div class="Container100">
+					<div class="ContainerIndent">
+						<div class="Card ShadowEffect HeiAutoOnMobile">
+							<h2 class="CardTopic">
+								<ui:insert name="cab_tabla_datos">
+							Información
+							</ui:insert>
+							</h2>
+							<div class="EmptyBox5"></div>
+
+							<ui:insert name="tabla_datos">
+						tabla
+						</ui:insert>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+		</h:form>
+	</ui:define>
+</ui:composition>

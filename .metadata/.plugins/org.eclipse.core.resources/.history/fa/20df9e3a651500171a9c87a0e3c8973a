@@ -1,0 +1,14 @@
+package com.onix.modulo.vista.beans.modulo.aplicacion.configuracion;
+
+import com.onix.modulo.dominio.aplicacion.OmgIcono;
+import com.onix.modulo.dominio.persona.operacion.OmsoCargo;
+import com.onix.modulo.eao.persona.operacion.OmsoCargoEAO;
+import com.onix.modulo.librerias.vista.beans.BeanMantenedorGenerico;
+import com.onix.modulo.servicio.mantenimiento.aplicacion.ServicioMantenedorIcono;
+import com.onix.modulo.servicio.mantenimiento.persona.operacion.ServicioMantenedorCargo;
+
+public class BeanMantenedorIcono 
+extends BeanMantenedorGenerico<ServicioMantenedorIcono, Long, OmgIcono, OmgIconoEAO>
+{
+
+}

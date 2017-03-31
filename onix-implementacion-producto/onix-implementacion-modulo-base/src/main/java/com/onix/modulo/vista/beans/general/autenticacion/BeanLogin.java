@@ -1,6 +1,7 @@
 package com.onix.modulo.vista.beans.general.autenticacion;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -15,9 +16,14 @@ import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
 
+import com.onix.api.cliente.login.ApiLogin;
+import com.onix.api.cliente.login.ExtensionLogin;
+import com.onix.api.configuracion.ConfiguracionLogin;
+import com.onix.modulo.dominio.aplicacion.OmsRole;
 import com.onix.modulo.dominio.aplicacion.OmsUsuario;
 import com.onix.modulo.dominio.aplicacion.OmsUsuariosRole;
 import com.onix.modulo.librerias.generales.UtilEncriptarDataSource;
+import com.onix.modulo.librerias.vista.JsfUtil;
 import com.onix.modulo.librerias.vista.anotaciones.ITestAutenticacion;
 import com.onix.modulo.librerias.vista.anotaciones.ITestUsuarioSession;
 import com.onix.modulo.librerias.vista.beans.ManagedBeanGenerico;
@@ -25,29 +31,32 @@ import com.onix.modulo.librerias.vista.interfaces.IGuardiaUsuarioSession;
 import com.onix.modulo.librerias.vista.interfaces.IServiciosAutenticacion;
 import com.onix.modulo.librerias.vista.interfaces.IUsuarioSession;
 import com.onix.modulo.servicio.seguridad.ServiciosMantenimientoSeguridad;
-    
+
 @ManagedBean(name = "beanLogin")
 @ViewScoped
 public class BeanLogin extends ManagedBeanGenerico {
 	/**
 	 * 
 	 */
-	
+
 	@Inject
 	@ITestUsuarioSession
 	private IUsuarioSession<OmsUsuario> usuarioSession;
 
-	
+	@Inject
+	@ExtensionLogin
+	private ApiLogin lExtensionLogin;
+
 	private String cambContrase1;
 	private String cambContrase2;
-	
+
 	@Inject
 	@ITestAutenticacion
 	private IServiciosAutenticacion<OmsUsuario, BeanLogin> autenticador;
 
 	@EJB
 	private ServiciosMantenimientoSeguridad serviciosMantenimientoSeguridad;
-	
+
 	private static final long serialVersionUID = 1L;
 	private String usuario;
 	private String clave;
@@ -70,28 +79,39 @@ public class BeanLogin extends ManagedBeanGenerico {
 
 	public String login() {
 		try {
-
-			if (this.isAutenticado()) {
+			if (this.isAutenticado())
 				this.getHttpServletRequest().logout();
-			}
-			
 			this.getHttpServletRequest().login(usuario.toUpperCase(), UtilEncriptarDataSource.encode(clave));
-			
 			OmsUsuario usuario = autenticador.autenticar(this);
 			if (usuario == null) {
 				addError("USUARIO/CLAVE Invalidos");
 				return "";
-			} else if (usuario.getEstado().equals("I")) {
+			}
+			if ("I".equals(usuario.getEstado())) {
 				addError("Usuario Inactivo");
 				return "";
-			} else {
-
-				usuario.setRolesAsignados(rolesUsuario(usuario));
-				usuarioSession.setUsuarioSession(usuario);
-				generarSemillaSegura(usuario);
-
-				return IGuardiaUsuarioSession.PAGINA_PRINCIPAL_RED;
 			}
+			usuario.setRolesAsignados(rolesUsuario(usuario));
+			OmsRole lRolPrincipal = rolPrincipalUsuario(usuario);
+			usuario.setRolPrincipal(lRolPrincipal == null ? "SIN ROL PRINCIPAL " : lRolPrincipal.getRol());
+			usuarioSession.setUsuarioSession(usuario);
+			generarSemillaSegura(usuario);
+
+			agregarObjetoSesion(JsfUtil.REFERENCIA_SESION, usuario.getIdReferencia());
+
+//			lExtensionLogin.ejecutarExtensionLogin(
+//
+//					new HashMap<String, Object>() {
+//						static final long serialVersionUID = 1L;
+//						{
+//							put(ConfiguracionLogin.CAMPO_USUARIO, usuario);
+//							put(ConfiguracionLogin.CAMPO_CLAVE, clave);
+//						}
+//					});
+
+			return lRolPrincipal != null && lRolPrincipal.getlPaginaPrincipal() != null
+					? lRolPrincipal.getlPaginaPrincipal() : IGuardiaUsuarioSession.PAGINA_PRINCIPAL_RED;
+
 		} catch (Throwable e) {
 
 			addError("USUARIO/CLAVE Invalidos");
@@ -121,6 +141,21 @@ public class BeanLogin extends ManagedBeanGenerico {
 		return roles;
 	}
 
+	private OmsRole rolPrincipalUsuario(OmsUsuario usuario) {
+
+		List<OmsUsuariosRole> listaUsuariosRoles = usuario.getPriUsuariosRoles();
+		OmsRole lRol = null;
+		for (OmsUsuariosRole rol : listaUsuariosRoles) {
+			String lTipoRol = rol.getPriRole().getTipoRol() == null ? "" : rol.getPriRole().getTipoRol();
+
+			if (lTipoRol.equals("P")) {
+				lRol = rol.getPriRole();
+			}
+		}
+
+		return lRol;
+	}
+
 	private void generarSemillaSegura(OmsUsuario usuario) {
 		try {
 			((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).setAttribute(
@@ -143,35 +178,32 @@ public class BeanLogin extends ManagedBeanGenerico {
 		try {
 			this.getHttpServletRequest().logout();
 		} catch (ServletException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		ec.invalidateSession();
 		ec.redirect(ec.getRequestContextPath() + IGuardiaUsuarioSession.PAGINA_LOGIN_RED);
 	}
-	
+
 	public void cerrarVentana(ActionEvent evento) {
 
-		OmsUsuario usuarioBASE = serviciosMantenimientoSeguridad.obtenerUsuarioTot(usuarioSession.getUsuarioSession().getUsuario());
+		// if
+		// (!serviciosMantenimientoSeguridad.obtenerUsuarioTot(usuarioSession.getUsuarioSession().getUsuario())
+		// .getClave().equals(usuarioSession.getUsuarioSession().getClave()))
+		if (!("S").equals(serviciosMantenimientoSeguridad
+				.obtenerUsuarioTot(usuarioSession.getUsuarioSession().getUsuario()).getEsNuevo()))
 
-		if (!usuarioBASE.getClave().equals(usuarioSession.getUsuarioSession().getClave())) {
 			try {
 				logout();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else {
-			RequestContext rc = RequestContext.getCurrentInstance();
-			if (usuarioSession.getUsuarioSession().getEs_nuevo().equals("S")) {
-				rc.execute("PF('dlg2').show();");
-			} else {
-				rc.execute("PF('dlg2').hide();");
-			}
-		}
+
+		else
+			RequestContext.getCurrentInstance().execute("PF('dlg2')."
+					+ (("S".equals(usuarioSession.getUsuarioSession().getEsNuevo()) ? "show" : "hide") + "();"));
+
 	}
-	
 
 	public void cambiarContrasenia(ActionEvent evento) {
 
@@ -186,9 +218,10 @@ public class BeanLogin extends ManagedBeanGenerico {
 		}
 
 		try {
-			OmsUsuario usuarioBASE = serviciosMantenimientoSeguridad.obtenerUsuarioTot(usuarioSession.getUsuarioSession().getUsuario());
+			OmsUsuario usuarioBASE = serviciosMantenimientoSeguridad
+					.obtenerUsuarioTot(usuarioSession.getUsuarioSession().getUsuario());
 			usuarioBASE.setClave(UtilEncriptarDataSource.encode(cambContrase1));
-			usuarioBASE.setEs_nuevo("N");
+			usuarioBASE.setEsNuevo("N");
 			serviciosMantenimientoSeguridad.cambioClaveUsuario(usuarioBASE);
 			addMensaje("Su contraseña fue cambiada con éxito");
 		} catch (Throwable e) {
@@ -212,4 +245,4 @@ public class BeanLogin extends ManagedBeanGenerico {
 	public void setCambContrase2(String cambContrase2) {
 		this.cambContrase2 = cambContrase2;
 	}
-	}
+}
